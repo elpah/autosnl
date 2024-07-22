@@ -12,7 +12,5 @@ const port = process.env.PORT || 8000;
 app.use(express.json());
 app.use("/api/", carRouter);
 
-// app.use("/api/products", productRouter);
-
 app.listen(port, () => console.log(`listening on port ${port}`));
 export default app;
