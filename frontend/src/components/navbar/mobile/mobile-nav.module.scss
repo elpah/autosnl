@@ -78,7 +78,7 @@ header {
         .search_input {
           width: 100%;
           padding: 5px;
-          border: 1px solid #ccc;
+          border: 1px solid #5a5757;
           border-radius: 4px;
           outline: none;
         }
@@ -144,13 +144,13 @@ header {
           animation: slideIn 0.3s ease-out;
 
           .search_input {
-            height: 20px;
+            height: 23px;
           }
           .close_button {
             cursor: pointer;
             .hide_search {
-              width: 14px;
-              height: 14px;
+              width: 18px;
+              height: 18px;
             }
           }
         }
