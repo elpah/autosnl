@@ -12,7 +12,6 @@ export const MobileNav = () => {
   const [showLanguageSelector, setShowLanguageSelector] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
-  const toggleSearch = () => setSearchVisible(!searchVisible);
 
   return (
     <header>
@@ -22,13 +21,15 @@ export const MobileNav = () => {
         </div>
         <div className={styles.others_item_container}>
           {searchVisible ? (
-            <div className={styles.search_bar}>
+            <div className={`${styles.search_bar} ${
+              !searchVisible ? styles["slide-out"] : ""
+            }`}>
               <input
                 type="text"
                 className={styles.search_input}
                 placeholder="Search..."
               />
-              <button className={styles.close_button} onClick={toggleSearch}>
+              <button className={styles.close_button} onClick={()=>{setSearchVisible(!searchVisible);}}>
                 <img
                   className={styles.hide_search}
                   src={close}
@@ -38,7 +39,11 @@ export const MobileNav = () => {
             </div>
           ) : (
             <>
-              <div className={styles.search_container} onClick={toggleSearch}>
+              <div className={styles.search_container} onClick={()=>{
+                  setShowLanguageSelector(false);
+                  setShowMenu(false);
+                  setSearchVisible(!searchVisible);
+              }}>
                 <img
                   className={styles.search_icon}
                   src={search_icon}
@@ -47,7 +52,9 @@ export const MobileNav = () => {
               </div>
               <div
                 className={styles.language_selector}
-                onClick={() => setShowLanguageSelector(!showLanguageSelector)}
+                onClick={() => {
+                  setShowMenu(false);
+                  setShowLanguageSelector(!showLanguageSelector);}}
               >
                 <div className={styles.language_image_container}>
                   <img
@@ -56,7 +63,8 @@ export const MobileNav = () => {
                     alt="language image"
                   />
                 </div>
-                <div className={styles.language_arrow_container}>
+                <div className={styles.language_arrow_container}
+                onClick={()=>{setShowLanguageSelector(!showLanguageSelector)}}>
                   <img
                     className={`${styles.arrow} ${
                       showLanguageSelector ? styles.rotated : ""
@@ -65,10 +73,21 @@ export const MobileNav = () => {
                     alt="language selector arrow"
                   />
                 </div>
+
+                 <div  className={`${styles.language_dropdown_menu} ${
+          showLanguageSelector ? styles.open : ""
+        }`}>
+                <img className={styles.language_dropdown_image} src={language_image} alt=" " />
+                <img className={styles.language_dropdown_image} src={language_image}  alt=" " />
+                <img className={styles.language_dropdown_image} src={language_image}  alt=" " />
+                <img className={styles.language_dropdown_image} src={language_image}  alt=" " />
               </div>
+              </div>
+             
               <div
                 className={styles.menu_icon}
                 onClick={() => {
+                  setShowLanguageSelector(false);
                   setShowCars(false);
                   setShowMenu(!showMenu);
                 }}
