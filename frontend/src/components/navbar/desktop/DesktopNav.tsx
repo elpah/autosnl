@@ -19,6 +19,19 @@ export const DesktopNav = () => {
                 <div className={styles.arrow_container}>
                   <img className={styles.arrow} src={arrow} alt="" />
                 </div>
+                <div className={styles.car_list}>
+                    <ul className={styles.car_list_container}>
+                        <li className={styles.car_list_item}>Toyota</li>
+                        <li className={styles.car_list_item}>Toyota</li>
+                        <li className={styles.car_list_item}>Toyota</li>
+                        <li className={styles.car_list_item}>Toyota</li>
+                        <li className={styles.car_list_item}>Toyota</li>
+                        <li className={styles.car_list_item}>Toyota</li>
+                        <li className={styles.car_list_item}>Toyota</li>
+                        <li className={styles.car_list_item}>Toyota</li>
+
+                    </ul>
+                </div>
               </div>
             </li>
             <li className={styles.list_item}>ABOUT</li>

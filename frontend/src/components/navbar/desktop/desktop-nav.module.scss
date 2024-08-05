@@ -37,6 +37,7 @@ header {
         gap: 27px;
 
         .all_cars_container {
+          position: relative;
           .all_cars {
             display: flex;
             align-items: center;
@@ -55,6 +56,32 @@ header {
                 width: 10px;
                 height: 10px;
               }
+            }
+          }
+          .car_list {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 120px;
+            background-color: rgb(246, 246, 246);
+
+            .car_list_container {
+              display: flex;
+              flex-direction: column;
+              padding: 0;
+              margin: 0;
+              .car_list_item {
+                width: 100%;
+                display: flex;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                border-top: 1px solid black;
+              }
+            }
+            .car_list_container :first-child {
+              border-top: none;
             }
           }
         }
@@ -124,6 +151,12 @@ header {
         }
       }
     }
+  }
+}
+
+@media (min-width: 900px) {
+  header {
+    height: 105px;
   }
 }
 
