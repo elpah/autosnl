@@ -1,37 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 import arrow from "../../../assets/images/nav_images/arrow.png";
 import language_image from "../../../assets/images/nav_images/language_image.png";
-
-
 import styles from "./desktop-nav.module.scss";
+
 export const DesktopNav = () => {
+  const [showCars, setShowCars] = useState(false);
+  const [showLanguageSelector, setShowLanguageSelector] = useState(false);
+
   return (
-    <header>
+    <header className={styles.desktop_nav}>
       <nav>
         <div className={styles.logo_container}>
           <h2 className={styles.logo_text}>ZaurAutos</h2>
         </div>
         <div className={styles.menu}>
-          <ul>
+          <ul className={styles.menu_ul}>
             <li className={styles.all_cars_container}>
-              <div className={styles.all_cars}>
+              <div
+                className={styles.all_cars}
+                onClick={() => {
+                  setShowLanguageSelector(false);
+                  setShowCars(!showCars);
+                }}
+              >
                 <div className={styles.all_cars_txt}>ALL CARS</div>
                 <div className={styles.arrow_container}>
-                  <img className={styles.arrow} src={arrow} alt="" />
+                  <img
+                    className={`${styles.arrow} ${
+                      showCars ? styles.rotated : ""
+                    }`}
+                    src={arrow}
+                    alt=""
+                  />
                 </div>
-                <div className={styles.car_list}>
-                    <ul className={styles.car_list_container}>
-                        <li className={styles.car_list_item}>Toyota</li>
-                        <li className={styles.car_list_item}>Toyota</li>
-                        <li className={styles.car_list_item}>Toyota</li>
-                        <li className={styles.car_list_item}>Toyota</li>
-                        <li className={styles.car_list_item}>Toyota</li>
-                        <li className={styles.car_list_item}>Toyota</li>
-                        <li className={styles.car_list_item}>Toyota</li>
-                        <li className={styles.car_list_item}>Toyota</li>
-
-                    </ul>
-                </div>
+              </div>
+              <div
+                className={`${styles.car_list} ${
+                  showCars ? styles.show_cars_open : ""
+                }`}
+              >
+                <ul className={styles.car_list_container}>
+                  <li className={styles.car_list_item}>Toyota</li>
+                  <li className={styles.car_list_item}>Toyota</li>
+                  <li className={styles.car_list_item}>Toyota</li>
+                  <li className={styles.car_list_item}>Toyota</li>
+                  <li className={styles.car_list_item}>Toyota</li>
+                  <li className={styles.car_list_item}>Toyota</li>
+                  <li className={styles.car_list_item}>Toyota</li>
+                  <li className={styles.car_list_item}>Toyota</li>
+                </ul>
               </div>
             </li>
             <li className={styles.list_item}>ABOUT</li>
@@ -67,15 +84,64 @@ export const DesktopNav = () => {
           </form>
         </div>
         <div className={styles.language_selector_container}>
-            <div className={styles.language_select_image}>
-                <div className={styles.language_image_container}
-                >
-                    <img className={styles.language_image} src={language_image} alt="selected Language" />
-                </div>
-                <div className={styles.language_arrow_container}>
-                    <img  className={styles.arrow} src={arrow} alt="dropdown_arrow" />
-                </div>
+          <div
+            className={styles.language_select_image}
+            onClick={() => {
+              setShowCars(false);
+              setShowLanguageSelector(!showLanguageSelector);
+            }}
+          >
+            <div className={styles.language_image_container}>
+              <img
+                className={styles.language_image}
+                src={language_image}
+                alt="selected Language"
+              />
             </div>
+            <div className={styles.language_arrow_container}>
+              <img
+                className={`${styles.arrow} ${
+                  showLanguageSelector ? styles.rotated : ""
+                }`}
+                src={arrow}
+                alt="dropdown_arrow"
+              />
+            </div>
+          </div>
+          <div
+            className={`${styles.languages_container} ${
+              showLanguageSelector ? styles.open : ""
+            }`}
+          >
+            <div className={styles.language_image_container}>
+              <img
+                className={styles.language_image}
+                src={language_image}
+                alt=""
+              />
+            </div>
+            <div className={styles.language_image_container}>
+              <img
+                className={styles.language_image}
+                src={language_image}
+                alt=""
+              />
+            </div>{" "}
+            <div className={styles.language_image_container}>
+              <img
+                className={styles.language_image}
+                src={language_image}
+                alt=""
+              />
+            </div>{" "}
+            <div className={styles.language_image_container}>
+              <img
+                className={styles.language_image}
+                src={language_image}
+                alt=""
+              />
+            </div>
+          </div>
         </div>
       </nav>
     </header>
