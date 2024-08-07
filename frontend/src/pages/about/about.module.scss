@@ -1,0 +1,111 @@
+.about_container {
+  margin-top: 0;
+  .cover {
+    color: #fff;
+    background-image: url("../../assets/images/cover_images/about_cover.png");
+    height: 212px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-style: normal;
+    line-height: normal;
+
+    .header {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .header_subtext {
+      font-family: Inter;
+      font-size: 12px;
+      font-weight: 500;
+    }
+  }
+  .body_container {
+    width: 90%;
+    margin: auto;
+    .body_part {
+      text-align: center;
+      font-style: normal;
+      margin-bottom: 25px;
+
+      .body_part_header {
+        color: #4c4c4c;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: normal;
+      }
+      .body_part_text {
+        color: #313131;
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 20px;
+      }
+    }
+  }
+  .values {
+    width: 100%;
+    .values_header {
+      color: #4c4c4c;
+      font-size: 24px;
+      text-align: center;
+      font-weight: 700;
+      line-height: normal;
+      margin-bottom: 30px;
+    }
+    .values_sub_container {
+      background: #1faee9;
+      display: flex;
+      flex-direction: column;
+      padding: 34px 27px;
+    }
+  }
+  .testimonial_container {
+    display: none;
+  }
+  .delivery_container {
+    background-image: url("../../assets/images/about_images/delivery_image.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    padding: 10%;
+    font-style: normal;
+
+    .delivery_header {
+      font-size: 16px;
+      font-weight: 800;
+      line-height: normal;
+      margin-bottom: 15px;
+    }
+
+    .delivery_text {
+      font-size: 10px;
+      font-weight: 500;
+      line-height: 15px;
+      margin-bottom: 20px;
+    }
+    .button {
+      display: flex;
+      width: 144px;
+      height: 44px;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+      background: #1faee9;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 500;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .about_container {
+    padding-top: 70px;
+  }
+}

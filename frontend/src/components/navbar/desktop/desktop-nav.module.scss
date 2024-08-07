@@ -3,6 +3,8 @@
 }
 @media (min-width: 768px) {
   .desktop_nav {
+    // position: fixed;
+    // top: 0;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -300,7 +302,7 @@
       }
       .menu {
         .menu_ul {
-          gap: 27px;
+          gap: 40px;
           .all_cars_container {
             .all_cars {
               gap: 7px;

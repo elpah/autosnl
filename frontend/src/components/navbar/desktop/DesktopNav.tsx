@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import arrow from "../../../assets/images/nav_images/arrow.png";
 import language_image from "../../../assets/images/nav_images/language_image.png";
+
 import styles from "./desktop-nav.module.scss";
 
 export const DesktopNav = () => {
@@ -10,9 +12,11 @@ export const DesktopNav = () => {
   return (
     <header className={styles.desktop_nav}>
       <nav>
+        <Link to="/">
         <div className={styles.logo_container}>
           <h2 className={styles.logo_text}>ZaurAutos</h2>
         </div>
+        </Link>
         <div className={styles.menu}>
           <ul className={styles.menu_ul}>
             <li className={styles.all_cars_container}>
@@ -51,9 +55,15 @@ export const DesktopNav = () => {
                 </ul>
               </div>
             </li>
-            <li className={styles.list_item}>ABOUT</li>
-            <li className={styles.list_item}>CONTACT US</li>
-            <li className={styles.list_item}>FAQS</li>
+            <Link to="/about">
+              <li className={styles.list_item}>ABOUT</li>
+            </Link>
+            <Link to="/contact">
+              <li className={styles.list_item}>CONTACT US</li>
+            </Link>
+            <Link to="/faq">
+              <li className={styles.list_item}>FAQS</li>
+            </Link>
           </ul>
         </div>
         <div className={styles.searchbar_container}>

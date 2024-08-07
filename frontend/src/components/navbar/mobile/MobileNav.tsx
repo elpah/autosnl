@@ -14,8 +14,8 @@ export const MobileNav = () => {
 
 
   return (
-    <header>
-      <nav>
+    <header className={styles.mobile_nav_container}>
+      <nav className={styles.mobile_nav}>
         <div className={styles.logo_container}>
           <h2 className={styles.logo_header}>ZaurAutos</h2>
         </div>
