@@ -11,10 +11,14 @@ import { NotFound } from './pages/notfound/NotFound';
 
 
 import './App.css';
+import { Navbar } from './components/navbar/Navbar';
 
 function App() {
   return (
+    <>
+    <Navbar/>
     <div className="App">
+      
       <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/about" element={<About />} />
@@ -23,6 +27,7 @@ function App() {
           * <Route path="*" element={<NotFound />} />
         </Routes>
     </div>
+    </>
   );
 }
 
