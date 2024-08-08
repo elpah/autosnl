@@ -1,15 +1,17 @@
 import React from "react";
-import styles from "./about.module.scss";
+import { useNavigate } from "react-router-dom";
+
 import { Value } from "../../components/about-values/Value";
-import custumersatisfaction from "../../assets/images/about_images/custumersatisfaction.png"
-import integrity from "../../assets/images/about_images/integrity.png"
-import innovation from "../../assets/images/about_images/innovation.png"
-import quality from "../../assets/images/about_images/quality.png"
+import custumersatisfaction from "../../assets/images/about_images/custumersatisfaction.png";
+import integrity from "../../assets/images/about_images/integrity.png";
+import innovation from "../../assets/images/about_images/innovation.png";
+import quality from "../../assets/images/about_images/quality.png";
 
-
-
+import styles from "./about.module.scss";
 
 export const About: React.FC = () => {
+  const navigate = useNavigate();
+
   const values = [
     {
       image: `${quality}`,
@@ -17,19 +19,19 @@ export const About: React.FC = () => {
       text: "Every vehicle in our inventory is thoroughly inspected and maintained to meet the highest standards of safety and performance.",
     },
     {
-      image:`${custumersatisfaction}`,
+      image: `${custumersatisfaction}`,
       title: "Customer Satisfaction",
       text: "Your satisfaction is our top priority. We go above and beyond to ensure you have a positive and stress-free experience.",
     },
     {
-      image:`${integrity}`,
+      image: `${integrity}`,
       title: "Integrity",
       text: "We believe in transparent and honest dealings. Our pricing is straightforward with no hidden fees, ensuring you get the best value.",
     },
     {
       image: `${innovation}`,
       title: "Innovation",
-      text: "We are dedicated to staying at the forefront of the automotive industry, embracing the latest technologies and trends to bring you the best vehicles and services available."
+      text: "We are dedicated to staying at the forefront of the automotive industry, embracing the latest technologies and trends to bring you the best vehicles and services available.",
     },
   ];
 
@@ -68,26 +70,36 @@ export const About: React.FC = () => {
       </div>
       <div className={styles.values}>
         <h2 className={styles.values_header}>Our Values</h2>
+        <div className={styles.values_wrapper}>
         <div className={styles.values_sub_container}>
-        {values.map((item, index) => (
-        <Value
-          key={index}
-          title={item.title}
-          image={item.image}
-          text={item.text}
-        />
-      ))}
+          {values.map((item, index) => (
+            <Value
+              key={index}
+              title={item.title}
+              image={item.image}
+              text={item.text}
+            />
+          ))}
+        </div>
         </div>
       </div>
       <div className={styles.testimonial_container}></div>
       <div className={styles.delivery_container}>
+        <div className={styles.delivery_info_wrapper}>
         <div className={styles.delivery_header}>
-        No Advance, No waiting. Instant Delivery 
+          No Advance, No waiting. Instant Delivery
         </div>
         <div className={styles.delivery_text}>
-        Drive your new car home today! With our seamless process, you won't need to worry about upfront payments or long waiting periods. Choose your vehicle, complete the purchase, and take immediate delivery. Enjoy the convenience of a hassle-free car buying experience, designed to get you on the road as quickly as possible.
+          Drive your new car home today! With our seamless process, you won't
+          need to worry about upfront payments or long waiting periods. Choose
+          your vehicle, complete the purchase, and take immediate delivery.
+          Enjoy the convenience of a hassle-free car buying experience, designed
+          to get you on the road as quickly as possible.
         </div>
-        <div className={styles.button}>Contact Us</div>
+        <div className={styles.button} onClick={() => navigate("/contact")}>
+          Contact Us
+        </div>
+        </div>
       </div>
     </div>
   );
