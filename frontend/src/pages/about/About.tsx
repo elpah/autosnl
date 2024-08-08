@@ -1,17 +1,15 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
-import { Value } from "../../components/about-values/Value";
 import custumersatisfaction from "../../assets/images/about_images/custumersatisfaction.png";
 import integrity from "../../assets/images/about_images/integrity.png";
 import innovation from "../../assets/images/about_images/innovation.png";
 import quality from "../../assets/images/about_images/quality.png";
 
+import { Value } from "../../components/about-values/Value";
+import { Delivery } from "../../components/delivery-section/Delivery";
+
 import styles from "./about.module.scss";
-
 export const About: React.FC = () => {
-  const navigate = useNavigate();
-
   const values = [
     {
       image: `${quality}`,
@@ -83,24 +81,7 @@ export const About: React.FC = () => {
         </div>
         </div>
       </div>
-      <div className={styles.testimonial_container}></div>
-      <div className={styles.delivery_container}>
-        <div className={styles.delivery_info_wrapper}>
-        <div className={styles.delivery_header}>
-          No Advance, No waiting. Instant Delivery
-        </div>
-        <div className={styles.delivery_text}>
-          Drive your new car home today! With our seamless process, you won't
-          need to worry about upfront payments or long waiting periods. Choose
-          your vehicle, complete the purchase, and take immediate delivery.
-          Enjoy the convenience of a hassle-free car buying experience, designed
-          to get you on the road as quickly as possible.
-        </div>
-        <div className={styles.button} onClick={() => navigate("/contact")}>
-          Contact Us
-        </div>
-        </div>
-      </div>
+      <Delivery/>
     </div>
   );
 };
