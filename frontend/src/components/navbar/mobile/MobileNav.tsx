@@ -60,7 +60,7 @@ export const MobileNav = () => {
                   <img
                     className={styles.current_language}
                     src={language_image}
-                    alt="language image"
+                    alt="language icon"
                   />
                 </div>
                 <div className={styles.language_arrow_container}
