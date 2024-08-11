@@ -1,9 +1,11 @@
 import React from "react";
 import styles from "./contact-card.module.scss";
 import image from "../../assets/images/contact-images/location.png";
+import { Link } from "react-router-dom";
 
 export const ContactCard = () => {
   return (
+    <Link to= '/' className={styles.link_card_container}>
     <div className={styles.contact_card_container}>
       <div className={styles.contact_image_container}>
         <img className={styles.contact_image} src={image} alt="" />
@@ -15,5 +17,6 @@ export const ContactCard = () => {
         </div>
       </div>
     </div>
+    </Link>
   );
 };
