@@ -1,0 +1,46 @@
+.contact_container {
+  .contact_cover {
+    color: #fff;
+    background-image: url("../../assets/images/cover_images/about_cover.png");
+    height: 212px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-style: normal;
+    line-height: normal;
+    margin-bottom: 29px;
+
+    .header {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .header_subtext {
+      font-size: 12px;
+      font-weight: 500;
+    }
+  }
+  .contact_body {
+    .body_header {
+      color: #4c4c4c;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      text-align: center;
+    }
+    .body_subtext {
+      color: #313131;
+      text-align: center;
+      font-size: 10px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 25px;
+      text-align: center;
+    }
+  }
+}
