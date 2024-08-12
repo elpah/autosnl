@@ -1,7 +1,37 @@
 import React from "react";
 import styles from "./contact.module.scss";
+import emailIcon from "../../assets/images/contact-images/email.png";
+import locationIcon from "../../assets/images/contact-images/location.png";
+import phoneIcon from "../../assets/images/contact-images/phone.png";
+
 import { ContactCard } from "../../components/contact-card/ContactCard";
+import { link } from "fs";
+
 export const Contact = () => {
+  const contactDetails = [
+    {
+      id: 1,
+      title: "Location",
+      details: "Stationstraat 71, 1506 DE, Zaandam",
+      link: "https://maps.app.goo.gl/HLYK4SUxGKNajLTXA",
+      image: `${locationIcon}`,
+    },
+    {
+      id: 1,
+      title: "Email",
+      details: "info@zaurautos.nl",
+      link: "mailto:info@zaurautos.nl",
+      image: `${emailIcon}`,
+    },
+    {
+      id: 1,
+      title: "Phone",
+      details: "+31000000000",
+      link: "tel:+31000000000",
+      image: `${phoneIcon}`,
+    },
+  ];
+
   return (
     <div className={styles.contact_container}>
       <div className={styles.contact_cover}>
@@ -12,9 +42,15 @@ export const Contact = () => {
         <div className={styles.body_header}>Contact Details</div>
         <div className={styles.body_subtext}>Contact our head office</div>
         <div className={styles.body_card_container}>
-          <ContactCard />
-          <ContactCard />
-          <ContactCard />
+          {contactDetails.map((contact) => (
+            <ContactCard
+              key={contact.id}
+              title={contact.title}
+              details={contact.details}
+              link={contact.link}
+              image={contact.image}
+            />
+          ))}
         </div>
 
         <div className={styles.form_map_container}>
