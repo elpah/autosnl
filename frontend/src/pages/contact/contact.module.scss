@@ -91,8 +91,13 @@
               box-sizing: border-box;
               border: 0.5px solid #252525;
               opacity: 0.5;
-              padding: 14px 224px 13px 35px;
+              padding: 14px 10px 13px 35px;
               align-items: center;
+              &:focus {
+                border: none;
+                outline: 1.5px solid #1faee9;
+                border-radius: 2px;
+              }
             }
           }
           .input_number_container {
@@ -106,6 +111,12 @@
               margin-right: 5px;
               opacity: 0.5;
               padding: 10px;
+              &:focus {
+                border: none;
+                outline: 1.5px solid #1faee9;
+
+                border-radius: 2px;
+              }
             }
             .input_svg {
               position: relative;
@@ -126,6 +137,11 @@
                 opacity: 0.5;
                 padding: 14px 10px 13px 35px;
                 align-items: center;
+                &:focus {
+                  border: none;
+                  outline: 1.5px solid #1faee9;
+                  border-radius: 2px;
+                }
               }
             }
           }
@@ -139,12 +155,16 @@
             border: 0.5px solid #252525;
             resize: none;
             opacity: 0.5;
+            &:focus {
+              border: none;
+              outline: 1.5px solid #1faee9;
+              border-radius: 2px;
+            }
           }
           .submit_button {
             cursor: pointer;
             display: flex;
             height: 44px;
-            padding: 18px 163px;
             justify-content: center;
             align-items: center;
             gap: 10px;
@@ -176,9 +196,6 @@
       .header {
         font-size: 28px;
       }
-      .header_subtext {
-        // font-size: 18px;
-      }
     }
     .contact_body {
       .body_header {
@@ -199,108 +216,6 @@
 
         .contact_map_container {
           box-shadow: none;
-          // width: 100%;
-          // .map {
-          //   width: 100%;
-          //   height: 500px;
-          // }
-        }
-
-        .contact_form_container {
-          // width: 100%;
-          .contact_form {
-            // display: flex;
-            // flex-direction: column;
-            // box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.15);
-            // padding: 31px 20px;
-            .input_container {
-              // position: relative;
-              // width: 100%;
-              // margin-bottom: 17px;
-              svg {
-                // position: absolute;
-                // top: 50%;
-                // left: 10px;
-                // transform: translateY(-50%);
-                // pointer-events: none;
-              }
-              input {
-                // width: 100%;
-                // box-sizing: border-box;
-                // border: 0.5px solid #252525;
-                // opacity: 0.5;
-                // padding: 14px 224px 13px 35px;
-                // align-items: center;
-              }
-            }
-            // .input_number_container {
-            //   display: flex;
-            //   margin-bottom: 17px;
-            //   .country_select {
-            //     width: 35%;
-            //     border-radius: 0;
-            //     border: 0.5px solid #252525;
-            //     background-color: white;
-            //     margin-right: 5px;
-            //     opacity: 0.5;
-            //     padding: 10px;
-            //   }
-            //   .input_svg {
-            //     position: relative;
-            //     width: 65%;
-
-            //     svg {
-            //       position: absolute;
-            //       top: 50%;
-            //       left: 10px;
-            //       transform: translateY(-50%);
-            //       pointer-events: none;
-            //     }
-
-            //     input {
-            //       box-sizing: border-box;
-            //       width: 100%;
-            //       border: 0.5px solid #252525;
-            //       opacity: 0.5;
-            //       padding: 14px 10px 13px 35px;
-            //       align-items: center;
-            //     }
-            //   }
-            // }
-            // .text_area {
-            //   box-sizing: border-box;
-            //   width: 100%;
-            //   height: 145px;
-            //   padding: 16px;
-            //   align-items: center;
-            //   margin-bottom: 25px;
-            //   border: 0.5px solid #252525;
-            //   resize: none;
-            //   opacity: 0.5;
-            // }
-            // .submit_button {
-            //   cursor: pointer;
-            //   display: flex;
-            //   height: 44px;
-            //   padding: 18px 163px;
-            //   justify-content: center;
-            //   align-items: center;
-            //   gap: 10px;
-            //   flex-shrink: 0;
-            //   background: #1faee9;
-            //   border: none;
-            //   color: #fff;
-            //   font-size: 14px;
-            //   width: 100%;
-            //   font-style: normal;
-            //   font-weight: 500;
-            //   transition: all 0.2s ease-in-out;
-            //   &:hover {
-            //     background: rgb(61, 186, 240);
-            //     font-size: 16px;
-            //   }
-            // }
-          }
         }
       }
     }
@@ -335,111 +250,47 @@
         margin-top: 60px;
         flex-direction: row;
         justify-content: space-between;
-        // height: 10px;
 
         .contact_map_container {
-          // box-shadow: none;
-          // width: 100%;
-          height: 100%;
-          // .map {
-          //   width: 100%;
-          // }
+          .map {
+            height: 100%;
+          }
         }
 
         .contact_form_container {
-          // width: 100%;
           .contact_form {
-            // display: flex;
-            // flex-direction: column;
-            // box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.15);
-            // padding: 31px 20px;
+            padding: 41px 30px;
+
             .input_container {
-              // position: relative;
-              // width: 100%;
-              // margin-bottom: 17px;
-              svg {
-                // position: absolute;
-                // top: 50%;
-                // left: 10px;
-                // transform: translateY(-50%);
-                // pointer-events: none;
-              }
               input {
-                // width: 100%;
-                // box-sizing: border-box;
-                // border: 0.5px solid #252525;
-                // opacity: 0.5;
-                // padding: 14px 224px 13px 35px;
-                // align-items: center;
+                font-size: 18px;
+                height: 60px;
               }
             }
-            // .input_number_container {
-            //   display: flex;
-            //   margin-bottom: 17px;
-            //   .country_select {
-            //     width: 35%;
-            //     border-radius: 0;
-            //     border: 0.5px solid #252525;
-            //     background-color: white;
-            //     margin-right: 5px;
-            //     opacity: 0.5;
-            //     padding: 10px;
-            //   }
-            //   .input_svg {
-            //     position: relative;
-            //     width: 65%;
+            .input_number_container {
+              .country_select {
+                font-size: 18px;
+              }
+              .input_svg {
+                input {
+                  height: 60px;
+                  font-size: 18px;
+                }
+              }
+            }
+            .text_area {
+              font-size: 18px;
+              height: 233px;
+              margin-bottom: 35px;
+            }
+            .submit_button {
+              height: 60px;
+              font-size: 18px;
 
-            //     svg {
-            //       position: absolute;
-            //       top: 50%;
-            //       left: 10px;
-            //       transform: translateY(-50%);
-            //       pointer-events: none;
-            //     }
-
-            //     input {
-            //       box-sizing: border-box;
-            //       width: 100%;
-            //       border: 0.5px solid #252525;
-            //       opacity: 0.5;
-            //       padding: 14px 10px 13px 35px;
-            //       align-items: center;
-            //     }
-            //   }
-            // }
-            // .text_area {
-            //   box-sizing: border-box;
-            //   width: 100%;
-            //   height: 145px;
-            //   padding: 16px;
-            //   align-items: center;
-            //   margin-bottom: 25px;
-            //   border: 0.5px solid #252525;
-            //   resize: none;
-            //   opacity: 0.5;
-            // }
-            // .submit_button {
-            //   cursor: pointer;
-            //   display: flex;
-            //   height: 44px;
-            //   padding: 18px 163px;
-            //   justify-content: center;
-            //   align-items: center;
-            //   gap: 10px;
-            //   flex-shrink: 0;
-            //   background: #1faee9;
-            //   border: none;
-            //   color: #fff;
-            //   font-size: 14px;
-            //   width: 100%;
-            //   font-style: normal;
-            //   font-weight: 500;
-            //   transition: all 0.2s ease-in-out;
-            //   &:hover {
-            //     background: rgb(61, 186, 240);
-            //     font-size: 16px;
-            //   }
-            // }
+              &:hover {
+                font-size: 20px;
+              }
+            }
           }
         }
       }
