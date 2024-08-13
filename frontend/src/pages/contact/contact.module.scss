@@ -1,7 +1,7 @@
 .contact_container {
   .contact_cover {
     color: #fff;
-    background-image: url("../../assets/images/cover_images/about_cover.png");
+    background-image: url("../../assets/images/cover_images/contact_cover.png");
     height: 212px;
     background-size: cover;
     background-position: center;
@@ -104,6 +104,9 @@
             display: flex;
             margin-bottom: 17px;
             .country_select {
+              appearance: none;
+              background: url('data:image/svg+xml;utf8,<svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.875 3.22917C1.81941 3.22923 1.76508 3.24758 1.71887 3.28193C1.67267 3.31627 1.63666 3.36505 1.61539 3.42212C1.59412 3.47919 1.58855 3.54198 1.59938 3.60256C1.61022 3.66314 1.63696 3.7188 1.67625 3.7625L4.30125 6.67917C4.35398 6.73769 4.42547 6.77056 4.5 6.77056C4.57453 6.77056 4.64601 6.73769 4.69875 6.67917L7.32375 3.7625C7.36303 3.7188 7.38978 3.66314 7.40061 3.60256C7.41144 3.54198 7.40587 3.47919 7.3846 3.42212C7.36334 3.36505 7.32733 3.31627 7.28112 3.28193C7.23492 3.24758 7.18059 3.22923 7.125 3.22917H1.875Z" fill="%234C4C4C"/></svg>')
+                no-repeat right 15px center;
               width: 35%;
               border-radius: 0;
               border: 0.5px solid #252525;
