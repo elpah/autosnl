@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./home.module.scss";
+import { HomeSection } from "../../components/home-section/HomeSection";
 export const Home = () => {
   return (
     <div className={styles.home_container}>
@@ -104,6 +105,10 @@ export const Home = () => {
           </div>
         </div>
       </div>
+      <div className={styles.sections}>
+      <HomeSection/>
+      </div>
+     
     </div>
   );
 };
