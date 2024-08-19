@@ -1,7 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
 
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import { Home } from './pages/homepage/Home';
 import { About } from './pages/about/About';

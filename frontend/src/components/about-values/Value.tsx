@@ -1,14 +1,13 @@
 import React from "react";
 import styles from "./value.module.scss";
-import quality from '../../assets/images/about_images/quality.png'
 
-type Value ={
+type ValueObject ={
   image:string;
   title:string;
   text:string;
 }
 
-export const Value = ({image,title,text}:Value) => {
+export const Value = ({image,title,text}:ValueObject) => {
   return (
     <div className={styles.container}>
       <div className={styles.image_container}>
