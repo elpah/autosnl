@@ -1,7 +1,58 @@
 import React from "react";
 import styles from "./home.module.scss";
+import popularNissan from "../../assets/images/popular_brands/popular_nissan.png";
 import { HomeSection } from "../../components/home-section/HomeSection";
+import { WhyCard } from "../../components/why-card/WhyCard";
+
+import qualityAssurance from "../../assets/images/why_card_images/quality_assurance.png";
+import matchRequirement from "../../assets/images/why_card_images/match_requirement.png";
+import varietyOptions from "../../assets/images/why_card_images/variety_options.png";
+import usefulSuggest from "../../assets/images/why_card_images/useful_suggest.png";
+import bestRate from "../../assets/images/why_card_images/best_rate.png";
+import greatOffers from "../../assets/images/why_card_images/great_offers.png";
+import { Delivery } from "../../components/delivery-section/Delivery";
+import { Footer } from "../../components/footer/Footer";
+
 export const Home = () => {
+  const whys = [
+    {
+      title: "Quality Assurance",
+      paragraph:
+        "Our cars undergo rigorous inspections and come with detailed history reports. Drive with confidence knowing your vehicle meets the highest safety and performance standards.",
+      image: `${qualityAssurance}`,
+    },
+    {
+      title: "Match Requirement",
+      paragraph:
+        "Our diverse inventory includes something for everyone. Easily find the perfect vehicle by filtering by make, model, year, price, and more.",
+      image: `${matchRequirement}`,
+    },
+    {
+      title: "A variety of Options",
+      paragraph:
+        "Our extensive inventory includes a wide range of vehicles—from compact cars and sedans to SUVs and trucks. Find the perfect match for your needs and preferences with ease.",
+      image: `${varietyOptions}`,
+    },
+
+    {
+      title: "Useful Suggestions",
+      paragraph:
+        "Our diverse inventory includes something for everyone. Easily find the perfect vehicle by filtering by make, model, year, price, and more.",
+      image: `${usefulSuggest}`,
+    },
+    {
+      title: "Best rate in the Market",
+      paragraph:
+        "We offer competitive pricing with no hidden fees. Enjoy the best deals and flexible financing options to make your dream car affordable.",
+      image: `${bestRate}`,
+    },
+    {
+      title: "Great Offers",
+      paragraph:
+        "Benefit from our exclusive deals and promotions. Stay updated with our latest offers to maximize your savings on your next car purchase.",
+      image: `${greatOffers}`,
+    },
+  ];
   return (
     <div className={styles.home_container}>
       <div className={styles.cover_container}>
@@ -60,7 +111,7 @@ export const Home = () => {
             <div className={styles.advanced_search_container}>
               <div className={styles.advance_search_text}>Advanced search</div>
               <svg
-              className={styles.advance_search_icon}
+                className={styles.advance_search_icon}
                 width="15"
                 height="15"
                 viewBox="0 0 15 15"
@@ -90,25 +141,45 @@ export const Home = () => {
           </div>
           <div className={styles.cover_image_container}>
             <div className={styles.image_container}>
-              <img src="" alt="current cover image" />
+              {/* <img src="" alt="current cover image" /> */}
             </div>
             <div className={styles.select_image_container}>
+              {/* <img src="" alt="current cover image" />
               <img src="" alt="current cover image" />
               <img src="" alt="current cover image" />
-              <img src="" alt="current cover image" />
-              <img src="" alt="current cover image" />
-              <img src="" alt="current cover image" />
+              <img src="" alt="current cover image" /> */}
+              {/* <img src="" alt="current cover image" /> */}
             </div>
             <div className={styles.advertisement}>
-              <img src="" alt="" />
+              {/* <img src="" alt="" /> */}
             </div>
           </div>
         </div>
       </div>
       <div className={styles.sections}>
-      <HomeSection/>
+        <HomeSection title="Recommended cars for you" />
+        <HomeSection title="Trusted used cars by budget" />
+        <div className={styles.popular_container}>
+          <div className={styles.popular_header}>Popular Brands</div>
+          <div className={styles.popular_images_container}>
+            <img src={popularNissan} alt="" />
+            <img src={popularNissan} alt="" />
+            <img src={popularNissan} alt="" />
+            <img src={popularNissan} alt="" />
+          </div>
+        </div>
+        <HomeSection title="Damaged Cars" />
       </div>
-     
+      <section className={styles.why_section}>
+        <div className={styles.why_header}>Why ZaurAutos</div>
+        <div className={styles.why_card_container}>
+          {whys.map((why, index) => (
+            <WhyCard key={index} {...why} />
+          ))}
+        </div>
+      </section>
+      <Delivery/>
+      <Footer/>
     </div>
   );
 };

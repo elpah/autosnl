@@ -2,10 +2,13 @@ import React from "react";
 import styles from "./home-section.module.scss";
 import CarCard from "../car-card/CarCard";
 
-export const HomeSection = () => {
+type SectionHome ={
+  title:string;
+}
+export const HomeSection = ({title}:SectionHome) => {
   return (
     <section className={styles.section_container}>
-      <div className={styles.section_header}>Recommended cars for you</div>
+      <div className={styles.section_header}>{title}</div>
       <div className={styles.section_sub_container}>
         <div className={styles.section_items_container}>
           <div className={styles.section_items}>Passengers cars</div>

@@ -136,4 +136,51 @@
       }
     }
   }
+  .sections {
+    background: #f3fbfe;
+    .popular_container {
+      margin-bottom: 35px;
+
+      .popular_header {
+        color: #4c4c4c;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        padding-left: 5%;
+        margin-bottom: 29px;
+      }
+      .popular_images_container {
+        background-color: #fff;
+        overflow-x: scroll;
+        white-space: nowrap;
+
+        &::-webkit-scrollbar {
+          height: 0px;
+        }
+        img {
+          height: 50px;
+          padding-top: 18px;
+          padding-bottom: 18px;
+        }
+      }
+    }
+  }
+  .why_section {
+    width: 90%;
+    margin: auto;
+    .why_header {
+      color: #4c4c4c;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 800;
+      line-height: normal;
+      margin-bottom: 2rem;
+    }
+    .why_card_container {
+      display: grid;
+      gap: 15px;
+      margin-bottom: 3rem;
+    }
+  }
 }

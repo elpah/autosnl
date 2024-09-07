@@ -1,0 +1,30 @@
+.why_card {
+  display: flex;
+  flex-direction: row;
+  gap: 0.8rem;
+  align-items: center;
+  .why_img_container {
+    width: 56px;
+    height: 56px;
+    .why_img {
+      width: 56px;
+      object-fit: contain;
+    }
+  }
+  .whycard_body {
+    color: #4c4c4c;
+    font-style: normal;
+
+    .whycard_header {
+      margin-bottom: 5px;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: normal;
+    }
+    .whycard_para {
+      font-size: 10px;
+      font-weight: 400;
+      line-height: 15px;
+    }
+  }
+}
