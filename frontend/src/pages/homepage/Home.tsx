@@ -1,9 +1,16 @@
 import React from "react";
 import styles from "./home.module.scss";
-import popularNissan from "../../assets/images/popular_brands/popular_nissan.png";
 import { HomeSection } from "../../components/home-section/HomeSection";
 import { WhyCard } from "../../components/why-card/WhyCard";
 
+import homeCover from "../../assets/images/cover_images/home_cover.png";
+import coverSelected from "../../assets/images/home_images/current_selection_placeholder.png";
+import iconNext from "../../assets/images/home_images/icon_next.png";
+import iconPrevious from "../../assets/images/home_images/icon_previous.png";
+import advert from "../../assets/images/home_images/advert.png";
+
+
+import popularNissan from "../../assets/images/popular_brands/popular_nissan.png";
 import qualityAssurance from "../../assets/images/why_card_images/quality_assurance.png";
 import matchRequirement from "../../assets/images/why_card_images/match_requirement.png";
 import varietyOptions from "../../assets/images/why_card_images/variety_options.png";
@@ -141,17 +148,33 @@ export const Home = () => {
           </div>
           <div className={styles.cover_image_container}>
             <div className={styles.image_container}>
-              {/* <img src="" alt="current cover image" /> */}
+              <img
+                className={styles.current_image}
+                src={homeCover}
+                alt="current cover image"
+              />
             </div>
             <div className={styles.select_image_container}>
-              {/* <img src="" alt="current cover image" />
-              <img src="" alt="current cover image" />
-              <img src="" alt="current cover image" />
-              <img src="" alt="current cover image" /> */}
-              {/* <img src="" alt="current cover image" /> */}
+              <div className={styles.icon_container}>
+                <img
+                  className={styles.icon}
+                  src={iconPrevious}
+                  alt="previous icon"
+                />
+              </div>
+              <img className={styles.opacity} src={coverSelected} alt="current cover image" />
+              <img  className={styles.opacity} src={coverSelected} alt="current cover image" />
+              <img src={coverSelected} alt="current cover image" />
+              <img className={styles.opacity}  src={coverSelected} alt="current cover image" />
+              {/* <img className={styles.opacity}  src={coverSelected} alt="current cover image" /> */}
+              {/* <img className={styles.opacity}  src={coverSelected} alt="current cover image" /> */}
+
+              <div className={styles.icon_container}>
+                <img className={styles.icon} src={iconNext} alt="next icon" />
+              </div>
             </div>
-            <div className={styles.advertisement}>
-              {/* <img src="" alt="" /> */}
+            <div className={styles.advertisement_container}>
+              <img  className={styles.advert_image} src={advert} alt="advert image placeholder" />
             </div>
           </div>
         </div>
@@ -178,8 +201,8 @@ export const Home = () => {
           ))}
         </div>
       </section>
-      <Delivery/>
-      <Footer/>
+      <Delivery />
+      <Footer />
     </div>
   );
 };
