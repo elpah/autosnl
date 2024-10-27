@@ -183,12 +183,17 @@ export const Home = () => {
         <HomeSection title="Recommended cars for you" />
         <HomeSection title="Trusted used cars by budget" />
         <div className={styles.popular_container}>
+          <div className={styles.popular_header_container}>
           <div className={styles.popular_header}>Popular Brands</div>
+
+          </div>
+          <div className={styles.popular_images_cover_container}>
           <div className={styles.popular_images_container}>
             <img src={popularNissan} alt="" />
             <img src={popularNissan} alt="" />
             <img src={popularNissan} alt="" />
             <img src={popularNissan} alt="" />
+          </div>
           </div>
         </div>
         <HomeSection title="Damaged Cars" />

@@ -7,10 +7,12 @@ import { About } from './pages/about/About';
 import { Contact } from './pages/contact/Contact';
 import { Faq } from './pages/faq/Faq';
 import { NotFound } from './pages/notfound/NotFound';
+import { Navbar } from './components/navbar/Navbar';
+import { CarPage } from './pages/carpage/CarPage';
 
 
 import './App.css';
-import { Navbar } from './components/navbar/Navbar';
+
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/faq" element={<Faq />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/car-page" element={<CarPage />} />
+
           * <Route path="*" element={<NotFound />} />
         </Routes>
     </div>
