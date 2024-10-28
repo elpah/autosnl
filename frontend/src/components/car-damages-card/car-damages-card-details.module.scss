@@ -1,0 +1,55 @@
+.car_damages_container {
+    background: #FFF;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
+    // width: 100%;
+    padding: 25px 10px;
+    height: auto;
+    min-height: 300px;
+
+    .header_img_container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 35px;
+
+        .damage_image_container {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+
+            .damage_img_icon {
+                width: 50px;
+                height: 50px;
+            }
+
+        }
+
+        .damages_header {
+            color: #4C4C4C;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+
+    }
+
+    .damages_info {
+        .list_container_ol {
+            color: #313131;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+
+            .list_item {
+                .list_title {
+                    font-size: 12px;
+                }
+                .list_sub {
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+
+}

@@ -3,6 +3,9 @@ import React from "react";
 import CurrentCoverImage from "../../../assets/images/car_image_testing.png"
 
 import styles from "./car-page-mobile.module.scss"
+import { CarInfoCard } from "../../../components/car_info-card/CarInfoCard";
+import { CarDamagesDetailsCard } from "../../../components/car-damages-card/CarDamagesDetailsCard";
+import { Options } from "../../../components/options/Options";
 
 export const CarPageMobile = () => {
     return (
@@ -44,6 +47,46 @@ export const CarPageMobile = () => {
                     </svg>
                 </div>
             </div>
+            <div className={styles.three_dots}>
+                <span className={`${styles.dot} `}></span>
+                <span className={`${styles.dot} ${styles.dot_current}`}></span>
+                <span className={`${styles.dot} `}></span>
+            </div>
+            <div className={styles.car_price_container}>
+                <div className={styles.price_header}>Mercedes C300</div>
+                <div className={styles.inc_btw_price_container}>
+                    <div className={styles.inc_btw_price}> 5,000,000€</div>
+                    <div className={styles.inc_btw_price_text}>inc. BTW</div>
+                </div>
+                <div className={`${styles.sub_price_container} ${styles.excl_btw_price_container}`}>
+                    <div className={`${styles.sub_price} ${styles.excl_btw_price}`}>3,000,000€</div>
+                    <div className={`${styles.sub_price_text} ${styles.excl_btw_price_text}`}> excl. BTW</div>
+                </div>
+                <div className={` ${styles.sub_price_container} ${styles.excl_bpm_price_container}`}>
+                    <div className={`${styles.sub_price} ${styles.excl_bpm_btw_price}`}>1,000,000€</div>
+                    <div className={`${styles.sub_price_text} ${styles.excl_bpm_btw_price_text}`}> excl. bpm</div>
+                </div>
+            </div>
+            <div className={styles.car_info_cards_container}>
+                <CarInfoCard bg={true} />
+                <CarInfoCard bg={true} />
+                <CarInfoCard bg={true} />
+                <CarInfoCard bg={true} />
+                <CarInfoCard bg={false} />
+                <CarInfoCard bg={false} />
+                <CarInfoCard bg={false} />
+                <CarInfoCard bg={false} />
+            </div>
+            <div className={styles.damages_card_container}>
+                <CarDamagesDetailsCard />
+            </div>
+
+            <div className={styles.options_container}>
+                <Options/>
+            </div>
+            {/* <div className={styles.dealer_details_container}>
+
+            </div> */}
         </div>
     );
 };

@@ -1,0 +1,30 @@
+.option_items_container {
+    margin: 10px 0;
+    color: #4C4C4C;
+    font-size: 16px;
+
+    .option_header_icon_container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .option_header {
+            font-weight: 800;
+            font-size: 12px;
+
+        }
+
+        .header_icon {
+            width: 12px;
+            height: 12px;
+        }
+    }
+
+    .option_list_container {
+        margin-left: -10px;
+
+        .option_li {
+            font-size: 10px;
+        }
+    }
+}

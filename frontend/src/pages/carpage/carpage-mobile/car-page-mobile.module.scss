@@ -1,4 +1,8 @@
 .car_mobile_container {
+    padding-top: 15px;
+    width: 90%;
+    margin: auto;
+
     .car_map_container {
         margin-bottom: 12px;
         display: flex;
@@ -54,4 +58,89 @@
             left: 2%;
         }
     }
+
+    .three_dots {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 10px;
+
+        .dot {
+            border-radius: 50%;
+            width: 15px;
+            height: 15px;
+            background-color: #E4E4E4;
+
+        }
+
+        .dot_current {
+            background-color: #1FAEE9;
+        }
+    }
+
+    .car_price_container {
+        margin-top: 36px;
+        margin-bottom: 27px;
+
+        .price_header {
+            color: #4C4C4C;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .inc_btw_price_container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 10px;
+
+            .inc_btw_price {
+                color: #1FAEE9;
+                font-size: 18px;
+                font-weight: 800;
+            }
+
+            .inc_btw_price_text {
+                color: #4C4C4C;
+                font-size: 12px;
+                font-weight: 500;
+            }
+        }
+
+        .sub_price_container {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 5px;
+
+            .sub_price {
+                color: #1FAEE9;
+                font-size: 14px;
+                font-weight: 500;
+            }
+
+            .sub_price_text {
+                color: #4C4C4C;
+                font-size: 10px;
+                font-weight: 400;
+            }
+        }
+    }
+
+    .car_info_cards_container {
+        width:100%;
+        display: grid;
+        gap:20px;
+        grid-template-columns: repeat(2, 1fr);
+        margin-bottom: 22px;
+    }
+    .damages_card_container{
+        margin-bottom: 22px;
+
+
+    }
+
 }
