@@ -6,6 +6,7 @@ import styles from "./car-page-mobile.module.scss"
 import { CarInfoCard } from "../../../components/car_info-card/CarInfoCard";
 import { CarDamagesDetailsCard } from "../../../components/car-damages-card/CarDamagesDetailsCard";
 import { Options } from "../../../components/options/Options";
+import {DealerInfo} from "../../../components/dealer-infomation/DealerInfo";
 
 export const CarPageMobile = () => {
     return (
@@ -84,9 +85,9 @@ export const CarPageMobile = () => {
             <div className={styles.options_container}>
                 <Options/>
             </div>
-            {/* <div className={styles.dealer_details_container}>
-
-            </div> */}
+            <div className={styles.dealer_details_container}>
+                <DealerInfo/>
+            </div>
         </div>
     );
 };
