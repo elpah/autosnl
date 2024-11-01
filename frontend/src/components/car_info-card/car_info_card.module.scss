@@ -1,56 +1,78 @@
 .info_card_container {
-    height: auto;
+  height: auto;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: #fff;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+
+  .image_container {
+    width: 50px;
+    height: 50px;
+
+    .info_image {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  .header_detail_container {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     gap: 10px;
-    align-items: center;
-    background: #FFF;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
-    padding: 10px;
 
-
-    .image_container {
-        width: 50px;
-        height: 50px;
-
-        .info_image {
-            width: 50px;
-            height: 50px;
-
-        }
+    .detail_header {
+      color: #4c4c4c;
+      font-size: 12px;
+      font-weight: 500;
     }
 
-    .header_detail_container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 10px;
-
-        .detail_header {
-            color: #4C4C4C;
-            font-size: 12px;
-            font-weight: 500;
-        }
-
-        .detail_info {
-            color: #1FAEE9;
-            font-size: 12px;
-            font-weight: 700;
-        }
+    .detail_info {
+      color: #1faee9;
+      font-size: 12px;
+      font-weight: 700;
     }
+  }
 }
 
 .blue_bg_container {
-    background: #1FAEE9;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
+  background: #1faee9;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 
-    .header_detail_container {
-        .blue_bg_header {
-            color: #FFF;
-        }
-
-        .blue_bg_details_info {
-            color: #FFF;
-
-        }
+  .header_detail_container {
+    .blue_bg_header {
+      color: #fff;
     }
+
+    .blue_bg_details_info {
+      color: #fff;
+    }
+  }
+}
+
+@media (min-width: 500px) {
+  .info_card_container {
+    gap: 15px;
+    padding: 10px;
+
+    .image_container {
+      width: 60px;
+      height: 60px;
+
+      .info_image {
+        width: 60px;
+        height: 60px;
+      }
+    }
+    .header_detail_container {
+      .detail_header {
+        font-size: 15px;
+      }
+      .detail_info {
+        font-size: 15px;
+      }
+    }
+  }
 }

@@ -1,0 +1,19 @@
+.car_page_desktop_container {
+  width: 90%;
+  min-height: 100vh;
+  background: #f9f9f9;
+  margin: auto;
+  //   margin-top: 31px;
+  margin-top: 27px;
+}
+
+@media (min-width: 768px) {
+  .car_page_desktop_container {
+    display: flex;
+    flex-direction: row;
+    // gap: 74px;
+    .left {
+      width: 48%;
+    }
+  }
+}
