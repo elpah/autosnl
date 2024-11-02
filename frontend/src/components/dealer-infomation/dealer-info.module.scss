@@ -8,3 +8,75 @@
     margin-bottom: 31px;
   }
 }
+.button_container {
+  width: 90%;
+  height: auto;
+  margin: auto;
+  margin-bottom: 22px;
+  .button {
+    width: 100%;
+    display: flex;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    background: #1faee9;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 30px;
+  }
+}
+.socials_container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 50px;
+  .social_icon {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (min-width: 500px) {
+  .socials_container {
+    .social_icon {
+      width: 38px;
+      height: 38px;
+    }
+  }
+}
+@media (min-width: 768px) {
+  .dealer_info_container {
+    margin-top: 50px;
+    .dealer_info_header {
+      font-size: 18px;
+      margin-bottom: 40px;
+    }
+  }
+  .button_container {
+    width: 100%;
+
+    .button {
+      height: 61px;
+      font-size: 15px;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .dealer_info_container {
+    margin-top: 50px;
+    .dealer_info_header {
+      font-size: 18px;
+      margin-bottom: 40px;
+    }
+  }
+  .button_container {
+    .button {
+      height: 70px;
+      font-size: 18px;
+    }
+  }
+}

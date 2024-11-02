@@ -89,3 +89,40 @@
     }
   }
 }
+
+@media (min-width: 1024px) {
+  .car_damages_container {
+    padding: 40px 30px;
+    .header_img_container {
+      gap: 30px;
+
+      .damage_image_container {
+        width: 70px;
+        height: 70px;
+        object-fit: contain;
+
+        .damage_img_icon {
+          width: 70px;
+          height: 70px;
+        }
+      }
+      .damages_header {
+        font-size: 18px;
+        font-weight: 800;
+      }
+    }
+
+    .damages_info {
+      .list_container_ol {
+        .list_item {
+          .list_title {
+            font-size: 16px;
+          }
+          .list_sub {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}

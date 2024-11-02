@@ -1,11 +1,5 @@
-
-
-
 import React from "react";
-
 import styles from "./OptionItem.module.scss"
-
-
 
 export const OptionItem = () => {
     return (

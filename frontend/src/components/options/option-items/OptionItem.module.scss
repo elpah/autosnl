@@ -49,3 +49,20 @@
     }
   }
 }
+
+@media (min-width: 1024px) {
+  .option_items_container {
+    .option_header_icon_container {
+      .option_header {
+        font-size: 16px;
+      }
+    }
+    .option_list_container {
+      margin-left: 0;
+
+      .option_li {
+        font-size: 14px;
+      }
+    }
+  }
+}
