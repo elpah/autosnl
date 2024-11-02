@@ -36,3 +36,16 @@
     }
   }
 }
+
+@media (min-width: 1200px) {
+  .car_page_desktop_container {
+    max-width: 1800px;
+    .left {
+      gap: 40px;
+      width: 54%;
+    }
+    .right {
+      width: 42%;
+    }
+  }
+}

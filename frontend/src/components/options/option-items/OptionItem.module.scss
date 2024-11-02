@@ -66,3 +66,24 @@
     }
   }
 }
+
+@media (min-width: 1200px) {
+  .option_items_container {
+    margin-top: 30px;
+
+    .option_header_icon_container {
+      .option_header {
+        font-size: 18px;
+        margin-bottom: 15px;
+      }
+    }
+    .option_list_container {
+      margin-left: 0;
+
+      .option_li {
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}

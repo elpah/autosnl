@@ -56,7 +56,7 @@ export const CarPage = () => {
           Mercedes C300
         </div>
       </div>
-      {/* <CarPageMobile/> */}
+      <CarPageMobile/>
       <CarPageDesktop />
     </div>
   );

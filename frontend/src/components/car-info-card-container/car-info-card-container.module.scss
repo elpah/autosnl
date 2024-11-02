@@ -17,3 +17,9 @@
     margin-top: 45px;
   }
 }
+
+@media (min-width: 1500px) {
+  .car_info_cards_container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
