@@ -4,6 +4,8 @@ import styles from "./dealer-page-mobile.module.scss";
 import { SelectItemContainer } from "../../../components/select-item-container/SelectItemContainer";
 import { CarCardContainer } from "../../../components/car-card-container/CarCardContainer";
 import { ContactFormMap } from "../../../components/contact-form-map/ContactFormMap";
+import { DealerInfo } from "../../../components/dealer-infomation/DealerInfo";
+import { VisitButton } from "../../../components/visit-button/VisitButton";
 
 export const DealerPageMobile: React.FC = () => {
   return (
@@ -34,6 +36,9 @@ export const DealerPageMobile: React.FC = () => {
       <div className={styles.address_contaact_container}>
         <ContactFormMap />
       </div>
+      <DealerInfo>
+        <VisitButton/>
+      </DealerInfo>
     </div>
   );
 };

@@ -15,7 +15,7 @@ export const DealerInfo = ({children}:DealerInfoProps) => {
     <>
     <div className={styles.dealer_info_container}>
         <div className={styles.dealer_info_header}>Dealer Details</div>
-        <div className={styles.dealer_info_}>
+        <div className={styles.dealer_info_cards_container}>
             <InfoCard/>
             <InfoCard/>
             <InfoCard/>
