@@ -6,6 +6,7 @@ import phoneIcon from "../../assets/images/contact-images/phone.png";
 
 import { ContactCard } from "../../components/contact-card/ContactCard";
 import { link } from "fs";
+import { ContactFormMap } from "../../components/contact-form-map/ContactFormMap";
 
 export const Contact = () => {
   const contactDetails = [
@@ -52,8 +53,9 @@ export const Contact = () => {
             />
           ))}
         </div>
+        <ContactFormMap/>
 
-        <div className={styles.form_map_container}>
+        {/* <div className={styles.form_map_container}>
           <div className={styles.contact_map_container}>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4864.34735330328!2d4.813838476445098!3d52.439768572040286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5fcd18c2902ad%3A0x8cdd6222f6ace26f!2sStationsstraat%2071%2C%201506%20DE%20Zaandam!5e0!3m2!1sen!2snl!4v1723336999139!5m2!1sen!2snl"
@@ -147,7 +149,7 @@ export const Contact = () => {
               <button className={styles.submit_button}>Send</button>
             </form>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

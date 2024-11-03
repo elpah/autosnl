@@ -9,9 +9,10 @@ import { Faq } from './pages/faq/Faq';
 import { NotFound } from './pages/notfound/NotFound';
 import { Navbar } from './components/navbar/Navbar';
 import { CarPage } from './pages/carpage/CarPage';
-
+import { DealerPage } from './pages/dealerpage/DealerPage';
 
 import './App.css';
+
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/faq" element={<Faq />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/car-page" element={<CarPage />} />
+          <Route path="/dealer-page" element={<DealerPage />} />
 
           * <Route path="*" element={<NotFound />} />
         </Routes>

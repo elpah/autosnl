@@ -1,0 +1,39 @@
+.dealer_page_mobile_container {
+  height: 100vh;
+  padding-top: 23px;
+
+  .dealer_page_header {
+    width: 90%;
+
+    margin: auto auto 29px;
+    color: #535353;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .filter_items_container {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  .select_item_container_wrapper {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 30px;
+  }
+  .car_card_container_wrapper {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 40px;
+  }
+  .address_contaact_container {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 64px;
+  }
+}

@@ -7,7 +7,10 @@ import linkedinIcon from "../../assets/images/socials_icons/linkedin-icon.png";
 import styles from "./dealer-info.module.scss"
 import { InfoCard } from './info-card/InfoCard'
 
-export const DealerInfo = () => {
+interface DealerInfoProps {
+  children?: React.ReactNode; 
+}
+export const DealerInfo = ({children}:DealerInfoProps) => {
   return (
     <>
     <div className={styles.dealer_info_container}>
@@ -19,9 +22,7 @@ export const DealerInfo = () => {
             <InfoCard/>
         </div>
     </div>
-     <div className={styles.button_container}>
-     <button className={styles.button}>Visit Company Profile</button>
-   </div>
+    {children}
    <div className={styles.socials_container}>
         <img className={styles.social_icon} src={fbIcon} alt="facebook icon" />
         <img className={styles.social_icon} src={igIcon} alt="instagram icon" />

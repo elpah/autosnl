@@ -7,6 +7,7 @@ import { Options } from "../../../components/options/Options";
 import CarPriceInfo from "../../../components/car-price-info/CarPriceInfo";
 import CarInfoCardContainer from "../../../components/car-info-card-container/CarInfoCardContainer";
 import { DealerInfo } from "../../../components/dealer-infomation/DealerInfo";
+import { VisitButton } from "../../../components/visit-button/VisitButton";
 
 export const CarPageDesktop = () => {
   return (
@@ -17,9 +18,11 @@ export const CarPageDesktop = () => {
         <Options />
       </div>
       <div className={styles.right}>
-        <CarPriceInfo/>
-        <CarInfoCardContainer/>
-        <DealerInfo/>
+        <CarPriceInfo />
+        <CarInfoCardContainer />
+        <DealerInfo>
+          <VisitButton />
+        </DealerInfo>
       </div>
     </div>
   );

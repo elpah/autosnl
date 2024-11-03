@@ -8,6 +8,7 @@ import styles from "./car-page-mobile.module.scss";
 import CarInfoCover from "../../../components/car-info-cover/CarInfoCover";
 import CarPriceInfo from "../../../components/car-price-info/CarPriceInfo";
 import CarInfoCardContainer from "../../../components/car-info-card-container/CarInfoCardContainer";
+import { VisitButton } from "../../../components/visit-button/VisitButton";
 
 export const CarPageMobile = () => {
   return (
@@ -24,7 +25,9 @@ export const CarPageMobile = () => {
         </div>
       </div>
       <div className={styles.dealer_details_container}>
-        <DealerInfo />
+        <DealerInfo> 
+          <VisitButton/>
+        </DealerInfo>
       </div>
     </div>
   );
