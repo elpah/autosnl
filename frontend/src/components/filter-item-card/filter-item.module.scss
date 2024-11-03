@@ -13,3 +13,13 @@
     line-height: normal;
   }
 }
+
+@media (min-width: 500px) {
+  .card_container {
+    padding: 8px 6px;
+    border: 0.5px solid #6a6a6a;
+    .card_name {
+      font-size: 12px;
+    }
+  }
+}

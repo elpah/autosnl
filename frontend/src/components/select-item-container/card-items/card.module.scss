@@ -7,3 +7,9 @@
   font-weight: 400;
   line-height: normal;
 }
+@media (min-width: 500px) {
+  .card_container {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}

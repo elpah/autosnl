@@ -15,6 +15,15 @@ export const DealerPageMobile: React.FC = () => {
         <FilterItem />
         <FilterItem />
         <FilterItem />
+        <FilterItem />
+        <FilterItem />
+        <FilterItem />
+        <FilterItem />
+        <FilterItem />
+        <FilterItem />
+        <FilterItem />
+        <FilterItem />
+        <FilterItem />
       </div>
       <div className={styles.select_item_container_wrapper}>
         <SelectItemContainer />
@@ -23,7 +32,7 @@ export const DealerPageMobile: React.FC = () => {
         <CarCardContainer />
       </div>
       <div className={styles.address_contaact_container}>
-        <ContactFormMap/>
+        <ContactFormMap />
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 .select_item_container {
   background: #ebfaff;
-  //   width: 100%;
   padding: 12px 20px 24px;
+  position: relative;
   .card_header {
     color: #535353;
     font-size: 14px;
@@ -14,5 +14,24 @@
     display: flex;
     flex-direction: row;
     gap: 17px;
+  }
+  .close_icon_container {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    .close_icon {
+      width: 15px;
+      height: 15px;
+    }
+  }
+}
+@media (min-width: 500px) {
+  .select_item_container {
+    padding-left: 20px;
+    padding-top: 18px;
+    .close_icon_container {
+      top: 12px;
+      right: 12px;
+    }
   }
 }

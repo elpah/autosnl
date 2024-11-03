@@ -7,7 +7,7 @@
 
     margin: auto auto 29px;
     color: #535353;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
   }
   .filter_items_container {
@@ -35,5 +35,32 @@
     width: 90%;
     margin: auto;
     margin-bottom: 64px;
+  }
+}
+
+@media (min-width: 500px) {
+  .dealer_page_mobile_container {
+    .dealer_page_header {
+      font-size: 24px;
+    }
+    .filter_items_container {
+      margin-bottom: 30px;
+      gap: 15px;
+    }
+    .select_item_container_wrapper {
+      width: 90%;
+      margin: auto;
+      margin-bottom: 30px;
+    }
+    .car_card_container_wrapper {
+      width: 90%;
+      margin: auto;
+      margin-bottom: 40px;
+    }
+    .address_contaact_container {
+      width: 90%;
+      margin: auto;
+      margin-bottom: 64px;
+    }
   }
 }
