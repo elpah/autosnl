@@ -12,7 +12,7 @@ export default function CarCard() {
         <img className={styles.car_img} src={carimage} alt="" />
       </div>
       <div className={styles.car_body_container}>
-        <div className={styles.card_header}>Mercedes-Benz</div>
+        <div className={styles.card_header}>Mercedes-Benz C300</div>
         <div className={styles.car_details_container}>
           <div className={styles.car_details}>
             <div className={styles.icon_container}>
