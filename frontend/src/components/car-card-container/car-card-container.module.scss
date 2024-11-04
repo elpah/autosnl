@@ -1,6 +1,6 @@
 .car_card_container {
   display: grid;
-  gap: 30px;
+  gap: 15px;
   margin-bottom: 30px;
 }
 .next_cars_container {
@@ -43,8 +43,21 @@
   }
 }
 
-@media (min-width: 500px) {
+@media (min-width: 768px) {
   .car_card_container {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .car_card_container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .car_card_container {
+    gap: 25px;
   }
 }

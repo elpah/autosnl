@@ -67,7 +67,7 @@
 
 @media (min-width: 768px) {
   .car_card_container {
-    min-width: 300px;
+    min-width: 200px;
     height: fit-content;
     .car_image_container {
       width: 100%;
@@ -83,7 +83,7 @@
       margin: auto;
 
       .card_header {
-        font-size: 26px;
+        font-size: 20px;
         margin-top: 16px;
         margin-bottom: 12px;
       }
@@ -93,22 +93,125 @@
         justify-content: space-between;
         .car_details {
           display: flex;
-          gap: 4px;
+          gap: 0;
           .icon_container {
             display: flex;
             align-items: center;
             .icon {
-              height: 30px;
+              height: 25px;
             }
           }
           .text {
-            font-size: 16px;
+            font-size: 13px;
           }
         }
       }
       .button {
-        height: 42px;
+        height: 40px;
         font-size: 14px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .car_card_container {
+    .car_body_container {
+      .card_header {
+        font-size: 18px;
+      }
+      .car_details_container {
+        .car_details {
+          .icon_container {
+            .icon {
+              height: 20px;
+            }
+          }
+          .text {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .car_card_container {
+    .car_body_container {
+      .card_header {
+        font-size: 18px;
+        margin-bottom: 18px;
+      }
+      .car_details_container {
+        .car_details {
+          .icon_container {
+            .icon {
+              height: 25px;
+            }
+          }
+          .text {
+            font-size: 14px;
+          }
+        }
+      }
+      .button {
+        height: 50px;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1400px) {
+  .car_card_container {
+    .car_body_container {
+      .card_header {
+        font-size: 26px;
+      }
+      .car_details_container {
+        margin-bottom: 25px;
+        .car_details {
+          .icon_container {
+            .icon {
+              height: 28px;
+            }
+          }
+          .text {
+            font-size: 15px;
+          }
+        }
+      }
+      .button {
+        height: 50px;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1600px) {
+  .car_card_container {
+    .car_body_container {
+      .card_header {
+        // font-size: 26px;
+      }
+      .car_details_container {
+        // margin-bottom: 25px;
+        .car_details {
+          .icon_container {
+            .icon {
+              height: 32px;
+            }
+          }
+          .text {
+            font-size: 17px;
+          }
+        }
+      }
+      .button {
+        height: 55px;
+        font-size: 18px;
       }
     }
   }
