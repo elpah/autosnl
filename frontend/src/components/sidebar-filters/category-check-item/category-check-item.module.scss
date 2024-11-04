@@ -11,6 +11,7 @@
     .input {
       width: 16px;
       height: 16px;
+      // margin-right: 1;
       cursor: pointer;
     }
 
@@ -49,6 +50,24 @@
     .items_number {
       margin-left: 15px;
       font-size: 10px;
+    }
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+    margin-bottom: 25px;
+    gap: 8px;
+    .input {
+      margin-right: 5px;
+    }
+    .label {
+      font-size: 18px;
+    }
+
+    .items_number {
+      margin-left: 17px;
+      font-size: 12px;
     }
   }
 }
