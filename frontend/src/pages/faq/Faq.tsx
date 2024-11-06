@@ -10,7 +10,7 @@ type FaqObject = {
   content: string;
 };
 
-export const Faq = () => {
+const Faq = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const faqs = [
     {
@@ -129,3 +129,5 @@ export const Faq = () => {
     </div>
   );
 };
+
+export default Faq

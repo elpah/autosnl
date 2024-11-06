@@ -4,7 +4,8 @@ import { CarPageMobile } from "./carpage-mobile/CarPageMobile";
 import styles from "./car_page.module.scss";
 import { CarPageDesktop } from "./carpage-desktop/CarPageDesktop";
 import { Footer } from "../../components/footer/Footer";
-export const CarPage = () => {
+import DealerPage from "../dealerpage/DealerPage";
+const CarPage = () => {
   return (
     <div className={styles.car_page_container}>
       <div className={styles.car_map_container}>
@@ -59,7 +60,8 @@ export const CarPage = () => {
       </div>
       <CarPageMobile/>
       <CarPageDesktop />
-      <Footer/>
     </div>
   );
 };
+
+export default CarPage

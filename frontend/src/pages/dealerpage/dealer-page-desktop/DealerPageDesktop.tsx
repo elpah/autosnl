@@ -1,14 +1,19 @@
 import React from "react";
 
 import styles from "./dealer-page-desktop.module.scss";
+
 import { CarCardContainer } from "../../../components/car-card-container/CarCardContainer";
 import { SidebarFilters } from "../../../components/sidebar-filters/SidebarFilters";
+import { DealerInfo } from "../../../components/dealer-infomation/DealerInfo";
+import { ContactFormMap } from "../../../components/contact-form-map/ContactFormMap";
+
 export const DealerPageDesktop = () => {
   return (
     <div className={styles.container}>
       <div className={styles.main}>
         <div className={styles.left}>
-          <SidebarFilters/>
+          <SidebarFilters />
+          <DealerInfo />
         </div>
         <div className={styles.right}>
           <div className={styles.header_search_container}>
@@ -32,9 +37,12 @@ export const DealerPageDesktop = () => {
             </div>
           </div>
           <div className={styles.cars_container_wrapper}>
-            <CarCardContainer/>
+            <CarCardContainer />
           </div>
         </div>
+      </div>
+      <div className={styles.contact_form_container}>
+        <ContactFormMap />
       </div>
     </div>
   );

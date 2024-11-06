@@ -2,7 +2,7 @@ import React from 'react'
 import { DesktopNav } from './desktop/DesktopNav'
 import { MobileNav } from './mobile/MobileNav'
 
-export const Navbar = () => {
+const Navbar = () => {
   return (
     <>
     <MobileNav/>
@@ -10,3 +10,5 @@ export const Navbar = () => {
     </>
   )
 }
+
+export default Navbar

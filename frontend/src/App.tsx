@@ -1,37 +1,36 @@
-import React from 'react';
+import React, { Suspense } from "react";
+import { Routes, Route } from "react-router-dom";
 
-import { Routes, Route } from 'react-router-dom';
+import "./App.css";
 
-import { Home } from './pages/homepage/Home';
-import { About } from './pages/about/About';
-import { Contact } from './pages/contact/Contact';
-import { Faq } from './pages/faq/Faq';
-import { NotFound } from './pages/notfound/NotFound';
-import { Navbar } from './components/navbar/Navbar';
-import { CarPage } from './pages/carpage/CarPage';
-import { DealerPage } from './pages/dealerpage/DealerPage';
-
-import './App.css';
-
-
+import { Home } from "./pages/homepage/Home";
+import { Footer } from "./components/footer/Footer";
+const About = React.lazy(() => import("./pages/about/About"));
+const Contact = React.lazy(() => import("./pages/contact/Contact"));
+const Faq = React.lazy(() => import("./pages/faq/Faq"));
+const NotFound = React.lazy(() => import("./pages/notfound/NotFound"));
+const Navbar = React.lazy(() => import("./components/navbar/Navbar"));
+const CarPage = React.lazy(() => import("./pages/carpage/CarPage"));
+const DealerPage = React.lazy(() => import("./pages/dealerpage/DealerPage"));
 
 function App() {
   return (
     <>
-    <Navbar/>
-    <div className="App">
-      
-      <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path="/about" element={<About />} />
-          <Route path="/faq" element={<Faq />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/car-page" element={<CarPage />} />
-          <Route path="/dealer-page" element={<DealerPage />} />
-
-          * <Route path="*" element={<NotFound />} />
-        </Routes>
-    </div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Navbar />
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/faq" element={<Faq />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/car-page" element={<CarPage />} />
+            <Route path="/dealer-page" element={<DealerPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+        <Footer/>
+      </Suspense>
     </>
   );
 }

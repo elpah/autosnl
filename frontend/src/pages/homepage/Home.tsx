@@ -207,7 +207,6 @@ export const Home = () => {
         </div>
       </section>
       <Delivery />
-      <Footer />
     </div>
   );
 };

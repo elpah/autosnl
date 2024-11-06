@@ -47,7 +47,7 @@
         font-weight: 800;
       }
       .whycard_para {
-        line-height: 20px; 
+        line-height: 20px;
         font-size: 12px;
       }
     }
@@ -75,23 +75,22 @@
   }
 }
 
-
 @media (min-width: 1300px) {
   .why_card {
-    .why_img_container {
-      width: 150px;
-      height: 150px;
-      .why_img {
-        width: 150px;
-      }
-    }
+    // .why_img_container {
+    //   width: 150px;
+    //   height: 150px;
+    //   .why_img {
+    //     width: 150px;
+    //   }
+    // }
     .whycard_body {
       .whycard_header {
-        margin-bottom: 20px;
-        font-size: 24px;
+        margin-bottom: 10px;
+        font-size: 14px;
       }
       .whycard_para {
-        font-size: 16px;
+        font-size: 12px;
         font-weight: 500;
       }
     }

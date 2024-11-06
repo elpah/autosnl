@@ -9,7 +9,8 @@ import { Value } from "../../components/about-values/Value";
 import { Delivery } from "../../components/delivery-section/Delivery";
 
 import styles from "./about.module.scss";
-export const About: React.FC = () => {
+import { Footer } from "../../components/footer/Footer";
+const About: React.FC = () => {
   const values = [
     {
       image: `${quality}`,
@@ -85,3 +86,5 @@ export const About: React.FC = () => {
     </div>
   );
 };
+
+export default About;

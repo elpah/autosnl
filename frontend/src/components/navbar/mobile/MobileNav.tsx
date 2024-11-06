@@ -5,6 +5,7 @@ import arrow from "../../../assets/images/nav_images/arrow.png";
 import language_image from "../../../assets/images/nav_images/language_image.png";
 import search_icon from "../../../assets/images/nav_images/search_icon.png";
 import styles from "./mobile-nav.module.scss";
+import { Link } from "react-router-dom";
 
 export const MobileNav = () => {
   const [searchVisible, setSearchVisible] = useState(false);
@@ -12,24 +13,32 @@ export const MobileNav = () => {
   const [showLanguageSelector, setShowLanguageSelector] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
-
   return (
     <header className={styles.mobile_nav_container}>
       <nav className={styles.mobile_nav}>
-        <div className={styles.logo_container}>
-          <h2 className={styles.logo_header}>ZaurAutos</h2>
-        </div>
+        <Link to="/">
+          <div className={styles.logo_container}>
+            <h2 className={styles.logo_header}>ZaurAutos</h2>
+          </div>
+        </Link>
         <div className={styles.others_item_container}>
           {searchVisible ? (
-            <div className={`${styles.search_bar} ${
-              !searchVisible ? styles["slide-out"] : ""
-            }`}>
+            <div
+              className={`${styles.search_bar} ${
+                !searchVisible ? styles["slide-out"] : ""
+              }`}
+            >
               <input
                 type="text"
                 className={styles.search_input}
                 placeholder="Search..."
               />
-              <button className={styles.close_button} onClick={()=>{setSearchVisible(!searchVisible);}}>
+              <button
+                className={styles.close_button}
+                onClick={() => {
+                  setSearchVisible(!searchVisible);
+                }}
+              >
                 <img
                   className={styles.hide_search}
                   src={close}
@@ -39,11 +48,14 @@ export const MobileNav = () => {
             </div>
           ) : (
             <>
-              <div className={styles.search_container} onClick={()=>{
+              <div
+                className={styles.search_container}
+                onClick={() => {
                   setShowLanguageSelector(false);
                   setShowMenu(false);
                   setSearchVisible(!searchVisible);
-              }}>
+                }}
+              >
                 <img
                   className={styles.search_icon}
                   src={search_icon}
@@ -54,7 +66,8 @@ export const MobileNav = () => {
                 className={styles.language_selector}
                 onClick={() => {
                   setShowMenu(false);
-                  setShowLanguageSelector(!showLanguageSelector);}}
+                  setShowLanguageSelector(!showLanguageSelector);
+                }}
               >
                 <div className={styles.language_image_container}>
                   <img
@@ -63,8 +76,12 @@ export const MobileNav = () => {
                     alt="language icon"
                   />
                 </div>
-                <div className={styles.language_arrow_container}
-                onClick={()=>{setShowLanguageSelector(!showLanguageSelector)}}>
+                <div
+                  className={styles.language_arrow_container}
+                  onClick={() => {
+                    setShowLanguageSelector(!showLanguageSelector);
+                  }}
+                >
                   <img
                     className={`${styles.arrow} ${
                       showLanguageSelector ? styles.rotated : ""
@@ -74,16 +91,34 @@ export const MobileNav = () => {
                   />
                 </div>
 
-                 <div  className={`${styles.language_dropdown_menu} ${
-          showLanguageSelector ? styles.open : ""
-        }`}>
-                <img className={styles.language_dropdown_image} src={language_image} alt=" " />
-                <img className={styles.language_dropdown_image} src={language_image}  alt=" " />
-                <img className={styles.language_dropdown_image} src={language_image}  alt=" " />
-                <img className={styles.language_dropdown_image} src={language_image}  alt=" " />
+                <div
+                  className={`${styles.language_dropdown_menu} ${
+                    showLanguageSelector ? styles.open : ""
+                  }`}
+                >
+                  <img
+                    className={styles.language_dropdown_image}
+                    src={language_image}
+                    alt=" "
+                  />
+                  <img
+                    className={styles.language_dropdown_image}
+                    src={language_image}
+                    alt=" "
+                  />
+                  <img
+                    className={styles.language_dropdown_image}
+                    src={language_image}
+                    alt=" "
+                  />
+                  <img
+                    className={styles.language_dropdown_image}
+                    src={language_image}
+                    alt=" "
+                  />
+                </div>
               </div>
-              </div>
-             
+
               <div
                 className={styles.menu_icon}
                 onClick={() => {
