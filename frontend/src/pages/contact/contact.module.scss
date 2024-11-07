@@ -1,5 +1,6 @@
 .contact_container {
   margin-bottom: 100px;
+  min-height: 100vh;
   .contact_cover {
     color: #fff;
     background-image: url("../../assets/images/cover_images/contact_cover.png");
@@ -18,16 +19,17 @@
     .header {
       font-size: 24px;
       font-weight: 800;
-      margin-bottom: 10px;
+      margin-bottom:0;
     }
     .header_subtext {
+      margin-top: 15px;
       font-size: 12px;
       font-weight: 500;
     }
   }
   .contact_body {
     width: 90%;
-    max-width: 1600px;
+    max-width: 1700px;
     margin: auto;
     .body_header {
       color: #4c4c4c;

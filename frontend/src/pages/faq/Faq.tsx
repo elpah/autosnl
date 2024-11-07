@@ -44,12 +44,6 @@ const Faq = () => {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
     },
     {
-      id: 5,
-      title: "Is the prices of the cars Negotiable? ",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
-    },
-    {
       id: 6,
       title: "Is the prices of the cars Negotiable? ",
       content:
@@ -73,6 +67,12 @@ const Faq = () => {
       content:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
     },
+    {
+      id: 10,
+      title: "Is the prices of the cars Negotiable? ",
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
+    }
   ];
 
   function divideArrayIntoTwo(arr: FaqObject[]) {
@@ -96,9 +96,9 @@ const Faq = () => {
           <div className={styles.header_image_container}>
             <img className={styles.header_img} src={faqicon} alt="QA icon" />
           </div>
-          <div className={styles.header}>FAQ</div>
+          <h1 className={styles.header}>FAQ</h1>
         </div>
-        <div className={styles.header_subtext}>General Questions</div>
+        <p className={styles.header_subtext}>General Questions</p>
       </div>
       <div className={styles.faqs_container}>
         <div className={styles.faq_sub_container}>

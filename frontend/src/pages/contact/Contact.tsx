@@ -5,9 +5,7 @@ import locationIcon from "../../assets/images/contact-images/location.png";
 import phoneIcon from "../../assets/images/contact-images/phone.png";
 
 import { ContactCard } from "../../components/contact-card/ContactCard";
-import { link } from "fs";
 import { ContactFormMap } from "../../components/contact-form-map/ContactFormMap";
-import { Footer } from "../../components/footer/Footer";
 
 const Contact = () => {
   const contactDetails = [
@@ -37,8 +35,8 @@ const Contact = () => {
   return (
     <div className={styles.contact_container}>
       <div className={styles.contact_cover}>
-        <div className={styles.header}>Contact Us</div>
-        <div className={styles.header_subtext}>Welcome to ZaurAutos</div>
+        <h1 className={styles.header}>Contact Us</h1>
+        <p className={styles.header_subtext}>Welcome to ZaurAutos</p>
       </div>
       <div className={styles.contact_body}>
         <div className={styles.body_header}>Contact Details</div>

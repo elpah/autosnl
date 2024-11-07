@@ -9,7 +9,6 @@ import { Value } from "../../components/about-values/Value";
 import { Delivery } from "../../components/delivery-section/Delivery";
 
 import styles from "./about.module.scss";
-import { Footer } from "../../components/footer/Footer";
 const About: React.FC = () => {
   const values = [
     {
@@ -37,8 +36,8 @@ const About: React.FC = () => {
   return (
     <div className={styles.about_container}>
       <div className={styles.cover}>
-        <div className={styles.header}>About Us</div>
-        <div className={styles.header_subtext}>ZaurAutos Profile</div>
+        <h1 className={styles.header}>About Us</h1>
+        <p className={styles.header_subtext}>ZaurAutos Profile</p>
       </div>
       <div className={styles.body_container}>
         <div className={styles.body_part}>

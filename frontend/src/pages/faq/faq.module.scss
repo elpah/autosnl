@@ -1,4 +1,5 @@
 .faq_container {
+  min-height:100vh;
   .cover {
     color: #fff;
     background-image: url("../../assets/images/cover_images/faq_cover.png");
@@ -80,6 +81,7 @@
 
 @media (min-width: 1024px) {
   .faq_container {
+    width:100%;
     .cover {
       height: 402px;
       .header_container {

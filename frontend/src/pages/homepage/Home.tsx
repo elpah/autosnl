@@ -66,10 +66,10 @@ export const Home = () => {
         <div className={styles.form_container}>
           <form className={styles.form}>
             <div className={styles.form_header}>Find your right Car</div>
-            <div className={styles.button_container}>
+            <h1 className={styles.button_container}>
               <button className={styles.used_button}>Used Cars</button>
               <button className={styles.damaged_button}>Damaged Cars</button>
-            </div>
+            </h1>
             <div className={styles.select_container}>
               <select className={styles.select} id="country-select">
                 <option value="" disabled selected>
@@ -137,14 +137,14 @@ export const Home = () => {
         </div>
         <div className={styles.header_cover_container}>
           <div className={styles.header_container}>
-            <div className={styles.header}>
+            <h2 className={styles.header}>
               Experience Excellence on Every Road.
-            </div>
-            <div className={styles.subtext}>
+            </h2>
+            <p className={styles.subtext}>
               Quality cars, unbeatable prices, and exceptional service. Find the
               perfect vehicle from our extensive collection of new and pre-owned
               cars
-            </div>
+            </p>
           </div>
           <div className={styles.cover_image_container}>
             <div className={styles.image_container}>
@@ -184,7 +184,7 @@ export const Home = () => {
         <HomeSection title="Trusted used cars by budget" />
         <div className={styles.popular_container}>
           <div className={styles.popular_header_container}>
-          <div className={styles.popular_header}>Popular Brands</div>
+          <h3 className={styles.popular_header}>Popular Brands</h3>
 
           </div>
           <div className={styles.popular_images_cover_container}>
@@ -199,7 +199,7 @@ export const Home = () => {
         <HomeSection title="Damaged Cars" />
       </div>
       <section className={styles.why_section}>
-        <div className={styles.why_header}>Why ZaurAutos</div>
+        <h3 className={styles.why_header}>Why ZaurAutos</h3>
         <div className={styles.why_card_container}>
           {whys.map((why, index) => (
             <WhyCard key={index} {...why} />
