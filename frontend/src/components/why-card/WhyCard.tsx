@@ -14,10 +14,10 @@ export const WhyCard = ({title, image, paragraph}:Why) => {
         <img className={styles.why_img} src={image} alt="" />
       </div>
       <div className={styles.whycard_body}>
-        <div className={styles.whycard_header}>{title}</div>
-        <div className={styles.whycard_para}>
+        <h2 className={styles.whycard_header}>{title}</h2>
+        <p className={styles.whycard_para}>
          {paragraph}
-        </div>
+        </p>
       </div>
     </div>
   );

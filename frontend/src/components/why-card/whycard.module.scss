@@ -77,14 +77,7 @@
 
 @media (min-width: 1300px) {
   .why_card {
-    // .why_img_container {
-    //   width: 150px;
-    //   height: 150px;
-    //   .why_img {
-    //     width: 150px;
-    //   }
-    // }
-    .whycard_body {
+     .whycard_body {
       .whycard_header {
         margin-bottom: 10px;
         font-size: 14px;
@@ -92,6 +85,19 @@
       .whycard_para {
         font-size: 12px;
         font-weight: 500;
+      }
+    }
+  }
+}
+
+@media (min-width: 1400px) {
+  .why_card {
+     .whycard_body {
+      .whycard_header {
+        font-size: 17px;
+      }
+      .whycard_para {
+        font-size: 14px;
       }
     }
   }
