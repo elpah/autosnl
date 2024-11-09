@@ -45,13 +45,13 @@ export const DesktopNav = () => {
               >
                 <ul className={styles.car_list_container}>
                   <li className={styles.car_list_item}>Toyota</li>
-                  <li className={styles.car_list_item}>Toyota</li>
-                  <li className={styles.car_list_item}>Toyota</li>
-                  <li className={styles.car_list_item}>Toyota</li>
-                  <li className={styles.car_list_item}>Toyota</li>
-                  <li className={styles.car_list_item}>Toyota</li>
-                  <li className={styles.car_list_item}>Toyota</li>
-                  <li className={styles.car_list_item}>Toyota</li>
+                  <li className={styles.car_list_item}>Kia</li>
+                  <li className={styles.car_list_item}>Hyundai</li>
+                  <li className={styles.car_list_item}>Volkswagen</li>
+                  <li className={styles.car_list_item}>Rolls Royce</li>
+                  <li className={styles.car_list_item}>Mercedes Benz</li>
+                  <li className={styles.car_list_item}>Volvo</li>
+                  <li className={styles.car_list_item}>Maserati</li>
                 </ul>
               </div>
             </li>

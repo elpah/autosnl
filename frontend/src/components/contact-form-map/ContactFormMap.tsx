@@ -49,17 +49,17 @@ export const ContactFormMap = () => {
         </div>
         <div className={styles.input_number_container}>
           <select className={styles.country_select} id="country-select">
-            <option value="" disabled selected>
+            {/* <option value="" disabled selected>
               Select a country
-            </option>
+            </option> */}
             <option value="" disabled selected>
               Country Code
             </option>
-            <option value="us">United States (+1)</option>
-            <option value="ca">Canada (+1)</option>
-            <option value="gb">United Kingdom (+44)</option>
-            <option value="au">Australia (+61)</option>
-            <option value="in">India (+91)</option>
+            <option value="us">US (+1)</option>
+            <option value="ca">CA (+1)</option>
+            <option value="gb">UK (+44)</option>
+            <option value="au">AU (+61)</option>
+            <option value="in">IN (+91)</option>
           </select>
           <div className={styles.input_svg}>
             <svg
