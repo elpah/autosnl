@@ -1,9 +1,9 @@
 import React from "react";
 
-import styles from "./car-card-container.module.scss";
+import styles from "./car-card-container2.module.scss";
 import CarCard from "../car-card/CarCard";
 
-export const CarCardContainer = () => {
+export const CarCardContainer2 = () => {
   return (
     <>
       <div className={styles.car_card_container}>
