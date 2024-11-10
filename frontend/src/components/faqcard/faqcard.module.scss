@@ -37,6 +37,7 @@
   .content_open {
     max-height: 500px;
     padding-bottom: 23px;
+    padding-top: 10px;
   }
 }
 
@@ -63,19 +64,36 @@
   }
 }
 
-@media (min-width: 1024) {
+@media (min-width: 1024px) {
   .faqcard_container {
     .title_container {
       height: 71px;
-
       .title {
         font-size: 18px;
       }
     }
-
     .content_container {
-      font-size: 12px;
+      font-size: 13px;
       transition: max-height 0.2s ease-in-out, padding-bottom 0.2s ease-in-out;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .faqcard_container {
+    .title_container {
+      height: 90px;
+      .title {
+        font-size: 20px;
+      }
+    }
+    .content_container {
+      font-size: 17px;
+      line-height: 1.8;
+      transition: max-height 0.2s ease-in-out, padding-bottom 0.2s ease-in-out;
+    }
+    .content_open {
+      padding-top: 20px;
     }
   }
 }

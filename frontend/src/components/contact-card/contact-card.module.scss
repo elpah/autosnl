@@ -55,7 +55,7 @@
   }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1024px) {
   .link_card_container {
     .contact_card_container {
       gap: 15px;
@@ -74,21 +74,21 @@
 
 @media (min-width: 1200px) {
   .link_card_container {
-    height: 91px;
+    height: 120px;
     .contact_card_container {
       gap: 20px;
       .card_text_container {
         .card_header {
-          font-size: 18px;
+          font-size: 22px;
         }
         .card_subtext {
-          font-size: 14px;
+          font-size: 16px;
         }
       }
       .contact_image_container {
         .contact_image {
-          width: 70px;
-          height: 70px;
+          width: 80px;
+          height: 80px;
         }
       }
     }
