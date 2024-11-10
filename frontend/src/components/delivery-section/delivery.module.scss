@@ -51,7 +51,6 @@
       .button {
         font-weight: 500;
         font-weight: 500;
-
       }
     }
   }
@@ -94,6 +93,7 @@
   .delivery_container {
     background-image: url("../../assets/images/about_images/delivery_image.png");
     height: 300px;
+    // padding-left: 0;
     .delivery_info_wrapper {
       width: 100%;
       max-width: 1700px;
