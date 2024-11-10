@@ -14,6 +14,7 @@ const Navbar = React.lazy(() => import("./components/navbar/Navbar"));
 const CarPage = React.lazy(() => import("./pages/carpage/CarPage"));
 const DealerPage = React.lazy(() => import("./pages/dealerpage/DealerPage"));
 const SearchResult = React.lazy(() => import("./pages/search-result-page/SearchResult"));
+const AdvancedSearch = React.lazy(() => import("./pages/advanced-search/AdvancedSearch"));
 
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
             <Route path="/car-page" element={<CarPage />} />
             <Route path="/dealer-page" element={<DealerPage />} />
             <Route path="/search-result" element={<SearchResult />} />
+            <Route path="/advanced-search" element={<AdvancedSearch />} />
+
 
             <Route path="*" element={<NotFound />} />
           </Routes>

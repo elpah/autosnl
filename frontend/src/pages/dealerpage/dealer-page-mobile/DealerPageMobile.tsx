@@ -6,30 +6,13 @@ import { CarCardContainer } from "../../../components/car-card-container/CarCard
 import { ContactFormMap } from "../../../components/contact-form-map/ContactFormMap";
 import { DealerInfo } from "../../../components/dealer-infomation/DealerInfo";
 import { VisitButton } from "../../../components/visit-button/VisitButton";
+import { FilterItemsContainer } from "../../../components/filter-item-container/FilterItemsContainer";
 
 export const DealerPageMobile: React.FC = () => {
   return (
     <div className={styles.dealer_page_mobile_container}>
       <div className={styles.dealer_page_header}>Elpah Motors</div>
-      <div className={styles.filter_items_container}>
-        <FilterItem />
-        <FilterItem />
-        <FilterItem />
-        <FilterItem />
-        <FilterItem />
-        <FilterItem />
-        <FilterItem />
-        <FilterItem />
-        <FilterItem />
-        <FilterItem />
-        <FilterItem />
-        <FilterItem />
-        <FilterItem />
-        <FilterItem />
-      </div>
-      <div className={styles.select_item_container_wrapper}>
-        <SelectItemContainer />
-      </div>
+      <FilterItemsContainer/>
       <div className={styles.car_card_container_wrapper}>
         <CarCardContainer />
       </div>
