@@ -3,13 +3,12 @@
 }
 @media (min-width: 768px) {
   .desktop_nav {
-    // position: fixed;
-    // top: 0;
     display: flex;
     justify-content: center;
     width: 100%;
     height: 70px;
     box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
+    position: relative;
     nav {
       width: 90%;
       max-width: 1700px;
@@ -73,16 +72,16 @@
             }
             .car_list {
               position: absolute;
-              top: 41px;
+              background-color: #fff;
+              box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.15);
+              top: 40.9px;
               left: 0;
               width: 160px;
-              background-color: #fff;
               height: 0px;
               overflow: hidden;
-              transition: height 0.4s ease;
+              transition: height 0.3s ease;
 
               .car_list_container {
-                background-color: #f9f9f9;
                 display: flex;
                 flex-direction: column;
                 list-style: none;
@@ -107,7 +106,7 @@
               }
             }
             .show_cars_open {
-              height: 207px;
+              height: 202px;
             }
           }
           .list_item {
@@ -185,12 +184,14 @@
           }
         }
         .languages_container {
-          box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.15);
           position: absolute;
-          top: 58px;
+          box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.15);
+          top: 43.8px;
           height: 0;
+          background-color: #fff;
           overflow: hidden;
           transition: height 0.3s ease;
+
           .language_image_container {
             display: flex;
             align-items: center;
@@ -203,7 +204,7 @@
           }
         }
         .open {
-          height: 180px;
+          height: 123px;
         }
       }
     }
@@ -231,7 +232,7 @@
               }
             }
             .car_list {
-              top: 53px;
+              top: 53.2px;
               width: 200px;
               .car_list_container {
                 .car_list_item {
@@ -242,7 +243,7 @@
               }
             }
             .show_cars_open {
-              height: 247px;
+              height: 242px;
             }
           }
           .list_item {
@@ -283,7 +284,7 @@
           }
         }
         .languages_container {
-          top: 81px;
+          top: 55.6px;
           .language_image_container {
             padding: 8px;
             .language_image {
@@ -291,6 +292,9 @@
               height: 20px;
             }
           }
+        }
+        .open {
+          height: 150px;
         }
       }
     }
@@ -324,7 +328,7 @@
               }
             }
             .car_list {
-              top: 57px;
+              top: 62px;
               .car_list_container {
                 .car_list_item {
                   height: 35px;
@@ -333,7 +337,7 @@
               }
             }
             .show_cars_open {
-              height: 288px;
+              height: 285px;
             }
           }
           .list_item {
@@ -366,7 +370,7 @@
           }
         }
         .languages_container {
-          top: 106px;
+          top: 63.7px;
           .language_image_container {
             padding: 8px;
             .language_image {
@@ -374,6 +378,9 @@
               height: 25px;
             }
           }
+        }
+        .open {
+          height: 175px;
         }
       }
     }

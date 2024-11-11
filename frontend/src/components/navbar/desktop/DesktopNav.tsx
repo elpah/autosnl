@@ -13,9 +13,9 @@ export const DesktopNav = () => {
     <header className={styles.desktop_nav}>
       <nav>
         <Link to="/">
-        <div className={styles.logo_container}>
-          <h2 className={styles.logo_text}>ZaurAutos</h2>
-        </div>
+          <div className={styles.logo_container}>
+            <h2 className={styles.logo_text}>ZaurAutos</h2>
+          </div>
         </Link>
         <div className={styles.menu}>
           <ul className={styles.menu_ul}>
@@ -123,34 +123,34 @@ export const DesktopNav = () => {
               showLanguageSelector ? styles.open : ""
             }`}
           >
-            <div className={styles.language_image_container}>
-              <img
-                className={styles.language_image}
-                src={language_image}
-                alt=""
-              />
-            </div>
-            <div className={styles.language_image_container}>
-              <img
-                className={styles.language_image}
-                src={language_image}
-                alt=""
-              />
-            </div>{" "}
-            <div className={styles.language_image_container}>
-              <img
-                className={styles.language_image}
-                src={language_image}
-                alt=""
-              />
-            </div>{" "}
-            <div className={styles.language_image_container}>
-              <img
-                className={styles.language_image}
-                src={language_image}
-                alt=""
-              />
-            </div>
+              <div className={styles.language_image_container}>
+                <img
+                  className={styles.language_image}
+                  src={language_image}
+                  alt=""
+                />
+              </div>
+              <div className={styles.language_image_container}>
+                <img
+                  className={styles.language_image}
+                  src={language_image}
+                  alt=""
+                />
+              </div>
+              <div className={styles.language_image_container}>
+                <img
+                  className={styles.language_image}
+                  src={language_image}
+                  alt=""
+                />
+              </div>
+              <div className={styles.language_image_container}>
+                <img
+                  className={styles.language_image}
+                  src={language_image}
+                  alt=""
+                />
+              </div>
           </div>
         </div>
       </nav>

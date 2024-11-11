@@ -11,9 +11,7 @@ const AdvancedSearch = () => {
     <div className={styles.container}>
       <AdvancedSearchMobile />
       <AdvancedSearchDesktop />
-      {/* <div className={styles.delivery_wrapper}> */}
         <Delivery />
-      {/* </div> */}
     </div>
   );
 };
