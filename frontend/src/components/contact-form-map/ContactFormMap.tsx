@@ -48,7 +48,7 @@ export const ContactFormMap = () => {
             <input type="text" placeholder="Email Address" />
           </div>
           <div className={styles.input_number_container}>
-            <select className={styles.country_select} id="country-select">
+            {/* <select className={styles.country_select} id="country-select">
               <option value="" disabled selected>
                 Country Code
               </option>
@@ -67,7 +67,28 @@ export const ContactFormMap = () => {
               <option className={styles.option_item} value="in">
                 IN (+91)
               </option>
+            </select> */}
+            <select className={styles.country_select} id="country-select">
+              {/* <option value="" disabled selected>
+                Country Code
+              </option> */}
+              <option className={styles.option_item} value="us">
+                US (+1)
+              </option>
+              <option className={styles.option_item} value="ca">
+                CA (+1)
+              </option>
+              <option className={styles.option_item} value="gb">
+                UK (+44)
+              </option>
+              <option className={styles.option_item} value="au">
+                AU (+61)
+              </option>
+              <option className={styles.option_item} value="in">
+                IN (+91)
+              </option>
             </select>
+
             <div className={styles.input_svg}>
               <svg
                 width="18"
@@ -95,8 +116,8 @@ export const ContactFormMap = () => {
               <path
                 d="M10.328 5.00002H10.3333M12.328 5.00002H12.3333M14.6667 4.85535C14.6667 6.61669 13.174 8.04469 11.3333 8.04469C11.1165 8.04469 10.9016 8.02469 10.6887 7.98469C10.5354 7.95602 10.4587 7.94202 10.4053 7.95002C10.352 7.95802 10.276 7.99802 10.1253 8.07869C9.69398 8.30861 9.19754 8.38591 8.71668 8.29802C8.90048 8.07091 9.02509 7.80177 9.07935 7.51469C9.11268 7.33802 9.03002 7.16669 8.90602 7.04135C8.32747 6.46074 8.00182 5.67501 8.00002 4.85535C8.00002 3.09469 9.49268 1.66669 11.3333 1.66669C13.174 1.66669 14.6667 3.09469 14.6667 4.85535ZM5.00135 14.3334H3.14535C2.93002 14.3334 2.71335 14.3027 2.51535 14.218C1.87135 13.9414 1.54402 13.5754 1.39202 13.3467C1.35076 13.2833 1.3305 13.2086 1.33409 13.1331C1.33768 13.0576 1.36494 12.9852 1.41202 12.926C2.15868 11.934 3.89202 11.3354 5.00468 11.3354C6.11668 11.3354 7.84735 11.934 8.59402 12.926C8.68802 13.0507 8.70068 13.2167 8.61402 13.3467C8.46135 13.5754 8.13402 13.9414 7.49002 14.218C7.28994 14.2985 7.07564 14.3378 6.86002 14.3334H5.00135ZM6.85735 7.85935C6.857 8.10239 6.80878 8.34297 6.71546 8.56737C6.62213 8.79177 6.48551 8.99559 6.31342 9.16719C6.14132 9.33879 5.93711 9.47482 5.71244 9.5675C5.48777 9.66018 5.24705 9.7077 5.00402 9.70735C4.51342 9.70771 4.04276 9.51325 3.69548 9.16672C3.3482 8.82019 3.15272 8.34995 3.15202 7.85935C3.15228 7.61632 3.20041 7.37572 3.29365 7.15129C3.3869 6.92685 3.52344 6.72298 3.69548 6.55132C3.86751 6.37966 4.07168 6.24356 4.29631 6.15079C4.52094 6.05803 4.76165 6.01042 5.00468 6.01069C5.24772 6.01042 5.48842 6.05803 5.71305 6.15079C5.93769 6.24356 6.14185 6.37966 6.31389 6.55132C6.48592 6.72298 6.62246 6.92685 6.71571 7.15129C6.80896 7.37572 6.85709 7.61632 6.85735 7.85935Z"
                 stroke="#4C4C4C"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
             <input type="text" placeholder="Reason for query" />

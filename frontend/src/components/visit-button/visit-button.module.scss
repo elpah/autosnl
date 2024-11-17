@@ -1,3 +1,5 @@
+@import "../../global.scss";
+
 .button_container {
   width: 90%;
   height: auto;
@@ -11,7 +13,7 @@
     align-items: center;
     gap: 10px;
     border: none;
-    background: #1faee9;
+    background: $primary-color;
     color: #fff;
     font-size: 14px;
     font-weight: 700;

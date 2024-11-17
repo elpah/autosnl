@@ -1,3 +1,4 @@
+@import "../../global.scss";
 .section_container {
   background: #f3fbfe;
   padding-top: 1rem;
@@ -39,7 +40,7 @@
         flex-shrink: 0;
         padding: 0 0 10px 0;
         cursor: pointer;
-        border-bottom: 5px solid #1faee9;
+        border-bottom: 5px solid $primary-color;
       }
     }
 
@@ -84,7 +85,7 @@
         font-size: 13px;
 
         .section_items {
-          border-bottom: 6px solid #1faee9;
+          border-bottom: 6px solid $primary-color;
         }
       }
 
@@ -135,7 +136,7 @@
 
 @media (min-width: 1300px) {
   .section_container {
-    width:100%;
+    width: 100%;
     max-width: 1900px;
     margin: auto;
 

@@ -1,3 +1,5 @@
+@import "../../global.scss";
+
 .car_price_container {
   margin-top: 31px;
   margin-bottom: 27px;
@@ -16,7 +18,7 @@
     margin-bottom: 10px;
 
     .inc_btw_price {
-      color: #1faee9;
+      color: $primary-color;
       font-size: 18px;
       font-weight: 800;
     }
@@ -35,7 +37,7 @@
     margin-bottom: 5px;
 
     .sub_price {
-      color: #1faee9;
+      color: $primary-color;
       font-size: 14px;
       font-weight: 500;
     }

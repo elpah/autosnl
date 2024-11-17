@@ -1,3 +1,5 @@
+@import "../../global.scss";
+
 .delivery_container {
   background-image: url("../../assets/images/about_images/delivery_image.png");
   background-position: center;
@@ -28,7 +30,7 @@
       justify-content: center;
       align-items: center;
       flex-shrink: 0;
-      background: #1faee9;
+      background: $primary-color;
       color: #fff;
       font-size: 12px;
       font-weight: 500;

@@ -1,3 +1,5 @@
+@import "../../global.scss";
+
 .footer_container {
   width: 90%;
   max-width: 1700px;
@@ -11,7 +13,7 @@
       font-size: 1.125rem;
       font-weight: 700;
       line-height: normal;
-      color: #1faee9;
+      color: $primary-color;
     }
     .logo_paragraph {
       max-width: 500px;
@@ -29,7 +31,7 @@
       .footer_headers {
         margin-bottom: 10px;
         font-size: 0.75rem;
-        color: #1faee9;
+        color: $primary-color;
         font-weight: 700;
         line-height: normal;
       }

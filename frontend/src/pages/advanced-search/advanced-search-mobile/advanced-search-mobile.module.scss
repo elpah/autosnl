@@ -1,3 +1,5 @@
+@import "../../../global.scss";
+
 .container_wrapper {
   width: 100%;
   .header_map_container {
@@ -18,7 +20,7 @@
       // }
 
       .current_car {
-        color: #1faee9;
+        color: $primary-color;
       }
     }
     .header {

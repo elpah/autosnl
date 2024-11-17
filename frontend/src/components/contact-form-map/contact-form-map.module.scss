@@ -1,3 +1,5 @@
+@import "../../global.scss";
+
 .form_map_container {
   margin-top: 35px;
   display: flex;
@@ -49,7 +51,7 @@
           align-items: center;
           &:focus {
             border: none;
-            outline: 1.5px solid #1faee9;
+            outline: 1.5px solid $primary-color;
             border-radius: 2px;
           }
         }
@@ -74,7 +76,7 @@
           color: #4c4c4c;
           &:focus {
             border: none;
-            outline: 1.5px solid #1faee9;
+            outline: 1.5px solid $primary-color;
 
             border-radius: 2px;
           }
@@ -103,7 +105,7 @@
             align-items: center;
             &:focus {
               border: none;
-              outline: 1.5px solid #1faee9;
+              outline: 1.5px solid$primary-color;
               border-radius: 2px;
             }
           }
@@ -121,7 +123,7 @@
         opacity: 0.5;
         &:focus {
           border: none;
-          outline: 1.5px solid #1faee9;
+          outline: 1.5px solid $primary-color;
           border-radius: 2px;
         }
       }
@@ -133,7 +135,7 @@
         align-items: center;
         gap: 10px;
         flex-shrink: 0;
-        background: #1faee9;
+        background: $primary-color;
         border: none;
         color: #fff;
         font-size: 14px;

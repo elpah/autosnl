@@ -9,26 +9,26 @@ export default function CarCard() {
   return (
     <div className={styles.car_card_container}>
       <div className={styles.car_image_container}>
-        <img className={styles.car_img} src={carimage} alt="" />
+        <img className={styles.car_img} src={carimage} alt="car card photo" />
       </div>
       <div className={styles.car_body_container}>
         <div className={styles.card_header}>Mercedes-Benz C300</div>
         <div className={styles.car_details_container}>
           <div className={styles.car_details}>
             <div className={styles.icon_container}>
-              <img className={styles.icon} src={mile} alt="" />
+              <img className={styles.icon} src={mile} alt="mileage icon" />
             </div>
             <div className={styles.text}>134.8</div>
           </div>
           <div className={styles.car_details}>
             <div className={styles.icon_container}>
-              <img className={styles.icon} src={fuel} alt="" />
+              <img className={styles.icon} src={fuel} alt="fuel type icon" />
             </div>
             <div className={styles.text}>Petrol</div>
           </div>
           <div className={styles.car_details}>
             <div className={styles.icon_container}>
-              <img className={styles.icon} src={year} alt="" />
+              <img className={styles.icon} src={year} alt="calender year icon" />
             </div>
             <div className={styles.text}>2024</div>
           </div>

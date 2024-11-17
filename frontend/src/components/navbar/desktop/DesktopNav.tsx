@@ -34,7 +34,7 @@ export const DesktopNav = () => {
                       showCars ? styles.rotated : ""
                     }`}
                     src={arrow}
-                    alt=""
+                    alt="drop down arror icon"
                   />
                 </div>
               </div>
@@ -86,8 +86,8 @@ export const DesktopNav = () => {
                 <path
                   d="M8.5 8.5L10.5 10.5M1.5 5.5C1.5 6.56087 1.92143 7.57828 2.67157 8.32843C3.42172 9.07857 4.43913 9.5 5.5 9.5C6.56087 9.5 7.57828 9.07857 8.32843 8.32843C9.07857 7.57828 9.5 6.56087 9.5 5.5C9.5 4.43913 9.07857 3.42172 8.32843 2.67157C7.57828 1.92143 6.56087 1.5 5.5 1.5C4.43913 1.5 3.42172 1.92143 2.67157 2.67157C1.92143 3.42172 1.5 4.43913 1.5 5.5Z"
                   stroke="white"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </button>
@@ -127,28 +127,28 @@ export const DesktopNav = () => {
                 <img
                   className={styles.language_image}
                   src={language_image}
-                  alt=""
+                  alt="language flag"
                 />
               </div>
               <div className={styles.language_image_container}>
                 <img
                   className={styles.language_image}
                   src={language_image}
-                  alt=""
+                   alt="language flag"
                 />
               </div>
               <div className={styles.language_image_container}>
                 <img
                   className={styles.language_image}
                   src={language_image}
-                  alt=""
+                   alt="language flag"
                 />
               </div>
               <div className={styles.language_image_container}>
                 <img
                   className={styles.language_image}
                   src={language_image}
-                  alt=""
+                   alt="language flag"
                 />
               </div>
           </div>

@@ -71,48 +71,51 @@ export const Home = () => {
               <button className={styles.damaged_button}>Damaged Cars</button>
             </h1>
             <div className={styles.select_container}>
-              <select className={styles.select} id="country-select">
-                <option value="" disabled selected>
+              <select className={styles.select} >
+                <option value="" disabled>
                   Brand
                 </option>
                 <option value="toyota">Toyota</option>
                 <option value="toyota">Toyota</option>
               </select>
-              <select className={styles.select} id="country-select">
-                <option value="" disabled selected>
+              <select className={styles.select}>
+                <option value="model" disabled>
                   Model
                 </option>
                 <option value="Camry">Camry</option>
                 <option value="Camry">Camry</option>
               </select>
-              <select className={styles.select} id="country-select">
-                <option value="" disabled selected>
+              <select className={styles.select}>
+                <option value="" disabled>
                   ERD
                 </option>
                 <option value="erd">erd</option>
                 <option value="erd">erd</option>
               </select>
-              <select className={styles.select} id="country-select">
-                <option value="" disabled selected>
+              <select className={styles.select}>
+                <option value="" disabled>
                   Fuel
                 </option>
                 <option value="petrol">Petrol</option>
                 <option value="diesel">Diesel</option>
               </select>
-              <select className={styles.select} id="country-select">
-                <option value="" disabled selected>
+              <select className={styles.select}>
+                <option value="" disabled>
                   Transmission
                 </option>
                 <option value="manual">Manual</option>
                 <option value="auto">Automatic</option>
               </select>
-              <select className={styles.select} id="country-select">
-                <option value="" disabled selected>
+              <select className={styles.select}>
+                <option value="" disabled>
                   Country
                 </option>
                 <option value="ghana">Ghana</option>
-                <option value="ghanay">Ghana</option>
+                <option value="ghana">Ghana</option>
               </select>
+
+
+              
             </div>
             <button className={styles.submit_button}>Search</button>
             <div className={styles.advanced_search_container}>
@@ -126,8 +129,8 @@ export const Home = () => {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M14.207 7.5L9.85403 11.854L9.14603 11.147L12.293 8L1.00003 8V7L12.293 7L9.14603 3.854L9.85403 3.146L14.207 7.5Z"
                   fill="#4C4C4C"
                 />
@@ -189,10 +192,10 @@ export const Home = () => {
           </div>
           <div className={styles.popular_images_cover_container}>
           <div className={styles.popular_images_container}>
-            <img src={popularNissan} alt="" />
-            <img src={popularNissan} alt="" />
-            <img src={popularNissan} alt="" />
-            <img src={popularNissan} alt="" />
+            <img src={popularNissan} alt="Popular brands icon" />
+            <img src={popularNissan} alt="Popular brands icon" />
+            <img src={popularNissan} alt="Popular brands icon" />
+            <img src={popularNissan} alt="Popular brands icon" />
           </div>
           </div>
         </div>

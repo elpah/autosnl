@@ -1,7 +1,7 @@
-.home_container {
-  // position: relative;
-  background-color: #f9f9f9;
+@import "../../global.scss";
 
+.home_container {
+  background-color: #f9f9f9;
   .cover_container {
     display: flex;
     flex-direction: column-reverse;
@@ -44,7 +44,7 @@
 
           .used_button {
             display: flex;
-            background: #1faee9;
+            background: $primary-color;
             color: #fff;
             justify-content: center;
             align-items: center;
@@ -104,7 +104,7 @@
           border: none;
           height: 50px;
           color: #fff;
-          background: #1faee9;
+          background: $primary-color;
           font-size: 14px;
           margin-bottom: 19px;
         }

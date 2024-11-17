@@ -1,3 +1,5 @@
+@import "../../../global.scss";
+
 .desktop_nav {
   display: none;
 }
@@ -21,7 +23,7 @@
       .logo_container {
         cursor: pointer;
         .logo_text {
-          color: #1faee9;
+          color: $primary-color;
           font-size: 15px;
           font-style: normal;
           font-weight: 700;
@@ -142,7 +144,7 @@
           }
 
           .submit_button {
-            background-color: #1faee9;
+            background-color: $primary-color;
             border: none;
             width: 35px;
             height: 22px;

@@ -59,6 +59,7 @@ const SearchResult = () => {
       <CarCardContainer2/>
     </div>
     <Delivery/>
+s
     </div>
   );
 };

@@ -56,16 +56,16 @@ const CarInfoCover = () => {
       </div>
       <div className={styles.car_images_container}>
         <div className={styles.next_image_container}>
-          <img className={styles.next_image} src={CurrentCoverImage} alt="" />
+          <img className={styles.next_image} src={CurrentCoverImage} alt="next images" />
         </div>
         <div className={styles.next_image_container}>
-          <img className={styles.next_image} src={CurrentCoverImage} alt="" />
+          <img className={styles.next_image} src={CurrentCoverImage} alt="next images" />
         </div>
         <div className={styles.next_image_container}>
-          <img className={styles.next_image} src={CurrentCoverImage} alt="" />
+          <img className={styles.next_image} src={CurrentCoverImage} alt="next images" />
         </div>
         <div className={styles.next_image_container}>
-          <img className={styles.next_image} src={CurrentCoverImage} alt="" />
+          <img className={styles.next_image} src={CurrentCoverImage} alt="next images" />
         </div>
       </div>
     </div>

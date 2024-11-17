@@ -99,22 +99,22 @@ export const MobileNav = () => {
                   <img
                     className={styles.language_dropdown_image}
                     src={language_image}
-                    alt=" "
+                    alt="language flag"
                   />
                   <img
                     className={styles.language_dropdown_image}
                     src={language_image}
-                    alt=" "
+                    alt="language flag"
                   />
                   <img
                     className={styles.language_dropdown_image}
                     src={language_image}
-                    alt=" "
+                     alt="language flag"
                   />
                   <img
                     className={styles.language_dropdown_image}
                     src={language_image}
-                    alt=" "
+                     alt="language flag"
                   />
                 </div>
               </div>
