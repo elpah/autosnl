@@ -1,6 +1,30 @@
 # Getting Started with the app
 
-##
+## Docker Dependencies
+
+- Create .env.production and .env.development in both backend and frontend folder
+- Install docker and docker-compose
+- Install make
+
+## Docker Commands
+
+- `docker ps -a`: To list all containers
+- `docker volume ls`: To list all Docker volumes
+- `docker network ls`: To list all Docker networks
+- `docker logs <container_name_or_id>`: To view logs of a specific container
+- `docker exec -it <container_name_or_id> sh`: To access the shell of a running container, use
+- `docker exec -it <container_name_or_id> env`: To list all environment variables inside a running container, run
+
+## Makefile Commands
+
+- `make ps`: List running containers.
+- `make down`: Stop and remove all containers.
+- `make prune`: Stop, clean up, and remove unused containers and images.
+- `make up ENVIRONMENT=<env>`: Start all services.
+- `make logs SERVICE=<service>`: Show logs for a specific service.
+- `make restart SERVICE=<service>`: Restart a specific service.
+- `make build-all ENVIRONMENT=<env>`: Build and start all services.
+- `make build SERVICE=<service> ENVIRONMENT=<env>`: Build and start a specific service.
 
 ### GIT
 
@@ -28,32 +52,6 @@ main
     - feature/: Contains all feature branches. Each feature branch should be named descriptively to indicate its purpose.
     - bugfix/: Contains branches for bug fixes.
     - release/: Contains release branches for preparing new versions for deployment.
-  
-## Docker
-
-- To list all environment variables inside a running container, run
-    docker exec -it <container_name_or_id> env
-- To access the shell of a running container, use:
-    docker exec -it <container_name_or_id> sh
-- To view logs of a specific container
-    docker logs <container_name_or_id>
-- To list all Docker networks
-    docker network ls
-- To list all Docker volumes
-    docker volume ls
-- To list all containers
-    docker ps -a
-
-## Makefile Commands
-
-- `make build SERVICE=<service> ENVIRONMENT=<env>`: Build and start a specific service.
-- `make build-all ENVIRONMENT=<env>`: Build and start all services.
-- `make up ENVIRONMENT=<env>`: Start all services.
-- `make down`: Stop and remove all containers.
-- `make restart SERVICE=<service>`: Restart a specific service.
-- `make prune`: Stop, clean up, and remove unused containers and images.
-- `make logs SERVICE=<service>`: Show logs for a specific service.
-- `make ps`: List running containers.
 
 ### Getting Started with Create React App
 
