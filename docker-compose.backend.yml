@@ -1,0 +1,34 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+
+    container_name: backend
+
+    ports:
+      - "80:80"
+
+    env_file:
+      - ./backend/.env.${ENVIRONMENT}
+
+    volumes:
+      - ./backend:/app
+
+    command: npm run start:dev
+
+    networks:
+      - autosnl-network
+
+    restart: always
+
+    stop_grace_period: 30s
+
+    depends_on:
+      - mongo
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

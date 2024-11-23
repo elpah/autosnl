@@ -1,0 +1,12 @@
+services:
+  base:
+    image: busybox:latest
+    networks:
+      - autosnl-network
+
+networks:
+  autosnl-network:
+    driver: bridge
+
+volumes:
+  mongo_data: {}

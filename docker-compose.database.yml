@@ -1,0 +1,22 @@
+services:
+  mongo:
+    image: mongo:latest
+
+    container_name: mongo
+
+    ports:
+      - "27017:27017"
+
+    env_file:
+      - ./backend/.env.${ENVIRONMENT}
+
+    volumes:
+      - mongo_data:/data/db
+
+    networks:
+      - autosnl-network
+
+    restart: always
+
+volumes:
+  mongo_data: {}
