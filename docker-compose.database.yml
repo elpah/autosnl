@@ -8,6 +8,7 @@ services:
       - "27017:27017"
 
     env_file:
+      - ./.env
       - ./backend/.env.${ENVIRONMENT}
 
     volumes:

@@ -12,8 +12,9 @@
 - `docker volume ls`: To list all Docker volumes
 - `docker network ls`: To list all Docker networks
 - `docker logs <container_name_or_id>`: To view logs of a specific container
-- `docker exec -it <container_name_or_id> sh`: To access the shell of a running container, use
-- `docker exec -it <container_name_or_id> env`: To list all environment variables inside a running container, run
+- `docker exec -it <container_name_or_id> <cmd>`:
+  - `env`: To access the shell of a running container, use
+  - `http://<CONTAINER>:<PORT>/api/cars`
 
 ## Makefile Commands
 
