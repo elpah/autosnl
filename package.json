@@ -1,7 +1,7 @@
 {
   "name": "autosnl",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Docker Dependencies",
   "main": "index.js",
   "scripts": {
     "build-all:dev": "make build-all ENVIRONMENT=development",
@@ -14,7 +14,8 @@
     "rebuild:prod": "make rebuild ENVIRONMENT=production",
     "stop": "make stop",
     "up:dev": "make up ENVIRONMENT=development",
-    "up:prod": "make up ENVIRONMENT=production"
+    "up:prod": "make up ENVIRONMENT=production",
+    "playbook": "node node_modules/playbook_cli/index.js"
   },
   "repository": {
     "type": "git",
@@ -26,5 +27,9 @@
   "bugs": {
     "url": "https://github.com/elpah/autosnl/issues"
   },
-  "homepage": "https://github.com/elpah/autosnl#readme"
+  "homepage": "https://github.com/elpah/autosnl#readme",
+  "dependencies": {
+    "playbook_cli": "^1.0.7"
+  },
+  "devDependencies": {}
 }

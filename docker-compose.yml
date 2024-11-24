@@ -1,8 +1,15 @@
 services:
   base:
-    image: busybox:latest
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name:  base
     networks:
       - autosnl-network
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./:/app
 
 networks:
   autosnl-network:
