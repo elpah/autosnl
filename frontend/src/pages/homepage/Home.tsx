@@ -9,7 +9,6 @@ import iconNext from "../../assets/images/home_images/icon_next.png";
 import iconPrevious from "../../assets/images/home_images/icon_previous.png";
 import advert from "../../assets/images/home_images/advert.png";
 
-
 import popularNissan from "../../assets/images/popular_brands/popular_nissan.png";
 import qualityAssurance from "../../assets/images/why_card_images/quality_assurance.png";
 import matchRequirement from "../../assets/images/why_card_images/match_requirement.png";
@@ -18,7 +17,6 @@ import usefulSuggest from "../../assets/images/why_card_images/useful_suggest.pn
 import bestRate from "../../assets/images/why_card_images/best_rate.png";
 import greatOffers from "../../assets/images/why_card_images/great_offers.png";
 import { Delivery } from "../../components/delivery-section/Delivery";
-import { Footer } from "../../components/footer/Footer";
 
 export const Home = () => {
   const whys = [

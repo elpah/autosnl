@@ -27,6 +27,10 @@ export const HomeSection = ({title}:SectionHome) => {
             <CarCard/>
             <CarCard/>
             <CarCard/>
+         <CarCard/>
+            <CarCard/>
+            <CarCard/>
+         
         </div>
       </div>
     </section>

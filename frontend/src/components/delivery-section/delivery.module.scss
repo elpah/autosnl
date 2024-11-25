@@ -6,9 +6,11 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
   color: #fff;
-  padding: 5%;
+  padding: 5% 0;
   font-style: normal;
   .delivery_info_wrapper {
+    width: 90%;
+    margin: auto;
     .delivery_header {
       font-size: 16px;
       font-weight: 800;
@@ -62,7 +64,6 @@
   .delivery_container {
     background-size: cover;
     height: 250px;
-    padding: 6%;
     display: flex;
     justify-content: center;
     .delivery_info_wrapper {
@@ -95,9 +96,7 @@
   .delivery_container {
     background-image: url("../../assets/images/about_images/delivery_image.png");
     height: 300px;
-    // padding-left: 0;
     .delivery_info_wrapper {
-      width: 100%;
       max-width: 1700px;
       margin: auto;
       gap: 30px;

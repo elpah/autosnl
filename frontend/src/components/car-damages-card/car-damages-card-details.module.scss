@@ -14,19 +14,19 @@
     margin-bottom: 35px;
 
     .damage_image_container {
-      width: 50px;
-      height: 50px;
+      width: 70px;
+      height: 70px;
       object-fit: contain;
 
       .damage_img_icon {
-        width: 50px;
-        height: 50px;
+        width: 70px;
+        height: 70px;
       }
     }
 
     .damages_header {
       color: #4c4c4c;
-      font-size: 14px;
+      font-size: 18px;
       font-weight: 600;
     }
   }
@@ -37,13 +37,15 @@
       font-style: normal;
       font-weight: 400;
       line-height: normal;
-
+      padding-left: 40px;
       .list_item {
         .list_title {
-          font-size: 12px;
+          font-size: 15px;
+          margin-bottom: 10px;
         }
         .list_sub {
-          font-size: 10px;
+          font-size: 13px;
+          margin-bottom: 25px;
         }
       }
     }
@@ -79,11 +81,11 @@
       .list_container_ol {
         .list_item {
           .list_title {
-            font-size: 14px;
+            font-size: 16px;
           }
-          .list_sub {
-            font-size: 12px;
-          }
+          // .list_sub {
+          //   font-size: 13px;
+          // }
         }
       }
     }
@@ -114,14 +116,6 @@
 
     .damages_info {
       .list_container_ol {
-        .list_item {
-          .list_title {
-            font-size: 16px;
-          }
-          .list_sub {
-            font-size: 13px;
-          }
-        }
       }
     }
   }

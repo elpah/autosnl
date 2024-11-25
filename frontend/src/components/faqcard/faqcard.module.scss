@@ -6,28 +6,28 @@
   font-style: normal;
   .title_container {
     display: flex;
-    height: 44px;
+    height: 60px;
     align-items: center;
     gap: 29px;
     cursor: pointer;
 
     .blue_bar {
       width: 3px;
-      height: 22px;
+      height: 30px;
       background: $primary-color;
       flex-shrink: 0;
     }
 
     .title {
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 500;
       line-height: normal;
     }
   }
 
   .content_container {
-    font-size: 10px;
-    font-weight: 400;
+    font-size: 12px;
+    font-weight: 500;
     line-height: 20px;
     max-height: 0;
     overflow: hidden;
