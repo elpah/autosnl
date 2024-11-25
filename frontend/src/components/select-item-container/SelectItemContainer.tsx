@@ -24,7 +24,7 @@ export const SelectItemContainer = () => {
           <path
             d="M2.81592 7.1846L5.0005 5.00001L7.18508 7.1846M7.18508 2.81543L5.00008 5.00001L2.81592 2.81543"
             stroke="black"
-            stroke-width="0.5"
+            strokeWidth="0.5"
             strokeLinecap="round"
             strokeLinejoin="round"
           />

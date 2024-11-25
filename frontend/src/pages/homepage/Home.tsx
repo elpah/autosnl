@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent, useContext } from "react";
 import styles from "./home.module.scss";
 import { HomeSection } from "../../components/home-section/HomeSection";
 import { WhyCard } from "../../components/why-card/WhyCard";
@@ -18,7 +18,30 @@ import bestRate from "../../assets/images/why_card_images/best_rate.png";
 import greatOffers from "../../assets/images/why_card_images/great_offers.png";
 import { Delivery } from "../../components/delivery-section/Delivery";
 
+// context
+import { GlobalContext, type ICarData, type IGlobalContext } from '../../context/GlobalContext';
+
+
 export const Home = () => {
+  // const [carData, setCarData] = useState({
+  //   cartype: "used",
+  //   carBrand: "",
+  //   carModel: "",
+  //   carErd: "",
+  //   carFuel: "",
+  //   carTransmission: "",
+  //   carCountry: "",
+  // });
+  const globalContext = useContext<IGlobalContext>(GlobalContext);
+
+  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    globalContext.setCarData((prevData:ICarData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
   const whys = [
     {
       title: "Quality Assurance",
@@ -65,57 +88,129 @@ export const Home = () => {
           <form className={styles.form}>
             <div className={styles.form_header}>Find your right Car</div>
             <h1 className={styles.button_container}>
-              <button className={styles.used_button}>Used Cars</button>
-              <button className={styles.damaged_button}>Damaged Cars</button>
+              <button
+                type="button"
+                className={`${styles.button} ${
+                 globalContext.carData.cartype === "used" ? styles.selected_button : ""
+                }`}
+                onClick={() => {
+                  globalContext.setCarData((prevData) => ({
+                    ...prevData,
+                    cartype: "used",
+                  }));
+                }}
+              >
+                Used Cars
+              </button>
+              <button
+                type="button"
+                className={`${styles.button} ${
+                  globalContext.carData.cartype === "damaged" ? styles.selected_button : ""
+                }`}
+                onClick={() => {
+                  globalContext.setCarData((prevData) => ({
+                    ...prevData,
+                    cartype: "damaged",
+                  }));
+                }}
+              >
+                Damaged Cars
+              </button>
             </h1>
             <div className={styles.select_container}>
-              <select className={styles.select} >
+              <select
+                className={styles.select}
+                name="carBrand"
+                value={globalContext.carData.carBrand}
+                onChange={handleChange}
+              >
                 <option value="" disabled>
                   Brand
                 </option>
-                <option value="toyota">Toyota</option>
-                <option value="toyota">Toyota</option>
+                <option value="Toyota">Toyota</option>
+                <option value="Mercedes">Mercedes</option>
+                <option value="Kia">Kia</option>
+                <option value="Honda">Honda</option>
+                <option value="VolksWagen">VolksWagen</option>
               </select>
-              <select className={styles.select}>
+              <select
+                className={styles.select}
+                value={globalContext.carData.carModel}
+                name="carModel"
+                onChange={handleChange}
+              >
                 <option value="model" disabled>
                   Model
                 </option>
                 <option value="Camry">Camry</option>
-                <option value="Camry">Camry</option>
+                <option value="Rav4">Rav4</option>
+                <option value="CRV">CRV</option>
+                <option value="C-300">C-300</option>
+                <option value="CC">CC</option>
               </select>
-              <select className={styles.select}>
+              <select
+                className={styles.select}
+                name="carErd"
+                value={globalContext.carData.carErd}
+                onChange={handleChange}
+              >
                 <option value="" disabled>
                   ERD
                 </option>
-                <option value="erd">erd</option>
-                <option value="erd">erd</option>
+                <option value="2023-01-15">2023-01-15</option>
+                <option value="2023-02-16">2023-02-16</option>
+                <option value="2024-01-18">2024-01-18</option>
+                <option value="2019-03-12">2019-03-12</option>
+                <option value="2023-01-18">2023-01-18</option>
+                <option value="2023-01-18">2023-01-18</option>
               </select>
-              <select className={styles.select}>
+              <select
+                className={styles.select}
+                value={globalContext.carData.carFuel}
+                name="carFuel"
+                onChange={handleChange}
+              >
                 <option value="" disabled>
                   Fuel
                 </option>
-                <option value="petrol">Petrol</option>
-                <option value="diesel">Diesel</option>
+                <option value="Petrol">Petrol</option>
+                <option value="Diesel">Diesel</option>
               </select>
-              <select className={styles.select}>
+              <select
+                className={styles.select}
+                value={globalContext.carData.carTransmission}
+                onChange={handleChange}
+                name="carTransmission"
+              >
                 <option value="" disabled>
                   Transmission
                 </option>
-                <option value="manual">Manual</option>
-                <option value="auto">Automatic</option>
+                <option value="Manual">Manual</option>
+                <option value="Automatic">Automatic</option>
               </select>
-              <select className={styles.select}>
+              <select
+                className={styles.select}
+                value={globalContext.carData.carCountry}
+                name="carCountry"
+                onChange={handleChange}
+              >
                 <option value="" disabled>
                   Country
                 </option>
-                <option value="ghana">Ghana</option>
-                <option value="ghana">Ghana</option>
+                <option value="Ghana">Ghana</option>
+                <option value="Nigeria">Nigeria</option>
+                <option value="Senegal">Senegal</option>
               </select>
-
-
-              
             </div>
-            <button className={styles.submit_button}>Search</button>
+            <button
+              className={styles.submit_button}
+              onClick={(e: any) => {
+                e.preventDefault();
+                console.log(globalContext.carData);
+              }}
+            >
+              Search
+            </button>
             <div className={styles.advanced_search_container}>
               <div className={styles.advance_search_text}>Advanced search</div>
               <svg
@@ -163,10 +258,22 @@ export const Home = () => {
                   alt="previous icon"
                 />
               </div>
-              <img className={styles.opacity} src={coverSelected} alt="current cover" />
-              <img  className={styles.opacity} src={coverSelected} alt="current cover" />
+              <img
+                className={styles.opacity}
+                src={coverSelected}
+                alt="current cover"
+              />
+              <img
+                className={styles.opacity}
+                src={coverSelected}
+                alt="current cover"
+              />
               <img src={coverSelected} alt="current cover" />
-              <img className={styles.opacity}  src={coverSelected} alt="current cover" />
+              <img
+                className={styles.opacity}
+                src={coverSelected}
+                alt="current cover"
+              />
               {/* <img className={styles.opacity}  src={coverSelected} alt="current cover image" /> */}
               {/* <img className={styles.opacity}  src={coverSelected} alt="current cover image" /> */}
 
@@ -175,7 +282,11 @@ export const Home = () => {
               </div>
             </div>
             <div className={styles.advertisement_container}>
-              <img  className={styles.advert_image} src={advert} alt="advert placeholder" />
+              <img
+                className={styles.advert_image}
+                src={advert}
+                alt="advert placeholder"
+              />
             </div>
           </div>
         </div>
@@ -185,16 +296,15 @@ export const Home = () => {
         <HomeSection title="Trusted used cars by budget" />
         <div className={styles.popular_container}>
           <div className={styles.popular_header_container}>
-          <h3 className={styles.popular_header}>Popular Brands</h3>
-
+            <h3 className={styles.popular_header}>Popular Brands</h3>
           </div>
           <div className={styles.popular_images_cover_container}>
-          <div className={styles.popular_images_container}>
-            <img src={popularNissan} alt="Popular brands icon" />
-            <img src={popularNissan} alt="Popular brands icon" />
-            <img src={popularNissan} alt="Popular brands icon" />
-            <img src={popularNissan} alt="Popular brands icon" />
-          </div>
+            <div className={styles.popular_images_container}>
+              <img src={popularNissan} alt="Popular brands icon" />
+              <img src={popularNissan} alt="Popular brands icon" />
+              <img src={popularNissan} alt="Popular brands icon" />
+              <img src={popularNissan} alt="Popular brands icon" />
+            </div>
           </div>
         </div>
         <HomeSection title="Damaged Cars" />

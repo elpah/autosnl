@@ -36,30 +36,20 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            border: none;
             width: 48%;
             height: 50px;
             font-size: 0.9rem;
             font-weight: 500;
-          }
-
-          .used_button {
-            display: flex;
-            background: $primary-color;
-            color: #fff;
-            justify-content: center;
-            align-items: center;
-          }
-
-          .damaged_button {
-            color: #4c4c4c;
             font-style: normal;
+            color: #4c4c4c;
             background: #fff;
             line-height: normal;
             border: 0.7px solid #4c4c4c;
           }
-
           .selected_button {
+            color: #fff;
+            background: $primary-color;
+            border: 0.7px solid $primary-color;
           }
         }
 
@@ -245,26 +235,17 @@
             margin-bottom: 20px;
 
             button {
-              border: none;
               width: 48%;
               height: 37px;
-              font-size: 12px;
+              font-size: 13px;
               font-weight: 400;
-            }
-
-            .used_button {
-            }
-
-            .damaged_button {
-            }
-
-            .selected_button {
             }
           }
 
           .select_container {
             select {
               height: 40px;
+              font-size: 16px;
 
               &:focus {
                 outline: 1px solid #0096d6;

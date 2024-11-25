@@ -16,7 +16,7 @@ carRouter.post("/create-new-car", async (req, res) => {
 });
 
 carRouter.get("/cars", async (req, res) => {
-  const page = parseInt(req.query.page) || 1; // Default to page 1
+  const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 20;
   try {
     const cars = await getAllCars(page, limit);
