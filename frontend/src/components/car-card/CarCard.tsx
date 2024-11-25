@@ -9,7 +9,7 @@ export default function CarCard() {
   return (
     <div className={styles.car_card_container}>
       <div className={styles.car_image_container}>
-        <img className={styles.car_img} src={carimage} alt="car card photo" />
+        <img className={styles.car_img} src={carimage} alt="car" />
       </div>
       <div className={styles.car_body_container}>
         <div className={styles.card_header}>Mercedes-Benz C300</div>

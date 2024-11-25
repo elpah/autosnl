@@ -152,7 +152,7 @@ export const Home = () => {
               <img
                 className={styles.current_image}
                 src={homeCover}
-                alt="current cover image"
+                alt="current cover"
               />
             </div>
             <div className={styles.select_image_container}>
@@ -163,10 +163,10 @@ export const Home = () => {
                   alt="previous icon"
                 />
               </div>
-              <img className={styles.opacity} src={coverSelected} alt="current cover image" />
-              <img  className={styles.opacity} src={coverSelected} alt="current cover image" />
-              <img src={coverSelected} alt="current cover image" />
-              <img className={styles.opacity}  src={coverSelected} alt="current cover image" />
+              <img className={styles.opacity} src={coverSelected} alt="current cover" />
+              <img  className={styles.opacity} src={coverSelected} alt="current cover" />
+              <img src={coverSelected} alt="current cover" />
+              <img className={styles.opacity}  src={coverSelected} alt="current cover" />
               {/* <img className={styles.opacity}  src={coverSelected} alt="current cover image" /> */}
               {/* <img className={styles.opacity}  src={coverSelected} alt="current cover image" /> */}
 
@@ -175,7 +175,7 @@ export const Home = () => {
               </div>
             </div>
             <div className={styles.advertisement_container}>
-              <img  className={styles.advert_image} src={advert} alt="advert image placeholder" />
+              <img  className={styles.advert_image} src={advert} alt="advert placeholder" />
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 .container {
   display: none;
 }
-@media (min-width: 768px) {
+@media (min-width: 800px) {
   .container {
     min-height: 100vh;
     display: block;
@@ -13,7 +13,6 @@
       flex-direction: row;
       justify-content: space-between;
       .left {
-        // border: 1px solid black;
         width: 30%;
       }
       .right {
@@ -55,16 +54,7 @@
       .right {
         width: 66%;
         .header_search_container {
-          //   display: flex;
-          //   justify-content: space-between;
-          //   align-items: center;
-          //   margin-bottom: 30px;
           .header {
-            // color: #535353;
-            // font-size: 26px;
-            // font-style: normal;
-            // font-weight: 700;
-            // line-height: normal;
           }
           .search_container {
             // border: 0.5px solid #6a6a6a;

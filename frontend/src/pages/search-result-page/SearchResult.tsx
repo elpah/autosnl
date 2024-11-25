@@ -1,7 +1,6 @@
 import React from "react";
 
 import styles from "./search-result.module.scss";
-import CarCard from "../../components/car-card/CarCard";
 import { CarCardContainer2 } from "../../components/car-card-container2/CarCardContainer";
 import { Delivery } from "../../components/delivery-section/Delivery";
 

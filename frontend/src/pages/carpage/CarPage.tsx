@@ -3,8 +3,6 @@ import { CarPageMobile } from "./carpage-mobile/CarPageMobile";
 
 import styles from "./car_page.module.scss";
 import { CarPageDesktop } from "./carpage-desktop/CarPageDesktop";
-import { Footer } from "../../components/footer/Footer";
-import DealerPage from "../dealerpage/DealerPage";
 const CarPage = () => {
   return (
     <div className={styles.car_page_container}>

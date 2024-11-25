@@ -1,6 +1,5 @@
 import React from "react";
 
-import whyImg from "../../assets/images/why_card_images/best_rate.png";
 import styles from "./whycard.module.scss";
 type Why = {
     image:string;

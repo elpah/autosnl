@@ -45,21 +45,22 @@
   }
 }
 
-@media (min-width: 500px) {
+@media (min-width: 570px) {
   .car_card_container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 800px) {
   .car_card_container {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    // grid-template-columns: repeat(auto-fill, 200px);
+    // gap: 60px;
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1250px) {
   .car_card_container {
-    gap: 25px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
   }
 }

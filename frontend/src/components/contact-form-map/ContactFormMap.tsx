@@ -12,6 +12,8 @@ export const ContactFormMap = () => {
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
+          title="Google Map of Stationsstraat 71, 1506 DE Zaandam"
+
         />
       </div>
       <div className={styles.contact_form_container}>
@@ -48,30 +50,10 @@ export const ContactFormMap = () => {
             <input type="text" placeholder="Email Address" />
           </div>
           <div className={styles.input_number_container}>
-            {/* <select className={styles.country_select} id="country-select">
-              <option value="" disabled selected>
-                Country Code
-              </option>
-              <option className={styles.option_item} value="us">
-                US (+1)
-              </option>
-              <option className={styles.option_item} value="ca">
-                CA (+1)
-              </option>
-              <option className={styles.option_item} value="gb">
-                UK (+44)
-              </option>
-              <option className={styles.option_item} value="au">
-                AU (+61)
-              </option>
-              <option className={styles.option_item} value="in">
-                IN (+91)
-              </option>
-            </select> */}
             <select className={styles.country_select} id="country-select">
-              {/* <option value="" disabled selected>
+              <option value="" disabled>
                 Country Code
-              </option> */}
+              </option>
               <option className={styles.option_item} value="us">
                 US (+1)
               </option>

@@ -1,7 +1,5 @@
 import React from "react";
-import { FilterItem } from "../../../components/filter-item-card/FilterItem";
 import styles from "./dealer-page-mobile.module.scss";
-import { SelectItemContainer } from "../../../components/select-item-container/SelectItemContainer";
 import { CarCardContainer } from "../../../components/car-card-container/CarCardContainer";
 import { ContactFormMap } from "../../../components/contact-form-map/ContactFormMap";
 import { DealerInfo } from "../../../components/dealer-infomation/DealerInfo";

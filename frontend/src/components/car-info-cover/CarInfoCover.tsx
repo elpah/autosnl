@@ -11,7 +11,7 @@ const CarInfoCover = () => {
           <img
             className={styles.car_image}
             src={CurrentCoverImage}
-            alt="Car Current Image"
+            alt="Current car"
           />
         </div>
         <div
