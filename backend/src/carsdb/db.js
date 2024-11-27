@@ -10,36 +10,15 @@ const connectToDatabase = async () => {
   return db;
 };
 const createNewCar = async (carData) => {
-  const newCar = {
-    carId: uuidv4(),
-    carBrand: carData.carBrand,
-    carModel: carData.carModel,
-    carImages: carData.carImages,
-    carMilleage: carData.carMilleage,
-    carFuel: carData.carFuel,
-    carTransition: carData.carTransition,
-    carPower: carData.carPower,
-    carEngineCapacity: carData.carEngineCapacity,
-    carERD: carData.carERD,
-    carMODTill: carData.carMODTill,
-    carSalesPrice: carData.carSalesPrice,
-    carNetPrice: carData.carNetPrice,
-    carVat: carData.carVat,
-    carColor: carData.carColor,
-    carVanish: carData.carVanish,
-    carGrossExportPrice: carData.carGrossExportPrice,
-    carBody: carData.carBody,
-    carNumberOfDoors: carData.carNumberOfDoors,
-    carDamages: carData.carDamages,
-    carDamageDetails: carData.carDamageDetails,
-    carDetails: carData.carDetails,
-    carOptions: carData.carOptions,
-    delearDetails: carData.delearDetails,
-  };
-  const db = await connectToDatabase();
-  const col = db.collection("cars");
-  await col.insertOne(newCar);
-  return newCar;
+  try {
+    const newCar = { carId: uuidv4(), ...carData };
+    const db = await connectToDatabase();
+    const col = db.collection("cars");
+    await col.insertOne(newCar);
+    return newCar;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const getAllCars = async (page = 1, limit = 20) => {
