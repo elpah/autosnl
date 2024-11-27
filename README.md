@@ -1,10 +1,13 @@
 # Getting Started with the app
 
+## System Requirement
+docker, docker-compose, make
+
 ## Docker Dependencies
 
-- Create .env.production and .env.development in both backend and frontend folder
-- Install docker and docker-compose
-- Install make
+- In the root of the project create a .env, .env.development, .env.production. Follow the env.example
+- Also, create .env.production and .env.development in backend and frontend folder and follow the env.example
+- Run `make build-all <ENVIRONMENT=production or ENVIRONMENT=development>` to start docker. in the root of the directory
 
 ## Docker Commands
 
@@ -15,6 +18,9 @@
 - `docker exec -it <container_name_or_id> <cmd>`:
   - `env`: To access the shell of a running container, use
   - `http://<CONTAINER>:<PORT>/api/cars`
+- `docker stop $(docker ps -q)`: stop all running containers
+- `docker rm $(docker ps -a -q)`: remove all containers
+- `docker rmi $(docker images -q) -f`: remove all images
 
 ## Makefile Commands
 

@@ -3,7 +3,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    container_name:  base
+    container_name:  base_os
     networks:
       - autosnl-network
     stdin_open: true
