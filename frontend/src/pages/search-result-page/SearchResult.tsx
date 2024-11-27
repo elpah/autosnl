@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 
 import styles from "./search-result.module.scss";
 import { CarCardContainer2 } from "../../components/car-card-container2/CarCardContainer";
 import { Delivery } from "../../components/delivery-section/Delivery";
 
+import { GlobalContext, type ICarData, type IGlobalContext } from '../../context/GlobalContext';
+
 const SearchResult = () => {
+const globalContext = useContext<IGlobalContext>(GlobalContext);
+
+  useEffect(()=>{
+    console.log(globalContext.carData);
+  },[])
   return (
     <div className={styles.container_wrapper}>
     <div className={styles.container}>

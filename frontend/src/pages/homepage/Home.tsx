@@ -18,21 +18,12 @@ import bestRate from "../../assets/images/why_card_images/best_rate.png";
 import greatOffers from "../../assets/images/why_card_images/great_offers.png";
 import { Delivery } from "../../components/delivery-section/Delivery";
 
-// context
 import { GlobalContext, type ICarData, type IGlobalContext } from '../../context/GlobalContext';
-
+import { Navigate, useNavigate } from "react-router-dom";
 
 export const Home = () => {
-  // const [carData, setCarData] = useState({
-  //   cartype: "used",
-  //   carBrand: "",
-  //   carModel: "",
-  //   carErd: "",
-  //   carFuel: "",
-  //   carTransmission: "",
-  //   carCountry: "",
-  // });
-  const globalContext = useContext<IGlobalContext>(GlobalContext);
+  const navigate = useNavigate()
+;  const globalContext = useContext<IGlobalContext>(GlobalContext);
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -206,7 +197,7 @@ export const Home = () => {
               className={styles.submit_button}
               onClick={(e: any) => {
                 e.preventDefault();
-                console.log(globalContext.carData);
+                navigate("/search-result")
               }}
             >
               Search
