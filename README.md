@@ -36,23 +36,23 @@ docker, docker-compose, make
 
 ### GIT
 
-main
-│
-├── dev
-│   ├── feature/
-│   │   ├── feature/add-user-authentication
-│   │   ├── feature/user-profile
-│   │   └── feature/payment-integration
-│   │
-│   ├── bugfix/
-│   │   ├── bugfix/login-issue
-│   │   └── bugfix/payment-error
-│   │
-│   └── release/
-│       └── release/v1.0.0 dev
-│
-└── hotfix/
-    └── hotfix/reset-password-fix
+main  
+│  
+├── dev  
+│   ├── feature/  
+│   │   ├── feature/add-user-authentication  
+│   │   ├── feature/user-profile  
+│   │   └── feature/payment-integration  
+│   │  
+│   ├── bugfix/  
+│   │   ├── bugfix/login-issue  
+│   │   └── bugfix/payment-error  
+│   │  
+│   └── release/  
+│       └── release/v1.0.0 dev  
+│  
+└── hotfix/  
+    └── hotfix/reset-password-fix  
 
 1. master: The root branch.
     - hotfix/: A separate branch for urgent fixes that need immediate attention in production, created directly from master.
