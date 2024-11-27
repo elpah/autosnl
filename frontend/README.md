@@ -44,30 +44,3 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-### GIT
-
-main
-│
-├── dev
-│   ├── feature/
-│   │   ├── feature/add-user-authentication
-│   │   ├── feature/user-profile
-│   │   └── feature/payment-integration
-│   │
-│   ├── bugfix/
-│   │   ├── bugfix/login-issue
-│   │   └── bugfix/payment-error
-│   │
-│   └── release/
-│       └── release/v1.0.0 dev
-│
-└── hotfix/
-    └── hotfix/reset-password-fix
-
-1. master: The root branch.
-    - hotfix/: A separate branch for urgent fixes that need immediate attention in production, created directly from master.
-2. dev: The integration branch for ongoing development, where features and bug fixes are merged.
-    - feature/: Contains all feature branches. Each feature branch should be named descriptively to indicate its purpose.
-    - bugfix/: Contains branches for bug fixes.
-    - release/: Contains release branches for preparing new versions for deployment.

@@ -1,0 +1,21 @@
+services:
+  base:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name:  base_os
+    networks:
+      - autosnl-network
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./:/app
+    env_file:
+      - ./.env
+
+networks:
+  autosnl-network:
+    driver: bridge
+
+volumes:
+  mongo_data: {}
