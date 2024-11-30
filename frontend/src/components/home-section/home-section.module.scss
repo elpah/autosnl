@@ -3,8 +3,6 @@
   background: #f3fbfe;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  // padding-right: 20rem;
-  // margin-right: 20rem;
   margin-bottom: 30px;
   width: 100%;
 
@@ -45,7 +43,10 @@
         flex-shrink: 0;
         padding: 0 0 10px 0;
         cursor: pointer;
-        border-bottom: 5px solid $primary-color;
+        &.selected {
+          color: red;
+          border-bottom: 5px solid $primary-color;
+        }
       }
     }
 

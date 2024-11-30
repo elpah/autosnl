@@ -65,7 +65,6 @@ const globalContext = useContext<IGlobalContext>(GlobalContext);
       <CarCardContainer2/>
     </div>
     <Delivery/>
-s
     </div>
   );
 };

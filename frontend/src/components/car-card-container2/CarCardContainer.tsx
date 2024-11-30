@@ -27,8 +27,8 @@ export const CarCardContainer2 = () => {
           <svg
           className={styles.next_icon}
             xmlns="http://www.w3.org/2000/svg"
-            width="10"
-            height="10"
+            width="50"
+            height="50"
             viewBox="0 0 10 10"
             fill="none"
           >

@@ -2,7 +2,7 @@
 
 .car_card_container {
   display: grid;
-  gap: 15px;
+  gap: 35px;
   margin-bottom: 30px;
 }
 .next_cars_container {
@@ -10,9 +10,9 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 25px;
   .car_page_number {
-    font-size: 12px;
+    font-size: 18px;
     color: #4c4c4c;
     font-weight: 500;
   }
@@ -20,8 +20,8 @@
     background-color: $primary-color;
     border-radius: 50px;
     color: #fff;
-    width: 25px;
-    height: 25px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -33,14 +33,14 @@
     justify-content: center;
     border-radius: 50%;
 
-    width: 25px;
-    height: 25px;
+    width: 40px;
+    height: 40px;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
     .next_icon {
-      width: 15px;
-      height: 15px;
+      width: 20px;
+      height: 20px;
     }
   }
 }

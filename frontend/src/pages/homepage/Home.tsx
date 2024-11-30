@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useContext, useState } from "react";
+import React, { ChangeEvent, useContext, useEffect, useState } from "react";
 import styles from "./home.module.scss";
 import { HomeSection } from "../../components/home-section/HomeSection";
 import { WhyCard } from "../../components/why-card/WhyCard";
@@ -29,6 +29,14 @@ export const Home = () => {
   const navigate = useNavigate();
   const globalContext = useContext<IGlobalContext>(GlobalContext);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [recommendedVehicleType, setRecommendedVehicleType] = useState("")
+  const [trustedUsedCars, setTrustedUsedCars] = useState("")
+  const [damagedCars, setDamagedCars] = useState("")
+
+
+  useEffect(()=>console.log(recommendedVehicleType), [recommendedVehicleType])
+
+ 
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -302,6 +310,7 @@ export const Home = () => {
 
               {coverImages.map((image, index) => (
                 <img
+                key={index}
                   onClick={() => setCurrentIndex(index)}
                   className={
                     index === currentIndex
@@ -330,8 +339,8 @@ export const Home = () => {
         </div>
       </div>
       <div className={styles.sections}>
-        <HomeSection title="Recommended cars for you" />
-        <HomeSection title="Trusted used cars by budget" />
+        <HomeSection       selectedVehicleType={recommendedVehicleType}  setSelectedVehicleType={setRecommendedVehicleType} title="Recommended cars for you" />
+        <HomeSection selectedVehicleType={trustedUsedCars} setSelectedVehicleType ={setTrustedUsedCars} title="Trusted used cars by budget" />
         <div className={styles.popular_container}>
           <div className={styles.popular_header_container}>
             <h3 className={styles.popular_header}>Popular Brands</h3>
@@ -342,18 +351,11 @@ export const Home = () => {
                 {popularBrandImages.map((image, index) => (
                   <img key={index} src={image} alt="popular brands icons" />
                 ))}
-                {/* {popularBrandImages.map((image, index) => (
-                  <img
-                    key={`${index}-duplicate`}
-                    src={image}
-                    alt="popular brands icons duplicate"
-                  />
-                ))} */}
               </div>
             </div>
           </div>
         </div>
-        <HomeSection title="Damaged Cars" />
+        <HomeSection selectedVehicleType={damagedCars} setSelectedVehicleType={setDamagedCars} title="Damaged Cars" />
       </div>
       <section className={styles.why_section}>
         <h3 className={styles.why_header}>Why ZaurAutos</h3>
