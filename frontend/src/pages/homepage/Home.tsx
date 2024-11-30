@@ -23,7 +23,7 @@ import {
   type ICarData,
   type IGlobalContext,
 } from "../../context/GlobalContext";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -42,15 +42,28 @@ export const Home = () => {
     let newIndex = currentIndex + direction;
 
     if (newIndex < 0) {
-      newIndex = images.length - 1;
-    } else if (newIndex >= images.length) {
+      newIndex = coverImages.length - 1;
+    } else if (newIndex >= coverImages.length) {
       newIndex = 0;
     }
 
     setCurrentIndex(newIndex);
   };
 
-  const images = [homeCover, homeCover,homeCover , homeCover];
+  const coverImages = [homeCover, homeCover, homeCover, homeCover];
+  const popularBrandImages = [
+    popularNissan,
+    popularNissan,
+    popularNissan,
+    popularNissan,
+    popularNissan,
+    popularNissan,
+    popularNissan,
+    popularNissan,
+    popularNissan,
+    popularNissan,
+    popularNissan,
+  ];
   const whys = [
     {
       title: "Quality Assurance",
@@ -257,24 +270,24 @@ export const Home = () => {
           </div>
           <div className={styles.cover_image_container}>
             <div className={styles.sub_image_container}>
-            <div
-              className={styles.image_container}
-              style={{
-                transform: `translateX(-${currentIndex * 100}%)`, 
-                transition: 'transform 0.5s ease-in-out', 
-              }}
-            >
-              {images.map((image, index) => (
-                <img
-                  key={index}
-                  className={styles.current_image}
-                  src={image}
-                  alt={`Cover ${index + 1}`}
-                />
-              ))}
+              <div
+                className={styles.image_container}
+                style={{
+                  transform: `translateX(-${currentIndex * 100}%)`,
+                  transition: "transform 0.5s ease-in-out",
+                }}
+              >
+                {coverImages.map((image, index) => (
+                  <img
+                    key={index}
+                    className={styles.current_image}
+                    src={image}
+                    alt={`Cover ${index + 1}`}
+                  />
+                ))}
+              </div>
             </div>
-            </div>
-          
+
             <div className={styles.select_image_container}>
               <div
                 className={styles.icon_container}
@@ -286,21 +299,19 @@ export const Home = () => {
                   alt="previous icon"
                 />
               </div>
-             
-                  {images.map((image, index) => (
-                    <img
-                    onClick={()=>setCurrentIndex(index)}
-                      className={
-                        index === currentIndex
-                          ? styles.currentCover
-                          : styles.opacity
-                      }
-                      src={image}
-                      alt={`Thumbnail ${index + 1}`}
-                    />
-                  ))}
-                {/* </div>
-              </div> */}
+
+              {coverImages.map((image, index) => (
+                <img
+                  onClick={() => setCurrentIndex(index)}
+                  className={
+                    index === currentIndex
+                      ? styles.currentCover
+                      : styles.opacity
+                  }
+                  src={image}
+                  alt={`Thumbnail ${index + 1}`}
+                />
+              ))}
               <div
                 className={styles.icon_container}
                 onClick={() => moveSlide(1)}
@@ -327,10 +338,18 @@ export const Home = () => {
           </div>
           <div className={styles.popular_images_cover_container}>
             <div className={styles.popular_images_container}>
-              <img src={popularNissan} alt="Popular brands icon" />
-              <img src={popularNissan} alt="Popular brands icon" />
-              <img src={popularNissan} alt="Popular brands icon" />
-              <img src={popularNissan} alt="Popular brands icon" />
+              <div className={styles.slider}>
+                {popularBrandImages.map((image, index) => (
+                  <img key={index} src={image} alt="popular brands icons" />
+                ))}
+                {/* {popularBrandImages.map((image, index) => (
+                  <img
+                    key={`${index}-duplicate`}
+                    src={image}
+                    alt="popular brands icons duplicate"
+                  />
+                ))} */}
+              </div>
             </div>
           </div>
         </div>
