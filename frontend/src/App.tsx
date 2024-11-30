@@ -1,6 +1,5 @@
 import React, { Suspense, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-// import { GlobalContext, type IPortfolio } from 'c';
 import { GlobalContext } from "./context/GlobalContext";
 
 import "./App.css";

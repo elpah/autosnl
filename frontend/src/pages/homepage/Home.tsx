@@ -1,10 +1,10 @@
-import React, { ChangeEvent, useContext } from "react";
+import React, { ChangeEvent, useContext, useState } from "react";
 import styles from "./home.module.scss";
 import { HomeSection } from "../../components/home-section/HomeSection";
 import { WhyCard } from "../../components/why-card/WhyCard";
 
 import homeCover from "../../assets/images/cover_images/home_cover.png";
-import coverSelected from "../../assets/images/home_images/current_selection_placeholder.png";
+// import coverSelected from "../../assets/images/home_images/current_selection_placeholder.png";
 import iconNext from "../../assets/images/home_images/icon_next.png";
 import iconPrevious from "../../assets/images/home_images/icon_previous.png";
 import advert from "../../assets/images/home_images/advert.png";
@@ -18,21 +18,39 @@ import bestRate from "../../assets/images/why_card_images/best_rate.png";
 import greatOffers from "../../assets/images/why_card_images/great_offers.png";
 import { Delivery } from "../../components/delivery-section/Delivery";
 
-import { GlobalContext, type ICarData, type IGlobalContext } from '../../context/GlobalContext';
-import { Navigate, useNavigate } from "react-router-dom";
+import {
+  GlobalContext,
+  type ICarData,
+  type IGlobalContext,
+} from "../../context/GlobalContext";
+import {useNavigate } from "react-router-dom";
 
 export const Home = () => {
-  const navigate = useNavigate()
-;  const globalContext = useContext<IGlobalContext>(GlobalContext);
+  const navigate = useNavigate();
+  const globalContext = useContext<IGlobalContext>(GlobalContext);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
-    globalContext.setCarData((prevData:ICarData) => ({
+    globalContext.setCarData((prevData: ICarData) => ({
       ...prevData,
       [name]: value,
     }));
   };
 
+  const moveSlide = (direction: number) => {
+    let newIndex = currentIndex + direction;
+
+    if (newIndex < 0) {
+      newIndex = images.length - 1;
+    } else if (newIndex >= images.length) {
+      newIndex = 0;
+    }
+
+    setCurrentIndex(newIndex);
+  };
+
+  const images = [homeCover, homeCover,homeCover , homeCover];
   const whys = [
     {
       title: "Quality Assurance",
@@ -82,7 +100,9 @@ export const Home = () => {
               <button
                 type="button"
                 className={`${styles.button} ${
-                 globalContext.carData.cartype === "used" ? styles.selected_button : ""
+                  globalContext.carData.cartype === "used"
+                    ? styles.selected_button
+                    : ""
                 }`}
                 onClick={() => {
                   globalContext.setCarData((prevData) => ({
@@ -96,7 +116,9 @@ export const Home = () => {
               <button
                 type="button"
                 className={`${styles.button} ${
-                  globalContext.carData.cartype === "damaged" ? styles.selected_button : ""
+                  globalContext.carData.cartype === "damaged"
+                    ? styles.selected_button
+                    : ""
                 }`}
                 onClick={() => {
                   globalContext.setCarData((prevData) => ({
@@ -197,7 +219,7 @@ export const Home = () => {
               className={styles.submit_button}
               onClick={(e: any) => {
                 e.preventDefault();
-                navigate("/search-result")
+                navigate("/search-result");
               }}
             >
               Search
@@ -234,41 +256,55 @@ export const Home = () => {
             </p>
           </div>
           <div className={styles.cover_image_container}>
-            <div className={styles.image_container}>
-              <img
-                className={styles.current_image}
-                src={homeCover}
-                alt="current cover"
-              />
+            <div className={styles.sub_image_container}>
+            <div
+              className={styles.image_container}
+              style={{
+                transform: `translateX(-${currentIndex * 100}%)`, 
+                transition: 'transform 0.5s ease-in-out', 
+              }}
+            >
+              {images.map((image, index) => (
+                <img
+                  key={index}
+                  className={styles.current_image}
+                  src={image}
+                  alt={`Cover ${index + 1}`}
+                />
+              ))}
             </div>
+            </div>
+          
             <div className={styles.select_image_container}>
-              <div className={styles.icon_container}>
+              <div
+                className={styles.icon_container}
+                onClick={() => moveSlide(-1)}
+              >
                 <img
                   className={styles.icon}
                   src={iconPrevious}
                   alt="previous icon"
                 />
               </div>
-              <img
-                className={styles.opacity}
-                src={coverSelected}
-                alt="current cover"
-              />
-              <img
-                className={styles.opacity}
-                src={coverSelected}
-                alt="current cover"
-              />
-              <img src={coverSelected} alt="current cover" />
-              <img
-                className={styles.opacity}
-                src={coverSelected}
-                alt="current cover"
-              />
-              {/* <img className={styles.opacity}  src={coverSelected} alt="current cover image" /> */}
-              {/* <img className={styles.opacity}  src={coverSelected} alt="current cover image" /> */}
-
-              <div className={styles.icon_container}>
+             
+                  {images.map((image, index) => (
+                    <img
+                    onClick={()=>setCurrentIndex(index)}
+                      className={
+                        index === currentIndex
+                          ? styles.currentCover
+                          : styles.opacity
+                      }
+                      src={image}
+                      alt={`Thumbnail ${index + 1}`}
+                    />
+                  ))}
+                {/* </div>
+              </div> */}
+              <div
+                className={styles.icon_container}
+                onClick={() => moveSlide(1)}
+              >
                 <img className={styles.icon} src={iconNext} alt="next icon" />
               </div>
             </div>
