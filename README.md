@@ -35,6 +35,7 @@ docker, docker-compose, make
 - `make build SERVICE=<service> ENVIRONMENT=<env>`: Build and start a specific service.
 
 ### GIT
+```
 main
 │
 ├── dev
@@ -52,9 +53,7 @@ main
 │
 └── hotfix
     └── hotfix/reset-password-fix
-
-
-
+```
 
 1. master: The root branch.
     - hotfix/: A separate branch for urgent fixes that need immediate attention in production, created directly from master.
