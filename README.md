@@ -39,18 +39,18 @@ docker, docker-compose, make
 main
 │  
 |── dev  
-│   |── feature/  
-│   │   |── feature/add-user-authentication  
-│   │   |── feature/user-profile  
-│   │   └── feature/payment-integration  
-│   │  
-│   |── bugfix/  
-│   │   |── bugfix/login-issue  
-│   │   └── bugfix/payment-error  
-│   │  
-│   └── release/  
+│    |── feature/  
+│    │   |── feature/add-user-authentication  
+│    │   |── feature/user-profile  
+│    │   └── feature/payment-integration  
+│    │  
+│    |── bugfix/  
+│    │   |── bugfix/login-issue  
+│    │   └── bugfix/payment-error  
+│    │  
+│    └── release/  
 │       └── release/v1.0.0 dev  
-│  
+│                  
 └── hotfix/  
     └── hotfix/reset-password-fix  
 
