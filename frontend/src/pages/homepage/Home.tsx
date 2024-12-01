@@ -253,21 +253,6 @@ export const Home = () => {
             >
               <div className={styles.advance_search_text}>Advanced search</div>
               <FaArrowRight className={styles.advance_search_icon} />
-              {/* <svg
-                className={styles.advance_search_icon}
-                width="15"
-                height="15"
-                viewBox="0 0 15 15"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M14.207 7.5L9.85403 11.854L9.14603 11.147L12.293 8L1.00003 8V7L12.293 7L9.14603 3.854L9.85403 3.146L14.207 7.5Z"
-                  fill="#4C4C4C"
-                />
-              </svg> */}
             </div>
           </form>
         </div>
