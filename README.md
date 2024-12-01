@@ -36,7 +36,7 @@ docker, docker-compose, make
 
 ### GIT
 
-main
+main  
 │  
 |── dev  
 │    |── feature/  
