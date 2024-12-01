@@ -11,7 +11,7 @@ const globalContext = useContext<IGlobalContext>(GlobalContext);
 
   useEffect(()=>{
     console.log(globalContext.carData);
-  },[])
+  },[globalContext.carData])
   return (
     <div className={styles.container_wrapper}>
     <div className={styles.container}>

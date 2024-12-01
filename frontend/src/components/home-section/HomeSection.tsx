@@ -50,7 +50,10 @@ export const HomeSection = ({
             <div
               key={vehicle.value}
               onClick={() => setSelectedVehicleType(vehicle.value)}
-              className={`${styles.section_item} ${selectedVehicleType === vehicle.value ? styles.selected : ''}`}            >
+              className={`${styles.section_item} ${
+                selectedVehicleType === vehicle.value ? styles.selected : ""
+              }`}
+            >
               {vehicle.label}
             </div>
           ))}
