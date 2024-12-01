@@ -35,8 +35,8 @@ docker, docker-compose, make
 - `make build SERVICE=<service> ENVIRONMENT=<env>`: Build and start a specific service.
 
 ### GIT
-main
-│
+main        
+│        
 ├── dev
 │   ├── feature
 │   │   ├── feature/add-user-authentication
