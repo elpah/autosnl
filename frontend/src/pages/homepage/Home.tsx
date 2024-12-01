@@ -17,6 +17,7 @@ import usefulSuggest from "../../assets/images/why_card_images/useful_suggest.pn
 import bestRate from "../../assets/images/why_card_images/best_rate.png";
 import greatOffers from "../../assets/images/why_card_images/great_offers.png";
 import { Delivery } from "../../components/delivery-section/Delivery";
+import { FaArrowRight } from "react-icons/fa";
 
 import {
   GlobalContext,
@@ -29,7 +30,8 @@ export const Home = () => {
   const navigate = useNavigate();
   const globalContext = useContext<IGlobalContext>(GlobalContext);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [recommendedVehicleType, setRecommendedVehicleType] = useState("passenger");
+  const [recommendedVehicleType, setRecommendedVehicleType] =
+    useState("passenger");
   const [trustedUsedCars, setTrustedUsedCars] = useState("passenger");
   const [damagedCars, setDamagedCars] = useState("passenger");
 
@@ -245,9 +247,13 @@ export const Home = () => {
             >
               Search
             </button>
-            <div className={styles.advanced_search_container}>
+            <div
+              onClick={() => navigate("/advanced-search")}
+              className={styles.advanced_search_container}
+            >
               <div className={styles.advance_search_text}>Advanced search</div>
-              <svg
+              <FaArrowRight className={styles.advance_search_icon} />
+              {/* <svg
                 className={styles.advance_search_icon}
                 width="15"
                 height="15"
@@ -261,7 +267,7 @@ export const Home = () => {
                   d="M14.207 7.5L9.85403 11.854L9.14603 11.147L12.293 8L1.00003 8V7L12.293 7L9.14603 3.854L9.85403 3.146L14.207 7.5Z"
                   fill="#4C4C4C"
                 />
-              </svg>
+              </svg> */}
             </div>
           </form>
         </div>
@@ -344,7 +350,7 @@ export const Home = () => {
           setSelectedVehicleType={setRecommendedVehicleType}
           title="Recommended cars for you"
         />
-        
+
         <HomeSection
           selectedVehicleType={trustedUsedCars}
           setSelectedVehicleType={setTrustedUsedCars}

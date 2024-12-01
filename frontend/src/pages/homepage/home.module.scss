@@ -116,14 +116,13 @@ $image-width: 100%;
             font-weight: 400;
             font-size: 16px;
             line-height: normal;
-
-            &:hover {
-              color: #0096d6;
-            }
           }
 
           .advance_search_icon {
             cursor: pointer;
+          }
+          &:hover {
+            color: #0096d6;
           }
         }
       }
@@ -260,14 +259,6 @@ $image-width: 100%;
 
           .submit_button {
             height: 40px;
-          }
-
-          .advanced_search_container {
-            .advance_search_text {
-            }
-
-            .advance_search_icon {
-            }
           }
         }
       }
@@ -451,9 +442,6 @@ $image-width: 100%;
             .advance_search_text {
               font-size: 15px;
             }
-
-            .advance_search_icon {
-            }
           }
         }
       }
@@ -615,8 +603,8 @@ $image-width: 100%;
             }
 
             .advance_search_icon {
-              width: 18px;
-              height: 18px;
+              width: 15px;
+              height: 15px;
             }
           }
         }

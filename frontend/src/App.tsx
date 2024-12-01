@@ -14,6 +14,7 @@ const NotFound = React.lazy(() => import("./pages/notfound/NotFound"));
 const Navbar = React.lazy(() => import("./components/navbar/Navbar"));
 const CarPage = React.lazy(() => import("./pages/carpage/CarPage"));
 const DealerPage = React.lazy(() => import("./pages/dealerpage/DealerPage"));
+
 const SearchResult = React.lazy(
   () => import("./pages/search-result-page/SearchResult")
 );
