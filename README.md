@@ -35,23 +35,24 @@ docker, docker-compose, make
 - `make build SERVICE=<service> ENVIRONMENT=<env>`: Build and start a specific service.
 
 ### GIT
-  main/       
-  │        
-  ├── dev  
-  │   ├── feature  
-  │   │   ├── feature/add-user-authentication  
-  │   │   ├── feature/user-profile  
-  │   │   └── feature/payment-integration  
-  │   │
-  │   ├── bugfix
-  │   │   ├── bugfix/login-issue
-  │   │   └── bugfix/payment-error
-  │   │
-  │   └── release
-  │       └── release/v1.0.0-dev
-  │
-  └── hotfix
-      └── hotfix/reset-password-fix
+main
+│
+├── dev
+│   ├── feature
+│   │   ├── feature/add-user-authentication
+│   │   ├── feature/user-profile
+│   │   └── feature/payment-integration
+│   │
+│   ├── bugfix
+│   │   ├── bugfix/login-issue
+│   │   └── bugfix/payment-error
+│   │
+│   └── release
+│       └── release/v1.0.0-dev
+│
+└── hotfix
+    └── hotfix/reset-password-fix
+
 
 
 
