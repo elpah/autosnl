@@ -37,11 +37,11 @@ docker, docker-compose, make
 ### GIT
 main        
 │        
-├── dev
-│   ├── feature
-│   │   ├── feature/add-user-authentication
-│   │   ├── feature/user-profile
-│   │   └── feature/payment-integration
+├── dev  
+│   ├── feature  
+│   │   ├── feature/add-user-authentication  
+│   │   ├── feature/user-profile  
+│   │   └── feature/payment-integration  
 │   │
 │   ├── bugfix
 │   │   ├── bugfix/login-issue
