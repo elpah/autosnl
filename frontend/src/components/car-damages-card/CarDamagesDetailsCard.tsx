@@ -1,5 +1,5 @@
 import React from "react";
-import tempImg from "../../assets/images/car_info_card_images/temp_img.png"
+import {damages_details} from "../../assets/images/images"
 
 import styles from "./car-damages-card-details.module.scss"
 
@@ -13,7 +13,7 @@ export const CarDamagesDetailsCard = () => {
         <div className={styles.car_damages_container}>
             <div className={styles.header_img_container}>
                 <div className={styles.damage_image_container}>
-                    <img className={styles.damage_img_icon} src={tempImg} alt="icon" />
+                    <img className={styles.damage_img_icon} src={damages_details} alt="icon" />
                 </div>
                 <div className={styles.damages_header}>Damages Details</div>
             </div>

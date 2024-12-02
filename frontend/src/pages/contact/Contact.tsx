@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "./contact.module.scss";
-import emailIcon from "../../assets/images/contact-images/email.png";
-import locationIcon from "../../assets/images/contact-images/location.png";
-import phoneIcon from "../../assets/images/contact-images/phone.png";
+import {contact_cover,email_icon, phone_icon, location_icon} from "../../assets/images/images";
+
 
 import { ContactCard } from "../../components/contact-card/ContactCard";
 import { ContactFormMap } from "../../components/contact-form-map/ContactFormMap";
@@ -14,27 +13,29 @@ const Contact = () => {
       title: "Location",
       details: "Stationstraat 71, 1506 DE, Zaandam",
       link: "https://maps.app.goo.gl/HLYK4SUxGKNajLTXA",
-      image: `${locationIcon}`,
+      image: `${location_icon}`,
     },
     {
       id: 1,
       title: "Email",
       details: "info@zaurautos.nl",
       link: "mailto:info@zaurautos.nl",
-      image: `${emailIcon}`,
+      image: `${email_icon}`,
     },
     {
       id: 1,
       title: "Phone",
       details: "+31000000000",
       link: "tel:+31000000000",
-      image: `${phoneIcon}`,
+      image: `${phone_icon}`,
     },
   ];
 
   return (
     <div className={styles.contact_container}>
-      <div className={styles.contact_cover}>
+      <div className={styles.contact_cover}
+            style={{ backgroundImage: `url(${contact_cover})` }}
+>
         <h1 className={styles.header}>Contact Us</h1>
         <p className={styles.header_subtext}>Welcome to ZaurAutos</p>
       </div>

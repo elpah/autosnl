@@ -1,8 +1,8 @@
 import React from "react";
 import { CarPageMobile } from "./carpage-mobile/CarPageMobile";
+import { CarPageDesktop } from "./carpage-desktop/CarPageDesktop";
 
 import styles from "./car_page.module.scss";
-import { CarPageDesktop } from "./carpage-desktop/CarPageDesktop";
 const CarPage = () => {
   return (
     <div className={styles.car_page_container}>
@@ -56,10 +56,10 @@ const CarPage = () => {
           Mercedes C300
         </div>
       </div>
-      <CarPageMobile/>
+      <CarPageMobile />
       <CarPageDesktop />
     </div>
   );
 };
 
-export default CarPage
+export default CarPage;

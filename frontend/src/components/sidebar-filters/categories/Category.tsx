@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import plusIcon from "../../../assets/images/category_icons/plus_icon.png";
-import minusIcon from "../../../assets/images/category_icons/minus_icon.png";
+import {plus_icon,minus_icon} from "../../../assets/images/images"
 
 import styles from "./category.module.scss";
 import { CategoryCheckItem } from "../category-check-item/CategoryCheckItem";
@@ -19,7 +18,7 @@ export const Category = () => {
           <div className={styles.open_close_icon_container}>
             <img
               className={styles.open_close_icon}
-              src={isOpen ? minusIcon : plusIcon}
+              src={isOpen ? minus_icon : plus_icon}
               alt="open or close"
             />
           </div>

@@ -1,37 +1,58 @@
-import React from 'react'
+import React from "react";
 
-import fbIcon from "../../assets/images/socials_icons/facebook-icon.png";
-import igIcon from "../../assets/images/socials_icons/instagram-icon.png";
-import linkedinIcon from "../../assets/images/socials_icons/linkedin-icon.png";
+import {
+  email_icon,
+  phone_icon,
+  location_icon,
+  person_icon,
+  facebook,
+  instagram,
+  linkedin,
+} from "../../assets/images/images";
 
-import styles from "./dealer-info.module.scss"
-import { InfoCard } from './info-card/InfoCard'
+import { InfoCard } from "./info-card/InfoCard";
+
+import styles from "./dealer-info.module.scss";
 
 interface DealerInfoProps {
-  children?: React.ReactNode; 
+  children?: React.ReactNode;
 }
-export const DealerInfo = ({children}:DealerInfoProps) => {
+export const DealerInfo = ({ children }: DealerInfoProps) => {
+  
+const dealer_info = [
+  { value: "Elpah Autos", icon: `${person_icon}` },
+  { value: "Stationstraat XX, 14583, Zaandam", icon: `${location_icon}` },
+  { value: "+3100000000", icon: `${phone_icon}` },
+  { value: "email@email.com", icon: `${email_icon}` },
+];
   return (
     <>
-    <div className={styles.dealer_info_container}>
+      <div className={styles.dealer_info_container}>
         <div className={styles.dealer_info_header}>Dealer Details</div>
         <div className={styles.dealer_info_cards_container}>
-            <InfoCard/>
-            <InfoCard/>
-            <InfoCard/>
-            <InfoCard/>
+          {dealer_info.map((info, index) => (
+            <InfoCard key={index} value={info.value} icon={info.icon} />
+          ))}
         </div>
-    </div>
-    {children}
-   <div className={styles.socials_container}>
-        <img className={styles.social_icon} src={fbIcon} alt="facebook icon" />
-        <img className={styles.social_icon} src={igIcon} alt="instagram icon" />
+      </div>
+      {children}
+      <div className={styles.socials_container}>
         <img
           className={styles.social_icon}
-          src={linkedinIcon}
+          src={facebook}
+          alt="facebook icon"
+        />
+        <img
+          className={styles.social_icon}
+          src={instagram}
+          alt="instagram icon"
+        />
+        <img
+          className={styles.social_icon}
+          src={linkedin}
           alt="linkedin icon"
         />
       </div>
-   </>
-  )
-}
+    </>
+  );
+};

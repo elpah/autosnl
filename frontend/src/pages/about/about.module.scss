@@ -1,9 +1,8 @@
 .about_container {
   margin-top: 0;
-min-height: 100vh;
+  min-height: 100vh;
   .cover {
     color: #fff;
-    background-image: url("../../assets/images/cover_images/about_cover.png");
     height: 212px;
     background-size: cover;
     background-position: center;
@@ -22,7 +21,7 @@ min-height: 100vh;
     }
 
     .header_subtext {
-      margin-top:15px;
+      margin-top: 15px;
       font-size: 12px;
       font-weight: 500;
     }
@@ -30,7 +29,7 @@ min-height: 100vh;
 
   .body_container {
     margin: auto;
-    margin-top:50px;
+    margin-top: 50px;
     width: 90%;
 
     .body_part {
@@ -43,7 +42,7 @@ min-height: 100vh;
         font-size: 24px;
         font-weight: 700;
         line-height: normal;
-        margin-bottom:15px;
+        margin-bottom: 15px;
       }
 
       .body_part_text {
@@ -96,7 +95,6 @@ min-height: 100vh;
 
     .body_container {
       .body_part {
-
         .body_part_header {
           font-size: 26px;
         }
@@ -128,7 +126,6 @@ min-height: 100vh;
 
     .body_container {
       .body_part {
-
         .body_part_header {
           font-size: 26px;
         }
@@ -172,7 +169,7 @@ min-height: 100vh;
 
     .body_container {
       max-width: 1700px;
-      margin-top:80px;
+      margin-top: 80px;
       .body_part {
         margin-bottom: 51px;
 
@@ -206,11 +203,9 @@ min-height: 100vh;
   }
 }
 
-
 @media (min-width: 1200px) {
   .about_container {
     .body_container {
-
       .body_part {
         margin-bottom: 100px;
 

@@ -1,7 +1,6 @@
 import React from "react";
-import mile from "../../assets/images/car_details/miles.svg";
-import fuel from "../../assets/images/car_details/fuel.svg";
-import year from "../../assets/images/car_details/year.svg";
+import {mile, fuel, year} from "../../assets/images/images"
+
 import carimage from "../../assets/images/car_image_testing.png";
 
 import styles from "./car-card.module.scss";

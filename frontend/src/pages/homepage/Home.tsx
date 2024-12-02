@@ -10,12 +10,15 @@ import iconPrevious from "../../assets/images/home_images/icon_previous.png";
 import advert from "../../assets/images/home_images/advert.png";
 
 import popularNissan from "../../assets/images/popular_brands/popular_nissan.png";
-import qualityAssurance from "../../assets/images/why_card_images/quality_assurance.png";
-import matchRequirement from "../../assets/images/why_card_images/match_requirement.png";
-import varietyOptions from "../../assets/images/why_card_images/variety_options.png";
-import usefulSuggest from "../../assets/images/why_card_images/useful_suggest.png";
-import bestRate from "../../assets/images/why_card_images/best_rate.png";
-import greatOffers from "../../assets/images/why_card_images/great_offers.png";
+import {
+  quality_assurance,
+  useful_suggest,
+  best_rate,
+  variety_options,
+  great_offers,
+  match_requirement,
+} from "../../assets/images/images";
+
 import { Delivery } from "../../components/delivery-section/Delivery";
 import { FaArrowRight } from "react-icons/fa";
 
@@ -79,38 +82,38 @@ export const Home = () => {
       title: "Quality Assurance",
       paragraph:
         "Our cars undergo rigorous inspections and come with detailed history reports. Drive with confidence knowing your vehicle meets the highest safety and performance standards.",
-      image: `${qualityAssurance}`,
+      image: `${quality_assurance}`,
     },
     {
       title: "Match Requirement",
       paragraph:
         "Our diverse inventory includes something for everyone. Easily find the perfect vehicle by filtering by make, model, year, price, and more.",
-      image: `${matchRequirement}`,
+      image: `${match_requirement}`,
     },
     {
       title: "A variety of Options",
       paragraph:
         "Our extensive inventory includes a wide range of vehicles—from compact cars and sedans to SUVs and trucks. Find the perfect match for your needs and preferences with ease.",
-      image: `${varietyOptions}`,
+      image: `${variety_options}`,
     },
 
     {
       title: "Useful Suggestions",
       paragraph:
         "Our diverse inventory includes something for everyone. Easily find the perfect vehicle by filtering by make, model, year, price, and more.",
-      image: `${usefulSuggest}`,
+      image: `${useful_suggest}`,
     },
     {
       title: "Best rate in the Market",
       paragraph:
         "We offer competitive pricing with no hidden fees. Enjoy the best deals and flexible financing options to make your dream car affordable.",
-      image: `${bestRate}`,
+      image: `${best_rate}`,
     },
     {
       title: "Great Offers",
       paragraph:
         "Benefit from our exclusive deals and promotions. Stay updated with our latest offers to maximize your savings on your next car purchase.",
-      image: `${greatOffers}`,
+      image: `${great_offers}`,
     },
   ];
   return (

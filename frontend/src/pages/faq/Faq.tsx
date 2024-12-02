@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import faqicon from "../../assets/images/faq_images/faqicon.png";
+import { faq_cover,faq_icon } from "../../assets/images/images";
+import { Faqcard } from "../../components/faqcard/Faqcard";
 
 import styles from "./faq.module.scss";
-import { Faqcard } from "../../components/faqcard/Faqcard";
 
 type FaqObject = {
   id: number;
@@ -91,10 +91,12 @@ const Faq = () => {
 
   return (
     <div className={styles.faq_container}>
-      <div className={styles.cover}>
+      <div className={styles.cover}
+            style={{ backgroundImage: `url(${faq_cover})` }}
+>
         <div className={styles.header_container}>
           <div className={styles.header_image_container}>
-            <img className={styles.header_img} src={faqicon} alt="QA icon" />
+            <img className={styles.header_img} src={faq_icon} alt="QA icon" />
           </div>
           <h1 className={styles.header}>FAQ</h1>
         </div>
