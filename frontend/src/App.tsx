@@ -32,10 +32,29 @@ function App() {
     carTransmission: "",
     carCountry: "",
   });
+  const [advancedSearchFieldData, setAdvancedSearchFieldData] = useState({
+    brand: [] as string[],
+    budgetMin: 0,
+    budgetMax: 0,
+    vehicleType: [] as string[],
+    fuel: "petrol",
+    milleageMin: 0,
+    milleageMax: 0,
+    transmission: "automatic",
+    erd: "",
+    body: "sedan",
+  });
 
   return (
     <>
-      <GlobalContext.Provider value={{ carData, setCarData }}>
+      <GlobalContext.Provider
+        value={{
+          carData,
+          setCarData,
+          advancedSearchFieldData,
+          setAdvancedSearchFieldData,
+        }}
+      >
         <Suspense fallback={<div>Loading...</div>}>
           <Navbar />
           <div className="App">

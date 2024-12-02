@@ -12,9 +12,25 @@ export type ICarData = {
   carCountry: string;
 };
 
+export type IAdvancedSeachFieldData = {
+  brand: string[];
+  budgetMin: number;
+  budgetMax: number;
+  vehicleType: string[];
+  fuel: string;
+  milleageMin: number;
+  milleageMax: number;
+  transmission: string;
+  erd: string;
+  body: string;
+};
 export interface IGlobalContext {
   carData: ICarData;
-  setCarData: React.Dispatch<React.SetStateAction<ICarData>>; // Use React's type for setState
+  setCarData: React.Dispatch<React.SetStateAction<ICarData>>;
+  advancedSearchFieldData: IAdvancedSeachFieldData;
+  setAdvancedSearchFieldData: React.Dispatch<
+    React.SetStateAction<IAdvancedSeachFieldData>
+  >;
   //   withdrawInvestment: IWithdrawal;
   //   setWithdrawInvestment: (investment: IWithdrawal) => void;
   //   showShoppingCart: boolean;
@@ -32,33 +48,18 @@ export const GlobalContext = createContext<IGlobalContext>({
     carCountry: "",
   },
   setCarData: (carData) => {},
-  // setCarData: async((carData)) => {},
-  //   shoppingCartItems: [],
-  //   setShoppingCartItems: async (shoppingCartItems: ICartItem[]) => {},
-  //   withdrawInvestment: {
-  //     investment: undefined,
-  //     withdrawAmount: 0,
-  //   },
-  //   setWithdrawInvestment: async (investment: IWithdrawal) => {},
-  //   showShoppingCart: false,
-  //   setShowShoppingCart: async (show: boolean) => {},
-  //   showQuestionMarkPopup: false,
-  //   setShowQuestionMarkPopup: (show: boolean) => {},
-  //   showProfilePopup: false,
-  //   setShowProfilePopup: (show: boolean) => {},
-  //   showSelectProfilePopup: false,
-  //   setShowSelectProfilePopup: (show: boolean) => {},
-  //   showFundWalletPopup: false,
-  //   setShowFundWalletPopup: (show: boolean) => {},
-  //   showMoneriumNotAuthedPopup: false,
-  //   setShowMoneriumNotAuthedPopup: (show: boolean) => {},
-  //   showRetrieveFromWalletPopup: false,
-  //   setShowRetrieveFromWalletPopup: (show: boolean) => {},
-  //   showCurrencySwitchPopup: false,
-  //   setShowCurrencySwitchPopup: (show: boolean) => {},
-  //   showSelectLanguage: false,
-  //   setShowSelectLanguage: (show: boolean) => {},
-  //   showCheckout: false,
-  //   setShowCheckout: async (show: boolean) => {},
-  //   showWithdraw: false,
+
+  advancedSearchFieldData: {
+    brand: [],
+    budgetMin: 0,
+    budgetMax: 0,
+    vehicleType: [],
+    fuel: "petrol",
+    milleageMin: 0,
+    milleageMax: 0,
+    transmission: "automatic",
+    erd: "",
+    body: "sedan",
+  },
+  setAdvancedSearchFieldData: (advancedSearchFieldData) => {},
 });
