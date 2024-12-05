@@ -29,10 +29,6 @@ import vanish from "./car_details/car_page/vanish.svg";
 import vat from "./car_details/car_page/vat.svg";
 import weight from "./car_details/car_page/weight.svg";
 
-// category icons
-import minus_icon from "./category_icons/minus.svg";
-import plus_icon from "./category_icons/plus.svg";
-
 // contact icons
 
 import email_icon from "./contact-images/email_icon.svg";
@@ -93,8 +89,6 @@ export {
   vanish,
   vat,
   weight,
-  minus_icon,
-  plus_icon,
   email_icon,
   phone_icon,
   location_icon,

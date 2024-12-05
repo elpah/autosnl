@@ -9,7 +9,7 @@ const AdvancedSearch = () => {
     <div className={styles.container}>
       <AdvancedSearchMobile />
       <AdvancedSearchDesktop />
-        <Delivery />
+      <Delivery />
     </div>
   );
 };

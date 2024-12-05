@@ -1,20 +1,30 @@
 import React from "react";
 
-import styles from "./select-item-container.module.scss";
 import { Card } from "./card-items/Card";
+import styles from "./select-item-container.module.scss";
 
-export const SelectItemContainer = () => {
+type SelectItemContainerProps = {
+  title: string;
+  children: React.ReactNode;
+  handleCloseContainer: () => void;
+};
+export const SelectItemContainer = ({
+  title,
+  children,
+  handleCloseContainer,
+}: SelectItemContainerProps) => {
   return (
     <div className={styles.select_item_container}>
-      <div className={styles.card_header}>Fuel Type</div>
-      <div className={styles.card_container}>
-        <Card />
-        <Card />
-        <Card />
-      </div>
-      <div className={styles.close_icon_container}>
+      <div className={styles.card_header}>{title}</div>
+      <div className={styles.card_container}>{children}</div>
+      <div
+        className={styles.close_icon_container}
+        onClick={() => {
+          handleCloseContainer();
+        }}
+      >
         <svg
-        className={styles.close_icon}
+          className={styles.close_icon}
           xmlns="http://www.w3.org/2000/svg"
           width="10"
           height="10"

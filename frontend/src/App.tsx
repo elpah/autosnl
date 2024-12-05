@@ -1,6 +1,10 @@
 import React, { Suspense, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { GlobalContext } from "./context/GlobalContext";
+import {
+  GlobalContext,
+  ICarData,
+  IAdvancedSeachFieldData,
+} from "./context/GlobalContext";
 
 import "./App.css";
 
@@ -23,7 +27,7 @@ const AdvancedSearch = React.lazy(
 );
 
 function App() {
-  const [carData, setCarData] = useState({
+  const [carData, setCarData] = useState<ICarData>({
     cartype: "used",
     carBrand: "",
     carModel: "",
@@ -32,17 +36,26 @@ function App() {
     carTransmission: "",
     carCountry: "",
   });
-  const [advancedSearchFieldData, setAdvancedSearchFieldData] = useState({
-    brand: [] as string[],
-    budgetMin: 0,
-    budgetMax: 0,
-    vehicleType: [] as string[],
-    fuel: "petrol",
-    milleageMin: 0,
-    milleageMax: 0,
-    transmission: "automatic",
-    erd: "",
-    body: "sedan",
+  const [advancedSearchFieldData, setAdvancedSearchFieldData] =
+    useState<IAdvancedSeachFieldData>({
+      brand: [],
+      budgetMin: 0,
+      budgetMax: 0,
+      vehicleType: [],
+      fuel: [],
+      milleageMin: 0,
+      milleageMax: 0,
+      transmission: [],
+    });
+  const [categoryToFieldKeyMap, setCategoryToFieldKeyMap] = useState<
+    Record<string, keyof IAdvancedSeachFieldData | null>
+  >({
+    "Search By Brand": "brand",
+    "Search By Budget": null,
+    "Vehicle Type": "vehicleType",
+    Fuel: "fuel",
+    Milleage: null,
+    Transmission: "transmission",
   });
 
   return (
@@ -53,6 +66,8 @@ function App() {
           setCarData,
           advancedSearchFieldData,
           setAdvancedSearchFieldData,
+          categoryToFieldKeyMap,
+          setCategoryToFieldKeyMap,
         }}
       >
         <Suspense fallback={<div>Loading...</div>}>

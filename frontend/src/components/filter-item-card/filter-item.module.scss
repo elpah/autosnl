@@ -1,13 +1,19 @@
 .card_container {
   display: flex;
-  padding: 6px;
+  padding: 8px;
+  margin-bottom: 10px;
   justify-content: center;
   align-items: center;
-  gap: 10px;
   border: 0.5px solid #6a6a6a;
+  box-sizing: border-box;
+
+  &.selected {
+    border: 1.5px solid rgb(49, 49, 49);
+  }
+
   .card_name {
     color: #000;
-    font-size: 10px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -23,9 +29,5 @@
 @media (min-width: 500px) {
   .card_container {
     padding: 8px 6px;
-    border: 0.5px solid #6a6a6a;
-    .card_name {
-      font-size: 12px;
-    }
   }
 }

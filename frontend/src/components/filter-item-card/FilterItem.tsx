@@ -1,10 +1,17 @@
 import React from "react";
 
 import styles from "./filter-item.module.scss";
-export const FilterItem = () => {
+type FilterItemProp={
+  title:string;
+  selected: boolean; 
+  handleclick:()=>void;
+}
+export const FilterItem = ({title,selected,handleclick}:FilterItemProp) => {
   return (
-    <div className={styles.card_container}>
-      <div className={styles.card_name}> Vehicle Tyle</div>
+    <div
+    className={`${styles.card_container} ${selected ? styles.selected : ""}`}
+    onClick={handleclick}>
+      <div className={styles.card_name}>{title}</div>
       <svg
       className={styles.svg_icon}
         xmlns="http://www.w3.org/2000/svg"

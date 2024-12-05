@@ -4,7 +4,6 @@ import { HomeSection } from "../../components/home-section/HomeSection";
 import { WhyCard } from "../../components/why-card/WhyCard";
 
 import homeCover from "../../assets/images/cover_images/home_cover.png";
-// import coverSelected from "../../assets/images/home_images/current_selection_placeholder.png";
 import iconNext from "../../assets/images/home_images/icon_next.png";
 import iconPrevious from "../../assets/images/home_images/icon_previous.png";
 import advert from "../../assets/images/home_images/advert.png";
