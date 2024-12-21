@@ -252,7 +252,7 @@ export const Home = () => {
               onClick={() => navigate("/advanced-search")}
               className={styles.advanced_search_container}
             >
-              <div className={styles.advance_search_text}>Advanced search</div>
+              <p className={styles.advance_search_text}>Advanced search</p>
               <FaArrowRight className={styles.advance_search_icon} />
             </div>
           </form>
