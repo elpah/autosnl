@@ -68,17 +68,11 @@
 }
 @media (min-width: 400px) {
   .car_card_container {
-    // min-width: 250px;
-    // padding-bottom: 20px;
-    // height: auto;
-
     .car_image_container {
-      // min-width: 200px;
       height: auto;
       .car_img {
         width: 100%;
         height: 100%;
-        // object-fit: contain;
       }
     }
     .car_body_container {
@@ -90,7 +84,6 @@
         margin-bottom: 15px;
 
         .car_details {
-          // display: flex;
           .icon_container {
             .icon {
               width: 25px;
@@ -111,7 +104,6 @@
 }
 @media (min-width: 768px) {
   .car_card_container {
-    // min-width: 240px;
     height: fit-content;
     .car_image_container {
       width: 100%;
@@ -153,6 +145,9 @@
       .button {
         height: 40px;
         font-size: 14px;
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }
@@ -160,16 +155,13 @@
 
 @media (min-width: 1024px) {
   .car_card_container {
-    // min-width: 230px;
     .car_body_container {
       .card_header {
-        // font-size: 14px;
       }
       .car_details_container {
         .car_details {
           .icon_container {
             .icon {
-              // height: 20px;
             }
           }
           .text {

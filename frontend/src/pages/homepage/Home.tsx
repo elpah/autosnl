@@ -58,7 +58,6 @@ export const Home = () => {
     } else if (newIndex >= coverImages.length) {
       newIndex = 0;
     }
-
     setCurrentIndex(newIndex);
   };
 

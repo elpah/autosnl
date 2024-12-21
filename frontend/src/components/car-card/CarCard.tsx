@@ -4,9 +4,13 @@ import {mile, fuel, year} from "../../assets/images/images"
 import carimage from "../../assets/images/car_image_testing.png";
 
 import styles from "./car-card.module.scss";
+import { useNavigate } from "react-router-dom";
 export default function CarCard() {
+  const navigate = useNavigate();
   return (
-    <div className={styles.car_card_container}>
+    <div className={styles.car_card_container}
+   onClick={()=>navigate("/car-page")}
+    >
       <div className={styles.car_image_container}>
         <img className={styles.car_img} src={carimage} alt="car" />
       </div>

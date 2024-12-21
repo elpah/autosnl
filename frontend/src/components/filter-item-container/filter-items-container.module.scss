@@ -15,7 +15,7 @@
   }
   @-moz-document url-prefix() {
     scrollbar-width: thin;
-    scrollbar-color: #cac9c9 #f2efef; // Thumb and track colors for Firefox
+    scrollbar-color: #cac9c9 #f2efef;
   }
   &::-webkit-scrollbar {
     width: 4px;

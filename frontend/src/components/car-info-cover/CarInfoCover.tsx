@@ -1,20 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./car-info-cover.module.scss";
 
 import CurrentCoverImage from "../../assets/images/car_image_testing.png";
+import { about_cover } from "../../assets/images/images";
 
 const CarInfoCover = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [thumbnailStartIndex, setThumbnailStartIndex] = useState(0);
+
+  const moveSlide = (direction: number) => {
+    let newIndex = currentIndex + direction;
+    if (newIndex < 0) {
+      newIndex = coverImages.length - 1;
+    } else if (newIndex >= coverImages.length) {
+      newIndex = 0;
+    }
+    setCurrentIndex(newIndex);
+    if (newIndex < thumbnailStartIndex) {
+      setThumbnailStartIndex(newIndex);
+    } else if (newIndex >= thumbnailStartIndex + 4) {
+      setThumbnailStartIndex(newIndex - 3);
+    }
+  };
+  const coverImages = [
+    CurrentCoverImage,
+    CurrentCoverImage,
+    CurrentCoverImage,
+    about_cover,
+    about_cover,
+    CurrentCoverImage,
+    CurrentCoverImage,
+    about_cover,
+    CurrentCoverImage,
+    CurrentCoverImage,
+    CurrentCoverImage,
+  ];
+  const remainingImages = coverImages.length - (thumbnailStartIndex + 4);
+
   return (
     <div className={styles.cover_info_container}>
       <div className={styles.header_container}>
-        <div className={styles.car_image_container}>
-          <img
-            className={styles.car_image}
-            src={CurrentCoverImage}
-            alt="Current car"
-          />
+        <div className={styles.car_image_cover_container}>
+          <div
+            className={styles.car_image_container}
+            style={{
+              transform: `translateX(-${currentIndex * 100}%)`,
+              transition: "transform 0.5s ease-in-out",
+            }}
+          >
+            {coverImages.map((image, index) => (
+              <img
+                key={index}
+                className={styles.car_image}
+                src={image}
+                alt={`Cover ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
         <div
+          onClick={() => moveSlide(1)}
           className={`${styles.image_container} ${styles.next_image_container}`}
         >
           <svg
@@ -33,6 +78,7 @@ const CarInfoCover = () => {
         </div>
         <div
           className={`${styles.image_container} ${styles.prev_image_container}`}
+          onClick={() => moveSlide(-1)}
         >
           <svg
             className={`${styles.icon} ${styles.prev_icon}`}
@@ -50,26 +96,36 @@ const CarInfoCover = () => {
         </div>
       </div>
       <div className={styles.three_dots}>
-        <span className={`${styles.dot} `}></span>
-        <span className={`${styles.dot} ${styles.dot_current}`}></span>
-        <span className={`${styles.dot} `}></span>
+        {coverImages.map((_, index) => (
+          <span
+            key={index}
+            className={`${styles.dot} ${
+              currentIndex === index ? styles.dot_current : ""
+            }`}
+          ></span>
+        ))}
       </div>
       <div className={styles.car_images_container}>
-        <div className={styles.next_image_container}>
-          <img className={styles.next_image} src={CurrentCoverImage} alt="next images" />
-        </div>
-        <div className={styles.next_image_container}>
-          <img className={styles.next_image} src={CurrentCoverImage} alt="next images" />
-        </div>
-        <div className={styles.next_image_container}>
-          <img className={styles.next_image} src={CurrentCoverImage} alt="next images" />
-        </div>
-        <div className={styles.next_image_container}>
-          <img className={styles.next_image} src={CurrentCoverImage} alt="next images" />
-        </div>
+        {coverImages
+          .slice(thumbnailStartIndex, thumbnailStartIndex + 4)
+          .map((image, index) => (
+            <div
+              key={thumbnailStartIndex + index}
+              className={styles.next_image_container}
+            >
+              <img
+                onClick={() => setCurrentIndex(thumbnailStartIndex + index)}
+                className={styles.next_image}
+                src={image}
+                alt={`Thumbnail ${thumbnailStartIndex + index + 1}`}
+              />
+              {index === 3 && remainingImages > 0 && (
+                <div className={styles.overlay}>+{remainingImages} more</div>
+              )}
+            </div>
+          ))}
       </div>
     </div>
   );
 };
-
 export default CarInfoCover;
