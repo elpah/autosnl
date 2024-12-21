@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import hamburger from "../../../assets/images/nav_images/hamburger.png";
 import close from "../../../assets/images/nav_images/close.png";
@@ -9,10 +9,19 @@ import styles from "./mobile-nav.module.scss";
 
 export const MobileNav = () => {
   const [searchVisible, setSearchVisible] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
   const [showCars, setShowCars] = useState(false);
   const [showLanguageSelector, setShowLanguageSelector] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
+
+  const handleSearchClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setSearchVisible(false);
+      setIsClosing(false);
+    }, 300);
+  };
 
   const languageSelectorRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -57,7 +66,7 @@ export const MobileNav = () => {
           {searchVisible ? (
             <div
               className={`${styles.search_bar} ${
-                !searchVisible ? styles["slide-out"] : ""
+                isClosing ? styles["slide-out"] : ""
               }`}
             >
               <input
@@ -67,9 +76,7 @@ export const MobileNav = () => {
               />
               <button
                 className={styles.close_button}
-                onClick={() => {
-                  setSearchVisible(!searchVisible);
-                }}
+                onClick={handleSearchClose}
               >
                 <img
                   className={styles.hide_search}
@@ -85,7 +92,7 @@ export const MobileNav = () => {
                 onClick={() => {
                   setShowLanguageSelector(false);
                   setShowMenu(false);
-                  setSearchVisible(!searchVisible);
+                  setSearchVisible(true);
                 }}
               >
                 <img
