@@ -77,7 +77,6 @@ header {
           right: 0;
           background-color: #fff;
           box-shadow: 0 4px 6px rgba(95, 95, 95, 0.2), 0 -4px 0 rgba(0, 0, 0, 0);
-
           width: 50px;
           border-radius: 0 0 8px 8px;
           height: 0px;
@@ -215,13 +214,13 @@ header {
               margin: 0;
 
               li {
-                margin-bottom: 0.5rem;
-                font-size: 0.75rem;
+                margin-bottom: 0.7rem;
+                font-size: 0.85rem;
               }
             }
           }
           .show_cars_open {
-            height: 150px;
+            height: 200px;
           }
         }
       }
