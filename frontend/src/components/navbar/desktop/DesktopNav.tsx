@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import arrow from "../../../assets/images/nav_images/arrow.png";
 import language_image from "../../../assets/images/nav_images/language_image.png";
@@ -8,6 +8,29 @@ import styles from "./desktop-nav.module.scss";
 export const DesktopNav = () => {
   const [showCars, setShowCars] = useState(false);
   const [showLanguageSelector, setShowLanguageSelector] = useState(false);
+  const languageSelectorRef = useRef<HTMLDivElement>(null);
+  const allCarsRef = useRef<HTMLLIElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        languageSelectorRef.current &&
+        !languageSelectorRef.current.contains(event.target as Node)
+      ) {
+        setShowLanguageSelector(false);
+      }
+      if (
+        allCarsRef.current &&
+        !allCarsRef.current.contains(event.target as Node)
+      ) {
+        setShowCars(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className={styles.desktop_nav}>
@@ -19,7 +42,7 @@ export const DesktopNav = () => {
         </Link>
         <div className={styles.menu}>
           <ul className={styles.menu_ul}>
-            <li className={styles.all_cars_container}>
+            <li className={styles.all_cars_container} ref={allCarsRef}>
               <div
                 className={styles.all_cars}
                 onClick={() => {
@@ -93,7 +116,10 @@ export const DesktopNav = () => {
             </button>
           </form>
         </div>
-        <div className={styles.language_selector_container}>
+        <div
+          className={styles.language_selector_container}
+          ref={languageSelectorRef} // Attach the ref here
+        >
           <div
             className={styles.language_select_image}
             onClick={() => {
@@ -123,34 +149,46 @@ export const DesktopNav = () => {
               showLanguageSelector ? styles.open : ""
             }`}
           >
-              <div className={styles.language_image_container}>
-                <img
-                  className={styles.language_image}
-                  src={language_image}
-                  alt="language flag"
-                />
-              </div>
-              <div className={styles.language_image_container}>
-                <img
-                  className={styles.language_image}
-                  src={language_image}
-                   alt="language flag"
-                />
-              </div>
-              <div className={styles.language_image_container}>
-                <img
-                  className={styles.language_image}
-                  src={language_image}
-                   alt="language flag"
-                />
-              </div>
-              <div className={styles.language_image_container}>
-                <img
-                  className={styles.language_image}
-                  src={language_image}
-                   alt="language flag"
-                />
-              </div>
+            <div
+              className={styles.language_image_container}
+              onClick={() => setShowLanguageSelector(false)}
+            >
+              <img
+                className={styles.language_image}
+                src={language_image}
+                alt="language flag"
+              />
+            </div>
+            <div
+              className={styles.language_image_container}
+              onClick={() => setShowLanguageSelector(false)}
+            >
+              <img
+                className={styles.language_image}
+                src={language_image}
+                alt="language flag"
+              />
+            </div>
+            <div
+              className={styles.language_image_container}
+              onClick={() => setShowLanguageSelector(false)}
+            >
+              <img
+                className={styles.language_image}
+                src={language_image}
+                alt="language flag"
+              />
+            </div>
+            <div
+              className={styles.language_image_container}
+              onClick={() => setShowLanguageSelector(false)}
+            >
+              <img
+                className={styles.language_image}
+                src={language_image}
+                alt="language flag"
+              />
+            </div>
           </div>
         </div>
       </nav>
