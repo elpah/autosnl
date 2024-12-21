@@ -18,10 +18,15 @@ export const CategoryCheckItem = ({
   label,
   number_of_cars,
   checked,
-  fieldKey
+  fieldKey,
 }: CheckItemProp) => {
   const globalContext = useContext<IGlobalContext>(GlobalContext);
-  const isChecked = checked !== undefined ? checked : (globalContext.advancedSearchFieldData[fieldKey] as string[]).includes(label);
+  const isChecked =
+    checked !== undefined
+      ? checked
+      : (globalContext.advancedSearchFieldData[fieldKey] as string[]).includes(
+          label
+        );
 
   const handleChange = () => {
     globalContext.setAdvancedSearchFieldData((prev) => {

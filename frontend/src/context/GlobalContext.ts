@@ -11,7 +11,6 @@ export type ICarData = {
   carTransmission: string;
   carCountry: string;
 };
-
 export type IAdvancedSeachFieldData = {
   brand?: string[];
   vehicleType?: string[];
