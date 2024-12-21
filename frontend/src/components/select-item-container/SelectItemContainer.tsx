@@ -1,6 +1,5 @@
 import React from "react";
 
-import { Card } from "./card-items/Card";
 import styles from "./select-item-container.module.scss";
 
 type SelectItemContainerProps = {
@@ -8,6 +7,7 @@ type SelectItemContainerProps = {
   children: React.ReactNode;
   handleCloseContainer: () => void;
 };
+
 export const SelectItemContainer = ({
   title,
   children,
