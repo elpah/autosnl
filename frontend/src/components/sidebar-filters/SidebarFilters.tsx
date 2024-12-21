@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 
 import styles from "./sidebar-filter.module.scss";
 import { Category } from "./categories/Category";
@@ -8,12 +8,17 @@ import {
   GlobalContext,
   type IGlobalContext,
 } from "../../context/GlobalContext";
+import { FilterOtherContainer } from "../filter-other-container/FilterOtherContainer";
+import { FilterOtherOption } from "../filter_other/filter_other_option/FilterOtherOption";
+import { FilterOther } from "../filter_other/FilterOther";
+import { FilterPrice } from "../filter-price/FilterPrice";
 
 export const SidebarFilters = () => {
   const globalContext = useContext<IGlobalContext>(GlobalContext);
-  useEffect(()=>{
-    console.table(globalContext.advancedSearchFieldData)
-  },[globalContext.advancedSearchFieldData])
+
+  useEffect(() => {
+    console.table(globalContext.advancedSearchFieldData);
+  }, [globalContext.advancedSearchFieldData]);
   const categories = [
     {
       title: "Search By Brand",
@@ -30,26 +35,18 @@ export const SidebarFilters = () => {
         { title: "Hyundai", number_of_cars: 17 },
         { title: "Kia", number_of_cars: 19 },
         { title: "Mazda", number_of_cars: 11 },
-      ]
-      
-    },
-    {
-      title: "Search By Budget",
-      values: [
-        { price_min: 100, price_max: 1000, number_of_cars: 15 },
-        { price_min: 1000, price_max: 2000, number_of_cars: 27 },
-        { price_min: 2000, price_max: 3000, number_of_cars: 18 },
-        { price_min: 3000, price_max: 4000, number_of_cars: 22 },
-        { price_min: 4000, price_max: 5000, number_of_cars: 14 },
-        { price_min: 5000, price_max: 6000, number_of_cars: 19 },
-        { price_min: 6000, price_max: 7000, number_of_cars: 25 },
-        { price_min: 7000, price_max: 8000, number_of_cars: 30 },
-        { price_min: 8000, price_max: 9000, number_of_cars: 12 },
-        { price_min: 9000, price_max: 10000, number_of_cars: 20 },
       ],
     },
     {
+      title: "Price (€)",
+      Min: [10, 20, 30, 50, 50],
+      Max: [100, 200, 300, 500, 600],
+      label: { min: "Min Price", max: "Max Price" },
+      field: { min: "priceMin", max: "priceMax" },
+    },
+    {
       title: "Vehicle Type",
+
       values: [
         { title: "Sedan", number_of_cars: 20 },
         { title: "SUV", number_of_cars: 10 },
@@ -71,13 +68,10 @@ export const SidebarFilters = () => {
     },
     {
       title: "Milleage",
-      values: [
-        { kpml_min: 0, kpml_max: 10, number_of_cars: 35 },
-        { kpml_min: 10, kpml_max: 20, number_of_cars: 27 },
-        { kpml_min: 20, kpml_max: 30, number_of_cars: 27 },
-        { kpml_min: 30, kpml_max: 50, number_of_cars: 18 },
-        { kpml_min: 50, kpml_max: 4000, number_of_cars: 22 },
-      ],
+      Min: [10, 20, 30, 50, 50],
+      Max: [100, 200, 300, 500, 600],
+      label: { min: "Min Milleage", max: "Max Milleage" },
+      field: { min: "milleageMin", max: "milleageMax" },
     },
     {
       title: "Transmission",
@@ -85,6 +79,13 @@ export const SidebarFilters = () => {
         { title: "Manual", number_of_cars: 35 },
         { title: "Automatic", number_of_cars: 27 },
       ],
+    },
+    {
+      title: "ERD",
+      Min: Array.from({ length: 2024 - 1961 + 1 }, (_, index) => 1961 + index),
+      Max: Array.from({ length: 2024 - 1961 + 1 }, (_, index) => 1961 + index),
+      label: { min: "Min Erd", max: "Max Erd" },
+      field: { min: "erdMin", max: "erdMax" },
     },
   ];
 
@@ -98,6 +99,20 @@ export const SidebarFilters = () => {
     } else return array.title;
   };
 
+  const handleMinChange = (fieldKey: string, value: number) => {
+    globalContext.setAdvancedSearchFieldData((prev) => ({
+      ...prev,
+      [fieldKey]: value,
+    }));
+  };
+
+  const handleMaxChange = (fieldKey: string, value: number) => {
+    globalContext.setAdvancedSearchFieldData((prev) => ({
+      ...prev,
+      [fieldKey]: value,
+    }));
+  };
+
   return (
     <div className={styles.container}>
       {categories.map((category, index) => {
@@ -107,14 +122,49 @@ export const SidebarFilters = () => {
 
         return (
           <Category key={index} title={category.title}>
-            {category.values.map((value, index) => (
-              <CategoryCheckItem
-                key={index}
-                label={label(value)}
-                number_of_cars={value.number_of_cars}
-                fieldKey={fieldKey}
-              />
-            ))}
+            {category.title === "Price (€)" ? (
+              <FilterPrice />
+            ) : category.values ? (
+              category.values.map((value, index) => (
+                <CategoryCheckItem
+                  key={index}
+                  label={label(value)}
+                  number_of_cars={value.number_of_cars}
+                  fieldKey={fieldKey}
+                />
+              ))
+            ) : (
+              <FilterOtherContainer>
+                <FilterOther
+                  minOrMaxLabel={category.label.min}
+                  handleValueChange={(value) =>
+                    handleMinChange(`${category.field?.min}`, value)
+                  }
+                >
+                  {category["Min"]?.map((minValue, index: number) => (
+                    <FilterOtherOption
+                      key={index}
+                      value={minValue}
+                      label={`${minValue}`}
+                    />
+                  ))}
+                </FilterOther>
+                <FilterOther
+                  minOrMaxLabel={category.label.max}
+                  handleValueChange={(value) =>
+                    handleMaxChange(`${category.field?.max}`, value)
+                  }
+                >
+                  {category["Max"]?.map((maxValue, index: number) => (
+                    <FilterOtherOption
+                      key={index}
+                      value={maxValue}
+                      label={`${maxValue}`}
+                    />
+                  ))}
+                </FilterOther>
+              </FilterOtherContainer>
+            )}
           </Category>
         );
       })}
