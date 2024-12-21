@@ -1,17 +1,49 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import hamburger from "../../../assets/images/nav_images/hamburger.png";
 import close from "../../../assets/images/nav_images/close.png";
 import arrow from "../../../assets/images/nav_images/arrow.png";
 import language_image from "../../../assets/images/nav_images/language_image.png";
 import search_icon from "../../../assets/images/nav_images/search_icon.png";
 import styles from "./mobile-nav.module.scss";
-import { Link } from "react-router-dom";
 
 export const MobileNav = () => {
   const [searchVisible, setSearchVisible] = useState(false);
   const [showCars, setShowCars] = useState(false);
   const [showLanguageSelector, setShowLanguageSelector] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const navigate = useNavigate();
+
+  const languageSelectorRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const hamburgerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node;
+
+      if (hamburgerRef.current && hamburgerRef.current.contains(target)) {
+        return;
+      }
+
+      if (
+        languageSelectorRef.current &&
+        !languageSelectorRef.current.contains(target)
+      ) {
+        setShowLanguageSelector(false);
+      }
+
+      if (menuRef.current && !menuRef.current.contains(target)) {
+        setShowMenu(false);
+        setShowCars(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className={styles.mobile_nav_container}>
@@ -68,6 +100,7 @@ export const MobileNav = () => {
                   setShowMenu(false);
                   setShowLanguageSelector(!showLanguageSelector);
                 }}
+                ref={languageSelectorRef}
               >
                 <div className={styles.language_image_container}>
                   <img
@@ -109,12 +142,12 @@ export const MobileNav = () => {
                   <img
                     className={styles.language_dropdown_image}
                     src={language_image}
-                     alt="language flag"
+                    alt="language flag"
                   />
                   <img
                     className={styles.language_dropdown_image}
                     src={language_image}
-                     alt="language flag"
+                    alt="language flag"
                   />
                 </div>
               </div>
@@ -126,6 +159,7 @@ export const MobileNav = () => {
                   setShowCars(false);
                   setShowMenu(!showMenu);
                 }}
+                ref={hamburgerRef}
               >
                 <img
                   className={styles.icon}
@@ -141,11 +175,15 @@ export const MobileNav = () => {
         className={`${styles.nav_open_container} ${
           showMenu ? styles.open : ""
         }`}
+        ref={menuRef}
       >
         <div className={styles.nav_open}>
           <ul className={styles.menu_list_container}>
             <li className={styles.menu_list_car}>
-              <div className={styles.all_cars_container}>
+              <div
+                className={styles.all_cars_container}
+                onClick={() => setShowCars(!showCars)}
+              >
                 <div className={styles.all_cars_txt}>All Cars</div>
                 <img
                   className={`${styles.all_cars_arrow} ${
@@ -153,7 +191,6 @@ export const MobileNav = () => {
                   }`}
                   src={arrow}
                   alt="arrow down"
-                  onClick={() => setShowCars(!showCars)}
                 />
               </div>
 
@@ -164,19 +201,43 @@ export const MobileNav = () => {
               >
                 <ul>
                   <li>Toyota</li>
-                  <li>Toyota</li>
-                  <li>Toyota</li>
-                  <li>Toyota</li>
-                  <li>Toyota</li>
-                  <li>Toyota</li>
-                  <li>Toyota</li>
-                  <li>Toyota</li>
+                  <li>Kia</li>
+                  <li>Hyundai</li>
+                  <li>Volkswagen</li>
+                  <li>Rolls Royce</li>
+                  <li>Mercedes Benz</li>
+                  <li>Volvo</li>
+                  <li>Maserati</li>
                 </ul>
               </div>
             </li>
-            <li className={styles.menu_list_item}>About Us</li>
-            <li className={styles.menu_list_item}>Contact Us</li>
-            <li className={styles.menu_list_item}>FAQs</li>
+            <li
+              onClick={() => {
+                setShowMenu(false);
+                navigate("/about");
+              }}
+              className={styles.menu_list_item}
+            >
+              About Us
+            </li>
+            <li
+              onClick={() => {
+                setShowMenu(false);
+                navigate("/contact");
+              }}
+              className={styles.menu_list_item}
+            >
+              Contact Us
+            </li>
+            <li
+              onClick={() => {
+                setShowMenu(false);
+                navigate("/faq");
+              }}
+              className={styles.menu_list_item}
+            >
+              FAQs
+            </li>
           </ul>
         </div>
       </div>
