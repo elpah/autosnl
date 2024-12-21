@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-// import { plus_icon, minus_icon } from assets/images/images";
+import { useState } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
 
 import styles from "./category.module.scss";
