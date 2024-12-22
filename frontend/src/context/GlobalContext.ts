@@ -1,18 +1,17 @@
-// import { type ICartItem } from 'interfaces/ICartItem';
-
 import { createContext } from "react";
-
 export type ICarData = {
   cartype: string;
   carBrand: string;
   carModel: string;
-  carErd: string;
   carFuel: string;
   carTransmission: string;
+  vehicleType: string;
   carCountry: string;
 };
+
 export type IAdvancedSeachFieldData = {
   brand?: string[];
+  model?: string[];
   vehicleType?: string[];
   fuel?: string[];
   priceMin: number;
@@ -22,6 +21,7 @@ export type IAdvancedSeachFieldData = {
   transmission?: string[];
   erdMin: number;
   erdMax: number;
+  country?: string[];
 };
 
 export interface IGlobalContext {
@@ -36,20 +36,20 @@ export interface IGlobalContext {
     React.SetStateAction<Record<string, keyof IAdvancedSeachFieldData | null>>
   >;
 }
-
 export const GlobalContext = createContext<IGlobalContext>({
   carData: {
     cartype: "used",
     carBrand: "",
     carModel: "",
-    carErd: "",
     carFuel: "",
     carTransmission: "",
+    vehicleType: "",
     carCountry: "",
   },
   setCarData: (carData) => {},
   advancedSearchFieldData: {
     brand: [],
+    model: [],
     vehicleType: [],
     fuel: [],
     priceMin: 0,
@@ -59,10 +59,12 @@ export const GlobalContext = createContext<IGlobalContext>({
     transmission: [],
     erdMin: 0,
     erdMax: 0,
+    country: [],
   },
   setAdvancedSearchFieldData: (advancedSearchFieldData) => {},
   categoryToFieldKeyMap: {
     "Search By Brand": "brand",
+    "Search By Model": "model",
     "Vehicle Type": "vehicleType",
     Fuel: "fuel",
     "Min Price": "priceMin",
@@ -72,7 +74,7 @@ export const GlobalContext = createContext<IGlobalContext>({
     "Min Erd": "erdMin",
     "Max Erd": "erdMax",
     Transmission: "transmission",
+    Country: "country",
   },
-
   setCategoryToFieldKeyMap: (categoryToFieldKeyMap) => {},
 });

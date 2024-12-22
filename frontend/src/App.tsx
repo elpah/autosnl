@@ -31,7 +31,7 @@ function App() {
     cartype: "used",
     carBrand: "",
     carModel: "",
-    carErd: "",
+    vehicleType: "",
     carFuel: "",
     carTransmission: "",
     carCountry: "",
@@ -40,6 +40,7 @@ function App() {
   const [advancedSearchFieldData, setAdvancedSearchFieldData] =
     useState<IAdvancedSeachFieldData>({
       brand: [],
+      model: [],
       vehicleType: [],
       fuel: [],
       priceMin: 0,
@@ -49,11 +50,13 @@ function App() {
       transmission: [],
       erdMin: 0,
       erdMax: 0,
+      country: [],
     });
   const [categoryToFieldKeyMap, setCategoryToFieldKeyMap] = useState<
     Record<string, keyof IAdvancedSeachFieldData | null>
   >({
     "Search By Brand": "brand",
+    "Search By Model": "model",
     "Vehicle Type": "vehicleType",
     Fuel: "fuel",
     "Min Price": "priceMin",
@@ -63,6 +66,7 @@ function App() {
     "Max Milleage": "milleageMax",
     "Min Erd": "erdMin",
     "Max Erd": "erdMax",
+    Country: "country",
   });
 
   return (

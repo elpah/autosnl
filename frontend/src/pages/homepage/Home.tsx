@@ -2,12 +2,12 @@ import React, { ChangeEvent, useContext, useEffect, useState } from "react";
 import styles from "./home.module.scss";
 import { HomeSection } from "../../components/home-section/HomeSection";
 import { WhyCard } from "../../components/why-card/WhyCard";
-
 import homeCover from "../../assets/images/cover_images/home_cover.png";
 import iconNext from "../../assets/images/home_images/icon_next.png";
 import iconPrevious from "../../assets/images/home_images/icon_previous.png";
 import advert from "../../assets/images/home_images/advert.png";
 
+import { categoryData } from "../../tdata/categoryData";
 import popularNissan from "../../assets/images/popular_brands/popular_nissan.png";
 import {
   quality_assurance,
@@ -38,8 +38,8 @@ export const Home = () => {
   const [damagedCars, setDamagedCars] = useState("passenger");
 
   useEffect(
-    () => console.log(recommendedVehicleType),
-    [recommendedVehicleType]
+    () => console.table(globalContext.carData),
+    [globalContext.carData]
   );
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -164,11 +164,11 @@ export const Home = () => {
                 <option value="" disabled>
                   Brand
                 </option>
-                <option value="Toyota">Toyota</option>
-                <option value="Mercedes">Mercedes</option>
-                <option value="Kia">Kia</option>
-                <option value="Honda">Honda</option>
-                <option value="VolksWagen">VolksWagen</option>
+                {categoryData[0].values?.map((brand, index) => (
+                  <option key={index} value={brand.title}>
+                    {brand.title}
+                  </option>
+                ))}
               </select>
               <select
                 className={styles.select}
@@ -176,30 +176,14 @@ export const Home = () => {
                 name="carModel"
                 onChange={handleChange}
               >
-                <option value="model" disabled>
+                <option value="" disabled>
                   Model
                 </option>
-                <option value="Camry">Camry</option>
-                <option value="Rav4">Rav4</option>
-                <option value="CRV">CRV</option>
-                <option value="C-300">C-300</option>
-                <option value="CC">CC</option>
-              </select>
-              <select
-                className={styles.select}
-                name="carErd"
-                value={globalContext.carData.carErd}
-                onChange={handleChange}
-              >
-                <option value="" disabled>
-                  ERD
-                </option>
-                <option value="2023-01-15">2023-01-15</option>
-                <option value="2023-02-16">2023-02-16</option>
-                <option value="2024-01-18">2024-01-18</option>
-                <option value="2019-03-12">2019-03-12</option>
-                <option value="2023-01-18">2023-01-18</option>
-                <option value="2023-01-18">2023-01-18</option>
+                {categoryData[1].values?.map((model, index) => (
+                  <option key={index} value={model.title}>
+                    {model.title}
+                  </option>
+                ))}
               </select>
               <select
                 className={styles.select}
@@ -210,8 +194,11 @@ export const Home = () => {
                 <option value="" disabled>
                   Fuel
                 </option>
-                <option value="Petrol">Petrol</option>
-                <option value="Diesel">Diesel</option>
+                {categoryData[4].values?.map((fuel, index) => (
+                  <option key={index} value={fuel.title}>
+                    {fuel.title}
+                  </option>
+                ))}
               </select>
               <select
                 className={styles.select}
@@ -222,21 +209,42 @@ export const Home = () => {
                 <option value="" disabled>
                   Transmission
                 </option>
-                <option value="Manual">Manual</option>
-                <option value="Automatic">Automatic</option>
+                {categoryData[6].values?.map((transmission, index) => (
+                  <option key={index} value={transmission.title}>
+                    {transmission.title}
+                  </option>
+                ))}
               </select>
               <select
                 className={styles.select}
-                value={globalContext.carData.carCountry}
-                name="carCountry"
+                value={globalContext.carData.vehicleType}
                 onChange={handleChange}
+                name="vehicleType"
+              >
+                <option value="" disabled>
+                  Body Type
+                </option>
+                {categoryData[3].values?.map((vehicleType, index) => (
+                  <option key={index} value={vehicleType.title}>
+                    {vehicleType.title}
+                  </option>
+                ))}
+              </select>
+
+              <select
+                className={styles.select}
+                value={globalContext.carData.carCountry}
+                onChange={handleChange}
+                name="carCountry"
               >
                 <option value="" disabled>
                   Country
                 </option>
-                <option value="Ghana">Ghana</option>
-                <option value="Nigeria">Nigeria</option>
-                <option value="Senegal">Senegal</option>
+                {categoryData[8].values?.map((carCountry, index) => (
+                  <option key={index} value={carCountry.title}>
+                    {carCountry.title}
+                  </option>
+                ))}
               </select>
             </div>
             <button

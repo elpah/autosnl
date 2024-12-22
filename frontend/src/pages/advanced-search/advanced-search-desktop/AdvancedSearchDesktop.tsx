@@ -1,15 +1,10 @@
-import React, { useContext }  from "react";
+import React from "react";
 
 import styles from "./advanced-search-desktop.module.scss";
 import { SidebarFilters } from "../../../components/sidebar-filters/SidebarFilters";
 import { CarCardContainer } from "../../../components/car-card-container/CarCardContainer";
-import { GlobalContext, IGlobalContext } from "../../../context/GlobalContext";
-
 
 export const AdvancedSearchDesktop = () => {
-  // const globalContext = useContext<IGlobalContext>(GlobalContext);
-
-
   return (
     <div className={styles.container}>
       <div className={styles.main}>
