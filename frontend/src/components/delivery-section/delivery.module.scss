@@ -1,12 +1,16 @@
+@import "../../global.scss";
+
 .delivery_container {
   background-image: url("../../assets/images/about_images/delivery_image.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
   color: #fff;
-  padding: 10%;
+  padding: 5% 0;
   font-style: normal;
   .delivery_info_wrapper {
+    width: 90%;
+    margin: auto;
     .delivery_header {
       font-size: 16px;
       font-weight: 800;
@@ -28,7 +32,7 @@
       justify-content: center;
       align-items: center;
       flex-shrink: 0;
-      background: #1faee9;
+      background: $primary-color;
       color: #fff;
       font-size: 12px;
       font-weight: 500;
@@ -38,9 +42,6 @@
 
 @media (min-width: 600px) {
   .delivery_container {
-    background-image: url("../../assets/images/about_images/delivery_image.png");
-
-    color: #fff;
     .delivery_info_wrapper {
       .delivery_header {
         font-size: 20px;
@@ -63,7 +64,6 @@
   .delivery_container {
     background-size: cover;
     height: 250px;
-    padding: 6%;
     display: flex;
     justify-content: center;
     .delivery_info_wrapper {
@@ -83,7 +83,10 @@
       .button {
         font-size: 15px;
         font-weight: 500;
-        font-weight: 500;
+        font-weight: 600;
+        // &:hover{
+
+        // }
       }
     }
   }
@@ -91,11 +94,10 @@
 
 @media (min-width: 1024px) {
   .delivery_container {
-    background-image: url("../../assets/images/about_images/delivery_image.png");
-    height: 400px;
+    // background-image: url("../../assets/images/about_images/delivery_image.png");
+    height: 300px;
     .delivery_info_wrapper {
-      width: 90%;
-      max-width: 1600px;
+      max-width: 1700px;
       margin: auto;
       gap: 30px;
 
@@ -110,8 +112,31 @@
         line-height: 30px;
       }
       .button {
-        font-size: 18px;
-        font-weight: 500;
+        width: 200px;
+        height: 60px;
+        font-size: 22px;
+        font-weight: 700;
+        transition: font-size 0.2s ease;
+        &:hover {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 1300px) {
+  .delivery_container {
+    .delivery_info_wrapper {
+      .delivery_text {
+        // font-size: 18px;
+        // font-weight: 500;
+        // line-height: 30px;
+      }
+      .button {
+        width: 250px;
+        height: 70px;
+        font-size: 23px;
+        font-weight: 700;
       }
     }
   }

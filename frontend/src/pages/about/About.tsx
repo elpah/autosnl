@@ -1,15 +1,18 @@
 import React from "react";
 
-import custumersatisfaction from "../../assets/images/about_images/custumersatisfaction.png";
-import integrity from "../../assets/images/about_images/integrity.png";
-import innovation from "../../assets/images/about_images/innovation.png";
-import quality from "../../assets/images/about_images/quality.png";
+import {
+  about_cover,
+  customer_satisfaction,
+  integrity,
+  innovation,
+  quality,
+} from "../../assets/images/images";
 
 import { Value } from "../../components/about-values/Value";
 import { Delivery } from "../../components/delivery-section/Delivery";
 
 import styles from "./about.module.scss";
-export const About: React.FC = () => {
+const About: React.FC = () => {
   const values = [
     {
       image: `${quality}`,
@@ -17,7 +20,7 @@ export const About: React.FC = () => {
       text: "Every vehicle in our inventory is thoroughly inspected and maintained to meet the highest standards of safety and performance.",
     },
     {
-      image: `${custumersatisfaction}`,
+      image: `${customer_satisfaction}`,
       title: "Customer Satisfaction",
       text: "Your satisfaction is our top priority. We go above and beyond to ensure you have a positive and stress-free experience.",
     },
@@ -35,9 +38,11 @@ export const About: React.FC = () => {
 
   return (
     <div className={styles.about_container}>
-      <div className={styles.cover}>
-        <div className={styles.header}>About Us</div>
-        <div className={styles.header_subtext}>ZaurAutos Profile</div>
+      <div className={styles.cover}
+            style={{ backgroundImage: `url(${about_cover})` }}
+>
+        <h1 className={styles.header}>About Us</h1>
+        <p className={styles.header_subtext}>ZaurAutos Profile</p>
       </div>
       <div className={styles.body_container}>
         <div className={styles.body_part}>
@@ -69,19 +74,21 @@ export const About: React.FC = () => {
       <div className={styles.values}>
         <h2 className={styles.values_header}>Our Values</h2>
         <div className={styles.values_wrapper}>
-        <div className={styles.values_sub_container}>
-          {values.map((item, index) => (
-            <Value
-              key={index}
-              title={item.title}
-              image={item.image}
-              text={item.text}
-            />
-          ))}
-        </div>
+          <div className={styles.values_sub_container}>
+            {values.map((item, index) => (
+              <Value
+                key={index}
+                title={item.title}
+                image={item.image}
+                text={item.text}
+              />
+            ))}
+          </div>
         </div>
       </div>
-      <Delivery/>
+      <Delivery />
     </div>
   );
 };
+
+export default About;

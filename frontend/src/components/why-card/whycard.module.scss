@@ -1,0 +1,104 @@
+.why_card {
+  display: flex;
+  flex-direction: row;
+  gap: 0.8rem;
+  align-items: center;
+  .why_img_container {
+    width: 56px;
+    height: 56px;
+    .why_img {
+      width: 56px;
+      object-fit: contain;
+    }
+  }
+  .whycard_body {
+    color: #4c4c4c;
+    font-style: normal;
+
+    .whycard_header {
+      margin-bottom: 5px;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: normal;
+    }
+    .whycard_para {
+      font-size: 10px;
+      font-weight: 400;
+      line-height: 15px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .why_card {
+    // gap: 0.8rem;
+    // align-items: center;
+    .why_img_container {
+      width: 98px;
+      height: 98px;
+      .why_img {
+        width: 98px;
+      }
+    }
+    .whycard_body {
+      .whycard_header {
+        margin-bottom: 10px;
+        font-size: 15px;
+        font-weight: 800;
+      }
+      .whycard_para {
+        line-height: 20px;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .why_card {
+    .why_img_container {
+      width: 110px;
+      height: 110px;
+      .why_img {
+        width: 110px;
+      }
+    }
+    .whycard_body {
+      .whycard_header {
+        margin-bottom: 15px;
+        font-size: 16px;
+      }
+      .whycard_para {
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1300px) {
+  .why_card {
+     .whycard_body {
+      .whycard_header {
+        margin-bottom: 10px;
+        font-size: 14px;
+      }
+      .whycard_para {
+        font-size: 12px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+@media (min-width: 1400px) {
+  .why_card {
+     .whycard_body {
+      .whycard_header {
+        font-size: 17px;
+      }
+      .whycard_para {
+        font-size: 14px;
+      }
+    }
+  }
+}

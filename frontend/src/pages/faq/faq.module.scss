@@ -1,7 +1,8 @@
 .faq_container {
+  min-height: 100vh;
+  margin-bottom: 20px;
   .cover {
     color: #fff;
-    background-image: url("../../assets/images/cover_images/faq_cover.png");
     height: 212px;
     background-size: cover;
     background-position: center;
@@ -80,6 +81,8 @@
 
 @media (min-width: 1024px) {
   .faq_container {
+    margin-bottom: 50px;
+    width: 100%;
     .cover {
       height: 402px;
       .header_container {
@@ -97,5 +100,11 @@
         font-size: 20px;
       }
     }
+  }
+}
+
+@media (min-width: 1200px) {
+  .faq_container {
+    margin-bottom: 100px;
   }
 }

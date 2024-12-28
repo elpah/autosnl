@@ -8,9 +8,10 @@ dotenv.config();
 const app = express();
 app.use(cors());
 
-const port = process.env.PORT || 8000;
+const PORT = process.env.BACKEND_PORT || 80;
+
 app.use(express.json());
 app.use("/api/", carRouter);
 
-app.listen(port, () => console.log(`listening on port ${port}`));
+app.listen(PORT, '0.0.0.0', () => console.log(`listening on port ${PORT}`));
 export default app;

@@ -1,0 +1,43 @@
+@import "../../../global.scss";
+
+.container_wrapper {
+  width: 100%;
+  .header_map_container {
+    width: 90%;
+    margin: auto;
+    .car_map_container {
+      margin: auto;
+      padding-top: 25px;
+      margin-bottom: 12px;
+      display: flex;
+      gap: 5px;
+      color: #4c4c4c;
+      font-size: 10px;
+      font-style: normal;
+      font-weight: 500;
+
+      .current_car {
+        color: $primary-color;
+      }
+    }
+    .header {
+      color: #4c4c4c;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      margin-bottom: 15px;
+    }
+  }
+  .car_card_container_wrapper {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 40px;
+  }
+}
+
+@media (min-width: 800px) {
+  .container_wrapper {
+    display: none;
+  }
+}

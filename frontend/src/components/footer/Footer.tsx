@@ -1,11 +1,7 @@
 import React from "react";
 import styles from "./footer.module.scss";
-import callIcon from "../../assets/images/footer_images/call.png";
-import emailIcon from "../../assets/images/footer_images/email.png";
-import facebook from "../../assets/images/footer_images/socials/facebook.png";
-import instagram from "../../assets/images/footer_images/socials/instagram.png";
-import linkedin from "../../assets/images/footer_images/socials/linkedin.png";
-import twitter from "../../assets/images/footer_images/socials/twitter.png";
+import {footer_call, footer_email,facebook,twitter,linkedin,instagram} from "../../assets/images/images";
+
 
 export const Footer = () => {
   return (
@@ -48,7 +44,7 @@ export const Footer = () => {
             <div className={styles.contact_img_container}>
               <img
                 className={styles.contact_image}
-                src={callIcon}
+                src={footer_call}
                 alt="Phone Icon"
               />
             </div>
@@ -58,7 +54,7 @@ export const Footer = () => {
             <div className={styles.contact_img_container}>
               <img
                 className={styles.contact_image}
-                src={emailIcon}
+                src={footer_email}
                 alt="email Icon"
               />
             </div>

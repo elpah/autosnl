@@ -1,0 +1,31 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+
+    container_name: frontend
+
+    ports:
+      - "${FRONTEND_PORT:-3000}:${FRONTEND_PORT:-3000}"
+
+    env_file:
+      - ./.env.${ENVIRONMENT}
+      - ./frontend/.env.${ENVIRONMENT}
+
+    volumes:
+      - ./frontend:/app
+
+    command: npm run start
+
+    networks:
+      - autosnl-network
+
+    depends_on:
+      - mongo
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

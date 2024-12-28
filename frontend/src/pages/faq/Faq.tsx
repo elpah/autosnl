@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import faqicon from "../../assets/images/faq_images/faqicon.png";
+import { faq_cover,faq_icon } from "../../assets/images/images";
+import { Faqcard } from "../../components/faqcard/Faqcard";
 
 import styles from "./faq.module.scss";
-import { Faqcard } from "../../components/faqcard/Faqcard";
 
 type FaqObject = {
   id: number;
@@ -10,7 +10,7 @@ type FaqObject = {
   content: string;
 };
 
-export const Faq = () => {
+const Faq = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const faqs = [
     {
@@ -33,12 +33,6 @@ export const Faq = () => {
     },
     {
       id: 4,
-      title: "Is the prices of the cars Negotiable? ",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
-    },
-    {
-      id: 5,
       title: "Is the prices of the cars Negotiable? ",
       content:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
@@ -73,6 +67,12 @@ export const Faq = () => {
       content:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
     },
+    {
+      id: 10,
+      title: "Is the prices of the cars Negotiable? ",
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
+    }
   ];
 
   function divideArrayIntoTwo(arr: FaqObject[]) {
@@ -91,14 +91,16 @@ export const Faq = () => {
 
   return (
     <div className={styles.faq_container}>
-      <div className={styles.cover}>
+      <div className={styles.cover}
+            style={{ backgroundImage: `url(${faq_cover})` }}
+>
         <div className={styles.header_container}>
           <div className={styles.header_image_container}>
-            <img className={styles.header_img} src={faqicon} alt="QA icon" />
+            <img className={styles.header_img} src={faq_icon} alt="QA icon" />
           </div>
-          <div className={styles.header}>FAQ</div>
+          <h1 className={styles.header}>FAQ</h1>
         </div>
-        <div className={styles.header_subtext}>General Questions</div>
+        <p className={styles.header_subtext}>General Questions</p>
       </div>
       <div className={styles.faqs_container}>
         <div className={styles.faq_sub_container}>
@@ -129,3 +131,5 @@ export const Faq = () => {
     </div>
   );
 };
+
+export default Faq

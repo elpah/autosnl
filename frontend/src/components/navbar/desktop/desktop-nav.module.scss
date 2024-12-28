@@ -1,15 +1,16 @@
+@import "../../../global.scss";
+
 .desktop_nav {
   display: none;
 }
 @media (min-width: 768px) {
   .desktop_nav {
-    // position: fixed;
-    // top: 0;
     display: flex;
     justify-content: center;
     width: 100%;
     height: 70px;
     box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
+    position: relative;
     nav {
       width: 90%;
       max-width: 1700px;
@@ -17,11 +18,13 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      align-items: center;
+
       .logo_container {
         cursor: pointer;
         .logo_text {
-          color: #1faee9;
-          font-size: 15px;
+          color: $primary-color;
+          font-size: 23px;
           font-style: normal;
           font-weight: 700;
           line-height: normal;
@@ -41,7 +44,6 @@
           justify-content: space-between;
           align-items: center;
           gap: 20px;
-
           .all_cars_container {
             position: relative;
             .all_cars {
@@ -51,7 +53,7 @@
               gap: 5px;
               .all_cars_txt {
                 color: #4c4c4c;
-                font-size: 10px;
+                font-size: 11px;
                 font-style: normal;
                 font-weight: 500;
                 line-height: normal;
@@ -71,13 +73,14 @@
             }
             .car_list {
               position: absolute;
-              top: 41px;
+              background-color: #fff;
+              box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.15);
+              top: 40.9px;
               left: 0;
               width: 160px;
-              background-color: #fff;
               height: 0px;
               overflow: hidden;
-              transition: height 0.4s ease;
+              transition: height 0.3s ease;
 
               .car_list_container {
                 display: flex;
@@ -96,7 +99,7 @@
                   display: flex;
                   align-items: center;
                   padding-left: 20px;
-                  border-top: 0.5px solid #4c4c4c;
+                  border-top: 0.2px solid #b0b0b0;
                 }
               }
               .car_list_container :first-child {
@@ -104,13 +107,13 @@
               }
             }
             .show_cars_open {
-              height: 500px;
+              height: 202px;
             }
           }
           .list_item {
             cursor: pointer;
             color: #4c4c4c;
-            font-size: 10px;
+            font-size: 11px;
             font-style: normal;
             font-weight: 500;
             line-height: normal;
@@ -121,34 +124,37 @@
         display: flex;
         align-items: center;
         .search_form {
+          height: 100%;
+
           display: flex;
           justify-content: center;
           align-items: center;
           .search_input {
-            font-size: 12px;
+            font-size: 14px;
             border: none;
-            height: 30px;
-            padding: 14px 20px 14px;
+            padding: 14px 10px 14px;
+            min-width: 200px;
+            text-align: center;
+
             align-items: center;
             background: #fff;
-            box-shadow: inset 0px 0px 3px 2px rgba(0, 0, 0, 0.15);
+            box-shadow: inset 0px 0px 2px 1px rgba(0, 0, 0, 0.15);
             &:focus {
               outline: none;
-              border: 1px solid #1faee9;
             }
           }
 
           .submit_button {
-            background-color: #1faee9;
+            background-color: $primary-color;
             border: none;
             width: 35px;
-            height: 30px;
-            padding: 10px 0px;
+            height: 22px;
+            padding: 11px 0px;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-shrink: 0;
-            box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.15);
+            box-shadow: inset 0px 0px 2px 1px rgba(0, 0, 0, 0.15);
           }
         }
       }
@@ -181,12 +187,14 @@
           }
         }
         .languages_container {
-          box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.15);
           position: absolute;
-          top: 58px;
+          box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.15);
+          top: 43.8px;
           height: 0;
+          background-color: #fff;
           overflow: hidden;
           transition: height 0.3s ease;
+
           .language_image_container {
             display: flex;
             align-items: center;
@@ -199,7 +207,7 @@
           }
         }
         .open {
-          height: 180px;
+          height: 123px;
         }
       }
     }
@@ -212,7 +220,7 @@
     nav {
       .logo_container {
         .logo_text {
-          font-size: 22px;
+          font-size: 25px;
           padding-bottom: 6px;
         }
       }
@@ -223,11 +231,12 @@
             .all_cars {
               gap: 7px;
               .all_cars_txt {
-                font-size: 12px;
+                font-size: 12.5px;
+                font-weight: 600;
               }
             }
             .car_list {
-              top: 53px;
+              top: 53.2px;
               width: 200px;
               .car_list_container {
                 .car_list_item {
@@ -237,23 +246,27 @@
                 }
               }
             }
+            .show_cars_open {
+              height: 242px;
+            }
           }
           .list_item {
-            font-size: 12px;
+            font-size: 12.5px;
+            font-weight: 600;
           }
         }
       }
       .searchbar_container {
         .search_form {
           .search_input {
-            font-size: 14px;
             height: 40px;
-            padding: 14px 37px 14px 30px;
+            min-width: 200px;
+            padding: 14px 20px 14px 20px;
           }
 
           .submit_button {
             width: 52px;
-            height: 40px;
+            height: 10px;
             padding: 15px 0px;
           }
         }
@@ -276,7 +289,7 @@
           }
         }
         .languages_container {
-          top: 81px;
+          top: 55.6px;
           .language_image_container {
             padding: 8px;
             .language_image {
@@ -284,6 +297,9 @@
               height: 20px;
             }
           }
+        }
+        .open {
+          height: 150px;
         }
       }
     }
@@ -317,13 +333,16 @@
               }
             }
             .car_list {
-              top: 57px;
+              top: 62px;
               .car_list_container {
                 .car_list_item {
                   height: 35px;
                   font-size: 16px;
                 }
               }
+            }
+            .show_cars_open {
+              height: 285px;
             }
           }
           .list_item {
@@ -334,7 +353,14 @@
       .searchbar_container {
         .search_form {
           .search_input {
-            font-size: 15px;
+            font-size: 16px;
+            height: 50px;
+          }
+          .submit_button {
+            width: 52px;
+            height: 50px;
+            padding: 0;
+            // padding: 15px 0px;
           }
         }
       }
@@ -356,7 +382,7 @@
           }
         }
         .languages_container {
-          top: 106px;
+          top: 63.7px;
           .language_image_container {
             padding: 8px;
             .language_image {
@@ -364,6 +390,9 @@
               height: 25px;
             }
           }
+        }
+        .open {
+          height: 175px;
         }
       }
     }
