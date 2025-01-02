@@ -32,4 +32,24 @@ const getAllCars = async (page = 1, limit = 20) => {
   return cars;
 };
 
-export { createNewCar, getAllCars };
+const getBrandModels = async () => {
+  const db = await connectToDatabase();
+  const col = db.collection("cars");
+
+  const result = await col
+    .aggregate([
+      {
+        $group: {
+          _id: "$carBrand",
+          models: { $addToSet: "$carModel" },
+        },
+      },
+    ])
+    .toArray();
+  return result.reduce((acc, item) => {
+    acc[item._id] = item.models;
+    return acc;
+  }, {});
+};
+
+export { createNewCar, getAllCars, getBrandModels };
