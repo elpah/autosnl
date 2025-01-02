@@ -11,12 +11,12 @@ export const FilterPrice = () => {
 
   const handleMinChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value === "" ? 0 : parseFloat(e.target.value);
+
     globalContext.setAdvancedSearchFieldData((prev) => ({
       ...prev,
       priceMin: value,
     }));
   };
-
   const handleMaxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value === "" ? 0 : parseFloat(e.target.value);
     globalContext.setAdvancedSearchFieldData((prev) => ({
@@ -27,16 +27,8 @@ export const FilterPrice = () => {
 
   return (
     <form className={styles.form_container} action="">
-      <input
-        type="number"
-        placeholder="Min Price"
-        onChange={handleMinChange}
-      />
-      <input
-        type="number"
-        placeholder="Max Price"
-        onChange={handleMaxChange}
-      />
+      <input type="number" placeholder="Min Price" onChange={handleMinChange} />
+      <input type="number" placeholder="Max Price" onChange={handleMaxChange} />
     </form>
   );
 };

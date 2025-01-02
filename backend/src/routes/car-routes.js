@@ -1,7 +1,7 @@
 import "dotenv/config";
 import Router from "express";
 const carRouter = Router();
-import { getAllCars, createNewCar } from "../carsdb/db.js";
+import { getAllCars, createNewCar, getBrandModels } from "../carsdb/db.js";
 
 carRouter.post("/create-new-car", async (req, res) => {
   const carData = req.body;
@@ -25,5 +25,15 @@ carRouter.get("/cars", async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
+
+carRouter.get("/brandmodels", async (req, res) => {
+  try {
+    const cars = await getBrandModels();
+    res.status(200).json(cars);
+  } catch (err) {
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 
 export default carRouter;

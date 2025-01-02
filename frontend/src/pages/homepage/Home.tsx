@@ -27,6 +27,17 @@ import {
   type IGlobalContext,
 } from "../../context/GlobalContext";
 import { useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+
+type CarCategory = {
+  category: string;     
+  models: string[];        
+};
+
+type CarCategoriesResponse = {
+  [key: string]: string[];  
+};
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -114,6 +125,18 @@ export const Home = () => {
       image: `${great_offers}`,
     },
   ];
+
+  
+  const fetchCategories = () =>
+    axios.get<CarCategoriesResponse>("http://localhost:8080/api/cars").then((res) => res.data);
+
+  const {data} = 
+    useQuery({
+      queryKey: ["categories"],
+      queryFn: fetchCategories,
+    });
+
+
   return (
     <div className={styles.home_container}>
       <div className={styles.cover_container}>
