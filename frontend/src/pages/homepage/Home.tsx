@@ -6,21 +6,11 @@ import homeCover from "../../assets/images/cover_images/home_cover.png";
 import iconNext from "../../assets/images/home_images/icon_next.png";
 import iconPrevious from "../../assets/images/home_images/icon_previous.png";
 import advert from "../../assets/images/home_images/advert.png";
-
 import { categoryData } from "../../tdata/categoryData";
 import popularNissan from "../../assets/images/popular_brands/popular_nissan.png";
-import {
-  quality_assurance,
-  useful_suggest,
-  best_rate,
-  variety_options,
-  great_offers,
-  match_requirement,
-} from "../../assets/images/images";
-
 import { Delivery } from "../../components/delivery-section/Delivery";
 import { FaArrowRight } from "react-icons/fa";
-
+import  { whys } from '../../tdata/whys'; 
 import {
   GlobalContext,
   type ICarData,
@@ -30,13 +20,8 @@ import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-type CarCategory = {
-  category: string;     
-  models: string[];        
-};
-
 type CarCategoriesResponse = {
-  [key: string]: string[];  
+  [key: string]: string[];
 };
 
 export const Home = () => {
@@ -55,6 +40,12 @@ export const Home = () => {
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
+    if (name == "carBrand") {
+      globalContext.setCarData((prevData: ICarData) => ({
+        ...prevData,
+        carModel: "",
+      }));
+    }
     globalContext.setCarData((prevData: ICarData) => ({
       ...prevData,
       [name]: value,
@@ -86,56 +77,18 @@ export const Home = () => {
     popularNissan,
     popularNissan,
   ];
-  const whys = [
-    {
-      title: "Quality Assurance",
-      paragraph:
-        "Our cars undergo rigorous inspections and come with detailed history reports. Drive with confidence knowing your vehicle meets the highest safety and performance standards.",
-      image: `${quality_assurance}`,
-    },
-    {
-      title: "Match Requirement",
-      paragraph:
-        "Our diverse inventory includes something for everyone. Easily find the perfect vehicle by filtering by make, model, year, price, and more.",
-      image: `${match_requirement}`,
-    },
-    {
-      title: "A variety of Options",
-      paragraph:
-        "Our extensive inventory includes a wide range of vehicles—from compact cars and sedans to SUVs and trucks. Find the perfect match for your needs and preferences with ease.",
-      image: `${variety_options}`,
-    },
 
-    {
-      title: "Useful Suggestions",
-      paragraph:
-        "Our diverse inventory includes something for everyone. Easily find the perfect vehicle by filtering by make, model, year, price, and more.",
-      image: `${useful_suggest}`,
-    },
-    {
-      title: "Best rate in the Market",
-      paragraph:
-        "We offer competitive pricing with no hidden fees. Enjoy the best deals and flexible financing options to make your dream car affordable.",
-      image: `${best_rate}`,
-    },
-    {
-      title: "Great Offers",
-      paragraph:
-        "Benefit from our exclusive deals and promotions. Stay updated with our latest offers to maximize your savings on your next car purchase.",
-      image: `${great_offers}`,
-    },
-  ];
-
-  
   const fetchCategories = () =>
-    axios.get<CarCategoriesResponse>("http://localhost:8080/api/cars").then((res) => res.data);
+    axios
+      .get<CarCategoriesResponse>("http://localhost:8080/api/brandmodels")
+      .then((res) => res.data);
 
-  const {data} = 
-    useQuery({
-      queryKey: ["categories"],
-      queryFn: fetchCategories,
-    });
+  const { data, error } = useQuery<CarCategoriesResponse, Error>({
+    queryKey: ["categories"],
+    queryFn: fetchCategories,
+  });
 
+  if (error) return <p>{error.message}</p>;
 
   return (
     <div className={styles.home_container}>
@@ -187,12 +140,14 @@ export const Home = () => {
                 <option value="" disabled>
                   Brand
                 </option>
-                {categoryData[0].values?.map((brand, index) => (
-                  <option key={index} value={brand.title}>
-                    {brand.title}
-                  </option>
-                ))}
+                {data &&
+                  Object.keys(data).map((brand, index) => (
+                    <option key={index} value={brand}>
+                      {brand}
+                    </option>
+                  ))}
               </select>
+
               <select
                 className={styles.select}
                 value={globalContext.carData.carModel}
@@ -202,12 +157,20 @@ export const Home = () => {
                 <option value="" disabled>
                   Model
                 </option>
-                {categoryData[1].values?.map((model, index) => (
-                  <option key={index} value={model.title}>
-                    {model.title}
+
+                {globalContext.carData.carBrand && data ? (
+                  data[globalContext.carData.carBrand]?.map((model, index) => (
+                    <option key={index} value={model}>
+                      {model}
+                    </option>
+                  ))
+                ) : (
+                  <option value="" disabled>
+                    Select a brand first
                   </option>
-                ))}
+                )}
               </select>
+
               <select
                 className={styles.select}
                 value={globalContext.carData.carFuel}
