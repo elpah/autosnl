@@ -46,10 +46,17 @@ const getBrandModels = async () => {
       },
     ])
     .toArray();
-  return result.reduce((acc, item) => {
-    acc[item._id] = item.models;
+  const sortedResult = result.reduce((acc, item) => {
+    acc[item._id] = item.models.sort();
+
     return acc;
   }, {});
+  const sortedBrands = Object.keys(sortedResult).sort();
+  const sortedData = {};
+  sortedBrands.forEach((brand) => {
+    sortedData[brand] = sortedResult[brand];
+  });
+  return sortedData;
 };
 
 export { createNewCar, getAllCars, getBrandModels };
