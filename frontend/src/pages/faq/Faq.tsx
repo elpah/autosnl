@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { faq_cover,faq_icon } from "../../assets/images/images";
 import { Faqcard } from "../../components/faqcard/Faqcard";
-
+import {faqs} from "../../tdata/faqs"
 import styles from "./faq.module.scss";
 
 type FaqObject = {
@@ -12,68 +12,7 @@ type FaqObject = {
 
 const Faq = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const faqs = [
-    {
-      id: 1,
-      title: "Is the prices of the cars Negotiable? ",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
-    },
-    {
-      id: 2,
-      title: "Is the prices of the cars Negotiable? ",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
-    },
-    {
-      id: 3,
-      title: "Is the prices of the cars Negotiable? ",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
-    },
-    {
-      id: 4,
-      title: "Is the prices of the cars Negotiable? ",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
-    },
-    {
-      id: 5,
-      title: "Is the prices of the cars Negotiable? ",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
-    },
-    {
-      id: 6,
-      title: "Is the prices of the cars Negotiable? ",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
-    },
-    {
-      id: 7,
-      title: "Is the prices of the cars Negotiable? ",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
-    },
-    {
-      id: 8,
-      title: "Is the prices of the cars Negotiable? ",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
-    },
-    {
-      id: 9,
-      title: "Is the prices of the cars Negotiable? ",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
-    },
-    {
-      id: 10,
-      title: "Is the prices of the cars Negotiable? ",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
-    }
-  ];
+  
 
   function divideArrayIntoTwo(arr: FaqObject[]) {
     const midIndex = Math.ceil(arr.length / 2);
