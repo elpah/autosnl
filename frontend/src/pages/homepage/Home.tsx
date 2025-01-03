@@ -10,19 +10,14 @@ import { categoryData } from "../../tdata/categoryData";
 import popularNissan from "../../assets/images/popular_brands/popular_nissan.png";
 import { Delivery } from "../../components/delivery-section/Delivery";
 import { FaArrowRight } from "react-icons/fa";
-import  { whys } from '../../tdata/whys'; 
+import { whys } from "../../tdata/whys";
 import {
   GlobalContext,
   type ICarData,
   type IGlobalContext,
 } from "../../context/GlobalContext";
 import { useNavigate } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-
-type CarCategoriesResponse = {
-  [key: string]: string[];
-};
+import useBrandModel from "../../hooks/useBrandModel";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -32,6 +27,7 @@ export const Home = () => {
     useState("passenger");
   const [trustedUsedCars, setTrustedUsedCars] = useState("passenger");
   const [damagedCars, setDamagedCars] = useState("passenger");
+  const { data, error, isLoading } = useBrandModel();
 
   useEffect(
     () => console.table(globalContext.carData),
@@ -78,17 +74,8 @@ export const Home = () => {
     popularNissan,
   ];
 
-  const fetchCategories = () =>
-    axios
-      .get<CarCategoriesResponse>("http://localhost:8080/api/brandmodels")
-      .then((res) => res.data);
-
-  const { data, error } = useQuery<CarCategoriesResponse, Error>({
-    queryKey: ["categories"],
-    queryFn: fetchCategories,
-  });
-
   if (error) return <p>{error.message}</p>;
+  // if (isLoading) return <p>Loading...</p>;
 
   return (
     <div className={styles.home_container}>
