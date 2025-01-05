@@ -2,8 +2,8 @@ import React, { Suspense, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import {
   GlobalContext,
-  ICarData,
-  IAdvancedSeachFieldData,
+  type ICarData,
+  type IAdvancedSeachFieldData,
 } from "./context/GlobalContext";
 
 import "./App.css";
@@ -68,7 +68,6 @@ function App() {
     "Max Erd": "erdMax",
     Country: "country",
   });
-
   return (
     <>
       <GlobalContext.Provider
