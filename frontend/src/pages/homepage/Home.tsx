@@ -75,7 +75,7 @@ export const Home = () => {
   ];
 
   if (error) return <p>{error.message}</p>;
-  // if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <p>Loading...</p>;
 
   return (
     <div className={styles.home_container}>

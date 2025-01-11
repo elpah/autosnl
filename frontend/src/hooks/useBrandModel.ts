@@ -1,19 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-type CarCategoriesResponse = {
+type ICarCategoriesResponse = {
   [key: string]: string[];
 };
 
 const useBrandModel = () => {
   const fetchCategories = () =>
     axios
-      .get<CarCategoriesResponse>("http://localhost:8080/api/brandmodels")
+      .get<ICarCategoriesResponse>("http://localhost:8080/api/brandmodels")
       .then((res) => res.data);
 
-  return useQuery<CarCategoriesResponse, Error>({
+  return useQuery<ICarCategoriesResponse, Error>({
     queryKey: ["categories"],
     queryFn: fetchCategories,
+	staleTime:10*1000,
   });
 };
 

@@ -1,31 +1,41 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { ChangeEvent, useContext, useEffect, useState } from "react";
 import styles from "./search-result.module.scss";
 import { CarCardContainer2 } from "../../components/car-card-container2/CarCardContainer";
 import { Delivery } from "../../components/delivery-section/Delivery";
 import {
   GlobalContext,
+  ICarData,
   type IGlobalContext,
 } from "../../context/GlobalContext";
 import { FaArrowRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import useBrandModel from "../../hooks/useBrandModel";
+import useCars from "../../hooks/useCars";
 
 const SearchResult = () => {
   const globalContext = useContext<IGlobalContext>(GlobalContext);
-
-  const [selectedMake, setSelectedMake] = useState("");
-  const [selectedModel, setSelectedModel] = useState("");
   const navigate = useNavigate();
+  const { data:brandModelData, error:brandModelError, isLoading:brandModelIsLoading } = useBrandModel();
+  useState()
+    const { data:carData, error:carError, isLoading:carIsLoading } = useCars(globalContext.carData.carBrand,globalContext.carData.carModel, globalContext.carData.pageNumber);
+
 
   useEffect(() => {
     console.log(globalContext.carData);
   }, [globalContext.carData]);
 
-  const handleMakeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedMake(e.target.value);
-  };
-
-  const handleModelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedModel(e.target.value);
+  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    if (name == "carBrand") {
+      globalContext.setCarData((prevData: ICarData) => ({
+        ...prevData,
+        carModel: "",
+      }));
+    }
+    globalContext.setCarData((prevData: ICarData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   return (
@@ -40,53 +50,41 @@ const SearchResult = () => {
           <select
             className={styles.make_select}
             id="make-select"
-            value={selectedMake}
-            onChange={handleMakeChange}
+            name="carBrand"
+            value={globalContext.carData.carBrand}
+            onChange={handleChange}
           >
             <option value="" disabled>
               Select Make
             </option>
-            <option className={styles.option_item} value="us">
-              Toyota
-            </option>
-            <option className={styles.option_item} value="ca">
-              Toyota
-            </option>
-            <option className={styles.option_item} value="gb">
-              Toyota
-            </option>
-            <option className={styles.option_item} value="au">
-              Toyota
-            </option>
-            <option className={styles.option_item} value="in">
-              Toyota
-            </option>
+            {brandModelData &&
+              Object.keys(brandModelData).map((brand, index) => (
+                <option key={index} value={brand}>
+                  {brand}
+                </option>
+              ))}
           </select>
-
           <select
             className={styles.model_select}
             id="model-select"
-            value={selectedModel}
-            onChange={handleModelChange}
+            value={globalContext.carData.carModel}
+            name="carModel"
+            onChange={handleChange}
           >
             <option value="" disabled>
               Select Model
             </option>
-            <option className={styles.option_item} value="us">
-              Corolla
-            </option>
-            <option className={styles.option_item} value="ca">
-              Corolla
-            </option>
-            <option className={styles.option_item} value="gb">
-              Corolla
-            </option>
-            <option className={styles.option_item} value="au">
-              Corolla
-            </option>
-            <option className={styles.option_item} value="in">
-              Corolla
-            </option>
+            {globalContext.carData.carBrand && brandModelData ? (
+              brandModelData[globalContext.carData.carBrand]?.map((model, index) => (
+                <option key={index} value={model}>
+                  {model}
+                </option>
+              ))
+            ) : (
+              <option value="" disabled>
+                Select a brand first
+              </option>
+            )}
           </select>
         </div>
         <div

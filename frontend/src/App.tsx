@@ -35,6 +35,7 @@ function App() {
     carFuel: "",
     carTransmission: "",
     carCountry: "",
+    pageNumber:1,
   });
 
   const [advancedSearchFieldData, setAdvancedSearchFieldData] =
@@ -51,6 +52,7 @@ function App() {
       erdMin: 0,
       erdMax: 0,
       country: [],
+      pageNumber:1,
     });
   const [categoryToFieldKeyMap, setCategoryToFieldKeyMap] = useState<
     Record<string, keyof IAdvancedSeachFieldData | null>

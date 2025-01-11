@@ -5,14 +5,16 @@ type ICarCategoriesResponse = {
   [key: string]: string[];
 };
 
-const useCars = (pageNumber:number, brand:string, model:string) => {
+const useCars = (brand: string, model: string, pageNumber: number) => {
   const fetchCategories = () =>
     axios
-      .get<ICarCategoriesResponse>("http://localhost:8080/api/cars",{params:{carBrand:"somthing"}})
+      .get<ICarCategoriesResponse>("http://localhost:8080/api/cars", {
+        params: { brand, model, pageNumber },
+      })
       .then((res) => res.data);
 
   return useQuery<ICarCategoriesResponse, Error>({
-    queryKey: ["categories"],
+    queryKey: ["cars"],
     queryFn: fetchCategories,
     staleTime: 1 * 60 * 1000,
   });
