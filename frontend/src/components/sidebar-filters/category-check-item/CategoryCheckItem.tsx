@@ -5,6 +5,7 @@ import {
   IAdvancedSeachFieldData,
   IGlobalContext,
 } from "../../../context/GlobalContext";
+import useBrandModel from "../../../hooks/useBrandModel";
 
 type CheckItemProp = {
   label: string;
@@ -21,6 +22,8 @@ export const CategoryCheckItem = ({
   fieldKey,
 }: CheckItemProp) => {
   const globalContext = useContext<IGlobalContext>(GlobalContext);
+  const { data, error, isLoading } = useBrandModel();
+
   const isChecked =
     checked !== undefined
       ? checked
@@ -31,13 +34,63 @@ export const CategoryCheckItem = ({
   const handleChange = () => {
     globalContext.setAdvancedSearchFieldData((prev) => {
       const currentValues = prev[fieldKey] as string[];
-      const newValues = isChecked
-        ? currentValues.filter((item) => item !== label)
-        : [...currentValues, label];
+      const allBrands = ["All Brands", ...Object.keys(data || {})];
+      let newValues: string[];
 
-      return { ...prev, [fieldKey]: newValues };
+      if (fieldKey === "brand") {
+        if (label === "All Brands") {
+          if (isChecked) {
+            return {
+              ...prev,
+              brand: [],
+              model: [],
+            };
+          } else {
+            return {
+              ...prev,
+              brand: allBrands,
+            };
+          }
+        }
+
+        if (isChecked) {
+          newValues = currentValues.filter(
+            (item) => item !== label && item !== "All Brands"
+          );
+          const modelsToRemove = data![label] || [];
+          const newModelValues = (prev.model || []).filter(
+            (model) => !modelsToRemove.includes(model)
+          );
+
+          return {
+            ...prev,
+            brand: newValues,
+            model: newModelValues,
+            allBrandsSelected: false,
+          };
+        } else {
+          newValues = [...currentValues, label];
+          const isAllBrandsSelected = newValues.length === allBrands.length - 1;
+
+          return {
+            ...prev,
+            brand: isAllBrandsSelected ? allBrands : newValues,
+            allBrandsSelected: isAllBrandsSelected,
+          };
+        }
+      } else {
+        newValues = isChecked
+          ? currentValues.filter((item) => item !== label)
+          : [...currentValues, label];
+
+        return {
+          ...prev,
+          [fieldKey]: newValues,
+        };
+      }
     });
   };
+
   return (
     <div className={styles.container}>
       <label className={styles.label}>

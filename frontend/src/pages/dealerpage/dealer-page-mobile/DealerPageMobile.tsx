@@ -10,15 +10,17 @@ export const DealerPageMobile: React.FC = () => {
   return (
     <div className={styles.dealer_page_mobile_container}>
       <div className={styles.dealer_page_header}>Elpah Motors</div>
-      <FilterItemsContainer/>
+      <FilterItemsContainer />
       <div className={styles.car_card_container_wrapper}>
-        <CarCardContainer />
+        {/* <CarCardContainer>
+          <div></div>
+        </CarCardContainer> */}
       </div>
       <div className={styles.address_contaact_container}>
         <ContactFormMap />
       </div>
       <DealerInfo>
-        <VisitButton/>
+        <VisitButton />
       </DealerInfo>
     </div>
   );

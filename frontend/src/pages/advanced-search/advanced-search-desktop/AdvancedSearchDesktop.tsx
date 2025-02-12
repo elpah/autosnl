@@ -33,7 +33,9 @@ export const AdvancedSearchDesktop = () => {
             </div>
           </div>
           <div className={styles.cars_container_wrapper}>
-            <CarCardContainer />
+            {/* <CarCardContainer>
+              <div></div>
+             </CarCardContainer > */}
           </div>
         </div>
       </div>

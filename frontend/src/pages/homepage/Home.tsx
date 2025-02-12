@@ -18,6 +18,8 @@ import {
 } from "../../context/GlobalContext";
 import { useNavigate } from "react-router-dom";
 import useBrandModel from "../../hooks/useBrandModel";
+import queryString from "query-string";
+import { goToAdvancedSearch, goToSearchResult } from "../../utils/goToResults";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -36,10 +38,10 @@ export const Home = () => {
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
-    if (name == "carBrand") {
+    if (name == "brand") {
       globalContext.setCarData((prevData: ICarData) => ({
         ...prevData,
-        carModel: "",
+        model: "",
       }));
     }
     globalContext.setCarData((prevData: ICarData) => ({
@@ -74,6 +76,36 @@ export const Home = () => {
     popularNissan,
   ];
 
+  // const goToSearchResult = (e: React.MouseEvent<HTMLButtonElement>) => {
+  //   e.preventDefault();
+
+  //   const query = queryString.stringify(
+  //     {
+  //       carType: globalContext.carData.carType,
+  //       brand: globalContext.carData.brand,
+  //       model: globalContext.carData.model,
+  //       vehicleType: globalContext.carData.vehicleType,
+  //       fuel: globalContext.carData.fuel,
+  //       transmission: globalContext.carData.transmission,
+  //       country: globalContext.carData.country,
+  //       pageNumber: 1,
+  //     },
+  //     {
+  //       skipEmptyString: true,
+  //     }
+  //   );
+  //   navigate(`/search-result?${query}`);
+  // };
+
+  useEffect(() => {
+    if (!globalContext.carData.carType) {
+      globalContext.setCarData((prevData: ICarData) => ({
+        ...prevData,
+        carType: "used",
+      }));
+    }
+  }, []);
+
   if (error) return <p>{error.message}</p>;
   if (isLoading) return <p>Loading...</p>;
 
@@ -87,14 +119,14 @@ export const Home = () => {
               <button
                 type="button"
                 className={`${styles.button} ${
-                  globalContext.carData.cartype === "used"
+                  globalContext.carData.carType === "used"
                     ? styles.selected_button
                     : ""
                 }`}
                 onClick={() => {
                   globalContext.setCarData((prevData) => ({
                     ...prevData,
-                    cartype: "used",
+                    carType: "used",
                   }));
                 }}
               >
@@ -103,14 +135,14 @@ export const Home = () => {
               <button
                 type="button"
                 className={`${styles.button} ${
-                  globalContext.carData.cartype === "damaged"
+                  globalContext.carData.carType === "damaged"
                     ? styles.selected_button
                     : ""
                 }`}
                 onClick={() => {
                   globalContext.setCarData((prevData) => ({
                     ...prevData,
-                    cartype: "damaged",
+                    carType: "damaged",
                   }));
                 }}
               >
@@ -120,13 +152,14 @@ export const Home = () => {
             <div className={styles.select_container}>
               <select
                 className={styles.select}
-                name="carBrand"
-                value={globalContext.carData.carBrand}
+                name="brand"
+                value={globalContext.carData.brand}
                 onChange={handleChange}
               >
                 <option value="" disabled>
-                  Brand
+                  Car Brand
                 </option>
+                <option value="All Brands">All Brands</option>
                 {data &&
                   Object.keys(data).map((brand, index) => (
                     <option key={index} value={brand}>
@@ -137,31 +170,39 @@ export const Home = () => {
 
               <select
                 className={styles.select}
-                value={globalContext.carData.carModel}
-                name="carModel"
+                value={globalContext.carData.model}
+                name="model"
                 onChange={handleChange}
               >
                 <option value="" disabled>
-                  Model
+                  Car Model
                 </option>
-
-                {globalContext.carData.carBrand && data ? (
-                  data[globalContext.carData.carBrand]?.map((model, index) => (
-                    <option key={index} value={model}>
-                      {model}
-                    </option>
-                  ))
+                {globalContext.carData.brand && data ? (
+                  globalContext.carData.brand === "All Brands" ? (
+                    Object.values(data)
+                      .flat()
+                      .map((model, index) => (
+                        <option key={index} value={model}>
+                          {model}
+                        </option>
+                      ))
+                  ) : (
+                    data[globalContext.carData.brand]?.map((model, index) => (
+                      <option key={index} value={model}>
+                        {model}
+                      </option>
+                    ))
+                  )
                 ) : (
                   <option value="" disabled>
                     Select a brand first
                   </option>
                 )}
               </select>
-
               <select
                 className={styles.select}
-                value={globalContext.carData.carFuel}
-                name="carFuel"
+                value={globalContext.carData.fuel}
+                name="fuel"
                 onChange={handleChange}
               >
                 <option value="" disabled>
@@ -175,9 +216,9 @@ export const Home = () => {
               </select>
               <select
                 className={styles.select}
-                value={globalContext.carData.carTransmission}
+                value={globalContext.carData.transmission}
                 onChange={handleChange}
-                name="carTransmission"
+                name="transmission"
               >
                 <option value="" disabled>
                   Transmission
@@ -206,31 +247,31 @@ export const Home = () => {
 
               <select
                 className={styles.select}
-                value={globalContext.carData.carCountry}
+                value={globalContext.carData.country}
                 onChange={handleChange}
-                name="carCountry"
+                name="country"
               >
                 <option value="" disabled>
                   Country
                 </option>
-                {categoryData[8].values?.map((carCountry, index) => (
-                  <option key={index} value={carCountry.title}>
-                    {carCountry.title}
+                {categoryData[8].values?.map((country, index) => (
+                  <option key={index} value={country.title}>
+                    {country.title}
                   </option>
                 ))}
               </select>
             </div>
             <button
               className={styles.submit_button}
-              onClick={(e: any) => {
-                e.preventDefault();
-                navigate("/search-result");
+              onClick={(e) => {
+                  e.preventDefault();
+                goToSearchResult(globalContext, navigate);
               }}
             >
               Search
             </button>
             <div
-              onClick={() => navigate("/advanced-search")}
+              onClick={() => goToAdvancedSearch(globalContext, navigate)}
               className={styles.advanced_search_container}
             >
               <p className={styles.advance_search_text}>Advanced search</p>

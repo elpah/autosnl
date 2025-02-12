@@ -14,11 +14,13 @@ import { FilterOtherOption } from "../filter_other/filter_other_option/FilterOth
 import { FilterPrice } from "../filter-price/FilterPrice";
 import { CategoryCheckItem } from "../sidebar-filters/category-check-item/CategoryCheckItem";
 import { categoryData } from "../../tdata/categoryData";
+import useBrandModel from "../../hooks/useBrandModel";
 
 export const FilterItemsContainer = () => {
   const [closeContainer, setCloseContainer] = useState(true);
   const [currentTitle, setCurrentTitle] = useState("");
   const globalContext = useContext<IGlobalContext>(GlobalContext);
+  const { data, error, isLoading } = useBrandModel();
 
   const label = (array: any) => {
     if (array.price_min && array.price_max)
@@ -50,17 +52,21 @@ export const FilterItemsContainer = () => {
   return (
     <>
       <div className={styles.filter_items_container}>
-        {categoryData.map((category, index) => (
-          <FilterItem
-            key={index}
-            title={category.title}
-            handleclick={() => {
-              setCurrentTitle(category.title);
-              setCloseContainer(true);
-            }}
-            selected={category.title === currentTitle}
-          />
-        ))}
+        {categoryData.map((category, index) => {
+          const fieldKey = globalContext.categoryToFieldKeyMap[category.title];
+          if (fieldKey === null) return null;
+          return (
+            <FilterItem
+              key={index}
+              title={category.title}
+              handleclick={() => {
+                setCurrentTitle(category.title);
+                setCloseContainer(true);
+              }}
+              selected={category.title === currentTitle}
+            />
+          );
+        })}
       </div>
       <div className={styles.select_item_container_wrapper}>
         {foundCategory && closeContainer && (
@@ -71,15 +77,70 @@ export const FilterItemsContainer = () => {
           >
             {foundCategory.title === "Price (€)" ? (
               <FilterPrice />
+            ) : foundCategory.title === "Search By Brand" ? (
+              data ? (
+                <>
+                  <CategoryCheckItem
+                    label="All Brands"
+                    fieldKey="brand"
+                    number_of_cars={10}
+                  />
+                  {Object.keys(data).map((brand, index) => (
+                    <CategoryCheckItem
+                      key={index}
+                      label={brand}
+                      fieldKey="brand"
+                      number_of_cars={10}
+                    />
+                  ))}
+                </>
+              ) : null
+            ) : foundCategory.title === "Search By Model" ? (
+              globalContext.advancedSearchFieldData.brand?.includes(
+                "All Brands"
+              ) ? (
+                Object.values(data || {})
+                  .flat()
+                  .map((model, index) => (
+                    <CategoryCheckItem
+                      key={`${model}-${index}`}
+                      label={model}
+                      fieldKey="model"
+                      number_of_cars={10}
+                    />
+                  ))
+              ) : (
+                globalContext.advancedSearchFieldData.brand?.map((brand) =>
+                  data?.[brand]?.map((model, index) => (
+                    <CategoryCheckItem
+                      key={`${brand}-${index}`}
+                      label={model}
+                      fieldKey="model"
+                      number_of_cars={10}
+                    />
+                  ))
+                )
+              )
             ) : foundCategory.values ? (
-              foundCategory.values.map((value, index) => (
-                <CategoryCheckItem
-                  key={index}
-                  label={label(value)}
-                  number_of_cars={value.number_of_cars}
-                  fieldKey="brand"
-                />
-              ))
+              foundCategory.values.map((value, index) => {
+                const fieldKey =
+                  globalContext.categoryToFieldKeyMap[foundCategory.title];
+                if (
+                  !fieldKey ||
+                  !(fieldKey in globalContext.advancedSearchFieldData)
+                ) {
+                  return null; 
+                }
+
+                return (
+                  <CategoryCheckItem
+                    key={index}
+                    label={label(value)}
+                    number_of_cars={value.number_of_cars}
+                    fieldKey={fieldKey}
+                  />
+                );
+              })
             ) : (
               <FilterOtherContainer>
                 <FilterOther
@@ -88,7 +149,7 @@ export const FilterItemsContainer = () => {
                     handleMinPriceChange(`${foundCategory.field?.min}`, value)
                   }
                 >
-                  {foundCategory["Min"]?.map((minValue, index: number) => (
+                  {foundCategory["Min"]?.map((minValue, index) => (
                     <FilterOtherOption
                       key={index}
                       value={minValue}
@@ -102,7 +163,7 @@ export const FilterItemsContainer = () => {
                     handleMaxPriceChange(`${foundCategory.field?.max}`, value)
                   }
                 >
-                  {foundCategory["Max"]?.map((maxValue, index: number) => (
+                  {foundCategory["Max"]?.map((maxValue, index) => (
                     <FilterOtherOption
                       key={index}
                       value={maxValue}

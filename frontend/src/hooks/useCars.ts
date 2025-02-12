@@ -1,22 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import {type ICarData } from "../context/GlobalContext";
+import { type ICarResponse } from "../types/carResponseType";
 
-type ICarCategoriesResponse = {
-  [key: string]: string[];
-};
-
-const useCars = (brand: string, model: string, pageNumber: number) => {
+const useCars = (carData: ICarData) => {
   const fetchCategories = () =>
     axios
-      .get<ICarCategoriesResponse>("http://localhost:8080/api/cars", {
-        params: { brand, model, pageNumber },
+      .get<ICarResponse>("http://localhost:8080/api/cars-search", {
+        params: { ...carData },
       })
       .then((res) => res.data);
 
-  return useQuery<ICarCategoriesResponse, Error>({
-    queryKey: ["cars"],
+  return useQuery<ICarResponse, Error>({
+    queryKey: ["cars", carData],
     queryFn: fetchCategories,
-    staleTime: 1 * 60 * 1000,
+    // staleTime: 1 * 60 * 1000,
   });
 };
 

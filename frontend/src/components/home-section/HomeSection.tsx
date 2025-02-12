@@ -59,14 +59,14 @@ export const HomeSection = ({
           ))}
         </div>
         <div className={styles.car_container}>
+          {/* <CarCard />
           <CarCard />
           <CarCard />
           <CarCard />
           <CarCard />
           <CarCard />
           <CarCard />
-          <CarCard />
-          <CarCard />
+          <CarCard /> */}
         </div>
       </div>
     </section>

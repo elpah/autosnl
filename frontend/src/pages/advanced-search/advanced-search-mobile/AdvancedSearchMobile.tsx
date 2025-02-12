@@ -29,7 +29,10 @@ export const AdvancedSearchMobile = () => {
       </div>
       <FilterItemsContainer />
       <div className={styles.car_card_container_wrapper}>
-        <CarCardContainer />
+        {/* <CarCardContainer>
+          <div></div>
+        </CarCardContainer> */}
+          
       </div>
     </div>
   );

@@ -1,13 +1,13 @@
 import { createContext } from "react";
 
 export type ICarData = {
-  cartype: string;
-  carBrand: string;
-  carModel: string;
-  carFuel: string;
-  carTransmission: string;
+  carType: string;
+  brand: string;
+  model: string;
+  fuel: string;
+  transmission: string;
   vehicleType: string;
-  carCountry: string;
+  country: string;
   pageNumber: number;
 };
 
@@ -41,13 +41,13 @@ export interface IGlobalContext {
 }
 export const GlobalContext = createContext<IGlobalContext>({
   carData: {
-    cartype: "used",
-    carBrand: "",
-    carModel: "",
-    carFuel: "",
-    carTransmission: "",
+    carType: "used",
+    brand: "",
+    model: "",
+    fuel: "",
+    transmission: "",
     vehicleType: "",
-    carCountry: "",
+    country: "",
     pageNumber: 1,
   },
   setCarData: (carData) => {},
@@ -64,7 +64,7 @@ export const GlobalContext = createContext<IGlobalContext>({
     erdMin: 0,
     erdMax: 0,
     country: [],
-    pageNumber:1,
+    pageNumber: 1,
   },
   setAdvancedSearchFieldData: (advancedSearchFieldData) => {},
   categoryToFieldKeyMap: {

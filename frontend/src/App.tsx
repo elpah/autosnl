@@ -28,13 +28,13 @@ const AdvancedSearch = React.lazy(
 
 function App() {
   const [carData, setCarData] = useState<ICarData>({
-    cartype: "used",
-    carBrand: "",
-    carModel: "",
+    carType: "used",
+    brand: "",
+    model: "",
     vehicleType: "",
-    carFuel: "",
-    carTransmission: "",
-    carCountry: "",
+    fuel: "",
+    transmission: "",
+    country: "",
     pageNumber:1,
   });
 

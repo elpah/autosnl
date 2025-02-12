@@ -13,14 +13,17 @@ import { FilterOtherContainer } from "../filter-other-container/FilterOtherConta
 import { FilterOtherOption } from "../filter_other/filter_other_option/FilterOtherOption";
 import { FilterOther } from "../filter_other/FilterOther";
 import { FilterPrice } from "../filter-price/FilterPrice";
+import useBrandModel from "../../hooks/useBrandModel";
 
 export const SidebarFilters = () => {
   const globalContext = useContext<IGlobalContext>(GlobalContext);
+  const { data, error, isLoading } = useBrandModel();
 
   useEffect(() => {
     console.table(globalContext.advancedSearchFieldData);
   }, [globalContext.advancedSearchFieldData]);
 
+  
   const label = (array: any) => {
     if (array.price_min && array.price_max)
       return `€${array.price_min} - €${array.price_max}`;
@@ -49,12 +52,54 @@ export const SidebarFilters = () => {
     <div className={styles.container}>
       {categoryData.map((category, index) => {
         const fieldKey = globalContext.categoryToFieldKeyMap[category.title];
-
         if (fieldKey === null) return null;
-
         return (
           <Category key={index} title={category.title}>
-            {category.title === "Price (€)" ? (
+            {category.title === "Search By Brand" ? (
+              data ? (
+                <>
+                  <CategoryCheckItem
+                    label="All Brands"
+                    fieldKey="brand"
+                    number_of_cars={10}
+                  />
+                  {Object.keys(data).map((brand, index) => (
+                    <CategoryCheckItem
+                      key={index}
+                      label={brand}
+                      fieldKey="brand"
+                      number_of_cars={10}
+                    />
+                  ))}
+                </>
+              ) : null
+            ) : category.title === "Search By Model" ? (
+              globalContext.advancedSearchFieldData.brand?.includes(
+                "All Brands"
+              ) ? (
+                Object.values(data || {})
+                  .flat()
+                  .map((model, index) => (
+                    <CategoryCheckItem
+                      key={`${model}-${index}`}
+                      label={model}
+                      fieldKey="model"
+                      number_of_cars={10}
+                    />
+                  ))
+              ) : (
+                globalContext.advancedSearchFieldData.brand?.map((brand) =>
+                  data?.[brand]?.map((model, index) => (
+                    <CategoryCheckItem
+                      key={`${brand}-${index}`}
+                      label={model}
+                      fieldKey="model"
+                      number_of_cars={10}
+                    />
+                  ))
+                )
+              )
+            ) : category.title === "Price (€)" ? (
               <FilterPrice />
             ) : category.values ? (
               category.values.map((value, index) => (
@@ -68,12 +113,12 @@ export const SidebarFilters = () => {
             ) : (
               <FilterOtherContainer>
                 <FilterOther
-                  minOrMaxLabel={category.label.min}
+                  minOrMaxLabel={category.label?.min}
                   handleValueChange={(value) =>
                     handleMinChange(`${category.field?.min}`, value)
                   }
                 >
-                  {category["Min"]?.map((minValue, index: number) => (
+                  {category["Min"]?.map((minValue, index) => (
                     <FilterOtherOption
                       key={index}
                       value={minValue}
@@ -82,12 +127,12 @@ export const SidebarFilters = () => {
                   ))}
                 </FilterOther>
                 <FilterOther
-                  minOrMaxLabel={category.label.max}
+                  minOrMaxLabel={category.label?.max}
                   handleValueChange={(value) =>
                     handleMaxChange(`${category.field?.max}`, value)
                   }
                 >
-                  {category["Max"]?.map((maxValue, index: number) => (
+                  {category["Max"]?.map((maxValue, index) => (
                     <FilterOtherOption
                       key={index}
                       value={maxValue}
