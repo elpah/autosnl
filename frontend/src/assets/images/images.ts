@@ -63,6 +63,12 @@ import quality_assurance from "./why_card_images/quality_assurance.png";
 import useful_suggest from "./why_card_images/useful_suggest.png";
 import variety_options from "./why_card_images/variety_options.png";
 
+// language flags
+import en_flag from "./language-flags/en.webp";
+import nl_flag from "./language-flags/nl.webp";
+import ua_flag from "./language-flags/ua.webp";
+import ru_flag from "./language-flags/ru.webp";
+
 export {
   mile,
   fuel,
@@ -110,4 +116,8 @@ export {
   quality_assurance,
   useful_suggest,
   variety_options,
+  en_flag,
+  ru_flag,
+  nl_flag,
+  ua_flag,
 };

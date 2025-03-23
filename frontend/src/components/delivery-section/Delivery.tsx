@@ -1,24 +1,29 @@
-import React from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./delivery.module.scss";
+import { GlobalContext } from "../../context/GlobalContext";
+import { useTranslation } from "react-i18next";
+
 export const Delivery = () => {
   const navigate = useNavigate();
+  const {t} = useTranslation<string>("footer")
+  
+  const globalContext = useContext(GlobalContext);
   return (
     <div className={styles.delivery_container}>
       <div className={styles.delivery_info_wrapper}>
         <h2 className={styles.delivery_header}>
-          No Advance, No waiting. Instant Delivery
+          {t('deliveryHeader')}
         </h2>
         <p className={styles.delivery_text}>
-          Drive your new car home today! With our seamless process, you won't
-          need to worry about upfront payments or long waiting periods. Choose
-          your vehicle, complete the purchase, and take immediate delivery.
-          Enjoy the convenience of a hassle-free car buying experience, designed
-          to get you on the road as quickly as possible.
+          {t('deliveryText')}
         </p>
-        <button className={styles.button} onClick={() => navigate("/contact")}>
-          Contact Us
+        <button
+          className={styles.button}
+          onClick={() => navigate(`/${globalContext.lang}/contact`)}
+        >
+        {t('contactUs')}
         </button>
       </div>
     </div>

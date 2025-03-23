@@ -1,5 +1,4 @@
-import React, { ChangeEvent, useContext, useEffect, useState } from "react";
-import styles from "./search-result.module.scss";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { CarCardContainer2 } from "../../components/car-card-container2/CarCardContainer";
 import { Delivery } from "../../components/delivery-section/Delivery";
 import {
@@ -8,34 +7,67 @@ import {
   type IGlobalContext,
 } from "../../context/GlobalContext";
 import { FaArrowRight } from "react-icons/fa";
-import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
+import {
+  useSearchParams,
+  useNavigate,
+  useLocation,
+  useParams,
+} from "react-router-dom";
 import useBrandModel from "../../hooks/useBrandModel";
 import useCars from "../../hooks/useCars";
 import CarCard from "../../components/car-card/CarCard";
 import queryString from "query-string";
 import { goToAdvancedSearch } from "../../utils/goToResults";
+import { LoadingCars } from "../../components/loading-cars/LoadingCars";
+import { scroll_to_top } from "../../utils/utilsFunctions";
+import { useTranslation } from "react-i18next";
+import { isValidLang } from "../../utils/utilsFunctions";
+
+import styles from "./search-result.module.scss";
+
 const SearchResult = () => {
   const globalContext = useContext<IGlobalContext>(GlobalContext);
   const [searchParams] = useSearchParams();
   const { search } = useLocation();
   const queryParams = queryString.parse(search);
+  const { lang: urlLang } = useParams();
+  const { t } = useTranslation<string>("searchResult");
+
+  useEffect(() => {
+    scroll_to_top();
+  }, [globalContext]);
+
+  useEffect(() => {
+    if (urlLang && isValidLang(urlLang)) {
+      globalContext.setLang(urlLang);
+    } else if (globalContext.lang) {
+      globalContext.setLang(globalContext.lang);
+    } else {
+      globalContext.setLang("en");
+    }
+  }, [urlLang]);
+
+  useEffect(() => {
+    if (!globalContext.carData.carType) {
+      globalContext.setCarData((prevData: ICarData) => ({
+        ...prevData,
+        carType: "used",
+      }));
+    }
+  }, []);
 
   const navigate = useNavigate();
   const {
     data: brandModelData,
-    error: brandModelError,
+    // error: brandModelError,
     isLoading: brandModelIsLoading,
   } = useBrandModel();
 
   const {
     data: carFetchedData,
-    error: carError,
+    // error: carError,
     isLoading: carIsLoading,
   } = useCars(globalContext.carData);
-
-  useEffect(() => {
-    console.log(globalContext.carData);
-  }, [globalContext.carData]);
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -72,13 +104,13 @@ const SearchResult = () => {
     newParams.set("pageNumber", "1");
     resetFields.forEach((param) => newParams.delete(param));
 
-    navigate(`/search-result?${newParams.toString()}`);
+    navigate(`/${globalContext.lang}/search-result?${newParams.toString()}`);
   };
 
   useEffect(() => {
     if (!brandModelIsLoading && brandModelData) {
       globalContext.setCarData((prevData: ICarData) => ({
-        carType: "",
+        carType: queryParams.carType ? String(queryParams.carType) : "",
         brand: queryParams.brand ? String(queryParams.brand) : "",
         model: queryParams.model ? String(queryParams.model) : "",
         fuel: queryParams.fuel ? String(queryParams.fuel) : "",
@@ -94,39 +126,70 @@ const SearchResult = () => {
     }
   }, [search, brandModelIsLoading]);
 
-  useEffect(() => {
-    console.log(carFetchedData);
-  }, [carFetchedData]);
-
   return (
     <div className={styles.container_wrapper}>
       <div className={styles.container}>
         <h1 className={styles.header}>
           {globalContext.carData.brand &&
           globalContext.carData.brand !== "All Brands"
-            ? `${globalContext.carData.brand} Car Models`
+            ? `${
+                brandModelData?.brands[globalContext.carData.brand].name[
+                  globalContext.lang
+                ]
+              } ${t("carModels")}`
             : globalContext.carData.brand === "All Brands" &&
               globalContext.carData.model
-            ? `${globalContext.carData.model} Models`
-            : "All Cars"}
+            ? `
+   
+   ${
+     brandModelData?.brands[globalContext.carData.brand].models[
+       globalContext.carData.model
+     ][globalContext.lang]
+   }
+    ${t("models")}`
+            : t("allCars")}
         </h1>
-        {carFetchedData?.totalCars ? (
-          <p className={styles.para}>
-            There are a total of {carFetchedData?.totalCars}{" "}
-            {globalContext.carData.brand &&
-            globalContext.carData.brand !== "All Brands"
-              ? `${globalContext.carData.brand} models`
-              : "cars"}{" "}
-            available{" "}
-            {globalContext.carData.country
-              ? `in ${globalContext.carData.country}`
-              : ""}
-          </p>
-        ) : carIsLoading ? (
-          <p className={styles.para}></p>
-        ) : (
-          <p className={styles.para}>No Cars Found</p>
-        )}
+        <p
+          className={styles.para}
+          style={{ visibility: carIsLoading ? "hidden" : "visible" }}
+        >
+          {carFetchedData?.totalCars
+            ? globalContext.carData.brand.toLowerCase() === "all brands"
+              ? `${t("there")} ${
+                  carFetchedData?.totalCars > 1 ? t("areATotalOf") : t("is")
+                } ${carFetchedData.totalCars} ${
+                  carFetchedData.totalCars > 1 ? t("cars") : t("car")
+                } ${t("available")}`
+              : globalContext.carData.brand && !globalContext.carData.model
+              ? `${t("there")}  ${
+                  carFetchedData?.totalCars > 1 ? t("areATotalOf") : t("is")
+                } ${carFetchedData.totalCars} ${
+                  brandModelData?.brands[globalContext.carData.brand].name[
+                    globalContext.lang
+                  ]
+                } ${t("available")}`
+              : globalContext.carData.brand.toLowerCase() !== "all brands" &&
+                globalContext.carData.model
+              ? `${t("there")} ${
+                  carFetchedData?.totalCars > 1 ? t("areATotalOf") : t("is")
+                } ${carFetchedData.totalCars} ${
+                  brandModelData?.brands[globalContext.carData.brand].name[
+                    globalContext.lang
+                  ]
+                } ${
+                  brandModelData?.brands[globalContext.carData?.brand].models[
+                    globalContext.carData?.model
+                  ][globalContext.lang]
+                } ${carFetchedData?.totalCars > 1 ? "models" : "model"} ${t(
+                  "available"
+                )}`
+              : `${t("there")} ${
+                  carFetchedData?.totalCars > 1 ? t("areATotalOf") : t("is")
+                } ${carFetchedData.totalCars} ${
+                  carFetchedData.totalCars > 1 ? t("cars") : t("car")
+                } ${t("available")}`
+            : t("noneFound")}
+        </p>
 
         <div className={styles.make_model_container}>
           <select
@@ -137,15 +200,20 @@ const SearchResult = () => {
             onChange={handleChange}
           >
             <option value="" disabled>
-              Select Make
+              {t("selectMake")}
             </option>
-            <option value="All Brands">All Brands</option>
+            <option value="All Brands">{t("allbrands")}</option>
             {brandModelData &&
-              Object.keys(brandModelData).map((brand, index) => (
-                <option key={index} value={brand}>
-                  {brand}
-                </option>
-              ))}
+              brandModelData.brands &&
+              Object.keys(brandModelData.brands).map((brand, index) => {
+                const brandData = brandModelData.brands[brand];
+                const brandName = brandData.name[globalContext.lang];
+                return (
+                  <option key={index} value={brand}>
+                    {brandName}
+                  </option>
+                );
+              })}
           </select>
           <select
             className={styles.model_select}
@@ -155,64 +223,89 @@ const SearchResult = () => {
             onChange={handleChange}
           >
             <option value="" disabled>
-              Select Model
+              {t("selectModel")}
             </option>
-
             {globalContext.carData.brand && brandModelData ? (
               globalContext.carData.brand === "All Brands" ? (
-                Object.values(brandModelData)
-                  .flat()
-                  .map((model, index) => (
-                    <option key={index} value={model}>
-                      {model}
-                    </option>
-                  ))
+                Object.keys(brandModelData.brands).map((brandName, index) => {
+                  const brandModels = brandModelData.brands[brandName].models;
+
+                  return Object.keys(brandModels).map(
+                    (modelName, modelIndex) => {
+                      const model = brandModels[modelName];
+                      const modelNameTranslated = model[globalContext.lang];
+
+                      return (
+                        <option
+                          key={`${index}-${modelIndex}`}
+                          value={modelName}
+                        >
+                          {modelNameTranslated}
+                        </option>
+                      );
+                    }
+                  );
+                })
               ) : (
-                brandModelData[globalContext.carData.brand]?.map(
-                  (model, index) => (
-                    <option key={index} value={model}>
-                      {model}
+                Object.keys(
+                  brandModelData.brands[globalContext.carData.brand].models
+                ).map((modelName, index) => {
+                  const model =
+                    brandModelData.brands[globalContext.carData.brand].models[
+                      modelName
+                    ];
+                  const modelNameTranslated = model[globalContext.lang];
+                  return (
+                    <option key={index} value={modelName}>
+                      {modelNameTranslated}
                     </option>
-                  )
-                )
+                  );
+                })
               )
             ) : (
               <option value="" disabled>
-                Select a brand first
+                {t("selectBrandFirst")}
               </option>
             )}
           </select>
         </div>
         <div
-          onClick={() => goToAdvancedSearch(globalContext, navigate)}
+          onClick={() => {
+            globalContext.setAdvancedSearchFieldData((prev) => ({
+              ...prev,
+              dealerId: "",
+            }));
+            goToAdvancedSearch(globalContext, navigate);
+          }}
           className={styles.advanced_search_container}
         >
-          <p className={styles.advance_search_text}>Advanced search</p>
+          <p className={styles.advance_search_text}>{t("advancedSearch")}</p>
           <FaArrowRight className={styles.advance_search_icon} />
         </div>
-        <CarCardContainer2
-          totalCars={carFetchedData?.totalCars || 0}
-          currentPage={globalContext.carData.pageNumber}
-        >
-          {carIsLoading ? (
-            <div>Loading...</div>
-          ) : carFetchedData?.cars && carFetchedData.cars.length > 0 ? (
-            carFetchedData.cars.map((car) => (
+
+        {carIsLoading ? (
+          <LoadingCars />
+        ) : carFetchedData?.cars && carFetchedData.cars.length > 0 ? (
+          <CarCardContainer2
+            totalCars={carFetchedData?.totalCars || 0}
+            currentPage={globalContext.carData.pageNumber}
+          >
+            {carFetchedData.cars.map((car) => (
               <CarCard
+                carId={car.carId}
                 key={car.carId}
                 carImage={car.carImages[0]}
-                carBrand={car.carBrand}
-                carModel={car.carModel}
-                carMilleage={car.carMilleage}
-                carFuel={car.carFuel}
-                carYear={car.carERD}
-                // handleViewDetails={() => console.log("success")}
+                carBrand={car.lang[globalContext.lang].carBrand}
+                carModel={car.lang[globalContext.lang].carModel}
+                carMileage={car.carMileage.toString()}
+                carFuel={car.lang[globalContext.lang].carFuel}
+                carYear={car.carERD.toString()}
               />
-            ))
-          ) : (
-            <div>No cars available to display.</div>
-          )}
-        </CarCardContainer2>
+            ))}
+          </CarCardContainer2>
+        ) : (
+          <p>{t("noneFound")}</p>
+        )}
       </div>
       <Delivery />
     </div>

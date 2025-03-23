@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./page-number.module.scss";
 
 type PageNumberProps = {
@@ -37,18 +36,43 @@ const PageNumber = ({
           </svg>
         </div>
       )}
+
       {totalPages > 1 &&
-        pageNumbers.map((pageNumber) => (
-          <div
-            onClick={() => handlePageNumberClick(pageNumber)}
-            key={pageNumber}
-            className={`${styles.car_page_number} ${
-              pageNumber === currentPage ? styles.current_page_number : ""
-            }`}
-          >
-            {pageNumber}
-          </div>
-        ))}
+        pageNumbers.map((pageNumber, index) => {
+          const isHidden =
+            pageNumber < currentPage - 2 && pageNumber !== 1
+              ? true
+              : pageNumber > currentPage + 2 && pageNumber !== totalPages
+              ? true
+              : false;
+
+          const showBeforeLast =
+            pageNumber === totalPages - 1 && totalPages - currentPage > 3;
+
+          const showAfterFirst = pageNumber === 2 && currentPage > 4;
+
+          if (isHidden && !showBeforeLast && !showAfterFirst) {
+            return null;
+          }
+          return showBeforeLast || showAfterFirst ? (
+            <p key={`ellipsis-${index}`} className={styles.three_dots}>
+              <span>.</span>
+              <span>.</span>
+              <span>.</span>
+            </p>
+          ) : (
+            <div
+              onClick={() => handlePageNumberClick(pageNumber)}
+              key={pageNumber}
+              className={`${styles.car_page_number} ${
+                pageNumber === currentPage ? styles.current_page_number : ""
+              }`}
+            >
+              {pageNumber}
+            </div>
+          );
+        })}
+
       {currentPage < totalPages && (
         <div className={styles.next_icon_container} onClick={handleNextClick}>
           <svg

@@ -2,9 +2,14 @@ import React from "react";
 
 import styles from "./advanced-search-desktop.module.scss";
 import { SidebarFilters } from "../../../components/sidebar-filters/SidebarFilters";
-import { CarCardContainer } from "../../../components/car-card-container/CarCardContainer";
+import { IAdvancedProps } from "../../../types/otherTypes";
 
-export const AdvancedSearchDesktop = () => {
+export const AdvancedSearchDesktop = ({
+  carList,
+  totalCars,
+  isLoading,
+  loadingContainer,
+}: IAdvancedProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.main}>
@@ -13,7 +18,11 @@ export const AdvancedSearchDesktop = () => {
         </div>
         <div className={styles.right}>
           <div className={styles.header_search_container}>
-            <div className={styles.header}>2000 Cars Available</div>
+            <div className={styles.header}>
+              {`${
+                isLoading ? "Loading..." : `${totalCars} ${totalCars > 1? "Cars" : "Car"} Available`
+              }`}
+            </div>
             <div className={styles.search_container}>
               <div className={styles.search_name}>sort by:</div>
               <div className={styles.icon_container}>
@@ -33,9 +42,7 @@ export const AdvancedSearchDesktop = () => {
             </div>
           </div>
           <div className={styles.cars_container_wrapper}>
-            {/* <CarCardContainer>
-              <div></div>
-             </CarCardContainer > */}
+            {isLoading ? loadingContainer : carList}
           </div>
         </div>
       </div>

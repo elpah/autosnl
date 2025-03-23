@@ -4,7 +4,7 @@ import {type ICarData } from "../context/GlobalContext";
 import { type ICarResponse } from "../types/carResponseType";
 
 const useCars = (carData: ICarData) => {
-  const fetchCategories = () =>
+  const fetchCars = () =>
     axios
       .get<ICarResponse>("http://localhost:8080/api/cars-search", {
         params: { ...carData },
@@ -13,8 +13,7 @@ const useCars = (carData: ICarData) => {
 
   return useQuery<ICarResponse, Error>({
     queryKey: ["cars", carData],
-    queryFn: fetchCategories,
-    // staleTime: 1 * 60 * 1000,
+    queryFn: fetchCars,
   });
 };
 

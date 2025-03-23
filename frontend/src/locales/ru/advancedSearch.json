@@ -1,0 +1,18 @@
+{
+  "searchByBrand": "Поиск по бренду",
+  "allBrand": "Все бренды",
+  "searchByModel": "Поиск по модели",
+  "price": "Цена",
+  "vehicleType": "Тип транспортного средства",
+  "mileage": "Пробег",
+  "minMil": "Мин. пробег",
+  "maxMil": "Макс. пробег",
+  "transmission": "Трансмиссия",
+  "fuel": "Топливо",
+  "erd": "ДВД",
+  "minErd": "Мин. ДВД",
+  "maxErd": "Макс. ДВД",
+  "country": "Страна",
+  "manual": "Ручной",
+  "automatic": "Автомат"
+}

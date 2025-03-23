@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./car-info-cover.module.scss";
 
-import CurrentCoverImage from "../../assets/images/car_image_testing.png";
-import { about_cover } from "../../assets/images/images";
+type ICarInfoCoverProps = {
+  coverImages: string[];
+};
 
-const CarInfoCover = () => {
+const CarInfoCover = ({ coverImages }: ICarInfoCoverProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [thumbnailStartIndex, setThumbnailStartIndex] = useState(0);
 
@@ -22,19 +23,7 @@ const CarInfoCover = () => {
       setThumbnailStartIndex(newIndex - 3);
     }
   };
-  const coverImages = [
-    CurrentCoverImage,
-    CurrentCoverImage,
-    CurrentCoverImage,
-    about_cover,
-    about_cover,
-    CurrentCoverImage,
-    CurrentCoverImage,
-    about_cover,
-    CurrentCoverImage,
-    CurrentCoverImage,
-    CurrentCoverImage,
-  ];
+
   const remainingImages = coverImages.length - (thumbnailStartIndex + 4);
 
   return (

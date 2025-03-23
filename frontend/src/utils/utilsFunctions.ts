@@ -10,7 +10,6 @@ export const updatePageNumber = <T extends { pageNumber: number }>(
     pageNumber: pageNumber,
   }));
 
-  //   const navigate = useNavigate();
   const queryParams = new URLSearchParams(window.location.search);
   queryParams.set("pageNumber", String(pageNumber));
   navigate({
@@ -49,3 +48,16 @@ export const handlePageNumberClick = <T extends { pageNumber: number }>(
 ) => {
   updatePageNumber(pageNumber, setData, navigate);
 };
+
+
+export const scroll_to_top = ()=>{
+  return window.scroll(0,0);
+}
+
+
+
+
+  const validLanguages = ["en", "ru", "nl", "ua"] as const;
+  export const isValidLang = (lang: string): lang is "en" | "ru" | "nl" | "ua" => {
+    return validLanguages.includes(lang as "en" | "ru" | "nl" | "ua");
+  };

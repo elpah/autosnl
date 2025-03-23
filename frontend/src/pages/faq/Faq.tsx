@@ -1,8 +1,13 @@
-import React, { useState } from "react";
-import { faq_cover,faq_icon } from "../../assets/images/images";
+import { useContext, useState, useEffect } from "react";
+import { faq_cover, faq_icon } from "../../assets/images/images";
 import { Faqcard } from "../../components/faqcard/Faqcard";
-import {faqs} from "../../tdata/faqs"
+import { useFaqs } from "../../tdata/faqs";
+import { useParams } from "react-router-dom";
+import { GlobalContext } from "../../context/GlobalContext";
+import { useTranslation } from "react-i18next";
+
 import styles from "./faq.module.scss";
+
 
 type FaqObject = {
   id: number;
@@ -12,7 +17,16 @@ type FaqObject = {
 
 const Faq = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  
+  const { lang: urlLang } = useParams();
+  const globalContext = useContext(GlobalContext);
+  const {t } = useTranslation<string>("faq")
+  const faqs = useFaqs();
+
+  useEffect(() => {
+    if (urlLang) {
+      globalContext.setLang(urlLang);
+    }
+  }, [urlLang]);
 
   function divideArrayIntoTwo(arr: FaqObject[]) {
     const midIndex = Math.ceil(arr.length / 2);
@@ -30,16 +44,17 @@ const Faq = () => {
 
   return (
     <div className={styles.faq_container}>
-      <div className={styles.cover}
-            style={{ backgroundImage: `url(${faq_cover})` }}
->
+      <div
+        className={styles.cover}
+        style={{ backgroundImage: `url(${faq_cover})` }}
+      >
         <div className={styles.header_container}>
           <div className={styles.header_image_container}>
             <img className={styles.header_img} src={faq_icon} alt="QA icon" />
           </div>
-          <h1 className={styles.header}>FAQ</h1>
+          <h1 className={styles.header}>{t('header')}</h1>
         </div>
-        <p className={styles.header_subtext}>General Questions</p>
+        <p className={styles.header_subtext}>{t('subHeader')}</p>
       </div>
       <div className={styles.faqs_container}>
         <div className={styles.faq_sub_container}>
@@ -71,4 +86,4 @@ const Faq = () => {
   );
 };
 
-export default Faq
+export default Faq;

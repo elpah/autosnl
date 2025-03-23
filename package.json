@@ -31,5 +31,7 @@
   "dependencies": {
     "playbook_cli": "^1.0.7"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  }
 }

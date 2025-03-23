@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import styles from "./category-check-item.module.scss";
 import {
   GlobalContext,
@@ -9,55 +9,59 @@ import useBrandModel from "../../../hooks/useBrandModel";
 
 type CheckItemProp = {
   label: string;
-  number_of_cars: number;
   checked?: boolean;
   onChange?: () => void;
   fieldKey: keyof IAdvancedSeachFieldData;
+  value?: string;
 };
 
 export const CategoryCheckItem = ({
   label,
-  number_of_cars,
   checked,
   fieldKey,
+  value,
 }: CheckItemProp) => {
   const globalContext = useContext<IGlobalContext>(GlobalContext);
   const { data, error, isLoading } = useBrandModel();
+
+  const brandEntries = Object.entries(data?.brands || {});
+  const allBrands = ["All Brands", ...brandEntries.map(([key]) => key)];
+
+  const brandKey =
+    value ||
+    brandEntries.find(
+      ([key, brand]) => brand.name[globalContext.lang] === label
+    )?.[0] ||
+    label;
 
   const isChecked =
     checked !== undefined
       ? checked
       : (globalContext.advancedSearchFieldData[fieldKey] as string[]).includes(
-          label
+          brandKey
         );
 
   const handleChange = () => {
     globalContext.setAdvancedSearchFieldData((prev) => {
       const currentValues = prev[fieldKey] as string[];
-      const allBrands = ["All Brands", ...Object.keys(data || {})];
       let newValues: string[];
 
       if (fieldKey === "brand") {
-        if (label === "All Brands") {
-          if (isChecked) {
-            return {
-              ...prev,
-              brand: [],
-              model: [],
-            };
-          } else {
-            return {
-              ...prev,
-              brand: allBrands,
-            };
-          }
+        if (brandKey === "All Brands") {
+          return {
+            ...prev,
+            brand: isChecked ? [] : allBrands,
+            model: isChecked ? [] : prev.model,
+          };
         }
 
         if (isChecked) {
           newValues = currentValues.filter(
-            (item) => item !== label && item !== "All Brands"
+            (item) => item !== brandKey && item !== "All Brands"
           );
-          const modelsToRemove = data![label] || [];
+          const modelsToRemove = Object.keys(
+            data?.brands[brandKey]?.models || {}
+          );
           const newModelValues = (prev.model || []).filter(
             (model) => !modelsToRemove.includes(model)
           );
@@ -66,22 +70,21 @@ export const CategoryCheckItem = ({
             ...prev,
             brand: newValues,
             model: newModelValues,
-            allBrandsSelected: false,
           };
         } else {
-          newValues = [...currentValues, label];
+          newValues = [...currentValues, brandKey];
           const isAllBrandsSelected = newValues.length === allBrands.length - 1;
-
           return {
             ...prev,
-            brand: isAllBrandsSelected ? allBrands : newValues,
-            allBrandsSelected: isAllBrandsSelected,
+            brand: isAllBrandsSelected
+              ? allBrands.filter((b) => b !== "All Brands")
+              : newValues,
           };
         }
       } else {
         newValues = isChecked
-          ? currentValues.filter((item) => item !== label)
-          : [...currentValues, label];
+          ? currentValues.filter((item) => item !== brandKey)
+          : [...currentValues, brandKey];
 
         return {
           ...prev,
@@ -99,9 +102,9 @@ export const CategoryCheckItem = ({
           type="checkbox"
           checked={isChecked}
           onChange={handleChange}
+          value={brandKey}
         />
         <span className={styles.label_text}>{label}</span>
-        <span className={styles.items_number}>({number_of_cars})</span>
       </label>
     </div>
   );

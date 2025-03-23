@@ -1,0 +1,19 @@
+{
+  "allCars": "Все автомобили",
+  "selectMake": "Выберите марку",
+  "selectModel": "Выберите модель",
+  "advancedSearch": "Расширенный поиск",
+  "noneFound": "Автомобили не найдены",
+  "noBrandAvailable": "Нет доступных марок",
+  "selectBrandFirst": "Сначала выберите марку",
+  "there": "Есть",
+  "areATotalOf": "всего",
+  "is": "это",
+  "model": "модель",
+  "models": "модели",
+  "car": "автомобиль",
+  "cars": "автомобили",
+  "available": "доступно",
+  "allbrands": "Все марки",
+  "carModels": "Модели автомобилей"
+}

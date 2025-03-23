@@ -18,16 +18,19 @@ export type IAdvancedSeachFieldData = {
   fuel?: string[];
   priceMin: number;
   priceMax: number;
-  milleageMin: number;
-  milleageMax: number;
+  mileageMin: number;
+  mileageMax: number;
   transmission?: string[];
   erdMin: number;
   erdMax: number;
   country?: string[];
   pageNumber: number;
+  dealerId: string;
 };
 
 export interface IGlobalContext {
+  lang: "en" | "ru" | "nl" | "ua";
+  setLang: React.Dispatch<React.SetStateAction<"en" | "ru" | "nl" | "ua">>;
   carData: ICarData;
   setCarData: React.Dispatch<React.SetStateAction<ICarData>>;
   advancedSearchFieldData: IAdvancedSeachFieldData;
@@ -58,13 +61,14 @@ export const GlobalContext = createContext<IGlobalContext>({
     fuel: [],
     priceMin: 0,
     priceMax: 0,
-    milleageMin: 0,
-    milleageMax: 0,
+    mileageMin: 0,
+    mileageMax: 0,
     transmission: [],
     erdMin: 0,
     erdMax: 0,
     country: [],
     pageNumber: 1,
+    dealerId: "",
   },
   setAdvancedSearchFieldData: (advancedSearchFieldData) => {},
   categoryToFieldKeyMap: {
@@ -74,12 +78,16 @@ export const GlobalContext = createContext<IGlobalContext>({
     Fuel: "fuel",
     "Min Price": "priceMin",
     "Max Price": "priceMax",
-    "Min Milleage": "milleageMin",
-    "Max Milleage": "milleageMax",
+    "Min Mileage": "mileageMin",
+    "Max Mileage": "mileageMax",
     "Min Erd": "erdMin",
     "Max Erd": "erdMax",
     Transmission: "transmission",
     Country: "country",
+    fuel: "fuel",
+    vehicleType:"vehicleType"
   },
   setCategoryToFieldKeyMap: (categoryToFieldKeyMap) => {},
+  lang:"en",
+  setLang: () => {},
 });

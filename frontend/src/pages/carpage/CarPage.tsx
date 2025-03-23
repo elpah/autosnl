@@ -1,13 +1,93 @@
-import React from "react";
+import { useContext, useEffect } from "react";
 import { CarPageMobile } from "./carpage-mobile/CarPageMobile";
 import { CarPageDesktop } from "./carpage-desktop/CarPageDesktop";
 
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  GlobalContext,
+  type IGlobalContext,
+} from "../../context/GlobalContext";
+import { NULL } from "sass";
+import useGetCarById from "../../hooks/useGetCarById";
+import { scroll_to_top } from "../../utils/utilsFunctions";
+import queryString from "query-string";
+import { CLoader } from "../../components/clip-loader/CLoader";
+import { isValidLang } from "../../utils/utilsFunctions";
+import { useTranslation } from "react-i18next";
+
 import styles from "./car_page.module.scss";
+
 const CarPage = () => {
+  const { carId } = useParams();
+  const navigate = useNavigate();
+  const globalContext = useContext<IGlobalContext>(GlobalContext);
+  const { t } = useTranslation("carPage");
+  const { lang: urlLang } = useParams();
+
+  useEffect(() => {
+    if (urlLang && isValidLang(urlLang)) {
+      globalContext.setLang(urlLang);
+    }
+  }, [urlLang]);
+
+  const {
+    data: carByIdData,
+    error: carByIdError,
+    isLoading: carByIdIsLoading,
+  } = useGetCarById(carId!);
+
+  useEffect(() => {
+    scroll_to_top();
+  }, []);
+
+  const navigate_map = (fieldname: string, value: string) => {
+    let query;
+    query = queryString.stringify(
+      { [fieldname]: value },
+      { skipEmptyString: true }
+    );
+    navigate(`/${globalContext.lang}/search-result?${query}`);
+  };
+
+  const setDealerInAdvanceSearchData = (newDealerId: string) => {
+    globalContext.setAdvancedSearchFieldData(() => ({
+      brand: [],
+      model: [],
+      vehicleType: [],
+      fuel: [],
+      priceMin: 0,
+      priceMax: 0,
+      mileageMin: 0,
+      mileageMax: 0,
+      transmission: [],
+      erdMin: 0,
+      erdMax: 0,
+      country: [],
+      pageNumber: 1,
+      dealerId: newDealerId,
+    }));
+  };
+
+  const handleGoToDealerPage = () => {
+    setDealerInAdvanceSearchData(carByIdData?.dealer.dealerId || "");
+    navigate(
+      `/${globalContext.lang}/dealer-page/${carByIdData?.dealer.dealerId}`
+    );
+  };
+
+  if (carByIdIsLoading) return <CLoader />;
+
+  if (carByIdError || !carByIdData?.car) return <p>Could not load car</p>;
+
   return (
     <div className={styles.car_page_container}>
       <div className={styles.car_map_container}>
-        <div className={styles.map_name}>Home</div>
+        <div
+          className={styles.map_name}
+          onClick={() => navigate(`${globalContext.lang}/`)}
+        >
+          {t("home")}
+        </div>
         <div className={styles.map_vector_container}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +102,14 @@ const CarPage = () => {
             />
           </svg>
         </div>
-        <div className={styles.map_name}>Mercedes</div>
+        <div
+          className={styles.map_name}
+          onClick={() =>
+            navigate_map("brand", carByIdData?.car.lang.en.carBrand)
+          }
+        >
+          {carByIdData?.car?.lang[globalContext.lang].carBrand}
+        </div>
         <div className={styles.map_vector_container}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +124,17 @@ const CarPage = () => {
             />
           </svg>
         </div>
-        <div className={styles.map_name}>Used</div>
+        <div
+          className={styles.map_name}
+          onClick={() =>
+            navigate_map("carType", carByIdData?.car.lang.en.carType || "")
+          }
+        >
+          {carByIdData?.car.lang[globalContext.lang].carType
+            ? carByIdData?.car.lang[globalContext.lang].carType.charAt(0).toUpperCase() +
+              carByIdData.car.lang[globalContext.lang].carType.slice(1)
+            : ""}
+        </div>
         <div className={styles.map_vector_container}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -52,12 +149,73 @@ const CarPage = () => {
             />
           </svg>
         </div>
-        <div className={`${styles.map_name} ${styles.current_car}`}>
-          Mercedes C300
+        <div
+          className={`${styles.map_name} ${styles.current_car}`}
+          onClick={() =>
+            navigate_map("model", carByIdData?.car.lang.en.carModel || "")
+          }
+        >
+          {carByIdData.car.lang[globalContext.lang].carModel}
         </div>
       </div>
-      <CarPageMobile />
-      <CarPageDesktop />
+      <CarPageMobile
+        coverImages={carByIdData.car.carImages}
+        carNameModel={`${carByIdData.car.lang[globalContext.lang].carBrand} ${
+          carByIdData?.car.lang[globalContext.lang].carModel
+        }`}
+        inc_btw_price={carByIdData?.car.price_incl_btw?.toString() || ""}
+        excl_btw_price={carByIdData?.car.price_excl_btw?.toString() || ""}
+        excl_bpm_btw_price={carByIdData?.car.price_excl_bpm?.toString() || ""}
+        carMileage={carByIdData?.car.carMileage.toString() || ""}
+        carTransmission={
+          carByIdData?.car.lang[globalContext.lang].carTransmission || ""
+        }
+        carFuel={carByIdData?.car.lang[globalContext.lang].carFuel || ""}
+        carPower={carByIdData?.car.carPower || ""}
+        carEngineCapacity={carByIdData?.car.carEngineCapacity || ""}
+        carERD={carByIdData?.car.carERD.toString() || ""}
+        carVat={carByIdData?.car.carVat?.toString() || ""}
+        carColor={carByIdData?.car.lang[globalContext.lang].carColor || ""}
+        carVanish={carByIdData?.car.lang[globalContext.lang].carVanish || ""}
+        carBody={carByIdData?.car.lang[globalContext.lang].carBody || ""}
+        carNumberOfDoors={carByIdData?.car.carNumberOfDoors || ""}
+        carWeight={carByIdData?.car.carWeight || ""}
+        damages={
+          carByIdData?.car.lang[globalContext.lang].carDamageDetails || []
+        }
+        options={carByIdData?.car.lang[globalContext.lang].carOptions || NULL}
+        dealerInfo={carByIdData?.dealer}
+        handleButtonClick={handleGoToDealerPage}
+      />
+      <CarPageDesktop
+        coverImages={carByIdData?.car.carImages || []}
+        carNameModel={`${carByIdData?.car.lang[globalContext.lang].carBrand} ${
+          carByIdData?.car.lang[globalContext.lang].carModel
+        }`}
+        inc_btw_price={carByIdData?.car.price_incl_btw?.toString() || ""}
+        excl_btw_price={carByIdData?.car.price_excl_btw?.toString() || ""}
+        excl_bpm_btw_price={carByIdData?.car.price_excl_bpm?.toString() || ""}
+        carMileage={carByIdData?.car.carMileage.toString() || ""}
+        carTransmission={
+          carByIdData?.car.lang[globalContext.lang].carTransmission || ""
+        }
+        carFuel={carByIdData?.car.lang[globalContext.lang].carFuel || ""}
+        carPower={carByIdData?.car.carPower || ""}
+        carEngineCapacity={carByIdData?.car.carEngineCapacity || ""}
+        carERD={carByIdData?.car.carERD.toString() || ""}
+        carVat={carByIdData?.car.carVat?.toString() || ""}
+        carColor={carByIdData?.car.lang[globalContext.lang].carColor || ""}
+        carVanish={carByIdData?.car.lang[globalContext.lang].carVanish || ""}
+        carBody={carByIdData?.car.lang[globalContext.lang].carBody || ""}
+        carNumberOfDoors={carByIdData?.car.carNumberOfDoors || ""}
+        carWeight={carByIdData?.car.carWeight || ""}
+        damages={
+          carByIdData?.car.lang[globalContext.lang].carDamageDetails || []
+        }
+        options={carByIdData?.car.lang[globalContext.lang].carOptions || NULL}
+        dealerInfo={carByIdData?.dealer}
+        handleButtonClick={handleGoToDealerPage}
+      />
     </div>
   );
 };

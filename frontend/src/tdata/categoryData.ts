@@ -1,113 +1,56 @@
-const categoryData = [
-  {
-    title: "Search By Brand",
-  },
-  {
-    title: "Search By Model",
-  },
-  {
-    title: "Price (€)",
-  },
-  {
-    title: "Vehicle Type",
-    values: [
-      { title: "Sedan", number_of_cars: 20 },
-      { title: "SUV", number_of_cars: 10 },
-      { title: "Luxury", number_of_cars: 24 },
-      { title: "Pickup", number_of_cars: 90 },
-      { title: "Minivan", number_of_cars: 54 },
-      { title: "Hatchback", number_of_cars: 51 },
-      { title: "Convertible", number_of_cars: 18 },
-    ],
-  },
-  {
-    title: "Fuel",
-    values: [
-      { title: "Petrol", number_of_cars: 20 },
-      { title: "Diesel", number_of_cars: 10 },
-      { title: "CNG", number_of_cars: 24 },
-      { title: "Electric", number_of_cars: 90 },
-    ],
-  },
-  {
-    title: "Mileage",
-    Min: [
-      0, 5000, 10000, 20000, 30000, 50000, 75000, 100000, 150000, 200000,
-      300000,
-    ],
-    Max: [
-      5000, 10000, 20000, 30000, 50000, 75000, 100000, 150000, 200000, 300000,
-      500000,
-    ],
-    label: { min: "Min Mileage", max: "Max Mileage" },
-    field: { min: "mileageMin", max: "mileageMax" },
-  },
-  {
-    title: "Transmission",
-    values: [
-      { title: "Manual", number_of_cars: 35 },
-      { title: "Automatic", number_of_cars: 27 },
-    ],
-  },
-  {
-    title: "ERD",
-    Min: Array.from({ length: 2024 - 1961 + 1 }, (_, index) => 1961 + index),
-    Max: Array.from({ length: 2024 - 1961 + 1 }, (_, index) => 1961 + index),
-    label: { min: "Min Erd", max: "Max Erd" },
-    field: { min: "erdMin", max: "erdMax" },
-  },
-  {
-    title: "Country",
-    values: [
-      { title: "Germany", number_of_cars: 0 },
-      { title: "France", number_of_cars: 0 },
-      { title: "Italy", number_of_cars: 0 },
-      { title: "Spain", number_of_cars: 0 },
-      { title: "Portugal", number_of_cars: 0 },
-      { title: "Netherlands", number_of_cars: 0 },
-      { title: "Belgium", number_of_cars: 0 },
-      { title: "Austria", number_of_cars: 0 },
-      { title: "Switzerland", number_of_cars: 0 },
-      { title: "Sweden", number_of_cars: 0 },
-      { title: "Norway", number_of_cars: 0 },
-      { title: "Denmark", number_of_cars: 0 },
-      { title: "Finland", number_of_cars: 0 },
-      { title: "Ireland", number_of_cars: 0 },
-      { title: "United Kingdom", number_of_cars: 0 },
-      { title: "Poland", number_of_cars: 0 },
-      { title: "Czech Republic", number_of_cars: 0 },
-      { title: "Slovakia", number_of_cars: 0 },
-      { title: "Hungary", number_of_cars: 0 },
-      { title: "Croatia", number_of_cars: 0 },
-      { title: "Greece", number_of_cars: 0 },
-      { title: "Bulgaria", number_of_cars: 0 },
-      { title: "Romania", number_of_cars: 0 },
-      { title: "Serbia", number_of_cars: 0 },
-      { title: "Slovenia", number_of_cars: 0 },
-      { title: "Estonia", number_of_cars: 0 },
-      { title: "Latvia", number_of_cars: 0 },
-      { title: "Lithuania", number_of_cars: 0 },
-      { title: "Ukraine", number_of_cars: 0 },
-      { title: "Belarus", number_of_cars: 0 },
-      { title: "Russia", number_of_cars: 0 },
-      { title: "Turkey", number_of_cars: 0 },
-      { title: "Cyprus", number_of_cars: 0 },
-      { title: "Luxembourg", number_of_cars: 0 },
-      { title: "Iceland", number_of_cars: 0 },
-      { title: "Malta", number_of_cars: 0 },
-      { title: "Liechtenstein", number_of_cars: 0 },
-      { title: "Monaco", number_of_cars: 0 },
-      { title: "Andorra", number_of_cars: 0 },
-      { title: "San Marino", number_of_cars: 0 },
-      { title: "Vatican City", number_of_cars: 0 },
-      { title: "Moldova", number_of_cars: 0 },
-      { title: "Bosnia and Herzegovina", number_of_cars: 0 },
-      { title: "Montenegro", number_of_cars: 0 },
-      { title: "Kosovo", number_of_cars: 0 },
-      { title: "Albania", number_of_cars: 0 },
-      { title: "Macedonia (North Macedonia)", number_of_cars: 0 },
-    ],
-  },
-];
+import { useTranslation } from "react-i18next";
 
-export { categoryData };
+export const useCategoryData = () => {
+  const { t } = useTranslation("advancedSearch");
+
+  return [
+    {
+      title: t("searchByBrand"),
+    },
+    {
+      title: t("searchByModel"), 
+    },
+    {
+      title: t("price"), 
+    },
+    {
+      title: t("vehicleType"),
+    },
+    {
+      title: t("fuel"), 
+    },
+    {
+      title: t("mileage"),
+      Min: [
+        0, 5000, 10000, 20000, 30000, 50000, 75000, 100000, 150000, 200000,
+        300000, 400000, 500000, 750000,
+      ],
+      Max: [
+        5000, 10000, 20000, 30000, 50000, 75000, 100000, 150000, 200000, 300000,
+        400000, 500000, 750000,
+      ],
+      label: { min: t("minMil"), max: t("maxMil") },
+      field: { min: "mileageMin", max: "mileageMax" },
+    },
+    {
+      title: t("transmission"),
+      values: [t("manual"), t("automatic")],
+    },
+    {
+      title: t("erd"), 
+      Min: Array.from(
+        { length: new Date().getFullYear() - 1961 + 1 },
+        (_, index) => 1961 + index
+      ),
+      Max: Array.from(
+        { length: new Date().getFullYear() - 1961 + 1 },
+        (_, index) => 1961 + index
+      ),
+      label: { min: t("minErd"), max: t("maxErd") },
+      field: { min: "erdMin", max: "erdMax" },
+    },
+    {
+      title: t("country"),
+    },
+  ];
+};

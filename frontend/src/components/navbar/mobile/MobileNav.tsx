@@ -1,18 +1,41 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import hamburger from "../../../assets/images/nav_images/hamburger.png";
 import close from "../../../assets/images/nav_images/close.png";
 import arrow from "../../../assets/images/nav_images/arrow.png";
-import language_image from "../../../assets/images/nav_images/language_image.png";
 import search_icon from "../../../assets/images/nav_images/search_icon.png";
 import styles from "./mobile-nav.module.scss";
+import { NavProps } from "../../../types/otherTypes";
+import { GlobalContext } from "../../../context/GlobalContext";
 
-export const MobileNav = () => {
+export const MobileNav = ({
+  showLanguageSelector,
+  setShowLanguageSelector,
+  languageSelectorRef,
+  suggestionsRef,
+  showCars,
+  setShowCars,
+  filteredSuggestions,
+  queryWord,
+  handleInputChange,
+  handleSelectSuggestion,
+  handleSubmit,
+  handleKeyDown,
+  selectedIndex,
+  refTracker,
+  setRefTracker,
+  someBrands,
+  handleBrandClick,
+  changeLanguage,
+  flags,
+  selected_flag,
+}: NavProps) => {
   const [searchVisible, setSearchVisible] = useState(false);
+  // const [handleCloseLanguage, setHandleCloseLanguage] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
-  const [showCars, setShowCars] = useState(false);
-  const [showLanguageSelector, setShowLanguageSelector] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const globalContext = useContext(GlobalContext);
+
   const navigate = useNavigate();
 
   const handleSearchClose = () => {
@@ -23,28 +46,33 @@ export const MobileNav = () => {
     }, 300);
   };
 
-  const languageSelectorRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as Node;
-
-      if (hamburgerRef.current && hamburgerRef.current.contains(target)) {
+      if (
+        hamburgerRef.current &&
+        hamburgerRef.current.contains(event.target as Node)
+      ) {
         return;
       }
 
       if (
         languageSelectorRef.current &&
-        !languageSelectorRef.current.contains(target)
+        !languageSelectorRef.current.contains(event.target as Node)
       ) {
         setShowLanguageSelector(false);
       }
 
-      if (menuRef.current && !menuRef.current.contains(target)) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setShowMenu(false);
-        setShowCars(false);
+      }
+      if (
+        suggestionsRef?.current &&
+        !suggestionsRef.current.contains(event.target as Node)
+      ) {
+        setRefTracker(false);
       }
     };
 
@@ -57,7 +85,7 @@ export const MobileNav = () => {
   return (
     <header className={styles.mobile_nav_container}>
       <nav className={styles.mobile_nav}>
-        <Link to="/">
+        <Link to={`/${globalContext.lang}/`}>
           <div className={styles.logo_container}>
             <h2 className={styles.logo_header}>ZaurAutos</h2>
           </div>
@@ -69,11 +97,17 @@ export const MobileNav = () => {
                 isClosing ? styles["slide-out"] : ""
               }`}
             >
-              <input
-                type="text"
-                className={styles.search_input}
-                placeholder="Search..."
-              />
+              <form onSubmit={handleSubmit}>
+                <input
+                  type="search"
+                  value={queryWord}
+                  onFocus={() => setRefTracker(true)}
+                  onChange={handleInputChange}
+                  className={styles.search_input}
+                  onKeyDown={handleKeyDown}
+                  placeholder="Search..."
+                />
+              </form>
               <button
                 className={styles.close_button}
                 onClick={handleSearchClose}
@@ -84,6 +118,29 @@ export const MobileNav = () => {
                   alt="close icon"
                 />
               </button>
+              {queryWord && refTracker && (
+                <div
+                  className={styles.suggestions_container}
+                  ref={suggestionsRef}
+                >
+                  {filteredSuggestions.length > 0 ? (
+                    filteredSuggestions.map((suggestion, index) => (
+                      <div
+                        key={index}
+                        id={`suggestion-${index}`}
+                        className={`${styles.suggestion_item} ${
+                          index === selectedIndex ? styles.selected : ""
+                        }`}
+                        onClick={() => handleSelectSuggestion(suggestion)}
+                      >
+                        {suggestion}
+                      </div>
+                    ))
+                  ) : (
+                    <div className={styles.suggestion_item}>Not found</div>
+                  )}
+                </div>
+              )}
             </div>
           ) : (
             <>
@@ -102,61 +159,67 @@ export const MobileNav = () => {
                 />
               </div>
               <div
+                // ref={languageSelectorRef}
                 className={styles.language_selector}
-                onClick={() => {
-                  setShowMenu(false);
-                  setShowLanguageSelector(!showLanguageSelector);
-                }}
-                ref={languageSelectorRef}
               >
-                <div className={styles.language_image_container}>
-                  <img
-                    className={styles.current_language}
-                    src={language_image}
-                    alt="language icon"
-                  />
-                </div>
                 <div
-                  className={styles.language_arrow_container}
+                  ref={languageSelectorRef}
+                  className={styles.image_and_icon_wrapper}
                   onClick={() => {
                     setShowLanguageSelector(!showLanguageSelector);
                   }}
                 >
-                  <img
-                    className={`${styles.arrow} ${
-                      showLanguageSelector ? styles.rotated : ""
+                  <div className={styles.language_image_container}>
+                    <img
+                      className={styles.current_language}
+                      src={selected_flag}
+                      alt="language icon"
+                    />
+                  </div>
+                  <div className={styles.language_arrow_container}>
+                    <img
+                      className={`${styles.arrow} ${
+                        showLanguageSelector ? styles.rotated : ""
+                      }`}
+                      src={arrow}
+                      alt="language selector arrow"
+                    />
+                  </div>
+                </div>
+                {
+                  <div
+                    className={`${styles.language_dropdown_menu} ${
+                      showLanguageSelector ? styles.open : ""
                     }`}
-                    src={arrow}
-                    alt="language selector arrow"
-                  />
-                </div>
-
-                <div
-                  className={`${styles.language_dropdown_menu} ${
-                    showLanguageSelector ? styles.open : ""
-                  }`}
-                >
-                  <img
-                    className={styles.language_dropdown_image}
-                    src={language_image}
-                    alt="language flag"
-                  />
-                  <img
-                    className={styles.language_dropdown_image}
-                    src={language_image}
-                    alt="language flag"
-                  />
-                  <img
-                    className={styles.language_dropdown_image}
-                    src={language_image}
-                    alt="language flag"
-                  />
-                  <img
-                    className={styles.language_dropdown_image}
-                    src={language_image}
-                    alt="language flag"
-                  />
-                </div>
+                  >
+                    <img
+                      className={styles.language_dropdown_image}
+                      src={flags.en}
+                      alt="language flag"
+                      onClick={() => {
+                        changeLanguage("en");
+                      }}
+                    />
+                    <img
+                      className={styles.language_dropdown_image}
+                      src={flags.nl}
+                      alt="language flag"
+                      onClick={() => changeLanguage("nl")}
+                    />
+                    <img
+                      className={styles.language_dropdown_image}
+                      src={flags.ua}
+                      alt="language flag"
+                      onClick={() => changeLanguage("ua")}
+                    />
+                    <img
+                      className={styles.language_dropdown_image}
+                      src={flags.ru}
+                      alt="language flag"
+                      onClick={() => changeLanguage("ru")}
+                    />
+                  </div>
+                }
               </div>
 
               <div
@@ -207,21 +270,25 @@ export const MobileNav = () => {
                 }`}
               >
                 <ul>
-                  <li>Toyota</li>
-                  <li>Kia</li>
-                  <li>Hyundai</li>
-                  <li>Volkswagen</li>
-                  <li>Rolls Royce</li>
-                  <li>Mercedes Benz</li>
-                  <li>Volvo</li>
-                  <li>Maserati</li>
+                  {someBrands.map((brand, index) => (
+                    <li
+                      key={index}
+                      className={styles.car_list_item}
+                      onClick={() => {
+                        setShowMenu(false);
+                        handleBrandClick(brand);
+                      }}
+                    >
+                      {brand}
+                    </li>
+                  ))}
                 </ul>
               </div>
             </li>
             <li
               onClick={() => {
                 setShowMenu(false);
-                navigate("/about");
+                navigate(`/${globalContext.lang}/about`);
               }}
               className={styles.menu_list_item}
             >
@@ -230,7 +297,7 @@ export const MobileNav = () => {
             <li
               onClick={() => {
                 setShowMenu(false);
-                navigate("/contact");
+                navigate(`/${globalContext.lang}/contact`);
               }}
               className={styles.menu_list_item}
             >
@@ -239,7 +306,7 @@ export const MobileNav = () => {
             <li
               onClick={() => {
                 setShowMenu(false);
-                navigate("/faq");
+                navigate(`/${globalContext.lang}/faq`);
               }}
               className={styles.menu_list_item}
             >

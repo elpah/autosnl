@@ -6,7 +6,7 @@ import carRouter from "./routes/car-routes.js";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.BACKEND_PORT || 80;
+const PORT = process.env.BACKEND_PORT;
 
 app.use(cors());
 app.use(express.json());

@@ -9,9 +9,8 @@ import styles from "./filter-price.module.scss";
 export const FilterPrice = () => {
   const globalContext = useContext<IGlobalContext>(GlobalContext);
 
-  // Set min/max price
   const minLimit = 0;
-  const maxLimit = 80000;
+  const maxLimit = 150000;
 
   const [minPrice, setMinPrice] = useState(
     globalContext.advancedSearchFieldData.priceMin || minLimit
@@ -48,16 +47,18 @@ export const FilterPrice = () => {
 
     if (name === "min" && numericValue < maxPrice) {
       setMinPrice(numericValue);
+      globalContext.setAdvancedSearchFieldData((prev) => ({
+        ...prev,
+        priceMin: numericValue,
+      }));
     }
     if (name === "max" && numericValue > minPrice) {
       setMaxPrice(numericValue);
+      globalContext.setAdvancedSearchFieldData((prev) => ({
+        ...prev,
+        priceMax: numericValue,
+      }));
     }
-
-    globalContext.setAdvancedSearchFieldData((prev) => ({
-      ...prev,
-      priceMin: minPrice,
-      priceMax: maxPrice,
-    }));
   };
 
   return (
@@ -69,7 +70,8 @@ export const FilterPrice = () => {
           name="min"
           min={minLimit}
           max={maxLimit}
-          step="5"
+                   step={100}
+
           value={minPrice}
           onChange={handleSliderChange}
         />
@@ -79,7 +81,8 @@ export const FilterPrice = () => {
           name="max"
           min={minLimit}
           max={maxLimit}
-          step="5"
+                   step={100}
+
           value={maxPrice}
           onChange={handleSliderChange}
         />
@@ -102,6 +105,8 @@ export const FilterPrice = () => {
           onChange={handleMinChange}
           min={minLimit}
           max={maxPrice - 1}
+                    step={100}
+
         />
         <input
           type="number"
@@ -110,6 +115,7 @@ export const FilterPrice = () => {
           onChange={handleMaxChange}
           min={minPrice + 1}
           max={maxLimit}
+          step={100}
         />
       </form>
     </div>

@@ -1,0 +1,19 @@
+{
+  "searchByBrand": "Search By Brand",
+  "allBrand":"All Brands",
+  "searchByModel": "Search By Model",
+  "price": "Price",
+  "vehicleType": "Vehicle Type",
+  "mileage": "Mileage",
+  "minMil": "Min Mileage",
+  "maxMil": "Max Mileage",
+  "transmission": "Transmission",
+  "fuel":"Fuel",
+  "erd": "ERD",
+  "minErd":"Min Erd",
+  "maxErd":"Max Erd",
+  "country": "Country",
+  "manual":"Manual",
+  "automatic":"Automatic"
+}
+

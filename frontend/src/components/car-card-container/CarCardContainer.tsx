@@ -32,7 +32,6 @@ export const CarCardContainer = ({
   return (
     <>
       <div className={styles.car_card_container}>{children}</div>
-
       <PageNumber
         currentPage={currentPage}
         pageNumbers={pageNumbers}

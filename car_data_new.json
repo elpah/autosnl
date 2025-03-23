@@ -1,0 +1,1226 @@
+[
+  {
+    "carId": "1",
+    "default_language": "en",
+    "lang": {
+      "en": {
+        "carBrand": "Toyota",
+        "carModel": "Highlander",
+        "carDetails": "Well-maintained vehicle",
+        "carBody": "Truck",
+        "carColor": "Green",
+        "carVanish": "No",
+        "carTransmission": "Automatic",
+        "carCountry": "Germany",
+        "carFuel": "Diesel",
+
+        "carDamageDetails": [
+          {
+            "title": "Minor scratch on the rear bumper",
+            "text": "Scratch is approximately 5 cm long."
+          },
+          {
+            "title": "Small dent on the driver side door",
+            "text": "Dent is visible but does not affect functionality."
+          }
+        ],
+        "carOptions": {
+          "airbag": ["Driver airbag", "Passenger airbag", "Side airbags"],
+          "coolingAndHeating": [
+            "Air conditioning",
+            "Dual-zone climate control"
+          ],
+          "security": ["Alarm system", "Immobilizer"],
+          "entertainment": ["Bluetooth audio", "Premium sound system"],
+          "comfortInterior": ["Leather seats", "Heated front seats"],
+          "comfortExterior": ["Electric windows", "Electric mirrors"],
+          "safety": ["ABS", "Traction control"],
+          "lighting": ["LED headlights", "Fog lights"]
+        }
+      },
+      "nl": {
+        "carBrand": "Toyota",
+        "carModel": "Highlander",
+        "carDetails": "Goed onderhouden voertuig",
+        "carBody": "Vrachtwagen",
+        "carColor": "Groen",
+        "carTransmission": "Automatisch",
+        "carCountry": "Duitsland",
+        "carFuel": "Diesel",
+
+        "carVanish": "Nee",
+        "carDamageDetails": [
+          {
+            "title": "Kleine kras op de achterbumper",
+            "text": "Kras is ongeveer 5 cm lang."
+          },
+          {
+            "title": "Kleine deuk in de bestuurdersdeur",
+            "text": "Deuk is zichtbaar maar beïnvloedt de functionaliteit niet."
+          }
+        ],
+        "carOptions": {
+          "airbag": ["Bestuurdersairbag", "Passagiersairbag", "Zijairbags"],
+          "coolingAndHeating": ["Airconditioning", "Dubbele klimaatregeling"],
+          "security": ["Alarm systeem", "Immo-systeem"],
+          "entertainment": ["Bluetooth audio", "Premium geluidssysteem"],
+          "comfortInterior": ["Lederen stoelen", "Verwarmde voorstoelen"],
+          "comfortExterior": ["Elektrische ramen", "Elektrische spiegels"],
+          "safety": ["ABS", "Tractiecontrole"],
+          "lighting": ["LED koplampen", "Mistlampen"]
+        }
+      },
+      "ru": {
+        "carBrand": "Тойота",
+        "carModel": "Хайлендер",
+        "carDetails": "Хорошо обслуживаемый автомобиль",
+        "carBody": "Грузовик",
+        "carColor": "Зеленый",
+        "carTransmission": "Автоматический",
+        "carCountry": "Германия",
+        "carFuel": "Дизель",
+
+        "carVanish": "Нет",
+        "carDamageDetails": [
+          {
+            "title": "Незначительная царапина на заднем бампере",
+            "text": "Царапина длиной около 5 см."
+          },
+          {
+            "title": "Небольшая вмятина на дверце со стороны водителя",
+            "text": "Вмятина видна, но не влияет на функциональность."
+          }
+        ],
+        "carOptions": {
+          "airbag": [
+            "Подушка безопасности водителя",
+            "Подушка безопасности пассажира",
+            "Боковые подушки безопасности"
+          ],
+          "coolingAndHeating": ["Кондиционер", "Двухзонный климат-контроль"],
+          "security": ["Сигнализация", "Иммобилайзер"],
+          "entertainment": [
+            "Аудио через Bluetooth",
+            "Премиум звуковая система"
+          ],
+          "comfortInterior": [
+            "Кожаные сиденья",
+            "Отапливаемые передние сиденья"
+          ],
+          "comfortExterior": ["Электрические окна", "Электрические зеркала"],
+          "safety": ["ABS", "Контроль тяги"],
+          "lighting": ["Светодиодные фары", "Противотуманные фары"]
+        }
+      },
+      "ua": {
+        "carBrand": "Тойота",
+        "carModel": "Хайлендер",
+        "carDetails": "Добре обслуговуваний автомобіль",
+        "carBody": "Вантажівка",
+        "carColor": "Зелений",
+        "carTransmission": "Автоматичний",
+        "carCountry": "Німеччина",
+        "carFuel": "Дизель",
+        "carVanish": "Ні",
+        "carDamageDetails": [
+          {
+            "title": "Неістотна подряпина на задньому бампері",
+            "text": "Подряпина довжиною приблизно 5 см."
+          },
+          {
+            "title": "Невелика вм'ятина на дверцятах водія",
+            "text": "Вм'ятина видна, але не впливає на функціональність."
+          }
+        ],
+        "carOptions": {
+          "airbag": [
+            "Подушка безпеки водія",
+            "Подушка безпеки пасажира",
+            "Бічні подушки безпеки"
+          ],
+          "coolingAndHeating": ["Кондиціонер", "Двозонний клімат-контроль"],
+          "security": ["Сигналізація", "Іммобілайзер"],
+          "entertainment": ["Bluetooth аудіо", "Преміум звукова система"],
+          "comfortInterior": ["Шкіряні сидіння", "Обігріті передні сидіння"],
+          "comfortExterior": ["Електричні вікна", "Електричні дзеркала"],
+          "safety": ["ABS", "Контроль тяги"],
+          "lighting": ["СВІТЛОДІОДНІ фари", "Протитуманні фари"]
+        }
+      }
+    },
+    "carType": "used",
+    "carImages": [
+      "https://images.unsplash.com/photo-1502877338535-766e1452684a?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y2FyfGVufDB8fDB8fHww",
+      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y2FyfGVufDB8fDB8fHww",
+      "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhcnxlbnwwfHwwfHx8MA%3D%3D",
+      "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGNhcnxlbnwwfHwwfHx8MA%3D%3D"
+    ],
+    "carMileage": 18789,
+    "carPower": "350 hp",
+    "carEngineCapacity": "4.0L",
+    "carERD": 2017,
+    "carMODTill": "2025-12-31",
+    "dealer": "dealerId1",
+    "price_incl_btw": 58670,
+    "price_excl_btw": 12811,
+    "price_excl_bpm": 27738,
+    "carVat": 3089,
+    "carNumberOfDoors": "4"
+  },
+  {
+    "carId": "2",
+    "default_language": "en",
+    "lang": {
+      "en": {
+        "carBrand": "Tesla",
+        "carModel": "Model 3",
+        "carDetails": "Electric, fast, and environmentally friendly vehicle",
+        "carBody": "Sedan",
+        "carColor": "Red",
+        "carVanish": "No",
+        "carFuel": "Electric",
+
+        "carTransmission": "Automatic",
+        "carCountry": "France",
+
+        "carDamageDetails": [
+          {
+            "title": "Minor scratch on the rear bumper",
+            "text": "Scratch is approximately 5 cm long."
+          },
+          {
+            "title": "Small dent on the driver side door",
+            "text": "Dent is visible but does not affect functionality."
+          }
+        ],
+        "carOptions": {
+          "airbag": ["Driver airbag", "Passenger airbag", "Side airbags"],
+          "coolingAndHeating": [
+            "Air conditioning",
+            "Dual-zone climate control"
+          ],
+          "security": ["Alarm system", "Immobilizer"],
+          "entertainment": [
+            "Bluetooth audio",
+            "Premium sound system",
+            "Touchscreen display"
+          ],
+          "comfortInterior": [
+            "Leather seats",
+            "Heated front seats",
+            "Electric seat adjustment"
+          ],
+          "comfortExterior": [
+            "Electric windows",
+            "Electric mirrors",
+            "Sunroof"
+          ],
+          "safety": ["Autopilot", "ABS", "Traction control"],
+          "lighting": ["LED headlights", "Fog lights"]
+        }
+      },
+      "nl": {
+        "carBrand": "Tesla",
+        "carModel": "Model 3",
+        "carDetails": "Elektrisch, snel en milieuvriendelijk voertuig",
+        "carBody": "Sedan",
+        "carColor": "Rood",
+        "carTransmission": "Automatisch",
+        "carCountry": "Frankrijk",
+        "carVanish": "Nee",
+        "carFuel": "Elektrisch",
+
+        "carDamageDetails": [
+          {
+            "title": "Kleine kras op de achterbumper",
+            "text": "Kras is ongeveer 5 cm lang."
+          },
+          {
+            "title": "Kleine deuk in de bestuurdersdeur",
+            "text": "Deuk is zichtbaar maar beïnvloedt de functionaliteit niet."
+          }
+        ],
+        "carOptions": {
+          "airbag": ["Bestuurdersairbag", "Passagiersairbag", "Zijairbags"],
+          "coolingAndHeating": ["Airconditioning", "Dubbele klimaatregeling"],
+          "security": ["Alarm systeem", "Immo-systeem"],
+          "entertainment": [
+            "Bluetooth audio",
+            "Premium geluidssysteem",
+            "Touchscreen display"
+          ],
+          "comfortInterior": [
+            "Lederen stoelen",
+            "Verwarmde voorstoelen",
+            "Elektrische stoelverstelling"
+          ],
+          "comfortExterior": [
+            "Elektrische ramen",
+            "Elektrische spiegels",
+            "Zonnescherm"
+          ],
+          "safety": ["Autopilot", "ABS", "Tractiecontrole"],
+          "lighting": ["LED koplampen", "Mistlampen"]
+        }
+      },
+      "ru": {
+        "carBrand": "Тесла",
+        "carModel": "Модель 3",
+        "carDetails": "Электрический, быстрый и экологически чистый автомобиль",
+        "carBody": "Седан",
+        "carColor": "Красный",
+        "carTransmission": "Автоматический",
+        "carCountry": "Франция",
+        "carVanish": "Нет",
+        "carFuel": "Электрический",
+
+        "carDamageDetails": [
+          {
+            "title": "Незначительная царапина на заднем бампере",
+            "text": "Царапина длиной около 5 см."
+          },
+          {
+            "title": "Небольшая вмятина на дверце со стороны водителя",
+            "text": "Вмятина видна, но не влияет на функциональность."
+          }
+        ],
+        "carOptions": {
+          "airbag": [
+            "Подушка безопасности водителя",
+            "Подушка безопасности пассажира",
+            "Боковые подушки безопасности"
+          ],
+          "coolingAndHeating": ["Кондиционер", "Двухзонный климат-контроль"],
+          "security": ["Сигнализация", "Иммобилайзер"],
+          "entertainment": [
+            "Аудио через Bluetooth",
+            "Премиум звуковая система",
+            "Экран управления"
+          ],
+          "comfortInterior": [
+            "Кожаные сиденья",
+            "Отапливаемые передние сиденья",
+            "Электрическая регулировка сидений"
+          ],
+          "comfortExterior": [
+            "Электрические окна",
+            "Электрические зеркала",
+            "Солнечная крыша"
+          ],
+          "safety": ["Автопилот", "ABS", "Контроль тяги"],
+          "lighting": ["Светодиодные фары", "Противотуманные фары"]
+        }
+      },
+      "ua": {
+        "carBrand": "Тесла",
+        "carModel": "Модель 3",
+        "carDetails": "Електричний, швидкий та екологічний автомобіль",
+        "carBody": "Седан",
+        "carColor": "Червоний",
+        "carTransmission": "Автоматичний",
+        "carCountry": "Франція",
+        "carFuel": "Електричний",
+
+        "carVanish": "Ні",
+        "carDamageDetails": [
+          {
+            "title": "Неістотна подряпина на задньому бампері",
+            "text": "Подряпина довжиною приблизно 5 см."
+          },
+          {
+            "title": "Невелика вм'ятина на дверцятах водія",
+            "text": "Вм'ятина видна, але не впливає на функціональність."
+          }
+        ],
+        "carOptions": {
+          "airbag": [
+            "Подушка безпеки водія",
+            "Подушка безпеки пасажира",
+            "Бічні подушки безпеки"
+          ],
+          "coolingAndHeating": ["Кондиціонер", "Двозонний клімат-контроль"],
+          "security": ["Сигналізація", "Іммобілайзер"],
+          "entertainment": [
+            "Bluetooth аудіо",
+            "Преміум звукова система",
+            "Екран керування"
+          ],
+          "comfortInterior": [
+            "Шкіряні сидіння",
+            "Обігріті передні сидіння",
+            "Електричне регулювання сидінь"
+          ],
+          "comfortExterior": [
+            "Електричні вікна",
+            "Електричні дзеркала",
+            "Сонячний дах"
+          ],
+          "safety": ["Автопілот", "ABS", "Контроль тяги"],
+          "lighting": ["Світлодіодні фари", "Протитуманні фари"]
+        }
+      }
+    },
+    "carType": "used",
+    "carImages": [
+      "https://images.unsplash.com/photo-1506748686211-b71bb401b8c7?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8dGVzbGF8ZW58MHx8fDB8fHww",
+      "https://images.unsplash.com/photo-1532927464167-92b0a132b93e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8dGVzbGF8ZW58MHx8fDB8fHww",
+      "https://images.unsplash.com/photo-1580191378320-0c98ac0759fe?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dGVzbGF8ZW58MHx8fDB8fHww",
+      "https://images.unsplash.com/photo-1586480609525-650e439b8280?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dGVzbGF8ZW58MHx8fDB8fHww"
+    ],
+    "carMileage": 30000,
+    "carPower": "283 hp",
+    "carEngineCapacity": "N/A",
+    "carERD": 2020,
+    "carMODTill": "2025-12-31",
+    "dealer": "dealerId2",
+    "price_incl_btw": 59990,
+    "price_excl_btw": 12499,
+    "price_excl_bpm": 25999,
+    "carVat": 3032,
+    "carNumberOfDoors": "4"
+  },
+  {
+    "carId": "3",
+    "default_language": "en",
+    "lang": {
+      "en": {
+        "carBrand": "Mercedes-Benz",
+        "carModel": "S-Class",
+        "carDetails": "Luxurious sedan with advanced technology and performance",
+        "carBody": "Sedan",
+        "carColor": "Black",
+        "carVanish": "No",
+        "carTransmission": "Automatic",
+        "carFuel": "Gasoline",
+
+        "carCountry": "Italy",
+        "carDamageDetails": [
+          {
+            "title": "Minor scratch on the rear bumper",
+            "text": "Scratch is approximately 5 cm long."
+          },
+          {
+            "title": "Small dent on the driver side door",
+            "text": "Dent is visible but does not affect functionality."
+          }
+        ],
+        "carOptions": {
+          "airbag": [
+            "Driver airbag",
+            "Passenger airbag",
+            "Side airbags",
+            "Knee airbags"
+          ],
+          "coolingAndHeating": [
+            "Air conditioning",
+            "Heated and ventilated seats",
+            "Thermal comfort system"
+          ],
+          "security": ["Alarm system", "Immobilizer", "Night Vision Assist"],
+          "entertainment": [
+            "Bluetooth audio",
+            "Premium sound system",
+            "Burmester audio",
+            "Touchscreen display"
+          ],
+          "comfortInterior": [
+            "Leather seats",
+            "Heated front seats",
+            "Massage seats",
+            "Electric seat adjustment"
+          ],
+          "comfortExterior": [
+            "Electric windows",
+            "Electric mirrors",
+            "Sunroof",
+            "LED lights"
+          ],
+          "safety": [
+            "Active Brake Assist",
+            "Lane Keeping Assist",
+            "Pre-Safe system",
+            "ABS",
+            "Traction control"
+          ],
+          "lighting": [
+            "LED headlights",
+            "Adaptive Highbeam Assist",
+            "Ambient lighting"
+          ]
+        }
+      },
+      "nl": {
+        "carBrand": "Mercedes-Benz",
+        "carModel": "S-Klasse",
+        "carDetails": "Luxueuze sedan met geavanceerde technologie en prestaties",
+        "carBody": "Sedan",
+        "carColor": "Zwart",
+        "carTransmission": "Automatisch",
+        "carCountry": "Italië",
+        "carFuel": "Benzine",
+        "carVanish": "Nee",
+        "carDamageDetails": [
+          {
+            "title": "Kleine kras op de achterbumper",
+            "text": "Kras is ongeveer 5 cm lang."
+          },
+          {
+            "title": "Kleine deuk in de bestuurdersdeur",
+            "text": "Deuk is zichtbaar maar beïnvloedt de functionaliteit niet."
+          }
+        ],
+        "carOptions": {
+          "airbag": [
+            "Bestuurdersairbag",
+            "Passagiersairbag",
+            "Zijairbags",
+            "Knieairbags"
+          ],
+          "coolingAndHeating": [
+            "Airconditioning",
+            "Verwarmde en geventileerde stoelen",
+            "Thermisch comfortsysteem"
+          ],
+          "security": [
+            "Alarm systeem",
+            "Immo-systeem",
+            "Nachtzicht assistentie"
+          ],
+          "entertainment": [
+            "Bluetooth audio",
+            "Premium geluidssysteem",
+            "Burmester audio",
+            "Touchscreen display"
+          ],
+          "comfortInterior": [
+            "Lederen stoelen",
+            "Verwarmde voorstoelen",
+            "Massage stoelen",
+            "Elektrische stoelverstelling"
+          ],
+          "comfortExterior": [
+            "Elektrische ramen",
+            "Elektrische spiegels",
+            "Zonnescherm",
+            "LED verlichting"
+          ],
+          "safety": [
+            "Actieve remassistent",
+            "Lane Keeping Assist",
+            "Pre-Safe systeem",
+            "ABS",
+            "Tractiecontrole"
+          ],
+          "lighting": [
+            "LED koplampen",
+            "Adaptieve grootlicht assistentie",
+            "Ambiënte verlichting"
+          ]
+        }
+      },
+      "ru": {
+        "carBrand": "Мерседес-Бенц",
+        "carModel": "S-Класс",
+        "carDetails": "Роскошный седан с передовыми технологиями и высокой производительностью",
+        "carBody": "Седан",
+        "carColor": "Черный",
+        "carTransmission": "Автоматический",
+        "carCountry": "Италия",
+        "carVanish": "Нет",
+        "carFuel": "Бензин",
+        "carDamageDetails": [
+          {
+            "title": "Незначительная царапина на заднем бампере",
+            "text": "Царапина длиной около 5 см."
+          },
+          {
+            "title": "Небольшая вмятина на дверце со стороны водителя",
+            "text": "Вмятина видна, но не влияет на функциональность."
+          }
+        ],
+        "carOptions": {
+          "airbag": [
+            "Подушка безопасности водителя",
+            "Подушка безопасности пассажира",
+            "Боковые подушки безопасности",
+            "Подушки безопасности для коленей"
+          ],
+          "coolingAndHeating": [
+            "Кондиционер",
+            "Обогреваемые и вентилируемые сиденья",
+            "Система теплового комфорта"
+          ],
+          "security": [
+            "Сигнализация",
+            "Иммобилайзер",
+            "Ассистент ночного видения"
+          ],
+          "entertainment": [
+            "Аудио через Bluetooth",
+            "Премиум звуковая система",
+            "Аудиосистема Burmester",
+            "Экран управления"
+          ],
+          "comfortInterior": [
+            "Кожаные сиденья",
+            "Отапливаемые передние сиденья",
+            "Массаж сидений",
+            "Электрическая регулировка сидений"
+          ],
+          "comfortExterior": [
+            "Электрические окна",
+            "Электрические зеркала",
+            "Солнечная крыша",
+            "Светодиодные фары"
+          ],
+          "safety": [
+            "Активный ассистент торможения",
+            "Ассистент удержания полосы",
+            "Система Pre-Safe",
+            "ABS",
+            "Контроль тяги"
+          ],
+          "lighting": [
+            "Светодиодные фары",
+            "Адаптивный ассистент дальнего света",
+            "Амбиентное освещение"
+          ]
+        }
+      },
+      "ua": {
+        "carBrand": "Мерседес-Бенц",
+        "carModel": "S-Клас",
+        "carDetails": "Розкішний седан з передовими технологіями та високою продуктивністю",
+        "carBody": "Седан",
+        "carColor": "Чорний",
+        "carTransmission": "Автоматичний",
+        "carCountry": "Італія",
+        "carFuel": "Бензин",
+        "carVanish": "Ні",
+        "carDamageDetails": [
+          {
+            "title": "Неістотна подряпина на задньому бампері",
+            "text": "Подряпина довжиною приблизно 5 см."
+          },
+          {
+            "title": "Невелика вм'ятина на дверцятах водія",
+            "text": "Вм'ятина видна, але не впливає на функціональність."
+          }
+        ],
+        "carOptions": {
+          "airbag": [
+            "Подушка безпеки водія",
+            "Подушка безпеки пасажира",
+            "Бічні подушки безпеки",
+            "Подушки безпеки для колін"
+          ],
+          "coolingAndHeating": [
+            "Кондиціонер",
+            "Обігріті та вентильовані сидіння",
+            "Система теплового комфорту"
+          ],
+          "security": [
+            "Сигналізація",
+            "Іммобілайзер",
+            "Асистент нічного бачення"
+          ],
+          "entertainment": [
+            "Bluetooth аудіо",
+            "Преміум звукова система",
+            "Аудіосистема Burmester",
+            "Екран управління"
+          ],
+          "comfortInterior": [
+            "Шкіряні сидіння",
+            "Обігріті передні сидіння",
+            "Масаж сидінь",
+            "Електричне регулювання сидінь"
+          ],
+          "comfortExterior": [
+            "Електричні вікна",
+            "Електричні дзеркала",
+            "Сонячний дах",
+            "Світлодіодні фари"
+          ],
+          "safety": [
+            "Активний асистент гальмування",
+            "Асистент утримання смуги",
+            "Система Pre-Safe",
+            "ABS",
+            "Контроль тяги"
+          ],
+          "lighting": [
+            "Світлодіодні фари",
+            "Адаптивний асистент дальнього світла",
+            "Амбієнтне освітлення"
+          ]
+        }
+      }
+    },
+    "carType": "used",
+    "carImages": [
+      "https://images.unsplash.com/photo-1561958952-6b4e6a2b4dbb?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVyY2VkZXMtYmVuemV6fGVufDB8fDB8fHww",
+      "https://images.unsplash.com/photo-1564795136-2b4b2f6b951d?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVyY2VkZXMtYmVuemV6fGVufDB8fDB8fHww",
+      "https://images.unsplash.com/photo-1611095931837-cf4d77fe3a93?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVyY2VkZXMtYmVuemV6fGVufDB8fDB8fHww",
+      "https://images.unsplash.com/photo-1516793196679-9574903704e8?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8bWVyY2VkZXMtYmVuemV6fGVufDB8fDB8fHww"
+    ],
+    "carMileage": 35000,
+    "carPower": "463 hp",
+    "carEngineCapacity": "4.7L V8",
+    "carERD": 2021,
+    "carMODTill": "2026-12-31",
+    "dealer": "dealerId3",
+    "price_incl_btw": 119990,
+    "price_excl_btw": 24980,
+    "price_excl_bpm": 59980,
+    "carVat": 4890,
+    "carNumberOfDoors": "4"
+  },
+  {
+    "carId": "4",
+    "default_language": "en",
+    "lang": {
+      "en": {
+        "carBrand": "BMW",
+        "carModel": "M5",
+        "carDetails": "High-performance sports sedan with precision handling and a powerful engine",
+        "carBody": "Sedan",
+        "carColor": "Silver",
+        "carVanish": "No",
+        "carTransmission": "Automatic",
+        "carFuel": "Diesel",
+        "carCountry": "Germany",
+        "carDamageDetails": [
+          {
+            "title": "Minor scratch on the rear bumper",
+            "text": "Scratch is approximately 5 cm long."
+          },
+          {
+            "title": "Small dent on the driver side door",
+            "text": "Dent is visible but does not affect functionality."
+          }
+        ],
+        "carOptions": {
+          "airbag": [
+            "Driver airbag",
+            "Passenger airbag",
+            "Side airbags",
+            "Knee airbags"
+          ],
+          "coolingAndHeating": [
+            "Air conditioning",
+            "Heated seats",
+            "Ventilated seats"
+          ],
+          "security": ["Alarm system", "Immobilizer", "Keyless entry"],
+          "entertainment": [
+            "Bluetooth audio",
+            "Premium sound system",
+            "Apple CarPlay",
+            "Touchscreen display"
+          ],
+          "comfortInterior": [
+            "Leather seats",
+            "Sport front seats",
+            "Electric seat adjustment",
+            "Ambient lighting"
+          ],
+          "comfortExterior": [
+            "Electric windows",
+            "Electric mirrors",
+            "Sunroof",
+            "Adaptive LED headlights"
+          ],
+          "safety": [
+            "Active Cruise Control",
+            "Lane Departure Warning",
+            "Park Assist",
+            "ABS",
+            "Traction control"
+          ],
+          "lighting": [
+            "Adaptive LED headlights",
+            "Daytime running lights",
+            "Fog lights"
+          ]
+        }
+      },
+      "nl": {
+        "carBrand": "BMW",
+        "carModel": "M5",
+        "carDetails": "Hoge prestaties sport sedan met precisiehandling en krachtige motor",
+        "carBody": "Sedan",
+        "carColor": "Zilver",
+        "carTransmission": "Automatisch",
+        "carCountry": "Duitsland",
+        "carFuel": "Diesel",
+
+        "carVanish": "Nee",
+        "carDamageDetails": [
+          {
+            "title": "Kleine kras op de achterbumper",
+            "text": "Kras is ongeveer 5 cm lang."
+          },
+          {
+            "title": "Kleine deuk in de bestuurdersdeur",
+            "text": "Deuk is zichtbaar maar beïnvloedt de functionaliteit niet."
+          }
+        ],
+        "carOptions": {
+          "airbag": [
+            "Bestuurdersairbag",
+            "Passagiersairbag",
+            "Zijairbags",
+            "Knieairbags"
+          ],
+          "coolingAndHeating": [
+            "Airconditioning",
+            "Verwarmde stoelen",
+            "Geventileerde stoelen"
+          ],
+          "security": ["Alarm systeem", "Immo-systeem", "Keyless entry"],
+          "entertainment": [
+            "Bluetooth audio",
+            "Premium geluidssysteem",
+            "Apple CarPlay",
+            "Touchscreen display"
+          ],
+          "comfortInterior": [
+            "Lederen stoelen",
+            "Sport voorstoelen",
+            "Elektrische stoelverstelling",
+            "Ambient verlichting"
+          ],
+          "comfortExterior": [
+            "Elektrische ramen",
+            "Elektrische spiegels",
+            "Zonnescherm",
+            "Adaptieve LED koplampen"
+          ],
+          "safety": [
+            "Actieve cruise control",
+            "Lane Departure Warning",
+            "Park Assist",
+            "ABS",
+            "Tractiecontrole"
+          ],
+          "lighting": [
+            "Adaptieve LED koplampen",
+            "Dagrijverlichting",
+            "Mistlampen"
+          ]
+        }
+      },
+      "ru": {
+        "carBrand": "BMW",
+        "carModel": "М5",
+        "carDetails": "Спортивный седан с высокой производительностью, точным управлением и мощным двигателем",
+        "carBody": "Седан",
+        "carColor": "Серебристый",
+        "carTransmission": "Автоматический",
+        "carCountry": "Германия",
+        "carFuel": "Дизель",
+
+        "carVanish": "Нет",
+        "carDamageDetails": [
+          {
+            "title": "Незначительная царапина на заднем бампере",
+            "text": "Царапина длиной около 5 см."
+          },
+          {
+            "title": "Небольшая вмятина на дверце со стороны водителя",
+            "text": "Вмятина видна, но не влияет на функциональность."
+          }
+        ],
+        "carOptions": {
+          "airbag": [
+            "Подушка безопасности водителя",
+            "Подушка безопасности пассажира",
+            "Боковые подушки безопасности",
+            "Подушки безопасности для коленей"
+          ],
+          "coolingAndHeating": [
+            "Кондиционер",
+            "Обогреваемые сиденья",
+            "Вентилируемые сиденья"
+          ],
+          "security": ["Сигнализация", "Иммобилайзер", "Keyless entry"],
+          "entertainment": [
+            "Аудио через Bluetooth",
+            "Премиум звуковая система",
+            "Apple CarPlay",
+            "Экран управления"
+          ],
+          "comfortInterior": [
+            "Кожаные сиденья",
+            "Спортивные передние сиденья",
+            "Электрическая регулировка сидений",
+            "Амбиентное освещение"
+          ],
+          "comfortExterior": [
+            "Электрические окна",
+            "Электрические зеркала",
+            "Солнечная крыша",
+            "Адаптивные светодиодные фары"
+          ],
+          "safety": [
+            "Активный круиз-контроль",
+            "Предупреждение о выходе из полосы",
+            "Парковочный ассистент",
+            "ABS",
+            "Контроль тяги"
+          ],
+          "lighting": [
+            "Адаптивные светодиодные фары",
+            "Дневные ходовые огни",
+            "Противотуманные фары"
+          ]
+        }
+      },
+      "ua": {
+        "carBrand": "BMW",
+        "carModel": "М5",
+        "carDetails": "Спортивний седан з високою продуктивністю, точним керуванням і потужним двигуном",
+        "carBody": "Седан",
+        "carColor": "Срібний",
+        "carTransmission": "Автоматичний",
+        "carCountry": "Німеччина",
+        "carFuel": "Дизель",
+
+        "carVanish": "Ні",
+        "carDamageDetails": [
+          {
+            "title": "Неістотна подряпина на задньому бампері",
+            "text": "Подряпина довжиною приблизно 5 см."
+          },
+          {
+            "title": "Невелика вм'ятина на дверцятах водія",
+            "text": "Вм'ятина видна, але не впливає на функціональність."
+          }
+        ],
+        "carOptions": {
+          "airbag": [
+            "Подушка безпеки водія",
+            "Подушка безпеки пасажира",
+            "Бічні подушки безпеки",
+            "Подушки безпеки для колін"
+          ],
+          "coolingAndHeating": [
+            "Кондиціонер",
+            "Обігріті сидіння",
+            "Вентильовані сидіння"
+          ],
+          "security": ["Сигналізація", "Іммобілайзер", "Keyless entry"],
+          "entertainment": [
+            "Bluetooth аудіо",
+            "Преміум звукова система",
+            "Apple CarPlay",
+            "Екран управління"
+          ],
+          "comfortInterior": [
+            "Шкіряні сидіння",
+            "Спортивні передні сидіння",
+            "Електричне регулювання сидінь",
+            "Амбієнтне освітлення"
+          ],
+          "comfortExterior": [
+            "Електричні вікна",
+            "Електричні дзеркала",
+            "Сонячний дах",
+            "Адаптивні світлодіодні фари"
+          ],
+          "safety": [
+            "Активний круїз-контроль",
+            "Попередження про зсув смуги",
+            "Парковий асистент",
+            "ABS",
+            "Контроль тяги"
+          ],
+          "lighting": [
+            "Адаптивні світлодіодні фари",
+            "Денні ходові вогні",
+            "Протитуманні фари"
+          ]
+        }
+      }
+    },
+    "carType": "used",
+    "carImages": [
+      "https://images.unsplash.com/photo-1530643882972-555430d6cc80?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Ym13LW0zfGVufDB8fDB8fHww",
+      "https://images.unsplash.com/photo-1596583428427-bb27b7c77900?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Ym13LW0zfGVufDB8fDB8fHww",
+      "https://images.unsplash.com/photo-1623287133459-96f70b9e1b02?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Ym13LW0zfGVufDB8fDB8fHww",
+      "https://images.unsplash.com/photo-1600714137613-d62b4ff34b09?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Ym13LW0zfGVufDB8fDB8fHww"
+    ],
+    "carMileage": 23000,
+    "carPower": "617 hp",
+    "carEngineCapacity": "4.4L V8",
+    "carERD": 2020,
+    "carMODTill": "2025-12-31",
+    "dealer": "dealerId1",
+    "price_incl_btw": 109990,
+    "price_excl_btw": 22980,
+    "price_excl_bpm": 56980,
+    "carVat": 4890,
+    "carNumberOfDoors": "4"
+  },
+  {
+    "carId": "5",
+    "default_language": "en",
+    "lang": {
+      "en": {
+        "carBrand": "Ford",
+        "carModel": "Mustang GT",
+        "carDetails": "Classic American muscle car with a roaring V8 engine and aggressive styling",
+        "carBody": "Coupe",
+        "carColor": "Red",
+        "carVanish": "No",
+        "carFuel": "Benzine",
+        "carTransmission": "Manual",
+
+        "carCountry": "France",
+        "carDamageDetails": [
+          {
+            "title": "Minor scratch on the rear bumper",
+            "text": "Scratch is approximately 5 cm long."
+          },
+          {
+            "title": "Small dent on the driver side door",
+            "text": "Dent is visible but does not affect functionality."
+          }
+        ],
+        "carOptions": {
+          "airbag": ["Driver airbag", "Passenger airbag", "Side airbags"],
+          "coolingAndHeating": ["Air conditioning", "Heated seats"],
+          "security": ["Alarm system", "Immobilizer", "Keyless entry"],
+          "entertainment": [
+            "Bluetooth audio",
+            "Premium sound system",
+            "Apple CarPlay",
+            "Touchscreen display"
+          ],
+          "comfortInterior": [
+            "Leather seats",
+            "Sport front seats",
+            "Electric seat adjustment",
+            "Ambient lighting"
+          ],
+          "comfortExterior": [
+            "Electric windows",
+            "Electric mirrors",
+            "Sunroof",
+            "LED headlights"
+          ],
+          "safety": [
+            "Active Cruise Control",
+            "Lane Departure Warning",
+            "Park Assist",
+            "ABS",
+            "Traction control"
+          ],
+          "lighting": ["LED headlights", "Daytime running lights", "Fog lights"]
+        }
+      },
+      "nl": {
+        "carBrand": "Ford",
+        "carModel": "Mustang GT",
+        "carDetails": "Классический американский muscle car с ревущим двигателем V8 и агрессивным стилем",
+        "carBody": "Купе",
+        "carColor": "Красный",
+        "carTransmission": "Механическая",
+        "carCountry": "Italië",
+        "carFuel": "Benzine",
+
+        "carVanish": "Нет",
+        "carDamageDetails": [
+          {
+            "title": "Kleine kras op de achterbumper",
+            "text": "Kras is ongeveer 5 cm lang."
+          },
+          {
+            "title": "Kleine deuk in de bestuurdersdeur",
+            "text": "Deuk is zichtbaar maar beïnvloedt de functionaliteit niet."
+          }
+        ],
+        "carOptions": {
+          "airbag": [
+            "Подушка безопасности водителя",
+            "Подушка безопасности пассажира",
+            "Боковые подушки безопасности"
+          ],
+          "coolingAndHeating": ["Кондиционер", "Подогреваемые сиденья"],
+          "security": ["Сигнализация", "Иммобилайзер", "Keyless entry"],
+          "entertainment": [
+            "Bluetooth аудио",
+            "Премиум звуковая система",
+            "Apple CarPlay",
+            "Экран управления"
+          ],
+          "comfortInterior": [
+            "Кожаные сиденья",
+            "Спортивные передние сиденья",
+            "Электрическая регулировка сидений",
+            "Амбиентное освещение"
+          ],
+          "comfortExterior": [
+            "Электрические окна",
+            "Электрические зеркала",
+            "Сонячный дах",
+            "Адаптивные светодиодные фары"
+          ],
+          "safety": [
+            "Активный круиз-контроль",
+            "Предупреждение о выходе из полосы",
+            "Парковочный ассистент",
+            "ABS",
+            "Контроль тяги"
+          ],
+          "lighting": [
+            "Адаптивные светодиодные фары",
+            "Дневные ходовые огни",
+            "Противотуманные фары"
+          ]
+        }
+      },
+      "ru": {
+        "carBrand": "Ford",
+        "carModel": "Mustang GT",
+        "carDetails": "Классический американский muscle car с ревущим двигателем V8 и агрессивным стилем",
+        "carBody": "Купе",
+        "carColor": "Красный",
+        "carTransmission": "Механическая",
+        "carCountry": "Италия",
+        "carFuel": "Бензин",
+
+        "carVanish": "Нет",
+        "carDamageDetails": [
+          {
+            "title": "Незначительная царапина на заднем бампере",
+            "text": "Царапина длиной около 5 см."
+          },
+          {
+            "title": "Небольшая вмятина на дверце со стороны водителя",
+            "text": "Вмятина видна, но не влияет на функциональность."
+          }
+        ],
+        "carOptions": {
+          "airbag": [
+            "Подушка безопасности водителя",
+            "Подушка безопасности пассажира",
+            "Боковые подушки безопасности"
+          ],
+          "coolingAndHeating": ["Кондиционер", "Подогреваемые сиденья"],
+          "security": ["Сигнализация", "Иммобилайзер", "Keyless entry"],
+          "entertainment": [
+            "Bluetooth аудио",
+            "Премиум звуковая система",
+            "Apple CarPlay",
+            "Экран управления"
+          ],
+          "comfortInterior": [
+            "Кожаные сиденья",
+            "Спортивные передние сиденья",
+            "Электрическая регулировка сидений",
+            "Амбиентное освещение"
+          ],
+          "comfortExterior": [
+            "Электрические окна",
+            "Электрические зеркала",
+            "Сонячный дах",
+            "Адаптивные светодиодные фары"
+          ],
+          "safety": [
+            "Активный круиз-контроль",
+            "Предупреждение о выходе из полосы",
+            "Парковочный ассистент",
+            "ABS",
+            "Контроль тяги"
+          ],
+          "lighting": [
+            "Адаптивные светодиодные фары",
+            "Дневные ходовые огни",
+            "Противотуманные фары"
+          ]
+        }
+      },
+      "ua": {
+        "carBrand": "Ford",
+        "carModel": "Mustang GT",
+        "carDetails": "Класичний американський muscle car з ревучим двигуном V8 та агресивним дизайном",
+        "carBody": "Купе",
+        "carColor": "Червоний",
+        "carTransmission": "Механічна",
+        "carCountry": "Італія",
+        "carFuel": "Бензин",
+
+        "carVanish": "Ні",
+        "carDamageDetails": [
+          {
+            "title": "Неістотна подряпина на задньому бампері",
+            "text": "Подряпина довжиною приблизно 5 см."
+          },
+          {
+            "title": "Невелика вм'ятина на дверцятах водія",
+            "text": "Вм'ятина видна, але не впливає на функціональність."
+          }
+        ],
+        "carOptions": {
+          "airbag": [
+            "Подушка безпеки водія",
+            "Подушка безпеки пасажира",
+            "Бічні подушки безпеки"
+          ],
+          "coolingAndHeating": ["Кондиціонер", "Обігріті сидіння"],
+          "security": ["Сигналізація", "Іммобілайзер", "Keyless entry"],
+          "entertainment": [
+            "Bluetooth аудіо",
+            "Преміум звукова система",
+            "Apple CarPlay",
+            "Екран управління"
+          ],
+          "comfortInterior": [
+            "Шкіряні сидіння",
+            "Спортивні передні сидіння",
+            "Електричне регулювання сидінь",
+            "Амбієнтне освітлення"
+          ],
+          "comfortExterior": [
+            "Електричні вікна",
+            "Електричні дзеркала",
+            "Сонячний дах",
+            "Адаптивні світлодіодні фари"
+          ],
+          "safety": [
+            "Активний круїз-контроль",
+            "Попередження про зсув смуги",
+            "Парковий асистент",
+            "ABS",
+            "Контроль тяги"
+          ],
+          "lighting": [
+            "Адаптивні світлодіодні фари",
+            "Денні ходові вогні",
+            "Протитуманні фари"
+          ]
+        }
+      }
+    },
+    "carType": "used",
+    "carImages": [
+      "https://images.unsplash.com/photo-1596581208198-ffae2fd0b67e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Zm9yZC1tdXN0YW5nLXNpZ3R8ZW58MHx8fHwwfHw%3D",
+      "https://images.unsplash.com/photo-1601318620487-e119ca594ee4?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9yZC1tdXN0YW5nLXNpZ3R8ZW58MHx8fHwwfHw%3D",
+      "https://images.unsplash.com/photo-1623287133459-96f70b9e1b02?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Zm9yZC1tdXN0YW5nLXNpZ3R8ZW58MHx8fHwwfHw%3D",
+      "https://images.unsplash.com/photo-1580319354511-89c4ebfb0a63?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Zm9yZC1tdXN0YW5nLXNpZ3R8ZW58MHx8fHwwfHw%3D"
+    ],
+    "carMileage": 15000,
+    "carPower": "450 hp",
+    "carEngineCapacity": "5.0L V8",
+    "carERD": 2021,
+    "carMODTill": "2025-12-31",
+    "dealer": "dealerId2",
+    "price_incl_btw": 52900,
+    "price_excl_btw": 10580,
+    "price_excl_bpm": 21160,
+    "carVat": 8400,
+    "carNumberOfDoors": "2"
+  }
+]

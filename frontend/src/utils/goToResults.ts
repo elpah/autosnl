@@ -16,6 +16,7 @@ export const goToAdvancedSearch = (
   ];
   const updatedData: Record<string, string[]> = {};
   const queryParams: Record<string, string | number | string[]> = {};
+  
 
   fields.forEach((field) => {
     const value = globalContext.carData[field];
@@ -24,12 +25,8 @@ export const goToAdvancedSearch = (
       queryParams[field] = String(value);
     }
   });
-  // if (globalContext.carData.pageNumber) {
-  // updatedData.pageNumber = [String(globalContext.carData.pageNumber)];
-  // queryParams.pageNumber = globalContext.carData.pageNumber;
   queryParams.pageNumber = 1;
 
-  // }
   globalContext.setAdvancedSearchFieldData((prevData) => ({
     ...prevData,
     ...updatedData,
@@ -37,16 +34,13 @@ export const goToAdvancedSearch = (
   const query = queryString.stringify(queryParams, {
     skipEmptyString: true,
   });
-  navigate(`/advanced-search?${query}`);
+  navigate(`/${globalContext.lang}/advanced-search?${query}`);
 };
 
 export const goToSearchResult = (
-  // e: React.MouseEvent<HTMLButtonElement>,
   globalContext: IGlobalContext,
   navigate: NavigateFunction
 ) => {
-
-
   const query = queryString.stringify(
     {
       carType: globalContext.carData.carType,
@@ -62,5 +56,5 @@ export const goToSearchResult = (
       skipEmptyString: true,
     }
   );
-  navigate(`/search-result?${query}`);
+  navigate(`/${globalContext.lang}/search-result?${query}`);
 };

@@ -1,9 +1,13 @@
-import React from "react";
-
 import styles from "./advanced-search-mobile.module.scss";
 import { FilterItemsContainer } from "../../../components/filter-item-container/FilterItemsContainer";
-import { CarCardContainer } from "../../../components/car-card-container/CarCardContainer";
-export const AdvancedSearchMobile = () => {
+import { IAdvancedProps } from "../../../types/otherTypes";
+
+export const AdvancedSearchMobile = ({
+  carList,
+  totalCars,
+  isLoading,
+  loadingContainer,
+}: IAdvancedProps) => {
   return (
     <div className={styles.container_wrapper}>
       <div className={styles.header_map_container}>
@@ -25,14 +29,14 @@ export const AdvancedSearchMobile = () => {
           </div>
           <div className={styles.map_name}>Advanced Search</div>
         </div>
-        <h1 className={styles.header}>2000 Cars Available</h1>
+        <h1 className={styles.header}>
+          {" "}
+          {`${isLoading ? "Loading..." : `${totalCars} Cars Available`}`}
+        </h1>
       </div>
       <FilterItemsContainer />
       <div className={styles.car_card_container_wrapper}>
-        {/* <CarCardContainer>
-          <div></div>
-        </CarCardContainer> */}
-          
+        {isLoading ? loadingContainer : carList}
       </div>
     </div>
   );

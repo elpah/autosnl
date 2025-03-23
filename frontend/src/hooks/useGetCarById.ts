@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { type ICarDataResponse} from "../types/carResponseType";
+import { type ICarDataResponse } from "../types/carResponseType";
 import { IDealer } from "../types/otherTypes";
 
 type ICarByIdResponse = {
   car: ICarDataResponse;
   dealer: IDealer;
-}
+};
 const useGetCarById = (carId: string) => {
   const fetchCarById = () =>
     axios
@@ -14,7 +14,6 @@ const useGetCarById = (carId: string) => {
         params: { carId },
       })
       .then((res) => res.data);
-
   return useQuery<ICarByIdResponse, Error>({
     queryKey: ["carById", carId],
     queryFn: fetchCarById,

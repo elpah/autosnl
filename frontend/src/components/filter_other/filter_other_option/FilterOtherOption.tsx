@@ -1,9 +1,19 @@
 import React from "react";
+
 type FilterPriceOptionProps = {
   value: number;
   label: string;
+  disabled?: boolean;
 };
 
-export const FilterOtherOption = ({ value, label }: FilterPriceOptionProps) => {
-  return <option value={value}>{label}</option>;
+export const FilterOtherOption = ({
+  value,
+  label,
+  disabled = false,
+}: FilterPriceOptionProps) => {
+  return (
+    <option value={value} disabled={disabled}>
+      {label}
+    </option>
+  );
 };
