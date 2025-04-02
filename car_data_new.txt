@@ -1224,3 +1224,37 @@
     "carNumberOfDoors": "2"
   }
 ]
+
+
+
+
+
+
+
+[
+  {
+    "dealerId": "dealerId1",
+    "dealerName": "Dealer 1",
+    "dealerAddress": "641 Main St, City1",
+    "dealerPhone": "+1-800-123-8106",
+    "dealerEmail": "contact@dealer1.com",
+    "cars": ["1", "2"]
+  },
+  {
+    "dealerId": "dealerId2",
+    "dealerName": "Dealer 2",
+    "dealerAddress": "509 Main St, City2",
+    "dealerPhone": "+1-800-123-2468",
+    "dealerEmail": "contact@dealer2.com",
+    "cars": ["3", "4", "5"]
+  },
+  {
+    "dealerId": "dealerId3",
+    "dealerName": "Dealer 3",
+    "dealerAddress": "865 Main St, City3",
+    "dealerPhone": "+1-800-123-1749",
+    "dealerEmail": "contact@dealer3.com",
+    "cars": ["6", "7"]
+  }
+]
+
