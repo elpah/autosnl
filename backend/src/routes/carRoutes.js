@@ -8,14 +8,14 @@ import {
   getCarsWithFilters,
   getCarsWithMultiFilters,
   getCarByDealerId,
-} from "../carsdb/db.js";
+} from "../services/carServices.js";
+import { getHomeSections } from "../services/homeSectionService.js";
 
-import { getBrandModelsCountries } from "../carsdb/getBrandAndModels.js";
+import { getBrandModelsCountries } from "../services/brandModelCountryServices.js";
 import {
-  convertToLowerCase,
   processArrays,
   parseNums,
-} from "../utilsFunctions.js";
+} from "../utils/utils.js";
 
 carRouter.post("/create-new-car", async (req, res) => {
   const carData = req.body;
@@ -110,7 +110,10 @@ carRouter.get("/advanced-search", async (req, res) => {
   try {
     const filters = {
       carType: carType ? carType.toLowerCase() : "",
-      brand: brand && !brand.includes("All Brands") ? processArrays(brand) : [],
+      brand:
+        brand && !brand.some((b) => b.toLowerCase() === "all brands")
+          ? processArrays(brand)
+          : [],
       model: processArrays(model),
       vehicleType: processArrays(vehicleType),
       fuel: processArrays(fuel),
@@ -123,12 +126,9 @@ carRouter.get("/advanced-search", async (req, res) => {
       erdMin: parseNums(erdMin),
       erdMax: parseNums(erdMax),
     };
-
-    console.log("filters::::::",filters);
     const page = parseInt(pageNumber) || 1;
     const { totalCars, cars } = await getCarsWithMultiFilters(filters, page);
     res.status(200).json({ totalCars, cars });
-
   } catch (err) {
     res.status(500).send("Internal Server Error");
   }
@@ -159,25 +159,24 @@ carRouter.get("/carByDealerId", async (req, res) => {
   const page = parseInt(pageNumber) || 1;
 
   try {
-    const { totalCars, dealer, cars } = await getCarByDealerId(
-      {
-        carType,
-        brand,
-        model,
-        vehicleType,
-        fuel,
-        priceMin: Number(priceMin),
-        priceMax: Number(priceMax),
-        mileageMin: Number(mileageMin),
-        mileageMax: Number(mileageMax),
-        transmission,
-        erdMin: Number(erdMin),
-        erdMax: Number(erdMax),
-        country,
-        dealerId,
-      },
-      page
-    );
+    const filters = {
+      carType: carType ? carType.toLowerCase() : "",
+      brand: brand && !brand.includes("All Brands") ? processArrays(brand) : [],
+      model: processArrays(model),
+      vehicleType: processArrays(vehicleType),
+      fuel: processArrays(fuel),
+      transmission: processArrays(transmission),
+      country: processArrays(country),
+      priceMin: parseNums(priceMin),
+      priceMax: parseNums(priceMax),
+      mileageMin: parseNums(mileageMin),
+      mileageMax: parseNums(mileageMax),
+      erdMin: parseNums(erdMin),
+      erdMax: parseNums(erdMax),
+      dealerId,
+    };
+
+    const { totalCars, dealer, cars } = await getCarByDealerId(filters, page);
     res.status(200).json({ totalCars, dealer, cars });
   } catch (err) {
     console.error("Error fetching cars:", err);
@@ -185,13 +184,17 @@ carRouter.get("/carByDealerId", async (req, res) => {
   }
 });
 
-carRouter.get("/brandmodelscountries", async (req, res) => {
+const fetchCars = async (res, fetchFunction) => {
   try {
-    const brandModels = await getBrandModelsCountries();
-    res.status(200).json(brandModels);
+    const cars = await fetchFunction();
+    res.status(200).json(cars);
   } catch (err) {
     res.status(500).send("Internal Server Error");
   }
-});
+};
 
+carRouter.get("/home-section", (_req, res) => fetchCars(res, getHomeSections));
+carRouter.get("/brandmodelscountries", (_req, res) =>
+  fetchCars(res, getBrandModelsCountries)
+);
 export default carRouter;
