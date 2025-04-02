@@ -7,6 +7,7 @@ type ICarByIdResponse = {
   car: ICarDataResponse;
   dealer: IDealer;
 };
+
 const useGetCarById = (carId: string) => {
   const fetchCarById = () =>
     axios
@@ -20,5 +21,4 @@ const useGetCarById = (carId: string) => {
     enabled: !!carId,
   });
 };
-
 export default useGetCarById;

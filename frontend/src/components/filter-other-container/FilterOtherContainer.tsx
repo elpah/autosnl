@@ -1,15 +1,11 @@
-import React from 'react'
-import styles from "./filter-other-container.module.scss"
+import styles from "./filter-other-container.module.scss";
 
-type filterPriceContainerProps =
-	{
-		children: React.ReactNode;
-	}
+type filterPriceContainerProps = {
+  children: React.ReactNode;
+};
 
-export const FilterOtherContainer = ({ children }: filterPriceContainerProps) => {
-	return (
-		<div className={styles.filter_price_container}>
-			{children}
-		</div>
-	)
-}
+export const FilterOtherContainer = ({
+  children,
+}: filterPriceContainerProps) => {
+  return <div className={styles.filter_price_container}>{children}</div>;
+};

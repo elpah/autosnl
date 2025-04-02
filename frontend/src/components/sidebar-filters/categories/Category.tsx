@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
-
 import styles from "./category.module.scss";
 
 type CategoryProps = {
@@ -13,7 +12,6 @@ export const Category = ({ title, children }: CategoryProps) => {
   const toggleItems = () => {
     setIsOpen(!isOpen);
   };
-
   return (
     <div className={styles.container}>
       <div className={styles.sub_wrapper}>

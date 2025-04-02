@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState, useContext } from "react";
 import { DesktopNav } from "./desktop/DesktopNav";
 import { MobileNav } from "./mobile/MobileNav";
-
 import useBrandModel from "../../hooks/useBrandModel";
 import { useNavigate } from "react-router-dom";
 import queryString from "query-string";
@@ -20,10 +19,8 @@ const Navbar = () => {
   const languageSelectorRef = useRef<HTMLDivElement>(null);
   const suggestionsRef = useRef<HTMLDivElement>(null);
   const globalContext = useContext(GlobalContext);
-
   const navigate = useNavigate();
   const { data, isLoading } = useBrandModel();
-
   const carData = data;
   const flags = { en: en_flag, nl: nl_flag, ru: ru_flag, ua: ua_flag };
 
@@ -36,7 +33,6 @@ const Navbar = () => {
   if (isLoading) return <p></p>;
 
   if (!carData || !carData?.brands) return <p>No data available</p>;
-
   const suggestionsArray = Object.values(carData.brands).flatMap(
     ({ name, models }) => [
       name[globalContext.lang],
@@ -48,12 +44,10 @@ const Navbar = () => {
 
   const changeLanguage = (newLang: "en" | "ru" | "nl" | "ua") => {
     globalContext.setLang(newLang);
-
     const currentPath = window.location.pathname;
     const currentSearch = window.location.search;
     const newPath = `/${newLang}${currentPath.slice(3)}${currentSearch}`;
     setShowLanguageSelector(false);
-
     navigate(newPath, { replace: true });
   };
 
@@ -69,7 +63,6 @@ const Navbar = () => {
     const filtered = suggestionsArray.filter((item) =>
       item.toLowerCase().includes(value.toLowerCase())
     );
-
     setFilteredSuggestions(filtered);
     setShowSuggestions(filtered.length > 0);
     setSelectedIndex(-1);
@@ -82,7 +75,6 @@ const Navbar = () => {
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (filteredSuggestions.length === 0) return;
-
     if (e.key === "Escape") {
       setShowSuggestions(false);
       return;
@@ -100,7 +92,6 @@ const Navbar = () => {
             behavior: "smooth",
           });
         }, 0);
-
         return newIndex;
       });
     } else if (e.key === "ArrowUp") {

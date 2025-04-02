@@ -6,22 +6,26 @@ import {
   innovation,
   quality,
 } from "../../assets/images/images";
-
 import { Value } from "../../components/about-values/Value";
 import { Delivery } from "../../components/delivery-section/Delivery";
-
-import styles from "./about.module.scss";
 import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { GlobalContext } from "../../context/GlobalContext";
+import { isValidLang } from "../../utils/utilsFunctions";
+import styles from "./about.module.scss";
+
 const About: React.FC = () => {
   const { t } = useTranslation<string>("about");
   const { lang: urlLang } = useParams();
   const globalContext = useContext(GlobalContext);
 
   useEffect(() => {
-    if (urlLang) {
+    if (urlLang && isValidLang(urlLang)) {
       globalContext.setLang(urlLang);
+    } else if (globalContext.lang) {
+      globalContext.setLang(globalContext.lang);
+    } else {
+      globalContext.setLang("en");
     }
   }, [urlLang]);
 
@@ -47,7 +51,6 @@ const About: React.FC = () => {
       text: t("values.innovation.text"),
     },
   ];
-
   return (
     <div className={styles.about_container}>
       <div
@@ -86,5 +89,4 @@ const About: React.FC = () => {
     </div>
   );
 };
-
 export default About;

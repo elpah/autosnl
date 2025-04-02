@@ -1,7 +1,7 @@
-import styles from "./advanced-search-desktop.module.scss";
 import { SidebarFilters } from "../../../components/sidebar-filters/SidebarFilters";
 import { IAdvancedProps } from "../../../types/otherTypes";
 import { useTranslation } from "react-i18next";
+import styles from "./advanced-search-desktop.module.scss";
 
 export const AdvancedSearchDesktop = ({
   carList,
@@ -18,9 +18,7 @@ export const AdvancedSearchDesktop = ({
         </div>
         <div className={styles.right}>
           <div className={styles.header_search_container}>
-            <div className={styles.header}>
-              {header}
-            </div>
+            <div className={styles.header}>{header}</div>
             <div className={styles.search_container}>
               <div className={styles.search_name}>sort by:</div>
               <div className={styles.icon_container}>

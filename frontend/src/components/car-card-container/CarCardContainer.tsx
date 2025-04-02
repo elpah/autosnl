@@ -1,7 +1,4 @@
-import React, { useContext } from "react";
-
-import styles from "./car-card-container.module.scss";
-import CarCard from "../car-card/CarCard";
+import { useContext } from "react";
 import PageNumber from "../page-number/PageNumber";
 import { useNavigate } from "react-router-dom";
 import { IGlobalContext, GlobalContext } from "../../context/GlobalContext";
@@ -10,6 +7,7 @@ import {
   handleNextClick,
   handlePageNumberClick,
 } from "../../utils/utilsFunctions";
+import styles from "./car-card-container.module.scss";
 
 interface CarCardContainerProps {
   children: React.ReactNode;
@@ -24,11 +22,9 @@ export const CarCardContainer = ({
 }: CarCardContainerProps) => {
   const globalContext = useContext<IGlobalContext>(GlobalContext);
   const navigate = useNavigate();
-
   const carsPerPage = 30;
   const totalPages = Math.ceil(totalCars / carsPerPage);
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
-
   return (
     <>
       <div className={styles.car_card_container}>{children}</div>

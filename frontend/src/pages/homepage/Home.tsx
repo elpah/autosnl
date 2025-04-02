@@ -22,7 +22,6 @@ import useHomeSection from "../../hooks/useHomeSections";
 import { goToAdvancedSearch, goToSearchResult } from "../../utils/goToResults";
 import { useTranslation } from "react-i18next";
 import { isValidLang } from "../../utils/utilsFunctions";
-
 import styles from "./home.module.scss";
 
 export const Home = () => {

@@ -1,6 +1,6 @@
-import styles from "./options.module.scss";
 import { OptionItem } from "./option-items/OptionItem";
 import { useTranslation } from "react-i18next";
+import styles from "./options.module.scss";
 
 type CarOptions = {
   [key: string]: string[];

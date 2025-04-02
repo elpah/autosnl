@@ -1,7 +1,5 @@
 import { CarInfoCard } from "../car_info-card/CarInfoCard";
 import { useTranslation } from "react-i18next";
-import styles from "./car-info-card-container.module.scss";
-
 import {
   body,
   color,
@@ -16,6 +14,7 @@ import {
   vat,
   weight,
 } from "../../assets/images/images";
+import styles from "./car-info-card-container.module.scss";
 
 type CarInfoProps = {
   carDetails: {
@@ -114,5 +113,4 @@ const CarInfoCardContainer = ({ carDetails }: CarInfoProps) => {
     </div>
   );
 };
-
 export default CarInfoCardContainer;

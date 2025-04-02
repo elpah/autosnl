@@ -4,10 +4,10 @@ import hamburger from "../../../assets/images/nav_images/hamburger.png";
 import close from "../../../assets/images/nav_images/close.png";
 import arrow from "../../../assets/images/nav_images/arrow.png";
 import search_icon from "../../../assets/images/nav_images/search_icon.png";
-import styles from "./mobile-nav.module.scss";
 import { NavProps } from "../../../types/otherTypes";
 import { GlobalContext } from "../../../context/GlobalContext";
 import { useTranslation } from "react-i18next";
+import styles from "./mobile-nav.module.scss";
 
 export const MobileNav = ({
   showLanguageSelector,
@@ -54,14 +54,12 @@ export const MobileNav = ({
       ) {
         return;
       }
-
       if (
         languageSelectorRef.current &&
         !languageSelectorRef.current.contains(event.target as Node)
       ) {
         setShowLanguageSelector(false);
       }
-
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setShowMenu(false);
       }
@@ -78,7 +76,6 @@ export const MobileNav = ({
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-
   return (
     <header className={styles.mobile_nav_container}>
       <nav className={styles.mobile_nav}>

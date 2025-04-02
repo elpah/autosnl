@@ -2,7 +2,6 @@ import { ContactFormMap } from "../../../components/contact-form-map/ContactForm
 import { DealerInfo } from "../../../components/dealer-infomation/DealerInfo";
 import { FilterItemsContainer } from "../../../components/filter-item-container/FilterItemsContainer";
 import { IDealerPageProps } from "../../../types/otherTypes";
-
 import styles from "./dealer-page-mobile.module.scss";
 
 export const DealerPageMobile = ({

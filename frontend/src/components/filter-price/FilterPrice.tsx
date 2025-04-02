@@ -1,17 +1,14 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import {
   GlobalContext,
   type IGlobalContext,
 } from "../../context/GlobalContext";
-
 import styles from "./filter-price.module.scss";
 
 export const FilterPrice = () => {
   const globalContext = useContext<IGlobalContext>(GlobalContext);
-
   const minLimit = 0;
   const maxLimit = 150000;
-
   const [minPrice, setMinPrice] = useState(
     globalContext.advancedSearchFieldData.priceMin || minLimit
   );
@@ -60,7 +57,6 @@ export const FilterPrice = () => {
       }));
     }
   };
-
   return (
     <div className={styles.container}>
       <div className={styles.slider_container}>
@@ -70,8 +66,7 @@ export const FilterPrice = () => {
           name="min"
           min={minLimit}
           max={maxLimit}
-                   step={100}
-
+          step={100}
           value={minPrice}
           onChange={handleSliderChange}
         />
@@ -81,8 +76,7 @@ export const FilterPrice = () => {
           name="max"
           min={minLimit}
           max={maxLimit}
-                   step={100}
-
+          step={100}
           value={maxPrice}
           onChange={handleSliderChange}
         />
@@ -105,8 +99,7 @@ export const FilterPrice = () => {
           onChange={handleMinChange}
           min={minLimit}
           max={maxPrice - 1}
-                    step={100}
-
+          step={100}
         />
         <input
           type="number"

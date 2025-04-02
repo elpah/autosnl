@@ -1,10 +1,9 @@
-import { useContext, useState } from "react";
-import styles from "./home-section.module.scss";
+import { useContext } from "react";
 import CarCard from "../car-card/CarCard";
 import { type CarTranslation } from "../../types/carCategoriesResponse";
 import { GlobalContext } from "../../context/GlobalContext";
-import { ICarDataResponse } from "../../types/carResponseType";
 import { Car } from "../../types/homeSectionResponseType";
+import styles from "./home-section.module.scss";
 
 type SectionHomeProps = {
   title: string;
@@ -22,7 +21,6 @@ export const HomeSection = ({
   carsArray,
 }: SectionHomeProps) => {
   const globalContext = useContext(GlobalContext);
-
   return (
     <section className={styles.section_container}>
       <h2 className={styles.section_header}>{title}</h2>
@@ -43,7 +41,6 @@ export const HomeSection = ({
             </div>
           ))}
         </div>
-
         <div className={styles.car_container}>
           {carsArray
             ?.filter(

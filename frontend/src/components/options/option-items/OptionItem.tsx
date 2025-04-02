@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./OptionItem.module.scss";
 
 type OptionItemProps = {
@@ -11,7 +11,6 @@ export const OptionItem = ({ title, items }: OptionItemProps) => {
   const toggleList = () => {
     setIsOpen(!isOpen);
   };
-
   return (
     <>
       <hr />

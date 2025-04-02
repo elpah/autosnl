@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-
 import styles from "./contact-form-map.module.scss";
 
 export const ContactFormMap = () => {

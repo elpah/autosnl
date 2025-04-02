@@ -7,12 +7,10 @@ const useHomeSection = () => {
     axios
       .get<HomeSectionResponse>(`${process.env.REACT_APP_BASE_URL}home-section`)
       .then((res) => res.data);
-
   return useQuery<HomeSectionResponse, Error>({
     queryKey: ["homeSectionData"],
     queryFn: fetchCars,
     staleTime: Infinity,
   });
 };
-
 export default useHomeSection;

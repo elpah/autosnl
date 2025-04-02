@@ -25,7 +25,6 @@ const CarInfoCover = ({ coverImages }: ICarInfoCoverProps) => {
   };
 
   const remainingImages = coverImages.length - (thumbnailStartIndex + 4);
-
   return (
     <div className={styles.cover_info_container}>
       <div className={styles.header_container}>

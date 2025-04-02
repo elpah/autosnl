@@ -1,7 +1,6 @@
 import { useContext, useEffect } from "react";
 import { CarPageMobile } from "./carpage-mobile/CarPageMobile";
 import { CarPageDesktop } from "./carpage-desktop/CarPageDesktop";
-
 import { useNavigate, useParams } from "react-router-dom";
 import {
   GlobalContext,
@@ -14,7 +13,6 @@ import queryString from "query-string";
 import { CLoader } from "../../components/clip-loader/CLoader";
 import { isValidLang } from "../../utils/utilsFunctions";
 import { useTranslation } from "react-i18next";
-
 import styles from "./car_page.module.scss";
 
 const CarPage = () => {
@@ -105,7 +103,10 @@ const CarPage = () => {
         <div
           className={styles.map_name}
           onClick={() =>
-            navigate_map("brand", carByIdData?.car.lang.en.carBrand.toLowerCase())
+            navigate_map(
+              "brand",
+              carByIdData?.car.lang.en.carBrand.toLowerCase()
+            )
           }
         >
           {carByIdData?.car?.lang[globalContext.lang].carBrand}
@@ -127,7 +128,10 @@ const CarPage = () => {
         <div
           className={styles.map_name}
           onClick={() =>
-            navigate_map("carType", carByIdData?.car.lang.en.carType.toLowerCase() || "")
+            navigate_map(
+              "carType",
+              carByIdData?.car.lang.en.carType.toLowerCase() || ""
+            )
           }
         >
           {carByIdData?.car.lang[globalContext.lang].carType
@@ -154,7 +158,10 @@ const CarPage = () => {
         <div
           className={`${styles.map_name} ${styles.current_car}`}
           onClick={() =>
-            navigate_map("model", carByIdData?.car.lang.en.carModel.toLowerCase() || "")
+            navigate_map(
+              "model",
+              carByIdData?.car.lang.en.carModel.toLowerCase() || ""
+            )
           }
         >
           {carByIdData.car.lang[globalContext.lang].carModel}
@@ -221,5 +228,4 @@ const CarPage = () => {
     </div>
   );
 };
-
 export default CarPage;

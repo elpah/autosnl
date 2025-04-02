@@ -1,8 +1,8 @@
 import { mile, fuel, year } from "../../assets/images/images";
-import styles from "./car-card.module.scss";
 import { useNavigate } from "react-router-dom";
 import { GlobalContext } from "../../context/GlobalContext";
 import { useContext } from "react";
+import styles from "./car-card.module.scss";
 
 type ICarCard = {
   carId: string;

@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import styles from "./category-check-item.module.scss";
 import {
   GlobalContext,
   IAdvancedSeachFieldData,
   IGlobalContext,
 } from "../../../context/GlobalContext";
 import useBrandModel from "../../../hooks/useBrandModel";
+import styles from "./category-check-item.module.scss";
 
 type CheckItemProp = {
   label: string;

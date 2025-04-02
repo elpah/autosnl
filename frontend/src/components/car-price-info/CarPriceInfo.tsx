@@ -1,6 +1,4 @@
-import { useContext } from "react";
 import { useTranslation } from "react-i18next";
-import { GlobalContext } from "../../context/GlobalContext";
 import styles from "./car-price-info.module.scss";
 
 type CarPriceInfoProps = {
@@ -17,7 +15,6 @@ const CarPriceInfo = ({
   excl_bpm_btw_price,
 }: CarPriceInfoProps) => {
   
-  const globalContext = useContext(GlobalContext)
   const {t} = useTranslation("carPage");
   return (
     <div className={styles.car_price_container}>

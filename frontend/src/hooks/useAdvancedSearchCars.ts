@@ -19,5 +19,4 @@ const useAdvancedSearchCars = (advancedCarData: IAdvancedSeachFieldData) => {
     staleTime: 1 * 60 * 1000,
   });
 };
-
 export default useAdvancedSearchCars;

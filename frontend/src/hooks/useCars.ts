@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import {type ICarData } from "../context/GlobalContext";
+import { type ICarData } from "../context/GlobalContext";
 import { type ICarResponse } from "../types/carResponseType";
 
 const useCars = (carData: ICarData) => {
@@ -15,5 +15,4 @@ const useCars = (carData: ICarData) => {
     queryFn: fetchCars,
   });
 };
-
 export default useCars;

@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import styles from "./advanced-search.module.scss";
 import { AdvancedSearchMobile } from "./advanced-search-mobile/AdvancedSearchMobile";
 import { AdvancedSearchDesktop } from "./advanced-search-desktop/AdvancedSearchDesktop";
 import { Delivery } from "../../components/delivery-section/Delivery";
@@ -9,7 +8,6 @@ import { CarCardContainer } from "../../components/car-card-container/CarCardCon
 import CarCard from "../../components/car-card/CarCard";
 import { CLoader } from "../../components/clip-loader/CLoader";
 import { isValidLang } from "../../utils/utilsFunctions";
-
 import {
   GlobalContext,
   type IGlobalContext,
@@ -19,6 +17,7 @@ import useAdvancedSearchCars from "../../hooks/useAdvancedSearchCars";
 import AdvanceIsLoading from "../../components/advance-loading/AdvanceIsLoading";
 import { scroll_to_top } from "../../utils/utilsFunctions";
 import { useTranslation } from "react-i18next";
+import styles from "./advanced-search.module.scss";
 
 const AdvancedSearch = () => {
   const { search } = useLocation();
@@ -213,5 +212,4 @@ const AdvancedSearch = () => {
     </div>
   );
 };
-
 export default AdvancedSearch;

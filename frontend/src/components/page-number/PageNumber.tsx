@@ -93,5 +93,4 @@ const PageNumber = ({
     </div>
   );
 };
-
 export default PageNumber;

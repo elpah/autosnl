@@ -85,9 +85,9 @@ export const GlobalContext = createContext<IGlobalContext>({
     Transmission: "transmission",
     Country: "country",
     fuel: "fuel",
-    vehicleType:"vehicleType"
+    vehicleType: "vehicleType",
   },
   setCategoryToFieldKeyMap: (categoryToFieldKeyMap) => {},
-  lang:"en",
+  lang: "en",
   setLang: () => {},
 });

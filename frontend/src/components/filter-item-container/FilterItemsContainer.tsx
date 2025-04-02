@@ -1,11 +1,9 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 
 import {
   GlobalContext,
   type IGlobalContext,
 } from "../../context/GlobalContext";
-
-import styles from "./filter-items-container.module.scss";
 import { FilterItem } from "../filter-item-card/FilterItem";
 import { SelectItemContainer } from "../select-item-container/SelectItemContainer";
 import { FilterOtherContainer } from "../filter-other-container/FilterOtherContainer";
@@ -16,6 +14,7 @@ import { CategoryCheckItem } from "../sidebar-filters/category-check-item/Catego
 import { useCategoryData } from "../../tdata/categoryData";
 import useBrandModel from "../../hooks/useBrandModel";
 import { useTranslation } from "react-i18next";
+import styles from "./filter-items-container.module.scss";
 
 export const FilterItemsContainer = () => {
   const [closeContainer, setCloseContainer] = useState(true);
@@ -51,7 +50,6 @@ export const FilterItemsContainer = () => {
       [fieldKey]: value,
     }));
   };
-
   return (
     <>
       <div className={styles.filter_items_container}>

@@ -22,7 +22,6 @@ import { LoadingCars } from "../../components/loading-cars/LoadingCars";
 import { scroll_to_top } from "../../utils/utilsFunctions";
 import { useTranslation } from "react-i18next";
 import { isValidLang } from "../../utils/utilsFunctions";
-
 import styles from "./search-result.module.scss";
 
 const SearchResult = () => {
@@ -310,5 +309,4 @@ const SearchResult = () => {
     </div>
   );
 };
-
 export default SearchResult;

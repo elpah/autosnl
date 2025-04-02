@@ -1,13 +1,11 @@
 import { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-
 import arrow from "../../../assets/images/nav_images/arrow.png";
 import { NavProps } from "../../../types/otherTypes";
-
 import { GlobalContext } from "../../../context/GlobalContext";
-
-import styles from "./desktop-nav.module.scss";
 import { useTranslation } from "react-i18next";
+import styles from "./desktop-nav.module.scss";
+
 export const DesktopNav = ({
   showLanguageSelector,
   setShowLanguageSelector,
@@ -49,7 +47,6 @@ export const DesktopNav = ({
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-
   return (
     <header className={styles.desktop_nav}>
       <nav>

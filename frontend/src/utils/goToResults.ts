@@ -16,7 +16,6 @@ export const goToAdvancedSearch = (
   ];
   const updatedData: Record<string, string[]> = {};
   const queryParams: Record<string, string | number | string[]> = {};
-  
 
   fields.forEach((field) => {
     const value = globalContext.carData[field];

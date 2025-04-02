@@ -27,7 +27,6 @@ export const Footer = () => {
     );
     navigate(`/${globalContext.lang}/search-result?${query}`);
   };
-
   return (
     <>
       <div className={styles.footer_container}>

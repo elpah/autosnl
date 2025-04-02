@@ -12,7 +12,6 @@ const useSearchByDealer = (advancedCarData: IAdvancedSeachFieldData) => {
         params: debounceDealerSearch,
       })
       .then((res) => res.data);
-
   return useQuery<ICarResponse, Error>({
     queryKey: ["carsByDealer", debounceDealerSearch],
     queryFn: searchByDealer,
@@ -20,5 +19,4 @@ const useSearchByDealer = (advancedCarData: IAdvancedSeachFieldData) => {
     enabled: !!debounceDealerSearch.dealerId,
   });
 };
-
 export default useSearchByDealer;

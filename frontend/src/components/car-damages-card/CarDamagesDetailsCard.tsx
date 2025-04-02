@@ -1,6 +1,5 @@
 import { damages_details } from "../../assets/images/images";
 import { useTranslation } from "react-i18next";
-
 import styles from "./car-damages-card-details.module.scss";
 
 type DamageDetail = {
@@ -13,7 +12,6 @@ type CarDamagesProps = {
 };
 export const CarDamagesDetailsCard = ({ damages }: CarDamagesProps) => {
   const { t } = useTranslation<string>("carPage");
-
   return (
     <div className={styles.car_damages_container}>
       <div className={styles.header_img_container}>

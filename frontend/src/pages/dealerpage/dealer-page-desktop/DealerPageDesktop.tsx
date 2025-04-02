@@ -2,7 +2,6 @@ import { SidebarFilters } from "../../../components/sidebar-filters/SidebarFilte
 import { DealerInfo } from "../../../components/dealer-infomation/DealerInfo";
 import { ContactFormMap } from "../../../components/contact-form-map/ContactFormMap";
 import { IDealerPageProps } from "../../../types/otherTypes";
-
 import styles from "./dealer-page-desktop.module.scss";
 
 export const DealerPageDesktop = ({

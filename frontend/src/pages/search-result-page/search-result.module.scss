@@ -106,10 +106,9 @@
             no-repeat right 15px center;
           font-size: 14px;
           padding-left: 20px;
-              height:50px;
+          height: 50px;
         }
       }
-
     }
   }
 }
@@ -119,7 +118,6 @@
     .container {
       margin-bottom: 70px;
       .header {
-        margin-bottom: 30px;
         font-size: 42px;
       }
       .para {
@@ -140,12 +138,11 @@
       .advanced_search_container {
         max-width: 885px;
         margin-bottom: 60px;
-              font-size: 17px;
+        font-size: 17px;
 
-    .advance_search_text{
-      font-size: 18px;
-
-    }
+        .advance_search_text {
+          font-size: 18px;
+        }
       }
     }
   }

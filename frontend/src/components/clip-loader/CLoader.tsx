@@ -1,7 +1,5 @@
-import styles from "./loader.module.scss";
-
 import { ClipLoader } from "react-spinners";
-
+import styles from "./loader.module.scss";
 
 export const CLoader = () => {
   return (
@@ -10,4 +8,3 @@ export const CLoader = () => {
     </div>
   );
 };
-

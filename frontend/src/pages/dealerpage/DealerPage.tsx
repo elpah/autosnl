@@ -9,15 +9,13 @@ import CarCard from "../../components/car-card/CarCard";
 import queryString from "query-string";
 import AdvanceIsLoading from "../../components/advance-loading/AdvanceIsLoading";
 import { CLoader } from "../../components/clip-loader/CLoader";
-
 import {
   GlobalContext,
   type IGlobalContext,
-  type ICarData,
 } from "../../context/GlobalContext";
-import styles from "./dealer-page.module.scss";
 import { isValidLang, scroll_to_top } from "../../utils/utilsFunctions";
 import { useTranslation } from "react-i18next";
+import styles from "./dealer-page.module.scss";
 
 const DealerPage = () => {
   const [loading, setLoading] = useState(true);
@@ -216,5 +214,4 @@ const DealerPage = () => {
     </div>
   );
 };
-
 export default DealerPage;

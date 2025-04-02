@@ -15,5 +15,4 @@ const useBrandModel = () => {
     staleTime: Infinity,
   });
 };
-
 export default useBrandModel;

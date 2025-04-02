@@ -5,7 +5,7 @@ import CarPriceInfo from "../../../components/car-price-info/CarPriceInfo";
 import CarInfoCardContainer from "../../../components/car-info-card-container/CarInfoCardContainer";
 import { DealerInfo } from "../../../components/dealer-infomation/DealerInfo";
 import { VisitButton } from "../../../components/visit-button/VisitButton";
-import {type ICarPageProps } from "../../../types/otherTypes";
+import { type ICarPageProps } from "../../../types/otherTypes";
 import styles from "./carpage-desktop.module.scss";
 
 export const CarPageDesktop = ({
@@ -29,7 +29,7 @@ export const CarPageDesktop = ({
   damages,
   options,
   dealerInfo,
-  handleButtonClick
+  handleButtonClick,
 }: ICarPageProps) => {
   return (
     <div className={styles.car_page_desktop_container}>

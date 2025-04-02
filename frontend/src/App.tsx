@@ -6,23 +6,18 @@ import {
   useNavigate,
   useLocation,
 } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-
 import {
   GlobalContext,
   type ICarData,
   type IAdvancedSeachFieldData,
 } from "./context/GlobalContext";
-
-import "./i18n";
-
 import { Home } from "./pages/homepage/Home";
 import { Footer } from "./components/footer/Footer";
 import { CLoader } from "./components/clip-loader/CLoader";
 import { isValidLang } from "./utils/utilsFunctions";
-
+import { useTranslation } from "react-i18next";
+import "./i18n";
 import "./App.css";
-import RedirectToLang from "./pages/RedirectToLang";
 
 const About = React.lazy(() => import("./pages/about/About"));
 const Contact = React.lazy(() => import("./pages/contact/Contact"));
@@ -174,5 +169,4 @@ function App() {
     </>
   );
 }
-
 export default App;

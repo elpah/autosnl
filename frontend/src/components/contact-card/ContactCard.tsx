@@ -1,6 +1,5 @@
-import React from "react";
-import styles from "./contact-card.module.scss";
 import { Link } from "react-router-dom";
+import styles from "./contact-card.module.scss";
 
 type CardDetails = {
   title: string;

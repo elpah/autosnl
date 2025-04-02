@@ -1,5 +1,6 @@
 import LoadingCarCard from "../loading-carcard/LoadingCarCard";
 import styles from "./advance-is-loading.module.scss";
+
 const AdvanceIsLoading = () => {
   return (
     <div className={styles.container}>

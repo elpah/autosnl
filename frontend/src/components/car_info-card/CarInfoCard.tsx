@@ -6,7 +6,6 @@ type CardInfoProps = {
   card_header: string;
   card_value: string;
 };
-
 export const CarInfoCard = ({
   bg,
   card_icon,
@@ -28,14 +27,14 @@ export const CarInfoCard = ({
             styles.detail_header
           }`}
         >
-         {card_header}
+          {card_header}
         </h2>
         <p
           className={`${bg ? styles.blue_bg_details_info : ""} ${
             styles.detail_info
           }`}
         >
-         {card_value}
+          {card_value}
         </p>
       </div>
     </div>

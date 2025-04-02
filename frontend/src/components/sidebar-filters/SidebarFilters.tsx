@@ -130,7 +130,7 @@ export const SidebarFilters = () => {
               Object.entries(data?.fuel || {}).map(([key, fuelData]) => (
                 <CategoryCheckItem
                   key={key}
-                  label={fuelData[globalContext.lang]} 
+                  label={fuelData[globalContext.lang]}
                   fieldKey="fuel"
                   value={key}
                 />
@@ -150,7 +150,7 @@ export const SidebarFilters = () => {
                   key={index}
                   label={label(value) || value}
                   fieldKey="transmission"
-                  value={index === 0? "manual" : "automatic"}
+                  value={index === 0 ? "manual" : "automatic"}
                 />
               ))
             ) : (
