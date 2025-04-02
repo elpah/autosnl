@@ -1,51 +1,67 @@
-import React from "react";
-import styles from "./contact.module.scss";
-import {contact_cover,email_icon, phone_icon, location_icon} from "../../assets/images/images";
-
-
+import {
+  contact_cover,
+  email_icon,
+  phone_icon,
+  location_icon,
+} from "../../assets/images/images";
 import { ContactCard } from "../../components/contact-card/ContactCard";
 import { ContactFormMap } from "../../components/contact-form-map/ContactFormMap";
+import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { GlobalContext } from "../../context/GlobalContext";
+import { isValidLang } from "../../utils/utilsFunctions";
+import styles from "./contact.module.scss";
 
 const Contact = () => {
+  const { t } = useTranslation<string>("contact");
+  const { lang: urlLang } = useParams();
+  const globalContext = useContext(GlobalContext);
+
+  useEffect(() => {
+    if (urlLang && isValidLang(urlLang)) {
+      globalContext.setLang(urlLang);
+    } else if (globalContext.lang) {
+      globalContext.setLang(globalContext.lang);
+    } else {
+      globalContext.setLang("en");
+    }
+  }, [urlLang]);
   const contactDetails = [
     {
-      id: 1,
-      title: "Location",
+      title: t("location"),
       details: "Stationstraat 71, 1506 DE, Zaandam",
       link: "https://maps.app.goo.gl/HLYK4SUxGKNajLTXA",
       image: `${location_icon}`,
     },
     {
-      id: 1,
-      title: "Email",
+      title: t("email"),
       details: "info@zaurautos.nl",
       link: "mailto:info@zaurautos.nl",
       image: `${email_icon}`,
     },
     {
-      id: 1,
-      title: "Phone",
+      title: t("phone"),
       details: "+31000000000",
       link: "tel:+31000000000",
       image: `${phone_icon}`,
     },
   ];
-
   return (
     <div className={styles.contact_container}>
-      <div className={styles.contact_cover}
-            style={{ backgroundImage: `url(${contact_cover})` }}
->
-        <h1 className={styles.header}>Contact Us</h1>
-        <p className={styles.header_subtext}>Welcome to ZaurAutos</p>
+      <div
+        className={styles.contact_cover}
+        style={{ backgroundImage: `url(${contact_cover})` }}
+      >
+        <h1 className={styles.header}> {t("contactUs")}</h1>
+        <p className={styles.header_subtext}>{t("welcome")}</p>
       </div>
       <div className={styles.contact_body}>
-        <div className={styles.body_header}>Contact Details</div>
-        <div className={styles.body_subtext}>Contact our head office</div>
+        <h2 className={styles.body_header}>Contact Details</h2>
         <div className={styles.body_card_container}>
-          {contactDetails.map((contact) => (
+          {contactDetails.map((contact, index) => (
             <ContactCard
-              key={contact.id}
+              key={index}
               title={contact.title}
               details={contact.details}
               link={contact.link}
@@ -53,9 +69,9 @@ const Contact = () => {
             />
           ))}
         </div>
-        <ContactFormMap/>
+        <ContactFormMap />
       </div>
     </div>
   );
 };
-export default Contact
+export default Contact;

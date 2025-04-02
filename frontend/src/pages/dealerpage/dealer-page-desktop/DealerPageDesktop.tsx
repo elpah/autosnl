@@ -1,23 +1,26 @@
-import React from "react";
-
-import styles from "./dealer-page-desktop.module.scss";
-
-import { CarCardContainer } from "../../../components/car-card-container/CarCardContainer";
 import { SidebarFilters } from "../../../components/sidebar-filters/SidebarFilters";
 import { DealerInfo } from "../../../components/dealer-infomation/DealerInfo";
 import { ContactFormMap } from "../../../components/contact-form-map/ContactFormMap";
+import { IDealerPageProps } from "../../../types/otherTypes";
+import styles from "./dealer-page-desktop.module.scss";
 
-export const DealerPageDesktop = () => {
+export const DealerPageDesktop = ({
+  dealer,
+  carList,
+  dealerNameAndTotal,
+  isLoading,
+  loadingContainer,
+}: IDealerPageProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.main}>
         <div className={styles.left}>
           <SidebarFilters />
-          <DealerInfo />
+          <DealerInfo dealer={dealer} />
         </div>
         <div className={styles.right}>
           <div className={styles.header_search_container}>
-            <div className={styles.header}>Elpah Motors</div>
+            <div className={styles.header}>{dealerNameAndTotal}</div>
             <div className={styles.search_container}>
               <div className={styles.search_name}>sort by:</div>
               <div className={styles.icon_container}>
@@ -37,7 +40,7 @@ export const DealerPageDesktop = () => {
             </div>
           </div>
           <div className={styles.cars_container_wrapper}>
-            <CarCardContainer />
+            {isLoading ? loadingContainer : carList}
           </div>
         </div>
       </div>

@@ -1,49 +1,84 @@
-import React, { ChangeEvent, useContext, useEffect, useState } from "react";
-import styles from "./home.module.scss";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { HomeSection } from "../../components/home-section/HomeSection";
 import { WhyCard } from "../../components/why-card/WhyCard";
 import homeCover from "../../assets/images/cover_images/home_cover.png";
 import iconNext from "../../assets/images/home_images/icon_next.png";
 import iconPrevious from "../../assets/images/home_images/icon_previous.png";
 import advert from "../../assets/images/home_images/advert.png";
-
-import { categoryData } from "../../tdata/categoryData";
+import { useCategoryData } from "../../tdata/categoryData";
 import popularNissan from "../../assets/images/popular_brands/popular_nissan.png";
-import {
-  quality_assurance,
-  useful_suggest,
-  best_rate,
-  variety_options,
-  great_offers,
-  match_requirement,
-} from "../../assets/images/images";
-
 import { Delivery } from "../../components/delivery-section/Delivery";
+import { CLoader } from "../../components/clip-loader/CLoader";
 import { FaArrowRight } from "react-icons/fa";
-
+import { useWhys } from "../../tdata/whys";
 import {
   GlobalContext,
   type ICarData,
   type IGlobalContext,
 } from "../../context/GlobalContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import useBrandModel from "../../hooks/useBrandModel";
+import useHomeSection from "../../hooks/useHomeSections";
+import { goToAdvancedSearch, goToSearchResult } from "../../utils/goToResults";
+import { useTranslation } from "react-i18next";
+import { isValidLang } from "../../utils/utilsFunctions";
+import styles from "./home.module.scss";
 
 export const Home = () => {
+  const { t } = useTranslation<string>("home");
+  const whys = useWhys();
+  const categoryData = useCategoryData();
   const navigate = useNavigate();
   const globalContext = useContext<IGlobalContext>(GlobalContext);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [recommendedVehicleType, setRecommendedVehicleType] =
-    useState("passenger");
-  const [trustedUsedCars, setTrustedUsedCars] = useState("passenger");
-  const [damagedCars, setDamagedCars] = useState("passenger");
+  const [recommendedVehicleType, setRecommendedVehicleType] = useState("");
+  const [trustedUsedCars, setTrustedUsedCars] = useState("");
+  const [damagedCars, setDamagedCars] = useState("");
+  const {
+    data: brandModelData,
+    error: brandModelError,
+    isLoading: brandModelIsLoading,
+  } = useBrandModel();
+  const {
+    data: sectionData,
+    error: sectionError,
+    isLoading: sectionIsLoading,
+  } = useHomeSection();
+  const { lang: urlLang } = useParams();
 
-  useEffect(
-    () => console.table(globalContext.carData),
-    [globalContext.carData]
-  );
+  useEffect(() => {
+    if (!sectionIsLoading) {
+      console.log("sectionDataaa", sectionData?.sections.damaged.cars);
+    }
+  }, [sectionData, sectionIsLoading]);
+
+  useEffect(() => {
+    if (urlLang && isValidLang(urlLang)) {
+      globalContext.setLang(urlLang);
+    } else if (globalContext.lang) {
+      globalContext.setLang(globalContext.lang);
+    } else {
+      globalContext.setLang("en");
+    }
+  }, [urlLang]);
+
+  useEffect(() => {
+    if (!globalContext.carData.carType) {
+      globalContext.setCarData((prevData: ICarData) => ({
+        ...prevData,
+        carType: "used",
+      }));
+    }
+  }, []);
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
+    if (name === "brand") {
+      globalContext.setCarData((prevData: ICarData) => ({
+        ...prevData,
+        model: "",
+      }));
+    }
     globalContext.setCarData((prevData: ICarData) => ({
       ...prevData,
       [name]: value,
@@ -75,146 +110,179 @@ export const Home = () => {
     popularNissan,
     popularNissan,
   ];
-  const whys = [
-    {
-      title: "Quality Assurance",
-      paragraph:
-        "Our cars undergo rigorous inspections and come with detailed history reports. Drive with confidence knowing your vehicle meets the highest safety and performance standards.",
-      image: `${quality_assurance}`,
-    },
-    {
-      title: "Match Requirement",
-      paragraph:
-        "Our diverse inventory includes something for everyone. Easily find the perfect vehicle by filtering by make, model, year, price, and more.",
-      image: `${match_requirement}`,
-    },
-    {
-      title: "A variety of Options",
-      paragraph:
-        "Our extensive inventory includes a wide range of vehicles—from compact cars and sedans to SUVs and trucks. Find the perfect match for your needs and preferences with ease.",
-      image: `${variety_options}`,
-    },
 
-    {
-      title: "Useful Suggestions",
-      paragraph:
-        "Our diverse inventory includes something for everyone. Easily find the perfect vehicle by filtering by make, model, year, price, and more.",
-      image: `${useful_suggest}`,
-    },
-    {
-      title: "Best rate in the Market",
-      paragraph:
-        "We offer competitive pricing with no hidden fees. Enjoy the best deals and flexible financing options to make your dream car affordable.",
-      image: `${best_rate}`,
-    },
-    {
-      title: "Great Offers",
-      paragraph:
-        "Benefit from our exclusive deals and promotions. Stay updated with our latest offers to maximize your savings on your next car purchase.",
-      image: `${great_offers}`,
-    },
-  ];
+  if (brandModelError) return <p>{brandModelError.message}</p>;
+  if (brandModelIsLoading || sectionIsLoading) return <CLoader />;
+
   return (
     <div className={styles.home_container}>
       <div className={styles.cover_container}>
         <div className={styles.form_container}>
           <form className={styles.form}>
-            <div className={styles.form_header}>Find your right Car</div>
-            <h1 className={styles.button_container}>
+            <h2 className={styles.form_header}>{t("findYourRightCar")}</h2>
+            <div className={styles.button_container}>
               <button
                 type="button"
                 className={`${styles.button} ${
-                  globalContext.carData.cartype === "used"
+                  globalContext.carData.carType === "used"
                     ? styles.selected_button
                     : ""
                 }`}
                 onClick={() => {
                   globalContext.setCarData((prevData) => ({
                     ...prevData,
-                    cartype: "used",
+                    carType: "used",
                   }));
                 }}
               >
-                Used Cars
+                {t("usedCars")}
               </button>
               <button
                 type="button"
                 className={`${styles.button} ${
-                  globalContext.carData.cartype === "damaged"
+                  globalContext.carData.carType === "damaged"
                     ? styles.selected_button
                     : ""
                 }`}
                 onClick={() => {
                   globalContext.setCarData((prevData) => ({
                     ...prevData,
-                    cartype: "damaged",
+                    carType: "damaged",
                   }));
                 }}
               >
-                Damaged Cars
+                {t("damaged")}
               </button>
-            </h1>
+            </div>
+
             <div className={styles.select_container}>
               <select
                 className={styles.select}
-                name="carBrand"
-                value={globalContext.carData.carBrand}
+                name="brand"
+                value={globalContext.carData.brand}
                 onChange={handleChange}
               >
                 <option value="" disabled>
-                  Brand
+                  {t("carBrand")}
                 </option>
-                {categoryData[0].values?.map((brand, index) => (
-                  <option key={index} value={brand.title}>
-                    {brand.title}
-                  </option>
-                ))}
+                <option value="All Brands">{t("allBrand")}</option>
+                {brandModelData &&
+                  brandModelData.brands &&
+                  Object.keys(brandModelData.brands).map((brand, index) => {
+                    const brandData = brandModelData.brands[brand];
+                    const brandName = brandData.name[globalContext.lang];
+                    return (
+                      <option key={index} value={brand}>
+                        {brandName}
+                      </option>
+                    );
+                  })}
               </select>
+
               <select
                 className={styles.select}
-                value={globalContext.carData.carModel}
-                name="carModel"
+                value={globalContext.carData.model}
+                name="model"
                 onChange={handleChange}
               >
                 <option value="" disabled>
-                  Model
+                  {t("carModel")}
                 </option>
-                {categoryData[1].values?.map((model, index) => (
-                  <option key={index} value={model.title}>
-                    {model.title}
+
+                {globalContext.carData.brand && brandModelData ? (
+                  globalContext.carData.brand === "All Brands" ? (
+                    Object.keys(brandModelData.brands).map(
+                      (brandName, index) => {
+                        const brandModels =
+                          brandModelData.brands[brandName].models;
+
+                        return Object.keys(brandModels).map(
+                          (modelName, modelIndex) => {
+                            const model = brandModels[modelName];
+                            const modelNameTranslated =
+                              model[globalContext.lang];
+
+                            return (
+                              <option
+                                key={`${index}-${modelIndex}`}
+                                value={modelName}
+                              >
+                                {modelNameTranslated}
+                              </option>
+                            );
+                          }
+                        );
+                      }
+                    )
+                  ) : (
+                    Object.keys(
+                      brandModelData.brands[globalContext.carData.brand].models
+                    ).map((modelName, index) => {
+                      const model =
+                        brandModelData.brands[globalContext.carData.brand]
+                          .models[modelName];
+                      const modelNameTranslated = model[globalContext.lang];
+                      return (
+                        <option key={index} value={modelName}>
+                          {modelNameTranslated}
+                        </option>
+                      );
+                    })
+                  )
+                ) : (
+                  <option value="" disabled>
+                    {t("selectABrandFirst")}
                   </option>
-                ))}
+                )}
               </select>
+
               <select
                 className={styles.select}
-                value={globalContext.carData.carFuel}
-                name="carFuel"
+                value={globalContext.carData.fuel}
                 onChange={handleChange}
+                name="fuel"
               >
                 <option value="" disabled>
-                  Fuel
+                  {t("fuel")}
                 </option>
-                {categoryData[4].values?.map((fuel, index) => (
-                  <option key={index} value={fuel.title}>
-                    {fuel.title}
+
+                {brandModelData && brandModelData.fuel ? (
+                  Object.keys(brandModelData.fuel).map((fuelKey, index) => {
+                    const fuel = brandModelData.fuel[fuelKey];
+                    const fuelTranslated = fuel[globalContext.lang];
+
+                    return (
+                      <option key={index} value={fuelKey}>
+                        {fuelTranslated}
+                      </option>
+                    );
+                  })
+                ) : (
+                  <option value="" disabled>
+                    {t("noFuelTypesAvailable")}
                   </option>
-                ))}
+                )}
               </select>
+
               <select
                 className={styles.select}
-                value={globalContext.carData.carTransmission}
+                value={globalContext.carData.transmission}
                 onChange={handleChange}
-                name="carTransmission"
+                name="transmission"
               >
                 <option value="" disabled>
-                  Transmission
+                  {t("transmission")}
                 </option>
                 {categoryData[6].values?.map((transmission, index) => (
-                  <option key={index} value={transmission.title}>
-                    {transmission.title}
+                  <option
+                    key={index}
+                    value={index === 0 ? "manual" : "automatic"}
+                  >
+                    {transmission}
                   </option>
                 ))}
               </select>
+
               <select
                 className={styles.select}
                 value={globalContext.carData.vehicleType}
@@ -222,59 +290,88 @@ export const Home = () => {
                 name="vehicleType"
               >
                 <option value="" disabled>
-                  Body Type
+                  {t("bodyType")}
                 </option>
-                {categoryData[3].values?.map((vehicleType, index) => (
-                  <option key={index} value={vehicleType.title}>
-                    {vehicleType.title}
+
+                {brandModelData && brandModelData.body ? (
+                  Object.keys(brandModelData.body).map((bodyKey, index) => {
+                    const bodyName =
+                      brandModelData.body[bodyKey][globalContext.lang];
+                    return (
+                      <option key={index} value={bodyKey}>
+                        {bodyName}
+                      </option>
+                    );
+                  })
+                ) : (
+                  <option value="" disabled>
+                    {t("noCountriesAvailable")}
                   </option>
-                ))}
+                )}
               </select>
 
               <select
                 className={styles.select}
-                value={globalContext.carData.carCountry}
+                value={globalContext.carData.country}
                 onChange={handleChange}
-                name="carCountry"
+                name="country"
               >
                 <option value="" disabled>
-                  Country
+                  {t("country")}
                 </option>
-                {categoryData[8].values?.map((carCountry, index) => (
-                  <option key={index} value={carCountry.title}>
-                    {carCountry.title}
+
+                {brandModelData && brandModelData.countries ? (
+                  Object.keys(brandModelData.countries).map(
+                    (countryKey, index) => {
+                      const countryName =
+                        brandModelData.countries[countryKey][
+                          globalContext.lang
+                        ];
+                      return (
+                        <option key={index} value={countryKey}>
+                          {countryName}
+                        </option>
+                      );
+                    }
+                  )
+                ) : (
+                  <option value="" disabled>
+                    {t("noCountriesAvailable")}
                   </option>
-                ))}
+                )}
               </select>
             </div>
+
             <button
               className={styles.submit_button}
-              onClick={(e: any) => {
+              onClick={(e) => {
                 e.preventDefault();
-                navigate("/search-result");
+                goToSearchResult(globalContext, navigate);
               }}
             >
-              Search
+              {t("search")}
             </button>
             <div
-              onClick={() => navigate("/advanced-search")}
+              onClick={() => {
+                globalContext.setAdvancedSearchFieldData((prev) => ({
+                  ...prev,
+                  dealerId: "",
+                }));
+                goToAdvancedSearch(globalContext, navigate);
+              }}
               className={styles.advanced_search_container}
             >
-              <p className={styles.advance_search_text}>Advanced search</p>
+              <p className={styles.advance_search_text}>
+                {t("advancedSearch")}
+              </p>
               <FaArrowRight className={styles.advance_search_icon} />
             </div>
           </form>
         </div>
         <div className={styles.header_cover_container}>
           <div className={styles.header_container}>
-            <h2 className={styles.header}>
-              Experience Excellence on Every Road.
-            </h2>
-            <p className={styles.subtext}>
-              Quality cars, unbeatable prices, and exceptional service. Find the
-              perfect vehicle from our extensive collection of new and pre-owned
-              cars
-            </p>
+            <h2 className={styles.header}>{t("experienceExcellence")}</h2>
+            <p className={styles.subtext}>{t("qualityCarsUnbetablePrice")}</p>
           </div>
           <div className={styles.cover_image_container}>
             <div className={styles.sub_image_container}>
@@ -295,7 +392,6 @@ export const Home = () => {
                 ))}
               </div>
             </div>
-
             <div className={styles.select_image_container}>
               <div
                 className={styles.icon_container}
@@ -307,7 +403,6 @@ export const Home = () => {
                   alt="previous icon"
                 />
               </div>
-
               {coverImages.map((image, index) => (
                 <img
                   key={index}
@@ -339,20 +434,31 @@ export const Home = () => {
         </div>
       </div>
       <div className={styles.sections}>
-        <HomeSection
-          selectedVehicleType={recommendedVehicleType}
-          setSelectedVehicleType={setRecommendedVehicleType}
-          title="Recommended cars for you"
-        />
-
-        <HomeSection
-          selectedVehicleType={trustedUsedCars}
-          setSelectedVehicleType={setTrustedUsedCars}
-          title="Trusted used cars by budget"
-        />
+        {sectionData &&
+          sectionData.sections.recommended.body &&
+          sectionData.sections.recommended.cars && (
+            <HomeSection
+              selectedVehicleType={recommendedVehicleType}
+              setSelectedVehicleType={setRecommendedVehicleType}
+              title={t("recommendedForYou")}
+              body={sectionData.sections.recommended.body}
+              carsArray={sectionData.sections.recommended.cars}
+            />
+          )}
+        {sectionData &&
+          sectionData.sections.trusted.body &&
+          sectionData.sections.trusted.cars && (
+            <HomeSection
+              selectedVehicleType={trustedUsedCars}
+              setSelectedVehicleType={setTrustedUsedCars}
+              title={t("trustedBudget")}
+              body={sectionData.sections.trusted.body}
+              carsArray={sectionData.sections.trusted.cars}
+            />
+          )}
         <div className={styles.popular_container}>
           <div className={styles.popular_header_container}>
-            <h3 className={styles.popular_header}>Popular Brands</h3>
+            <h3 className={styles.popular_header}>{t("popularBrands")}</h3>
           </div>
           <div className={styles.popular_images_cover_container}>
             <div className={styles.popular_images_container}>
@@ -364,14 +470,20 @@ export const Home = () => {
             </div>
           </div>
         </div>
-        <HomeSection
-          selectedVehicleType={damagedCars}
-          setSelectedVehicleType={setDamagedCars}
-          title="Damaged Cars"
-        />
+        {sectionData &&
+          sectionData.sections.damaged.body &&
+          sectionData.sections.damaged.cars && (
+            <HomeSection
+              selectedVehicleType={damagedCars}
+              setSelectedVehicleType={setDamagedCars}
+              title={t("damagedCars")}
+              body={sectionData?.sections?.damaged.body}
+              carsArray={sectionData.sections.damaged.cars}
+            />
+          )}
       </div>
       <section className={styles.why_section}>
-        <h3 className={styles.why_header}>Why ZaurAutos</h3>
+        <h3 className={styles.why_header}>{t("whyZaurAutos")}</h3>
         <div className={styles.why_card_container}>
           {whys.map((why, index) => (
             <WhyCard key={index} {...why} />

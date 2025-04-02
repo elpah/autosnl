@@ -1,25 +1,27 @@
-import React from "react";
-import styles from "./dealer-page-mobile.module.scss";
-import { CarCardContainer } from "../../../components/car-card-container/CarCardContainer";
 import { ContactFormMap } from "../../../components/contact-form-map/ContactFormMap";
 import { DealerInfo } from "../../../components/dealer-infomation/DealerInfo";
-import { VisitButton } from "../../../components/visit-button/VisitButton";
 import { FilterItemsContainer } from "../../../components/filter-item-container/FilterItemsContainer";
+import { IDealerPageProps } from "../../../types/otherTypes";
+import styles from "./dealer-page-mobile.module.scss";
 
-export const DealerPageMobile: React.FC = () => {
+export const DealerPageMobile = ({
+  dealerNameAndTotal,
+  dealer,
+  carList,
+  isLoading,
+  loadingContainer,
+}: IDealerPageProps) => {
   return (
     <div className={styles.dealer_page_mobile_container}>
-      <div className={styles.dealer_page_header}>Elpah Motors</div>
-      <FilterItemsContainer/>
+      <div className={styles.dealer_page_header}>{dealerNameAndTotal}</div>
+      <FilterItemsContainer />
       <div className={styles.car_card_container_wrapper}>
-        <CarCardContainer />
+        {isLoading ? loadingContainer : carList}
       </div>
       <div className={styles.address_contaact_container}>
         <ContactFormMap />
       </div>
-      <DealerInfo>
-        <VisitButton/>
-      </DealerInfo>
+      <DealerInfo dealer={dealer} />
     </div>
   );
 };

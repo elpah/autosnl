@@ -45,6 +45,9 @@
           font-style: normal;
           font-weight: 400;
           margin-bottom: 9px;
+          // &:hover{
+          //   color:$primary-color
+          // }
         }
       }
       .contact_div_email,
@@ -124,13 +127,16 @@
           font-size: 1.125rem;
           padding-top: 11px;
           margin-bottom: 22px;
-          // font-weight: 500;
         }
         .footer_listcontainer {
           li {
             font-size: 0.69rem;
-            // font-weight: 500;
             margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            &:hover {
+              color: $primary-color;
+            }
           }
         }
         .contact_div_phone,
@@ -144,6 +150,10 @@
           }
           .contact_item {
             font-size: 0.75rem;
+            transition: all 0.2s ease;
+          &:hover{
+            color:$primary-color
+          }
           }
         }
         .contact_div_phone {

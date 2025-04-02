@@ -17,7 +17,6 @@
       line-height: normal;
       margin-bottom: 15px;
     }
-
     .delivery_text {
       font-size: 10px;
       font-weight: 500;
@@ -26,6 +25,7 @@
     }
     .button {
       cursor: pointer;
+      border-radius: 4px;
       display: flex;
       width: 144px;
       height: 44px;
@@ -34,32 +34,28 @@
       flex-shrink: 0;
       background: $primary-color;
       color: #fff;
-      font-size: 12px;
-      font-weight: 500;
+      font-size: 14px;
+      font-weight: 600;
     }
   }
 }
-
 @media (min-width: 600px) {
   .delivery_container {
     .delivery_info_wrapper {
       .delivery_header {
         font-size: 20px;
-        font-weight: 700;
       }
-
       .delivery_text {
         font-size: 12px;
-        font-weight: 400;
+        line-height: 20px;
+        font-weight: 600;
       }
       .button {
-        font-weight: 500;
         font-weight: 500;
       }
     }
   }
 }
-
 @media (min-width: 768px) {
   .delivery_container {
     background-size: cover;
@@ -70,43 +66,36 @@
       display: flex;
       justify-content: center;
       flex-direction: column;
-      gap: 20px;
+      gap: 10px;
       .delivery_header {
-        font-size: 26px;
+        font-size: 24px;
       }
-
       .delivery_text {
-        font-size: 14px;
+        font-size: 16px;
         line-height: 23px;
         font-weight: 500;
       }
       .button {
-        font-size: 15px;
-        font-weight: 500;
-        font-weight: 600;
-        // &:hover{
-
-        // }
+        font-size: 16px;
       }
     }
   }
 }
-
 @media (min-width: 1024px) {
   .delivery_container {
-    // background-image: url("../../assets/images/about_images/delivery_image.png");
     height: 300px;
     .delivery_info_wrapper {
       max-width: 1700px;
       margin: auto;
-      gap: 30px;
-
+      gap: 20px;
       .delivery_header {
-        font-size: 42px;
+        text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.6);
+        font-size: 32px;
         font-weight: 800;
       }
-
       .delivery_text {
+        text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.6);
+
         font-size: 18px;
         font-weight: 500;
         line-height: 30px;
@@ -127,10 +116,12 @@
 @media (min-width: 1300px) {
   .delivery_container {
     .delivery_info_wrapper {
+      .delivery_header {
+        font-size: 36px;
+      }
       .delivery_text {
-        // font-size: 18px;
-        // font-weight: 500;
-        // line-height: 30px;
+        font-size: 20px;
+        line-height: 36px;
       }
       .button {
         width: 250px;

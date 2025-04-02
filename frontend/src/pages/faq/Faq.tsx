@@ -1,7 +1,11 @@
-import React, { useState } from "react";
-import { faq_cover,faq_icon } from "../../assets/images/images";
+import { useContext, useState, useEffect } from "react";
+import { faq_cover, faq_icon } from "../../assets/images/images";
 import { Faqcard } from "../../components/faqcard/Faqcard";
-
+import { useFaqs } from "../../tdata/faqs";
+import { useParams } from "react-router-dom";
+import { GlobalContext } from "../../context/GlobalContext";
+import { useTranslation } from "react-i18next";
+import { isValidLang } from "../../utils/utilsFunctions";
 import styles from "./faq.module.scss";
 
 type FaqObject = {
@@ -12,72 +16,22 @@ type FaqObject = {
 
 const Faq = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const faqs = [
-    {
-      id: 1,
-      title: "Is the prices of the cars Negotiable? ",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
-    },
-    {
-      id: 2,
-      title: "Is the prices of the cars Negotiable? ",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
-    },
-    {
-      id: 3,
-      title: "Is the prices of the cars Negotiable? ",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
-    },
-    {
-      id: 4,
-      title: "Is the prices of the cars Negotiable? ",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
-    },
-    {
-      id: 5,
-      title: "Is the prices of the cars Negotiable? ",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
-    },
-    {
-      id: 6,
-      title: "Is the prices of the cars Negotiable? ",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
-    },
-    {
-      id: 7,
-      title: "Is the prices of the cars Negotiable? ",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
-    },
-    {
-      id: 8,
-      title: "Is the prices of the cars Negotiable? ",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
-    },
-    {
-      id: 9,
-      title: "Is the prices of the cars Negotiable? ",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
-    },
-    {
-      id: 10,
-      title: "Is the prices of the cars Negotiable? ",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis nisl ut eros pulvinar tincidunt. Nulla facilisi. Sed eget arcu nec justo ultricies viverra. Proin non turpis non libero viverra feugiat. Mauris placerat, nisi ac fermentum aliquam, risus libero fermentum sapien, at posuere justo nisi et lacus. Fusce fermentum semper orci, ut tempus dui faucibus id.",
-    }
-  ];
+  const { lang: urlLang } = useParams();
+  const globalContext = useContext(GlobalContext);
+  const { t } = useTranslation<string>("faq");
+  const faqs = useFaqs();
 
+  useEffect(() => {
+    if (urlLang && isValidLang(urlLang)) {
+      globalContext.setLang(urlLang);
+    } else if (globalContext.lang) {
+      globalContext.setLang(globalContext.lang);
+    } else {
+      globalContext.setLang("en");
+    }
+  }, [urlLang]);
   function divideArrayIntoTwo(arr: FaqObject[]) {
     const midIndex = Math.ceil(arr.length / 2);
-
     const firstFaqs = arr.slice(0, midIndex);
     const secondFaqs = arr.slice(midIndex);
 
@@ -88,19 +42,19 @@ const Faq = () => {
   const handleFaqClick = (id: number) => {
     setOpenFaq(openFaq === id ? null : id);
   };
-
   return (
     <div className={styles.faq_container}>
-      <div className={styles.cover}
-            style={{ backgroundImage: `url(${faq_cover})` }}
->
+      <div
+        className={styles.cover}
+        style={{ backgroundImage: `url(${faq_cover})` }}
+      >
         <div className={styles.header_container}>
           <div className={styles.header_image_container}>
             <img className={styles.header_img} src={faq_icon} alt="QA icon" />
           </div>
-          <h1 className={styles.header}>FAQ</h1>
+          <h1 className={styles.header}>{t("header")}</h1>
         </div>
-        <p className={styles.header_subtext}>General Questions</p>
+        <p className={styles.header_subtext}>{t("subHeader")}</p>
       </div>
       <div className={styles.faqs_container}>
         <div className={styles.faq_sub_container}>
@@ -131,5 +85,4 @@ const Faq = () => {
     </div>
   );
 };
-
-export default Faq
+export default Faq;

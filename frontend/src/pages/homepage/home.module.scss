@@ -231,9 +231,6 @@ $image-width: 100%;
         flex: 1.2;
 
         .form {
-          .form_header {
-          }
-
           .button_container {
             margin-bottom: 20px;
 
@@ -416,15 +413,6 @@ $image-width: 100%;
               font-size: 15px;
               font-weight: 500;
             }
-
-            .used_button {
-            }
-
-            .damaged_button {
-            }
-
-            .selected_button {
-            }
           }
 
           .select_container {
@@ -571,15 +559,6 @@ $image-width: 100%;
             button {
               height: 55px;
               font-size: 18px;
-            }
-
-            .used_button {
-            }
-
-            .damaged_button {
-            }
-
-            .selected_button {
             }
           }
 

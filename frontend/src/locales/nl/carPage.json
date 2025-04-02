@@ -1,0 +1,23 @@
+{
+  "home": "Home",
+  "inc": "incl.",
+  "exc": "excl.",
+  "vat": "BTW",
+  "bpm": "BPM",
+  "mileage": "Kilometerstand",
+  "transmission": "Transmissie",
+  "fuelType": "Brandstoftype",
+  "erd": "ERD",
+  "power": "Vermogen",
+  "engineCapacity": "Motorinhoud",
+  "weight": "Gewicht",
+  "color": "Kleur",
+  "bodyType": "Carrosserietype",
+  "numberOfDoors": "Aantal Deuren",
+  "vanish": "Verdwijnen",
+  "damagesDetails": "Schade Details",
+  "noDamages": "Geen schade gemeld",
+  "dealerDetails": "Dealergegevens",
+  "visit": "Bezoek Bedrijfsprofiel",
+  "options": "Opties"
+}

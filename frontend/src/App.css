@@ -143,3 +143,23 @@ a {
         outline: none;
     }
 }
+
+html, body, #root {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.App {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.loaderr {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,5 +1,3 @@
-import React from "react";
-
 import styles from "./car_info_card.module.scss";
 
 type CardInfoProps = {
@@ -8,7 +6,6 @@ type CardInfoProps = {
   card_header: string;
   card_value: string;
 };
-
 export const CarInfoCard = ({
   bg,
   card_icon,
@@ -25,20 +22,20 @@ export const CarInfoCard = ({
         <img className={styles.info_image} src={card_icon} alt="info icon" />
       </div>
       <div className={styles.header_detail_container}>
-        <div
+        <h2
           className={`${bg ? styles.blue_bg_header : ""} ${
             styles.detail_header
           }`}
         >
-         {card_header}
-        </div>
-        <div
+          {card_header}
+        </h2>
+        <p
           className={`${bg ? styles.blue_bg_details_info : ""} ${
             styles.detail_info
           }`}
         >
-         {card_value}
-        </div>
+          {card_value}
+        </p>
       </div>
     </div>
   );

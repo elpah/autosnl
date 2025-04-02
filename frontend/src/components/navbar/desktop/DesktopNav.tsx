@@ -1,15 +1,31 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import arrow from "../../../assets/images/nav_images/arrow.png";
-import language_image from "../../../assets/images/nav_images/language_image.png";
-
+import { NavProps } from "../../../types/otherTypes";
+import { GlobalContext } from "../../../context/GlobalContext";
+import { useTranslation } from "react-i18next";
 import styles from "./desktop-nav.module.scss";
 
-export const DesktopNav = () => {
-  const [showCars, setShowCars] = useState(false);
-  const [showLanguageSelector, setShowLanguageSelector] = useState(false);
-  const languageSelectorRef = useRef<HTMLDivElement>(null);
-  const allCarsRef = useRef<HTMLLIElement>(null);
+export const DesktopNav = ({
+  showLanguageSelector,
+  setShowLanguageSelector,
+  languageSelectorRef,
+  suggestionsRef,
+  filteredSuggestions,
+  queryWord,
+  handleInputChange,
+  handleSelectSuggestion,
+  handleSubmit,
+  handleKeyDown,
+  selectedIndex,
+  refTracker,
+  setRefTracker,
+  changeLanguage,
+  flags,
+  selected_flag,
+}: NavProps) => {
+  const globalContext = useContext(GlobalContext);
+  const { t } = useTranslation<string>("nav");
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -20,10 +36,10 @@ export const DesktopNav = () => {
         setShowLanguageSelector(false);
       }
       if (
-        allCarsRef.current &&
-        !allCarsRef.current.contains(event.target as Node)
+        suggestionsRef?.current &&
+        !suggestionsRef.current.contains(event.target as Node)
       ) {
-        setShowCars(false);
+        setRefTracker(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -31,74 +47,52 @@ export const DesktopNav = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-
   return (
     <header className={styles.desktop_nav}>
       <nav>
-        <Link to="/">
+        <Link to={`/${globalContext.lang}/`}>
           <div className={styles.logo_container}>
             <h2 className={styles.logo_text}>ZaurAutos</h2>
           </div>
         </Link>
         <div className={styles.menu}>
           <ul className={styles.menu_ul}>
-            <li className={styles.all_cars_container} ref={allCarsRef}>
-              <div
-                className={styles.all_cars}
-                onClick={() => {
-                  setShowLanguageSelector(false);
-                  setShowCars(!showCars);
-                }}
-              >
-                <div className={styles.all_cars_txt}>ALL CARS</div>
-                <div className={styles.arrow_container}>
-                  <img
-                    className={`${styles.arrow} ${
-                      showCars ? styles.rotated : ""
-                    }`}
-                    src={arrow}
-                    alt="drop down arror icon"
-                  />
-                </div>
-              </div>
-              <div
-                className={`${styles.car_list} ${
-                  showCars ? styles.show_cars_open : ""
-                }`}
-              >
-                <ul className={styles.car_list_container}>
-                  <li className={styles.car_list_item}>Toyota</li>
-                  <li className={styles.car_list_item}>Kia</li>
-                  <li className={styles.car_list_item}>Hyundai</li>
-                  <li className={styles.car_list_item}>Volkswagen</li>
-                  <li className={styles.car_list_item}>Rolls Royce</li>
-                  <li className={styles.car_list_item}>Mercedes Benz</li>
-                  <li className={styles.car_list_item}>Volvo</li>
-                  <li className={styles.car_list_item}>Maserati</li>
-                </ul>
-              </div>
-            </li>
-            <Link to="/about">
-              <li className={styles.list_item}>ABOUT</li>
+            <Link to={`/${globalContext.lang}/search-result`}>
+              <li className={styles.list_item}>{t("all")}</li>
             </Link>
-            <Link to="/contact">
-              <li className={styles.list_item}>CONTACT US</li>
+
+            <Link to={`/${globalContext.lang}/about`}>
+              <li className={styles.list_item}>{t("about")}</li>
             </Link>
-            <Link to="/faq">
-              <li className={styles.list_item}>FAQS</li>
+            <Link to={`/${globalContext.lang}/contact`}>
+              <li className={styles.list_item}>{t("contact")}</li>
+            </Link>
+            <Link to={`/${globalContext.lang}/faq`}>
+              <li className={styles.list_item}>{t("faq")}</li>
             </Link>
           </ul>
         </div>
         <div className={styles.searchbar_container}>
-          <form action="" className={styles.search_form}>
+          <form onSubmit={handleSubmit} className={styles.search_form}>
             <input
               className={styles.search_input}
               type="search"
-              name=""
-              id=""
-              placeholder="search cars e.g Honda Civic"
+              value={queryWord}
+              onFocus={() => setRefTracker(true)}
+              onChange={handleInputChange}
+              onKeyDown={handleKeyDown}
+              placeholder={t("searchExample")}
             />
-            <button className={styles.submit_button}>
+            <button
+              disabled={
+                !filteredSuggestions.some(
+                  (suggestion) =>
+                    suggestion.toLowerCase() === queryWord?.toLowerCase()
+                )
+              }
+              className={styles.submit_button}
+              type="submit"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="12"
@@ -115,22 +109,41 @@ export const DesktopNav = () => {
               </svg>
             </button>
           </form>
+          {queryWord && refTracker && (
+            <div className={styles.suggestions_container} ref={suggestionsRef}>
+              {filteredSuggestions.length > 0 ? (
+                filteredSuggestions.map((suggestion, index) => (
+                  <div
+                    key={index}
+                    id={`suggestion-${index}`}
+                    className={`${styles.suggestion_item} ${
+                      index === selectedIndex ? styles.selected : ""
+                    }`}
+                    onClick={() => handleSelectSuggestion(suggestion)}
+                  >
+                    {suggestion}
+                  </div>
+                ))
+              ) : (
+                <div className={styles.suggestion_item}>Not found</div>
+              )}
+            </div>
+          )}
         </div>
         <div
           className={styles.language_selector_container}
-          ref={languageSelectorRef} // Attach the ref here
+          ref={languageSelectorRef}
         >
           <div
             className={styles.language_select_image}
             onClick={() => {
-              setShowCars(false);
               setShowLanguageSelector(!showLanguageSelector);
             }}
           >
             <div className={styles.language_image_container}>
               <img
                 className={styles.language_image}
-                src={language_image}
+                src={selected_flag}
                 alt="selected Language"
               />
             </div>
@@ -151,41 +164,49 @@ export const DesktopNav = () => {
           >
             <div
               className={styles.language_image_container}
-              onClick={() => setShowLanguageSelector(false)}
+              onClick={() => {
+                changeLanguage("en");
+              }}
             >
               <img
                 className={styles.language_image}
-                src={language_image}
+                src={flags.en}
                 alt="language flag"
               />
             </div>
             <div
               className={styles.language_image_container}
-              onClick={() => setShowLanguageSelector(false)}
+              onClick={() => {
+                changeLanguage("nl");
+              }}
             >
               <img
                 className={styles.language_image}
-                src={language_image}
+                src={flags.nl}
                 alt="language flag"
               />
             </div>
             <div
               className={styles.language_image_container}
-              onClick={() => setShowLanguageSelector(false)}
+              onClick={() => {
+                changeLanguage("ua");
+              }}
             >
               <img
                 className={styles.language_image}
-                src={language_image}
+                src={flags.ua}
                 alt="language flag"
               />
             </div>
             <div
               className={styles.language_image_container}
-              onClick={() => setShowLanguageSelector(false)}
+              onClick={() => {
+                changeLanguage("ru");
+              }}
             >
               <img
                 className={styles.language_image}
-                src={language_image}
+                src={flags.ru}
                 alt="language flag"
               />
             </div>

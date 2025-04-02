@@ -1,7 +1,8 @@
-import React from "react";
-
+import { useTranslation } from "react-i18next";
 import styles from "./contact-form-map.module.scss";
+
 export const ContactFormMap = () => {
+  const { t } = useTranslation<string>("contact");
   return (
     <div className={styles.form_map_container}>
       <div className={styles.contact_map_container}>
@@ -13,11 +14,10 @@ export const ContactFormMap = () => {
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
           title="Google Map of Stationsstraat 71, 1506 DE Zaandam"
-
         />
       </div>
       <div className={styles.contact_form_container}>
-        <div className={styles.header}>Send us a message</div>
+        <div className={styles.header}>{t("sendMessage")}</div>
         <form className={styles.contact_form}>
           <div className={styles.input_container}>
             <svg
@@ -32,7 +32,7 @@ export const ContactFormMap = () => {
                 fill="#4C4C4C"
               />
             </svg>
-            <input type="text" placeholder="Full Name" />
+            <input type="text" placeholder={t("name")} />
           </div>
           <div className={styles.input_container}>
             <svg
@@ -47,12 +47,12 @@ export const ContactFormMap = () => {
                 fill="#4C4C4C"
               />
             </svg>
-            <input type="text" placeholder="Email Address" />
+            <input type="text" placeholder={t("emailAddress")} />
           </div>
           <div className={styles.input_number_container}>
             <select className={styles.country_select} id="country-select">
               <option value="" disabled>
-                Country Code
+                {t("countryCode")}
               </option>
               <option className={styles.option_item} value="us">
                 US (+1)
@@ -84,7 +84,7 @@ export const ContactFormMap = () => {
                   fill="#4C4C4C"
                 />
               </svg>
-              <input type="tel" placeholder="Phone Number" />
+              <input type="tel" placeholder={t("phoneNumber")} />
             </div>
           </div>
           <div className={styles.input_container}>
@@ -102,10 +102,10 @@ export const ContactFormMap = () => {
                 strokeLinejoin="round"
               />
             </svg>
-            <input type="text" placeholder="Reason for query" />
+            <input type="text" placeholder={t("reason")} />
           </div>
           <textarea className={styles.text_area} name="" id="" />
-          <button className={styles.submit_button}>Send</button>
+          <button className={styles.submit_button}>{t("send")}</button>
         </form>
       </div>
     </div>

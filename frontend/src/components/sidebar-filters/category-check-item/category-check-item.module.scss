@@ -10,6 +10,7 @@
   }
 
   .label {
+    width: 100%;
     display: flex;
     align-items: center;
     color: #000;
@@ -22,16 +23,6 @@
     }
   }
 
-  .items_number {
-    display: flex;
-    align-items: center;
-
-    margin-left: 5px;
-    color: #4c4c4c;
-    font-size: 10px;
-    font-weight: 500;
-    line-height: normal;
-  }
 }
 @media (min-width: 800px) {
   .container {
@@ -45,10 +36,7 @@
       }
     }
 
-    .items_number {
-      margin-left: 10px;
-      font-size: 8px;
-    }
+ 
   }
 }
 
@@ -61,10 +49,7 @@
       font-size: 14px;
     }
 
-    .items_number {
-      margin-left: 15px;
-      font-size: 10px;
-    }
+  
   }
 }
 
@@ -79,9 +64,6 @@
       font-size: 18px;
     }
 
-    .items_number {
-      margin-left: 17px;
-      font-size: 12px;
-    }
+ 
   }
 }

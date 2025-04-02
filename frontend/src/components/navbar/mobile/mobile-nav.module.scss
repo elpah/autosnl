@@ -31,6 +31,7 @@ header {
       justify-content: flex-end;
       gap: 25px;
       align-items: center;
+      position: relative;
 
       .search_container {
         display: flex;
@@ -48,23 +49,29 @@ header {
         display: flex;
         align-items: center;
         gap: 5px;
+        .image_and_icon_wrapper {
+          display: flex;
+          gap: 3px;
 
-        .language_image_container {
-          .current_language {
-            width: 23px;
-            height: 16px;
-          }
-        }
-
-        .language_arrow_container {
-          .arrow {
-            width: 10px;
-            height: 10px;
-            transition: transform 0.3s ease;
+          .language_image_container {
+            .current_language {
+              width: 25px;
+              height: 25px;
+            }
           }
 
-          .arrow.rotated {
-            transform: rotate(180deg);
+          .language_arrow_container {
+            display: flex;
+            align-items: center;
+            .arrow {
+              width: 10px;
+              height: 10px;
+              transition: transform 0.3s ease;
+            }
+
+            .arrow.rotated {
+              transform: rotate(180deg);
+            }
           }
         }
         .language_dropdown_menu {
@@ -73,32 +80,25 @@ header {
           flex-direction: column;
           align-items: center;
           position: absolute;
-          top: 52px;
+          top: 55px;
           right: 0;
           background-color: #fff;
           box-shadow: 0 4px 6px rgba(95, 95, 95, 0.2), 0 -4px 0 rgba(0, 0, 0, 0);
-          width: 50px;
-          border-radius: 0 0 8px 8px;
+          width: 45px;
+          border-radius: 0 0 2px 2px;
           height: 0px;
           overflow: hidden;
           transition: height 0.2s ease;
-
-          .language_dropdown_image:first-child {
-            margin-top: 5px;
-             padding-top: 2px;
-          }
           .language_dropdown_image {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 25px;
-            height: 23px;
-            margin-bottom: 10px;
+            width: 32px;
+            height: 32px;
           }
         }
         .language_dropdown_menu.open {
-          height: 140px;
-          z-index: 1;
+          height: 135px;
         }
       }
 
@@ -107,8 +107,8 @@ header {
         align-items: center;
 
         .icon {
-          width: 18px;
-          height: 14px;
+          width: 21px;
+          height: 17px;
         }
       }
 
@@ -119,25 +119,66 @@ header {
         &.slide-out {
           animation: slideOut 0.3s ease-in-out forwards;
         }
-        .search_input {
+        form {
           width: 100%;
           min-width: 150px;
-          padding: 5px;
-          border: 1px solid #5a5757;
-          border-radius: 4px;
-          outline: none;
           margin-right: 10px;
-          min-height: 20px;
-        }
 
+          .search_input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #5a5757;
+            border-radius: 2px;
+            outline: none;
+            min-height: 30px;
+
+            &:focus {
+              outline: none;
+            }
+
+            &::-webkit-search-cancel-button {
+              display: none;
+            }
+
+            &::-moz-search-cancel-button {
+              display: none;
+            }
+
+            &::-ms-clear {
+              display: none;
+            }
+          }
+        }
         .close_button {
           background: none;
           border: none;
-          cursor: pointer;
 
           .hide_search {
-            width: 10px;
-            height: 10px;
+            width: 18px;
+            height: 18px;
+          }
+        }
+      }
+      .suggestions_container {
+        position: absolute;
+        top: 26px;
+        width: 150px;
+        background-color: #fff;
+        border: 0.5px solid #d1d5db;
+        border-top: none;
+        border-radius: 0 0 0.375rem 0.375rem;
+        margin-top: 0.25rem;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        max-height: 15rem;
+        overflow-y: auto;
+        box-sizing: border-box;
+        font-size: 12px;
+        font-weight: 300;
+
+        .suggestion_item {
+          padding: 0.65rem;
+          &.selected {
+            background-color: #f0f0f0;
           }
         }
       }
@@ -148,7 +189,7 @@ header {
     position: absolute;
     top: 86px;
     width: 100%;
-    height: 50vh;
+    height: 70vh;
     background-color: #fff;
     transition: transform 0.3s ease, padding-top 0.3s ease;
     transform: translateX(-100%);
@@ -173,57 +214,9 @@ header {
 
         .menu_list_item {
           color: #4c4c4c;
-          font-size: 1rem;
+          font-size: 1.5rem;
           font-weight: 500;
-          margin-bottom: 1.3rem;
-        }
-
-        .menu_list_car {
-          margin-bottom: 0.6rem;
-
-          .all_cars_container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            .all_cars_txt {
-              color: #4c4c4c;
-              font-size: 1rem;
-              font-weight: 500;
-            }
-
-            .all_cars_arrow {
-              width: 0.625rem;
-              height: 0.625rem;
-              transition: transform 0.3s ease;
-            }
-
-            .rotated {
-              transform: rotate(180deg);
-            }
-          }
-
-          .car_list {
-            width: 90%;
-            margin: auto;
-            margin-top: 0.625rem;
-            height: 0px;
-            overflow: hidden;
-            transition: height 0.3s ease;
-            ul {
-              list-style: none;
-              padding: 0;
-              margin: 0;
-
-              li {
-                margin-bottom: 0.7rem;
-                font-size: 0.85rem;
-              }
-            }
-          }
-          .show_cars_open {
-            height: 200px;
-          }
+          margin-bottom: 2rem;
         }
       }
     }
@@ -249,20 +242,37 @@ header {
             height: 23px;
           }
         }
+
         .language_selector {
           gap: 10px;
+          .image_and_icon_wrapper {
+            gap: 7px;
+            .language_image_container {
+              .current_language {
+                width: 33px;
+                height: 33px;
+              }
+            }
 
-          .language_image_container {
-            .current_language {
-              width: 26px;
-              height: 18px;
+            .language_arrow_container {
+              .arrow {
+                width: 14px;
+                height: 14px;
+              }
             }
           }
+          .language_dropdown_menu {
+            top: 60px;
+            right: 10px;
+            width: 50px;
+            height: 0px;
 
-          .language_arrow_container {
-            .arrow {
-              width: 14px;
-              height: 14px;
+            .language_dropdown_image {
+              width: 35px;
+              height: 35px;
+            }
+            &.open {
+              height: 145px;
             }
           }
         }
@@ -279,15 +289,45 @@ header {
           display: flex;
           align-items: center;
           animation: slideIn 0.3s ease-out;
-          .search_input {
-            height: 25px;
-            margin-right: 15px;
+          form {
+            .search_input {
+              height: 40px;
+              margin-right: 15px;
+            }
           }
           .close_button {
             .hide_search {
-              width: 18px;
-              height: 18px;
+              width: 20px;
+              height: 20px;
             }
+          }
+        }
+
+        .suggestions_container {
+          top: 32.5px;
+          width: 274px;
+          background-color: #fff;
+          border: 0.5px solid #d1d5db;
+          border-top: none;
+          border-radius: 0 0 0.375rem 0.375rem;
+          margin-top: 0.25rem;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+          max-height: 15rem;
+          overflow-y: auto;
+          box-sizing: border-box;
+          font-size: 12px;
+
+          .suggestion_item {
+            padding: 0.65rem;
+            &.selected {
+              background-color: #f0f0f0;
+            }
+          }
+          .no_suggestions {
+            padding: 1000px;
+            text-align: center;
+            color: red;
+            font-style: italic;
           }
         }
       }
@@ -301,31 +341,6 @@ header {
           .menu_list_item {
             font-size: 1.2rem;
             margin-bottom: 1.6rem;
-          }
-
-          .menu_list_car {
-            margin-bottom: 1.2rem;
-
-            .all_cars_container {
-              .all_cars_txt {
-                font-size: 1.2rem;
-              }
-
-              .all_cars_arrow {
-                width: 1rem;
-                height: 1rem;
-              }
-            }
-
-            .car_list {
-              margin-top: 0.7rem;
-
-              ul {
-                li {
-                  font-size: 0.9rem;
-                }
-              }
-            }
           }
         }
       }

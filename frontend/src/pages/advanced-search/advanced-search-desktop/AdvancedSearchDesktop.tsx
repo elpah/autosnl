@@ -1,10 +1,15 @@
-import React from "react";
-
-import styles from "./advanced-search-desktop.module.scss";
 import { SidebarFilters } from "../../../components/sidebar-filters/SidebarFilters";
-import { CarCardContainer } from "../../../components/car-card-container/CarCardContainer";
+import { IAdvancedProps } from "../../../types/otherTypes";
+import { useTranslation } from "react-i18next";
+import styles from "./advanced-search-desktop.module.scss";
 
-export const AdvancedSearchDesktop = () => {
+export const AdvancedSearchDesktop = ({
+  carList,
+  isLoading,
+  loadingContainer,
+  header,
+}: IAdvancedProps) => {
+  const { t } = useTranslation("advancedSearch");
   return (
     <div className={styles.container}>
       <div className={styles.main}>
@@ -13,7 +18,7 @@ export const AdvancedSearchDesktop = () => {
         </div>
         <div className={styles.right}>
           <div className={styles.header_search_container}>
-            <div className={styles.header}>2000 Cars Available</div>
+            <div className={styles.header}>{header}</div>
             <div className={styles.search_container}>
               <div className={styles.search_name}>sort by:</div>
               <div className={styles.icon_container}>
@@ -33,7 +38,7 @@ export const AdvancedSearchDesktop = () => {
             </div>
           </div>
           <div className={styles.cars_container_wrapper}>
-            <CarCardContainer />
+            {isLoading ? loadingContainer : carList}
           </div>
         </div>
       </div>

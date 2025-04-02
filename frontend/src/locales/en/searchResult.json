@@ -1,0 +1,14 @@
+{
+  "allCars": "All Cars",
+  "selectMake": "Select Make",
+  "selectModel": "Select Model",
+  "advancedSearch": "Advanced Search",
+  "noneFound": "No Cars Found",
+  "noBrandAvailable": " No brands available",
+  "selectBrandFirst": " Select a brand first",
+  "car": "car",
+  "cars": "cars",
+  "available": "available",
+  "allbrands": "All Brands",
+  "carModels": "Car Models"
+}

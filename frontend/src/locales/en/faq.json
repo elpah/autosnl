@@ -1,0 +1,44 @@
+{
+  "header": "FAQ",
+  "subHeader": "General Questions",
+  "question1": {
+    "title": "Are the prices of the cars negotiable?",
+    "content": "Yes, the prices of most vehicles are negotiable depending on factors such as model, age, and condition. Our sales team is happy to discuss potential discounts or offers."
+  },
+  "question2": {
+    "title": "What financing options do you offer?",
+    "content": "We offer a range of financing options, including loans through partner banks and credit institutions. Our team can assist you with finding the best option based on your credit score and budget."
+  },
+  "question3": {
+    "title": "Do you accept trade-ins?",
+    "content": "Yes, we accept trade-ins. You can bring your vehicle to our dealership for an appraisal. We'll provide you with a fair offer, which can be used as a down payment for your next car purchase."
+  },
+  "question4": {
+    "title": "Can I schedule a test drive?",
+    "content": "Absolutely! You can schedule a test drive by contacting us via phone or through our website. Let us know the car you're interested in, and we'll arrange a time that works for you."
+  },
+  "question5": {
+    "title": "Do you offer warranties on used cars?",
+    "content": "Yes, we offer warranties on most of our used vehicles. The length and coverage depend on the car's age and condition. Be sure to ask our sales staff about warranty options when you purchase a vehicle."
+  },
+  "question6": {
+    "title": "What should I bring to finalize a car purchase?",
+    "content": "To finalize your car purchase, you'll need to bring a valid driver's license, proof of insurance, and financing documents (if applicable). If you're trading in a vehicle, please bring the title and registration as well."
+  },
+  "question7": {
+    "title": "Do you offer home delivery for purchased vehicles?",
+    "content": "Yes, we offer home delivery for certain areas. Please contact us for details regarding delivery locations and any associated fees."
+  },
+  "question8": {
+    "title": "Can I return a car after purchase?",
+    "content": "We offer a return policy for a limited time after purchase. Please review the terms and conditions on our website or contact our customer service for more information."
+  },
+  "question9": {
+    "title": "How do I maintain my car after purchase?",
+    "content": "Regular maintenance is crucial for keeping your car in top condition. We offer service packages for oil changes, tire rotations, and other regular maintenance. Check the owner's manual for specific service intervals for your model."
+  },
+  "question10": {
+    "title": "Do you provide after-sales support?",
+    "content": "Yes, we provide ongoing after-sales support, including warranty services, parts replacement, and repairs. Our team is here to assist you with any questions or concerns after your purchase."
+  }
+}

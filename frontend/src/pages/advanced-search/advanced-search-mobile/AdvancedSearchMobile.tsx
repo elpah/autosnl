@@ -1,14 +1,23 @@
-import React from "react";
-
-import styles from "./advanced-search-mobile.module.scss";
 import { FilterItemsContainer } from "../../../components/filter-item-container/FilterItemsContainer";
-import { CarCardContainer } from "../../../components/car-card-container/CarCardContainer";
-export const AdvancedSearchMobile = () => {
+import { IAdvancedProps } from "../../../types/otherTypes";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import styles from "./advanced-search-mobile.module.scss";
+
+export const AdvancedSearchMobile = ({
+  carList,
+  isLoading,
+  loadingContainer,
+  header,
+}: IAdvancedProps) => {
+  const { t } = useTranslation("advancedSearch");
   return (
     <div className={styles.container_wrapper}>
       <div className={styles.header_map_container}>
         <div className={styles.car_map_container}>
-          <div className={styles.map_name}>Home</div>
+          <Link to="/" className={styles.map_name_home}>
+            {t("home")}
+          </Link>
           <div className={styles.map_vector_container}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -23,13 +32,13 @@ export const AdvancedSearchMobile = () => {
               />
             </svg>
           </div>
-          <div className={styles.map_name}>Advanced Search</div>
+          <p className={styles.map_name_link}>{t("advancedSearch")}</p>
         </div>
-        <h1 className={styles.header}>2000 Cars Available</h1>
+        <h1 className={styles.header}>{header}</h1>
       </div>
       <FilterItemsContainer />
       <div className={styles.car_card_container_wrapper}>
-        <CarCardContainer />
+        {isLoading ? loadingContainer : carList}
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import styles from "./filter-other.module.scss";
 
 type FilterOtherProps = {
@@ -12,7 +12,7 @@ export const FilterOther = ({
   minOrMaxLabel,
   handleValueChange,
 }: FilterOtherProps) => {
-  const [selectedValue, setSelectedValue] = React.useState<string>("");
+  const [selectedValue, setSelectedValue] = useState<string>("");
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = event.target.value;
