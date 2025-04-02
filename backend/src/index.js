@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import carRouter from "./routes/car-routes.js";
+import carRouter from "./routes/carRoutes.js";
 
 dotenv.config();
 
@@ -12,5 +12,5 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/", carRouter);
 
-app.listen(PORT, '0.0.0.0', () => console.log(`listening on port ${PORT}`));
+app.listen(PORT, "0.0.0.0", () => console.log(`listening on port ${PORT}`));
 export default app;

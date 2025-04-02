@@ -1,7 +1,7 @@
 import "dotenv/config.js";
 import randomUUID from "crypto";
 
-import { connectToDatabase } from "../utilsFunctions.js";
+import { connectToDatabase } from "../config/db.js";
 
 const createNewCar = async (carData) => {
   try {
@@ -65,8 +65,6 @@ const getCarsWithFilters = async (filters = {}, page = 1, limit = 30) => {
       },
     }));
   const query = queryConditions.length > 0 ? { $and: queryConditions } : {};
-  console.log(query);
-
   const projection = {
     carId: 1,
     carImages: 1,
@@ -98,48 +96,67 @@ const getCarsWithFilters = async (filters = {}, page = 1, limit = 30) => {
 const getCarsWithMultiFilters = async (filters = {}, page = 1, limit = 30) => {
   const db = await connectToDatabase();
   const col = db.collection("cars");
+
   const skip = (page - 1) * limit;
 
-  const query = {};
-  if (filters.carType) query.lang.en.carType = filters.carType;
+  let query = {};
+
+  if (filters.carType)
+    query.lang.en.carType = { $regex: new RegExp(filters.carType, "i") };
+
   if (filters.brand && filters.brand.length > 0) {
-    query.lang.en.carBrand = { $in: filters.brand };
-  } else if (filters.brand && filters.brand.length === 0) {
-    query.lang.en.carBrand = { $exists: true };
+    query["lang.en.carBrand"] = {
+      $in: filters.brand.map((b) => new RegExp(b, "i")),
+    };
   }
   if (filters.model && filters.model.length > 0) {
-    query.lang.en.carModel = { $in: filters.model };
+    query["lang.en.carModel"] = {
+      $in: filters.model.map((b) => new RegExp(b, "i")),
+    };
   }
+
   if (filters.fuel && filters.fuel.length > 0) {
-    query.lang.en.carFuel = { $in: filters.fuel };
+    query["lang.en.carFuel"] = {
+      $in: filters.fuel.map((b) => new RegExp(b, "i")),
+    };
   }
+
   if (filters.transmission && filters.transmission.length > 0) {
-    query.lang.en.carTransmission = { $in: filters.transmission };
+    query["lang.en.carTransmission"] = {
+      $in: filters.transmission.map((b) => new RegExp(b, "i")),
+    };
   }
+
   if (filters.vehicleType && filters.vehicleType.length > 0) {
-    query.lang.en.carBody = { $in: filters.vehicleType };
+    query["lang.en.carBody"] = {
+      $in: filters.vehicleType.map((b) => new RegExp(b, "i")),
+    };
   }
+
   if (filters.country && filters.country.length > 0) {
-    query.lang.en.carCountry = { $in: filters.country };
+    query["lang.en.carCountry"] = {
+      $in: filters.country.map((b) => new RegExp(b, "i")),
+    };
   }
 
   if (filters.priceMin || filters.priceMax) {
     query.price_incl_btw = {};
-    if (filters.priceMin)
-      query.price_incl_btw.$gte = Number(filters.priceMin);
-    if (filters.priceMax)
-      query.price_incl_btw.$lte = Number(filters.priceMax);
+    if (filters.priceMin) query.price_incl_btw.$gte = filters.priceMin;
+    if (filters.priceMax) query.price_incl_btw.$lte = filters.priceMax;
   }
+
   if (filters.mileageMin || filters.mileageMax) {
     query.carMileage = {};
     if (filters.mileageMin) query.carMileage.$gte = filters.mileageMin;
     if (filters.mileageMax) query.carMileage.$lte = filters.mileageMax;
   }
+
   if (filters.erdMin || filters.erdMax) {
     query.carERD = {};
     if (filters.erdMin) query.carERD.$gte = filters.erdMin;
     if (filters.erdMax) query.carERD.$lte = filters.erdMax;
   }
+
   const totalCars = await col.countDocuments(query);
 
   const projection = {
@@ -166,7 +183,6 @@ const getCarsWithMultiFilters = async (filters = {}, page = 1, limit = 30) => {
     .skip(skip)
     .limit(limit)
     .toArray();
-
   return {
     totalCars,
     cars,
@@ -182,32 +198,51 @@ const getCarByDealerId = async (filters = {}, page = 1, limit = 30) => {
   if (!dealer || !Array.isArray(dealer.cars) || dealer.cars.length === 0) {
     return { totalCars: 0, cars: [] };
   }
+
   const query = { carId: { $in: dealer.cars.map(String) } };
-  if (filters.carType) query.carType = filters.carType;
+
+  if (filters.carType)
+    query.lang.en.carType = { $regex: new RegExp(filters.carType, "i") };
+
   if (filters.brand && filters.brand.length > 0) {
-    query.carBrand = { $in: filters.brand };
+    query["lang.en.carBrand"] = {
+      $in: filters.brand.map((b) => new RegExp(b, "i")),
+    };
   }
   if (filters.model && filters.model.length > 0) {
-    query.carModel = { $in: filters.model };
+    query["lang.en.carModel"] = {
+      $in: filters.model.map((b) => new RegExp(b, "i")),
+    };
   }
+
   if (filters.fuel && filters.fuel.length > 0) {
-    query.carFuel = { $in: filters.fuel };
+    query["lang.en.carFuel"] = {
+      $in: filters.fuel.map((b) => new RegExp(b, "i")),
+    };
   }
+
   if (filters.transmission && filters.transmission.length > 0) {
-    query.carTransmission = { $in: filters.transmission };
+    query["lang.en.carTransmission"] = {
+      $in: filters.transmission.map((b) => new RegExp(b, "i")),
+    };
   }
+
   if (filters.vehicleType && filters.vehicleType.length > 0) {
-    query.carBody = { $in: filters.vehicleType };
+    query["lang.en.carBody"] = {
+      $in: filters.vehicleType.map((b) => new RegExp(b, "i")),
+    };
   }
+
   if (filters.country && filters.country.length > 0) {
-    query.carCountry = { $in: filters.country };
+    query["lang.en.carCountry"] = {
+      $in: filters.country.map((b) => new RegExp(b, "i")),
+    };
   }
+
   if (filters.priceMin || filters.priceMax) {
-    query.carGrossExportPrice = {};
-    if (filters.priceMin)
-      query.carGrossExportPrice.$gte = Number(filters.priceMin);
-    if (filters.priceMax)
-      query.carGrossExportPrice.$lte = Number(filters.priceMax);
+    query.price_incl_btw = {};
+    if (filters.priceMin) query.price_incl_btw.$gte = Number(filters.priceMin);
+    if (filters.priceMax) query.price_incl_btw.$lte = Number(filters.priceMax);
   }
   if (filters.mileageMin || filters.mileageMax) {
     query.carMileage = {};
@@ -219,25 +254,34 @@ const getCarByDealerId = async (filters = {}, page = 1, limit = 30) => {
     if (filters.erdMin) query.carERD.$gte = Number(filters.erdMin);
     if (filters.erdMax) query.carERD.$lte = Number(filters.erdMax);
   }
+
   const totalCars = await carsCol.countDocuments(query);
+
   const projection = {
     carId: 1,
     carImages: 1,
-    carBrand: 1,
-    carModel: 1,
-    carFuel: 1,
-    carTransmission: 1,
-    carGrossExportPrice: 1,
+    "lang.en.carBrand": 1,
+    "lang.nl.carBrand": 1,
+    "lang.ua.carBrand": 1,
+    "lang.ru.carBrand": 1,
+    "lang.en.carModel": 1,
+    "lang.nl.carModel": 1,
+    "lang.ua.carModel": 1,
+    "lang.ru.carModel": 1,
+    "lang.en.carFuel": 1,
+    "lang.nl.carFuel": 1,
+    "lang.ua.carFuel": 1,
+    "lang.ru.carFuel": 1,
     carMileage: 1,
-    carBody: 1,
     carERD: 1,
-    carCountry: 1,
   };
+
   const cars = await carsCol
     .find(query, { projection })
     .skip((page - 1) * limit)
     .limit(limit)
     .toArray();
+
   return { totalCars, dealer, cars };
 };
 
