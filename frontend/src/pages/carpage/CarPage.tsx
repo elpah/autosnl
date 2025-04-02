@@ -84,7 +84,7 @@ const CarPage = () => {
       <div className={styles.car_map_container}>
         <div
           className={styles.map_name}
-          onClick={() => navigate(`${globalContext.lang}/`)}
+          onClick={() => navigate(`/${globalContext.lang}/`)}
         >
           {t("home")}
         </div>
@@ -105,7 +105,7 @@ const CarPage = () => {
         <div
           className={styles.map_name}
           onClick={() =>
-            navigate_map("brand", carByIdData?.car.lang.en.carBrand)
+            navigate_map("brand", carByIdData?.car.lang.en.carBrand.toLowerCase())
           }
         >
           {carByIdData?.car?.lang[globalContext.lang].carBrand}
@@ -127,11 +127,13 @@ const CarPage = () => {
         <div
           className={styles.map_name}
           onClick={() =>
-            navigate_map("carType", carByIdData?.car.lang.en.carType || "")
+            navigate_map("carType", carByIdData?.car.lang.en.carType.toLowerCase() || "")
           }
         >
           {carByIdData?.car.lang[globalContext.lang].carType
-            ? carByIdData?.car.lang[globalContext.lang].carType.charAt(0).toUpperCase() +
+            ? carByIdData?.car.lang[globalContext.lang].carType
+                .charAt(0)
+                .toUpperCase() +
               carByIdData.car.lang[globalContext.lang].carType.slice(1)
             : ""}
         </div>
@@ -152,7 +154,7 @@ const CarPage = () => {
         <div
           className={`${styles.map_name} ${styles.current_car}`}
           onClick={() =>
-            navigate_map("model", carByIdData?.car.lang.en.carModel || "")
+            navigate_map("model", carByIdData?.car.lang.en.carModel.toLowerCase() || "")
           }
         >
           {carByIdData.car.lang[globalContext.lang].carModel}

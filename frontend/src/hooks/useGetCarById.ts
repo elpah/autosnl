@@ -10,7 +10,7 @@ type ICarByIdResponse = {
 const useGetCarById = (carId: string) => {
   const fetchCarById = () =>
     axios
-      .get<ICarByIdResponse>("http://localhost:8080/api/carById", {
+      .get<ICarByIdResponse>(`${process.env.REACT_APP_BASE_URL}carById`, {
         params: { carId },
       })
       .then((res) => res.data);

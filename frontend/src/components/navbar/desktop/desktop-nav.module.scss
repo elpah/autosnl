@@ -45,76 +45,7 @@
           justify-content: space-between;
           align-items: center;
           gap: 20px;
-          .all_cars_container {
-            position: relative;
-            .all_cars {
-              cursor: pointer;
-              display: flex;
-              align-items: center;
-              gap: 5px;
-              .all_cars_txt {
-                color: #4c4c4c;
-                font-size: 11px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: normal;
-              }
-              .arrow_container {
-                display: flex;
-                align-items: center;
-                .arrow {
-                  width: 10px;
-                  height: 10px;
-                  transition: transform 0.2s ease;
-                }
-                .arrow.rotated {
-                  transform: rotate(180deg);
-                }
-              }
-            }
-            .car_list {
-              position: absolute;
-              background-color: #fff;
-              box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.15);
-              top: 40.9px;
-              left: 0;
-              width: 160px;
-              height: 0px;
-              overflow: hidden;
-              transition: height 0.2s ease;
 
-              .car_list_container {
-                display: flex;
-                flex-direction: column;
-                list-style: none;
-                padding: 0;
-                margin: 0;
-                box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.15);
-
-                .car_list_item {
-                  color: #4c4c4c;
-                  height: 25px;
-                  font-size: 12px;
-                  font-style: normal;
-                  line-height: normal;
-                  display: flex;
-                  align-items: center;
-                  padding-left: 20px;
-                  border-top: 0.2px solid #b0b0b0;
-                  cursor: pointer;
-                  &:hover {
-                    background-color: #f3f1f1;
-                  }
-                }
-              }
-              .car_list_container :first-child {
-                border-top: none;
-              }
-            }
-            .show_cars_open {
-              height: 202px;
-            }
-          }
           .list_item {
             cursor: pointer;
             color: #4c4c4c;
@@ -288,29 +219,6 @@
       .menu {
         .menu_ul {
           gap: 27px;
-          .all_cars_container {
-            .all_cars {
-              gap: 7px;
-              .all_cars_txt {
-                font-size: 12.5px;
-                font-weight: 600;
-              }
-            }
-            .car_list {
-              top: 53.2px;
-              width: 200px;
-              .car_list_container {
-                .car_list_item {
-                  font-weight: 400;
-                  height: 30px;
-                  font-size: 15px;
-                }
-              }
-            }
-            .show_cars_open {
-              height: 242px;
-            }
-          }
           .list_item {
             font-size: 12.5px;
             font-weight: 600;
@@ -382,32 +290,6 @@
       .menu {
         .menu_ul {
           gap: 40px;
-          .all_cars_container {
-            .all_cars {
-              gap: 7px;
-              .all_cars_txt {
-                font-size: 16px;
-              }
-              .arrow_container {
-                .arrow {
-                  width: 12px;
-                  height: 12px;
-                }
-              }
-            }
-            .car_list {
-              top: 62px;
-              .car_list_container {
-                .car_list_item {
-                  height: 35px;
-                  font-size: 16px;
-                }
-              }
-            }
-            .show_cars_open {
-              height: 285px;
-            }
-          }
           .list_item {
             font-size: 16px;
           }

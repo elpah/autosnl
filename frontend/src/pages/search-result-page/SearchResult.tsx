@@ -124,7 +124,7 @@ const SearchResult = () => {
         pageNumber: queryParams.pageNumber ? Number(queryParams.pageNumber) : 1,
       }));
     }
-  }, [search, brandModelIsLoading]);
+  }, [search, brandModelIsLoading, brandModelData]);
 
   return (
     <div className={styles.container_wrapper}>
@@ -132,63 +132,59 @@ const SearchResult = () => {
         <h1 className={styles.header}>
           {globalContext.carData.brand &&
           globalContext.carData.brand !== "All Brands"
-            ? `${
-                brandModelData?.brands[globalContext.carData.brand].name[
-                  globalContext.lang
-                ]
-              } ${t("carModels")}`
+            ? globalContext.carData.model
+              ? `${
+                  brandModelData?.brands[globalContext.carData.brand]?.name[
+                    globalContext.lang
+                  ]
+                } ${
+                  brandModelData?.brands[globalContext.carData.brand]?.models[
+                    globalContext.carData.model
+                  ]?.[globalContext.lang]
+                }`
+              : `${
+                  brandModelData?.brands[globalContext.carData.brand]?.name[
+                    globalContext.lang
+                  ]
+                }`
             : globalContext.carData.brand === "All Brands" &&
               globalContext.carData.model
-            ? `
-   
-   ${
-     brandModelData?.brands[globalContext.carData.brand].models[
-       globalContext.carData.model
-     ][globalContext.lang]
-   }
-    ${t("models")}`
-            : t("allCars")}
+            ? (() => {
+                let foundBrand = "";
+                let modelName = "";
+                for (const brandKey in brandModelData?.brands) {
+                  const brand = brandModelData?.brands[brandKey];
+                  if (
+                    brand.models &&
+                    brand.models[globalContext.carData.model]
+                  ) {
+                    foundBrand = brandKey;
+                    modelName =
+                      brand.models[globalContext.carData.model][
+                        globalContext.lang
+                      ];
+                    break;
+                  }
+                }
+                return foundBrand && modelName
+                  ? `${
+                      brandModelData?.brands[foundBrand]?.name[
+                        globalContext.lang
+                      ]
+                    } ${modelName}`
+                  : `${t("allCars")}`;
+              })()
+            : t("allCars")}{" "}
         </h1>
         <p
           className={styles.para}
           style={{ visibility: carIsLoading ? "hidden" : "visible" }}
         >
           {carFetchedData?.totalCars
-            ? globalContext.carData.brand.toLowerCase() === "all brands"
-              ? `${t("there")} ${
-                  carFetchedData?.totalCars > 1 ? t("areATotalOf") : t("is")
-                } ${carFetchedData.totalCars} ${
-                  carFetchedData.totalCars > 1 ? t("cars") : t("car")
-                } ${t("available")}`
-              : globalContext.carData.brand && !globalContext.carData.model
-              ? `${t("there")}  ${
-                  carFetchedData?.totalCars > 1 ? t("areATotalOf") : t("is")
-                } ${carFetchedData.totalCars} ${
-                  brandModelData?.brands[globalContext.carData.brand].name[
-                    globalContext.lang
-                  ]
-                } ${t("available")}`
-              : globalContext.carData.brand.toLowerCase() !== "all brands" &&
-                globalContext.carData.model
-              ? `${t("there")} ${
-                  carFetchedData?.totalCars > 1 ? t("areATotalOf") : t("is")
-                } ${carFetchedData.totalCars} ${
-                  brandModelData?.brands[globalContext.carData.brand].name[
-                    globalContext.lang
-                  ]
-                } ${
-                  brandModelData?.brands[globalContext.carData?.brand].models[
-                    globalContext.carData?.model
-                  ][globalContext.lang]
-                } ${carFetchedData?.totalCars > 1 ? "models" : "model"} ${t(
-                  "available"
-                )}`
-              : `${t("there")} ${
-                  carFetchedData?.totalCars > 1 ? t("areATotalOf") : t("is")
-                } ${carFetchedData.totalCars} ${
-                  carFetchedData.totalCars > 1 ? t("cars") : t("car")
-                } ${t("available")}`
-            : t("noneFound")}
+            ? `${carFetchedData.totalCars} ${
+                carFetchedData.totalCars > 1 ? t("cars") : t("car")
+              } ${t("available")}`
+            : t("noCarsAvailable")}
         </p>
 
         <div className={styles.make_model_container}>
@@ -230,6 +226,9 @@ const SearchResult = () => {
                 Object.keys(brandModelData.brands).map((brandName, index) => {
                   const brandModels = brandModelData.brands[brandName].models;
 
+                  if (!brandModels) {
+                    return null;
+                  }
                   return Object.keys(brandModels).map(
                     (modelName, modelIndex) => {
                       const model = brandModels[modelName];

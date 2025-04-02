@@ -1,6 +1,6 @@
 {
   "searchByBrand": "Search By Brand",
-  "allBrand":"All Brands",
+  "allBrand": "All Brands",
   "searchByModel": "Search By Model",
   "price": "Price",
   "vehicleType": "Vehicle Type",
@@ -8,12 +8,18 @@
   "minMil": "Min Mileage",
   "maxMil": "Max Mileage",
   "transmission": "Transmission",
-  "fuel":"Fuel",
+  "fuel": "Fuel",
   "erd": "ERD",
-  "minErd":"Min Erd",
-  "maxErd":"Max Erd",
+  "minErd": "Min Erd",
+  "maxErd": "Max Erd",
   "country": "Country",
-  "manual":"Manual",
-  "automatic":"Automatic"
+  "manual": "Manual",
+  "automatic": "Automatic",
+  "car": "Car",
+  "cars": "Cars",
+  "available": "Available",
+  "loading": "Loading...",
+  "home": "Home",
+  "advancedSearch": "Advanced Search",
+  "carsFrom": "Cars from"
 }
-

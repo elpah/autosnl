@@ -1,21 +1,8 @@
-// type ICarCategoriesResponse = {
-//   brands: { [brand: string]: string[] };
-//   countries: string[];
-//   fuel: string[];
-//   body: string[];
-// };
-
-
-
-type CarTranslation = {
+export type CarTranslation = {
   en: string;
   ru: string;
   nl: string;
   ua: string;
-};
-
-type Model = {
-  [modelName: string]: CarTranslation;
 };
 
 type Brand = {
@@ -23,23 +10,24 @@ type Brand = {
   models: Model;
 };
 
+type Model = {
+  [modelName: string]: CarTranslation;
+};
 type Brands = {
   [brandName: string]: Brand;
 };
 
+type Fuel = CarTranslation;
+type Body = CarTranslation;
 type Country = CarTranslation;
 
 type Countries = {
   [countryCode: string]: Country;
 };
 
-type Fuel = CarTranslation;
-
 type FuelTypes = {
   [fuelType: string]: Fuel;
 };
-
-type Body = CarTranslation;
 
 type Bodies = {
   [bodyType: string]: Body;

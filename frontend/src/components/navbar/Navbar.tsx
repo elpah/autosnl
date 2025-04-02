@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useContext } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
 import { DesktopNav } from "./desktop/DesktopNav";
 import { MobileNav } from "./mobile/MobileNav";
 
@@ -6,31 +6,20 @@ import useBrandModel from "../../hooks/useBrandModel";
 import { useNavigate } from "react-router-dom";
 import queryString from "query-string";
 import { GlobalContext } from "../../context/GlobalContext";
-import styles from "./navbar.module.scss";
 import { en_flag, nl_flag, ru_flag, ua_flag } from "../../assets/images/images";
+import styles from "./navbar.module.scss";
 
 const Navbar = () => {
-  const [showLanguageSelector, setShowLanguageSelector] = useState(false);
+  const [showLanguageSelector, setShowLanguageSelector] =
+    useState<boolean>(false);
   const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
-  const [_showSuggestions, setShowSuggestions] = useState(false);
-  const [refTracker, setRefTracker] = useState(true);
-  const [showCars, setShowCars] = useState(false);
+  const [_showSuggestions, setShowSuggestions] = useState<boolean>(false);
+  const [refTracker, setRefTracker] = useState<boolean>(true);
   const [queryWord, setQueryWord] = useState("");
   const [selectedIndex, setSelectedIndex] = useState<number>(-1);
   const languageSelectorRef = useRef<HTMLDivElement>(null);
   const suggestionsRef = useRef<HTMLDivElement>(null);
   const globalContext = useContext(GlobalContext);
-
-  const someBrands = [
-    "BMW",
-    "Ford",
-    "Volkswagen",
-    "Tesla",
-    "Mercedes-Benz",
-    "Volvo",
-    "Maserati",
-    "Toyota",
-  ];
 
   const navigate = useNavigate();
   const { data, isLoading } = useBrandModel();
@@ -48,16 +37,20 @@ const Navbar = () => {
 
   if (!carData || !carData?.brands) return <p>No data available</p>;
 
-  const suggestionsArray = Object.entries(carData.brands).flatMap(
-    ([brand, models]) => [brand, ...models.map((model) => `${brand} ${model}`)]
+  const suggestionsArray = Object.values(carData.brands).flatMap(
+    ({ name, models }) => [
+      name[globalContext.lang],
+      ...Object.values(models).map(
+        (model) => `${name[globalContext.lang]} ${model[globalContext.lang]}`
+      ),
+    ]
   );
 
-  const changeLanguage = (newLang: string) => {
+  const changeLanguage = (newLang: "en" | "ru" | "nl" | "ua") => {
     globalContext.setLang(newLang);
 
     const currentPath = window.location.pathname;
     const currentSearch = window.location.search;
-    // const currentHash = window.location.hash;
     const newPath = `/${newLang}${currentPath.slice(3)}${currentSearch}`;
     setShowLanguageSelector(false);
 
@@ -137,25 +130,40 @@ const Navbar = () => {
   const checkBeforeHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const words = queryWord.split(" ").map((word) => {
-      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-    });
+    const words = queryWord.split(" ");
 
     const possibleBrand = words[0];
 
     let query;
+    const brandEntry = Object.entries(carData.brands).find(
+      ([, brandData]) =>
+        brandData.name[globalContext.lang].toLowerCase() ===
+        possibleBrand.toLowerCase()
+    );
 
-    if (carData.brands[possibleBrand]) {
+    if (brandEntry) {
+      const [brandKey, brandData] = brandEntry;
+
       if (words.length === 1) {
         query = queryString.stringify(
-          { brand: possibleBrand },
+          { brand: brandData.name.en.toLowerCase() || words[0] },
           { skipEmptyString: true }
         );
       } else {
         const possibleModel = words.slice(1).join(" ");
-        if (carData.brands[possibleBrand].includes(possibleModel)) {
+
+        const modelEntry = Object.entries(brandData.models).find(
+          ([, modelData]) =>
+            modelData[globalContext.lang].toLowerCase() ===
+            possibleModel.toLocaleLowerCase()
+        );
+
+        if (modelEntry) {
           query = queryString.stringify(
-            { brand: possibleBrand, model: possibleModel },
+            {
+              brand: brandData.name.en.toLowerCase(),
+              model: modelEntry[1].en.toLowerCase(),
+            },
             { skipEmptyString: true }
           );
         }
@@ -167,20 +175,13 @@ const Navbar = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const isValidQuery = filteredSuggestions.some(
       (suggestion) => suggestion.toLowerCase() === queryWord.toLowerCase()
     );
     if (isValidQuery) {
       checkBeforeHandleSubmit(e);
     }
-  };
-  const handleBrandClick = (brand: string) => {
-    let query = queryString.stringify(
-      { brand: brand },
-      { skipEmptyString: true }
-    );
-    setShowCars(false);
-    navigate(`/${globalContext.lang}/search-result?${query}`);
   };
   return (
     <div className={styles.container}>
@@ -190,8 +191,6 @@ const Navbar = () => {
         languageSelectorRef={languageSelectorRef}
         suggestionsRef={suggestionsRef}
         filteredSuggestions={filteredSuggestions}
-        showCars={showCars}
-        setShowCars={setShowCars}
         queryWord={queryWord}
         handleInputChange={handleInputChange}
         handleSelectSuggestion={handleSelectSuggestion}
@@ -200,8 +199,6 @@ const Navbar = () => {
         selectedIndex={selectedIndex}
         refTracker={refTracker}
         setRefTracker={setRefTracker}
-        someBrands={someBrands}
-        handleBrandClick={handleBrandClick}
         changeLanguage={changeLanguage}
         flags={flags}
         selected_flag={
@@ -214,8 +211,6 @@ const Navbar = () => {
         languageSelectorRef={languageSelectorRef}
         suggestionsRef={suggestionsRef}
         filteredSuggestions={filteredSuggestions}
-        showCars={showCars}
-        setShowCars={setShowCars}
         queryWord={queryWord}
         handleInputChange={handleInputChange}
         handleSelectSuggestion={handleSelectSuggestion}
@@ -224,8 +219,6 @@ const Navbar = () => {
         selectedIndex={selectedIndex}
         refTracker={refTracker}
         setRefTracker={setRefTracker}
-        someBrands={someBrands}
-        handleBrandClick={handleBrandClick}
         changeLanguage={changeLanguage}
         flags={flags}
         selected_flag={

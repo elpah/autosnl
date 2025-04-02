@@ -6,11 +6,10 @@ import { type ICarResponse } from "../types/carResponseType";
 const useCars = (carData: ICarData) => {
   const fetchCars = () =>
     axios
-      .get<ICarResponse>("http://localhost:8080/api/cars-search", {
+      .get<ICarResponse>(`${process.env.REACT_APP_BASE_URL}cars-search`, {
         params: { ...carData },
       })
       .then((res) => res.data);
-
   return useQuery<ICarResponse, Error>({
     queryKey: ["cars", carData],
     queryFn: fetchCars,

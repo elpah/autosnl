@@ -1,72 +1,69 @@
-import React, { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./home-section.module.scss";
 import CarCard from "../car-card/CarCard";
+import { type CarTranslation } from "../../types/carCategoriesResponse";
+import { GlobalContext } from "../../context/GlobalContext";
+import { ICarDataResponse } from "../../types/carResponseType";
+import { Car } from "../../types/homeSectionResponseType";
 
 type SectionHomeProps = {
   title: string;
   selectedVehicleType: string;
+  body: Record<string, CarTranslation>;
   setSelectedVehicleType: (type: string) => void;
+  carsArray: Car[];
 };
-
-interface VehicleType {
-  value: string;
-  label: string;
-}
-
-const vehicleTypes: VehicleType[] = [
-  { value: "passenger", label: "Passengers cars" },
-  { value: "commercial", label: "Commercial vehicle" },
-  { value: "campers", label: "Campers" },
-  { value: "caravans", label: "Caravans" },
-  { value: "trucks", label: "Trucks" },
-  { value: "trailers", label: "Trailers" },
-  { value: "scooters", label: "Scooters" },
-  { value: "cab", label: "Cab" },
-  { value: "bus", label: "Bus" },
-];
 
 export const HomeSection = ({
   title,
   selectedVehicleType,
   setSelectedVehicleType,
+  body = {},
+  carsArray,
 }: SectionHomeProps) => {
-  const vehicleTypes = [
-    { value: "passenger", label: "Passengers cars" },
-    { value: "commercial", label: "Commercial vehicle" },
-    { value: "campers", label: "Campers" },
-    { value: "caravans", label: "Caravans" },
-    { value: "trucks", label: "Trucks" },
-    { value: "trailers", label: "Trailers" },
-    { value: "scooters", label: "Scooters" },
-    { value: "cab", label: "Cab" },
-    { value: "bus", label: "Bus" },
-  ];
+  const globalContext = useContext(GlobalContext);
+
   return (
     <section className={styles.section_container}>
-      <div className={styles.section_header}>{title}</div>
+      <h2 className={styles.section_header}>{title}</h2>
       <div className={styles.section_sub_container}>
         <div className={styles.section_items_container}>
-          {vehicleTypes.map((vehicle) => (
+          {Object.entries(body).map(([vehicleType, type]) => (
             <div
-              key={vehicle.value}
-              onClick={() => setSelectedVehicleType(vehicle.value)}
+              key={vehicleType}
+              onClick={() => {
+                setSelectedVehicleType(vehicleType);
+                console.log(vehicleType);
+              }}
               className={`${styles.section_item} ${
-                selectedVehicleType === vehicle.value ? styles.selected : ""
+                selectedVehicleType === vehicleType ? styles.selected : ""
               }`}
             >
-              {vehicle.label}
+              {type[globalContext.lang]}
             </div>
           ))}
         </div>
+
         <div className={styles.car_container}>
-          {/* <CarCard />
-          <CarCard />
-          <CarCard />
-          <CarCard />
-          <CarCard />
-          <CarCard />
-          <CarCard />
-          <CarCard /> */}
+          {carsArray
+            ?.filter(
+              (car) =>
+                selectedVehicleType === "" ||
+                car.lang.en.carBody.toLowerCase() ===
+                  selectedVehicleType.toLowerCase()
+            )
+            .map((car) => (
+              <CarCard
+                key={car.carId}
+                carBrand={car.lang[globalContext.lang].carBrand}
+                carModel={car.lang[globalContext.lang].carModel}
+                carFuel={car.lang[globalContext.lang].carFuel}
+                carImage={car.carImages[0]}
+                carYear={car.carERD.toString()}
+                carId={car.carId}
+                carMileage={car.carMileage.toString()}
+              />
+            ))}
         </div>
       </div>
     </section>

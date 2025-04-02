@@ -2,7 +2,7 @@
   "all": "ВСІ АВТО",
   "about": "ПРО НАС",
   "contact": "КОНТАКТИ",
-  "faq": "ПИТАННЯ І ВІДПОВІДІ",
+  "faq": "ЧаПи",
   "notFound": "Не знайдено",
-   "searchExample":"Пошук автомобілів, приклад Honda"
+  "searchExample": "нп. Honda..."
 }

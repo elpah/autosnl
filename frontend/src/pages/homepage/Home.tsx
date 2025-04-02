@@ -16,8 +16,9 @@ import {
   type ICarData,
   type IGlobalContext,
 } from "../../context/GlobalContext";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useBrandModel from "../../hooks/useBrandModel";
+import useHomeSection from "../../hooks/useHomeSections";
 import { goToAdvancedSearch, goToSearchResult } from "../../utils/goToResults";
 import { useTranslation } from "react-i18next";
 import { isValidLang } from "../../utils/utilsFunctions";
@@ -28,23 +29,29 @@ export const Home = () => {
   const { t } = useTranslation<string>("home");
   const whys = useWhys();
   const categoryData = useCategoryData();
-
   const navigate = useNavigate();
   const globalContext = useContext<IGlobalContext>(GlobalContext);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [recommendedVehicleType, setRecommendedVehicleType] =
-    useState("passenger");
-  const [trustedUsedCars, setTrustedUsedCars] = useState("passenger");
-  const [damagedCars, setDamagedCars] = useState("passenger");
-  const { data, error, isLoading } = useBrandModel();
+  const [recommendedVehicleType, setRecommendedVehicleType] = useState("");
+  const [trustedUsedCars, setTrustedUsedCars] = useState("");
+  const [damagedCars, setDamagedCars] = useState("");
+  const {
+    data: brandModelData,
+    error: brandModelError,
+    isLoading: brandModelIsLoading,
+  } = useBrandModel();
+  const {
+    data: sectionData,
+    error: sectionError,
+    isLoading: sectionIsLoading,
+  } = useHomeSection();
   const { lang: urlLang } = useParams();
 
   useEffect(() => {
-    if (!isLoading) {
-      console.log(data);
+    if (!sectionIsLoading) {
+      console.log("sectionDataaa", sectionData?.sections.damaged.cars);
     }
-  }, [data, isLoading]);
-  
+  }, [sectionData, sectionIsLoading]);
 
   useEffect(() => {
     if (urlLang && isValidLang(urlLang)) {
@@ -105,8 +112,8 @@ export const Home = () => {
     popularNissan,
   ];
 
-  if (error) return <p>{error.message}</p>;
-  if (isLoading) return <CLoader />;
+  if (brandModelError) return <p>{brandModelError.message}</p>;
+  if (brandModelIsLoading || sectionIsLoading) return <CLoader />;
 
   return (
     <div className={styles.home_container}>
@@ -160,10 +167,10 @@ export const Home = () => {
                   {t("carBrand")}
                 </option>
                 <option value="All Brands">{t("allBrand")}</option>
-                {data &&
-                  data.brands &&
-                  Object.keys(data.brands).map((brand, index) => {
-                    const brandData = data.brands[brand];
+                {brandModelData &&
+                  brandModelData.brands &&
+                  Object.keys(brandModelData.brands).map((brand, index) => {
+                    const brandData = brandModelData.brands[brand];
                     const brandName = brandData.name[globalContext.lang];
                     return (
                       <option key={index} value={brand}>
@@ -183,35 +190,38 @@ export const Home = () => {
                   {t("carModel")}
                 </option>
 
-                {globalContext.carData.brand && data ? (
+                {globalContext.carData.brand && brandModelData ? (
                   globalContext.carData.brand === "All Brands" ? (
-                    Object.keys(data.brands).map((brandName, index) => {
-                      const brandModels = data.brands[brandName].models;
+                    Object.keys(brandModelData.brands).map(
+                      (brandName, index) => {
+                        const brandModels =
+                          brandModelData.brands[brandName].models;
 
-                      return Object.keys(brandModels).map(
-                        (modelName, modelIndex) => {
-                          const model = brandModels[modelName];
-                          const modelNameTranslated = model[globalContext.lang];
+                        return Object.keys(brandModels).map(
+                          (modelName, modelIndex) => {
+                            const model = brandModels[modelName];
+                            const modelNameTranslated =
+                              model[globalContext.lang];
 
-                          return (
-                            <option
-                              key={`${index}-${modelIndex}`}
-                              value={modelName}
-                            >
-                              {modelNameTranslated}
-                            </option>
-                          );
-                        }
-                      );
-                    })
+                            return (
+                              <option
+                                key={`${index}-${modelIndex}`}
+                                value={modelName}
+                              >
+                                {modelNameTranslated}
+                              </option>
+                            );
+                          }
+                        );
+                      }
+                    )
                   ) : (
                     Object.keys(
-                      data.brands[globalContext.carData.brand].models
+                      brandModelData.brands[globalContext.carData.brand].models
                     ).map((modelName, index) => {
                       const model =
-                        data.brands[globalContext.carData.brand].models[
-                          modelName
-                        ];
+                        brandModelData.brands[globalContext.carData.brand]
+                          .models[modelName];
                       const modelNameTranslated = model[globalContext.lang];
                       return (
                         <option key={index} value={modelName}>
@@ -237,9 +247,9 @@ export const Home = () => {
                   {t("fuel")}
                 </option>
 
-                {data && data.fuel ? (
-                  Object.keys(data.fuel).map((fuelKey, index) => {
-                    const fuel = data.fuel[fuelKey];
+                {brandModelData && brandModelData.fuel ? (
+                  Object.keys(brandModelData.fuel).map((fuelKey, index) => {
+                    const fuel = brandModelData.fuel[fuelKey];
                     const fuelTranslated = fuel[globalContext.lang];
 
                     return (
@@ -284,9 +294,10 @@ export const Home = () => {
                   {t("bodyType")}
                 </option>
 
-                {data && data.body ? (
-                  Object.keys(data.body).map((bodyKey, index) => {
-                    const bodyName = data.body[bodyKey][globalContext.lang];
+                {brandModelData && brandModelData.body ? (
+                  Object.keys(brandModelData.body).map((bodyKey, index) => {
+                    const bodyName =
+                      brandModelData.body[bodyKey][globalContext.lang];
                     return (
                       <option key={index} value={bodyKey}>
                         {bodyName}
@@ -310,16 +321,20 @@ export const Home = () => {
                   {t("country")}
                 </option>
 
-                {data && data.countries ? (
-                  Object.keys(data.countries).map((countryKey, index) => {
-                    const countryName =
-                      data.countries[countryKey][globalContext.lang];
-                    return (
-                      <option key={index} value={countryKey}>
-                        {countryName}
-                      </option>
-                    );
-                  })
+                {brandModelData && brandModelData.countries ? (
+                  Object.keys(brandModelData.countries).map(
+                    (countryKey, index) => {
+                      const countryName =
+                        brandModelData.countries[countryKey][
+                          globalContext.lang
+                        ];
+                      return (
+                        <option key={index} value={countryKey}>
+                          {countryName}
+                        </option>
+                      );
+                    }
+                  )
                 ) : (
                   <option value="" disabled>
                     {t("noCountriesAvailable")}
@@ -420,17 +435,28 @@ export const Home = () => {
         </div>
       </div>
       <div className={styles.sections}>
-        <HomeSection
-          selectedVehicleType={recommendedVehicleType}
-          setSelectedVehicleType={setRecommendedVehicleType}
-          title={t("recommendedForYou")}
-        />
-
-        <HomeSection
-          selectedVehicleType={trustedUsedCars}
-          setSelectedVehicleType={setTrustedUsedCars}
-          title={t("trustedBudget")}
-        />
+        {sectionData &&
+          sectionData.sections.recommended.body &&
+          sectionData.sections.recommended.cars && (
+            <HomeSection
+              selectedVehicleType={recommendedVehicleType}
+              setSelectedVehicleType={setRecommendedVehicleType}
+              title={t("recommendedForYou")}
+              body={sectionData.sections.recommended.body}
+              carsArray={sectionData.sections.recommended.cars}
+            />
+          )}
+        {sectionData &&
+          sectionData.sections.trusted.body &&
+          sectionData.sections.trusted.cars && (
+            <HomeSection
+              selectedVehicleType={trustedUsedCars}
+              setSelectedVehicleType={setTrustedUsedCars}
+              title={t("trustedBudget")}
+              body={sectionData.sections.trusted.body}
+              carsArray={sectionData.sections.trusted.cars}
+            />
+          )}
         <div className={styles.popular_container}>
           <div className={styles.popular_header_container}>
             <h3 className={styles.popular_header}>{t("popularBrands")}</h3>
@@ -445,11 +471,17 @@ export const Home = () => {
             </div>
           </div>
         </div>
-        <HomeSection
-          selectedVehicleType={damagedCars}
-          setSelectedVehicleType={setDamagedCars}
-          title={t("damagedCars")}
-        />
+        {sectionData &&
+          sectionData.sections.damaged.body &&
+          sectionData.sections.damaged.cars && (
+            <HomeSection
+              selectedVehicleType={damagedCars}
+              setSelectedVehicleType={setDamagedCars}
+              title={t("damagedCars")}
+              body={sectionData?.sections?.damaged.body}
+              carsArray={sectionData.sections.damaged.cars}
+            />
+          )}
       </div>
       <section className={styles.why_section}>
         <h3 className={styles.why_header}>{t("whyZaurAutos")}</h3>

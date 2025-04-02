@@ -13,8 +13,6 @@ export const DesktopNav = ({
   setShowLanguageSelector,
   languageSelectorRef,
   suggestionsRef,
-  showCars,
-  setShowCars,
   filteredSuggestions,
   queryWord,
   handleInputChange,
@@ -24,8 +22,6 @@ export const DesktopNav = ({
   selectedIndex,
   refTracker,
   setRefTracker,
-  someBrands,
-  handleBrandClick,
   changeLanguage,
   flags,
   selected_flag,
@@ -64,51 +60,10 @@ export const DesktopNav = ({
         </Link>
         <div className={styles.menu}>
           <ul className={styles.menu_ul}>
-            <li
-              className={styles.all_cars_container}
-              onMouseEnter={() => {
-                setShowLanguageSelector(false);
-                setShowCars(true);
-              }}
-              onMouseLeave={() => {
-                setShowCars(false);
-              }}
-            >
-              <div
-                className={styles.all_cars}
-                onClick={() => handleBrandClick("")}
-              >
-                <div className={styles.all_cars_txt}>{t("all")}</div>
-                <div className={styles.arrow_container}>
-                  <img
-                    className={`${styles.arrow} ${
-                      showCars ? styles.rotated : ""
-                    }`}
-                    src={arrow}
-                    alt="drop down arror icon"
-                  />
-                </div>
-              </div>
-              <div
-                className={`${styles.car_list} ${
-                  showCars ? styles.show_cars_open : ""
-                }`}
-              >
-                <ul className={styles.car_list_container}>
-                  {someBrands.map((brand, index) => (
-                    <li
-                      key={index}
-                      className={styles.car_list_item}
-                      onClick={() => {
-                        handleBrandClick(brand);
-                      }}
-                    >
-                      {brand}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </li>
+            <Link to={`/${globalContext.lang}/search-result`}>
+              <li className={styles.list_item}>{t("all")}</li>
+            </Link>
+
             <Link to={`/${globalContext.lang}/about`}>
               <li className={styles.list_item}>{t("about")}</li>
             </Link>

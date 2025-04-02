@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { type IAdvancedSeachFieldData} from "../context/GlobalContext";
+import { type IAdvancedSeachFieldData } from "../context/GlobalContext";
 import { type ICarResponse } from "../types/carResponseType";
 import { useDebounce } from "use-debounce";
 
@@ -8,7 +8,7 @@ const useAdvancedSearchCars = (advancedCarData: IAdvancedSeachFieldData) => {
   const [debouncedData] = useDebounce(advancedCarData, 500);
   const advancedSearch = () =>
     axios
-      .get<ICarResponse>("http://localhost:8080/api/advanced-search", {
+      .get<ICarResponse>(`${process.env.REACT_APP_BASE_URL}advanced-search`, {
         params: { ...debouncedData },
       })
       .then((res) => res.data);
@@ -21,4 +21,3 @@ const useAdvancedSearchCars = (advancedCarData: IAdvancedSeachFieldData) => {
 };
 
 export default useAdvancedSearchCars;
-

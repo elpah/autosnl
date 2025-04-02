@@ -85,7 +85,7 @@ header {
           background-color: #fff;
           box-shadow: 0 4px 6px rgba(95, 95, 95, 0.2), 0 -4px 0 rgba(0, 0, 0, 0);
           width: 45px;
-          border-radius: 0 0 8px 8px;
+          border-radius: 0 0 2px 2px;
           height: 0px;
           overflow: hidden;
           transition: height 0.2s ease;
@@ -99,7 +99,6 @@ header {
         }
         .language_dropdown_menu.open {
           height: 135px;
-          // z-index: 1;
         }
       }
 
@@ -219,59 +218,6 @@ header {
           font-weight: 500;
           margin-bottom: 2rem;
         }
-
-        .menu_list_car {
-          // margin-bottom: 0.6rem;
-          margin-bottom: 1.9rem;
-
-          .all_cars_container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            .all_cars_txt {
-              color: #4c4c4c;
-              font-size: 1.5rem;
-              font-weight: 500;
-            }
-
-            .all_cars_arrow {
-              width: 0.625rem;
-              height: 0.625rem;
-              transition: transform 0.3s ease;
-            }
-
-            .rotated {
-              transform: rotate(180deg);
-            }
-          }
-
-          .car_list {
-            width: 90%;
-            margin: auto;
-            margin-top: 0.625rem;
-            height: 0px;
-            overflow: hidden;
-            transition: height 0.3s ease;
-            ul {
-              list-style: none;
-              padding: 0;
-              margin: 0;
-
-              li {
-                margin-top: 20px;
-                // margin-bottom: 0.7rem;
-                font-size: 0.95rem;
-                &:first-child {
-                  margin-top: 10px;
-                }
-              }
-            }
-          }
-          .show_cars_open {
-            height: 280px;
-          }
-        }
       }
     }
   }
@@ -316,20 +262,17 @@ header {
             }
           }
           .language_dropdown_menu {
-            top: 64px;
+            top: 60px;
             right: 10px;
-
-            width: 55px;
-            border-radius: 0 0 8px 8px;
+            width: 50px;
             height: 0px;
 
             .language_dropdown_image {
-              width: 40px;
-              height: 40px;
+              width: 35px;
+              height: 35px;
             }
             &.open {
-              height: 165px;
-              // z-index: 1;
+              height: 145px;
             }
           }
         }
@@ -398,31 +341,6 @@ header {
           .menu_list_item {
             font-size: 1.2rem;
             margin-bottom: 1.6rem;
-          }
-
-          .menu_list_car {
-            margin-bottom: 1.2rem;
-
-            .all_cars_container {
-              .all_cars_txt {
-                font-size: 1.2rem;
-              }
-
-              .all_cars_arrow {
-                width: 1rem;
-                height: 1rem;
-              }
-            }
-
-            .car_list {
-              margin-top: 0.7rem;
-
-              ul {
-                li {
-                  font-size: 0.9rem;
-                }
-              }
-            }
           }
         }
       }

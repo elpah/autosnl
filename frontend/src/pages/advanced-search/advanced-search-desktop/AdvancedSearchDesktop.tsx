@@ -1,15 +1,15 @@
-import React from "react";
-
 import styles from "./advanced-search-desktop.module.scss";
 import { SidebarFilters } from "../../../components/sidebar-filters/SidebarFilters";
 import { IAdvancedProps } from "../../../types/otherTypes";
+import { useTranslation } from "react-i18next";
 
 export const AdvancedSearchDesktop = ({
   carList,
-  totalCars,
   isLoading,
   loadingContainer,
+  header,
 }: IAdvancedProps) => {
+  const { t } = useTranslation("advancedSearch");
   return (
     <div className={styles.container}>
       <div className={styles.main}>
@@ -19,9 +19,7 @@ export const AdvancedSearchDesktop = ({
         <div className={styles.right}>
           <div className={styles.header_search_container}>
             <div className={styles.header}>
-              {`${
-                isLoading ? "Loading..." : `${totalCars} ${totalCars > 1? "Cars" : "Car"} Available`
-              }`}
+              {header}
             </div>
             <div className={styles.search_container}>
               <div className={styles.search_name}>sort by:</div>

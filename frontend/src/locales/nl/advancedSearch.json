@@ -14,5 +14,12 @@
   "maxErd": "Max MRD",
   "country": "Land",
   "manual": "Handmatig",
-  "automatic": "Automatisch"
+  "automatic": "Automatisch",
+  "car": "Auto",
+  "cars": "Auto's",
+  "available": "Beschikbaar",
+  "loading": "Laden...",
+  "home": "Home",
+  "advancedSearch": "Geavanceerd Zoeken",
+  "carsFrom": "Auto's van"
 }

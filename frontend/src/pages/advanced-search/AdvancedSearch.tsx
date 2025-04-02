@@ -26,7 +26,7 @@ const AdvancedSearch = () => {
   const globalContext = useContext<IGlobalContext>(GlobalContext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-  const {t} = useTranslation("advancedSearch")
+  const { t } = useTranslation("advancedSearch");
   const { lang: urlLang } = useParams();
 
   useEffect(() => {
@@ -58,12 +58,11 @@ const AdvancedSearch = () => {
     isLoading: advancedCarIsLoading,
   } = useAdvancedSearchCars(globalContext.advancedSearchFieldData);
 
-
   useEffect(() => {
     let params: Record<string, string | string[] | null> = {};
     const brand = globalContext.advancedSearchFieldData.brand;
     if (brand && brand.includes("All Brands")) {
-      params.brand ="All Brands";
+      params.brand = "All Brands";
     } else if (brand && brand.length > 0) {
       params.brand = brand.join(",");
     } else {
@@ -147,7 +146,16 @@ const AdvancedSearch = () => {
       <AdvancedSearchMobile
         isLoading={advancedCarIsLoading}
         loadingContainer={<AdvanceIsLoading />}
-        totalCars={advancedCarFetchedData?.totalCars || 0}
+        header={`${
+          advancedCarIsLoading
+            ? "Loading..."
+            : `${advancedCarFetchedData?.totalCars} ${
+                advancedCarFetchedData?.totalCars &&
+                advancedCarFetchedData?.totalCars > 1
+                  ? t("cars")
+                  : t("car")
+              } ${t("available")} `
+        }`}
         carList={
           <CarCardContainer
             totalCars={advancedCarFetchedData?.totalCars || 0}
@@ -171,7 +179,16 @@ const AdvancedSearch = () => {
       <AdvancedSearchDesktop
         isLoading={advancedCarIsLoading}
         loadingContainer={<AdvanceIsLoading />}
-        totalCars={advancedCarFetchedData?.totalCars || 0}
+        header={`${
+          advancedCarIsLoading
+            ? "Loading..."
+            : `${advancedCarFetchedData?.totalCars} ${
+                advancedCarFetchedData?.totalCars &&
+                advancedCarFetchedData?.totalCars > 1
+                  ? t("cars")
+                  : t("car")
+              } ${t("available")} `
+        }`}
         carList={
           <CarCardContainer
             totalCars={advancedCarFetchedData?.totalCars || 0}

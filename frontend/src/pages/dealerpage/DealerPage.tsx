@@ -16,16 +16,18 @@ import {
   type ICarData,
 } from "../../context/GlobalContext";
 import styles from "./dealer-page.module.scss";
-import { scroll_to_top } from "../../utils/utilsFunctions";
+import { isValidLang, scroll_to_top } from "../../utils/utilsFunctions";
+import { useTranslation } from "react-i18next";
 
 const DealerPage = () => {
   const [loading, setLoading] = useState(true);
   const { search } = useLocation();
   const queryParams = queryString.parse(search);
-  const { dealerId } = useParams();
+  const { dealerId, lang: urlLang } = useParams();
+  const { t } = useTranslation("advancedSearch");
+
   const navigate = useNavigate();
   const globalContext = useContext<IGlobalContext>(GlobalContext);
-  const { lang: urlLang } = useParams();
 
   const {
     data: brandData,
@@ -47,12 +49,13 @@ const DealerPage = () => {
     return () => clearTimeout(timer);
   }, []);
 
-    useEffect(() => {
-    if (urlLang) {
+  useEffect(() => {
+    if (urlLang && isValidLang(urlLang)) {
       globalContext.setLang(urlLang);
+    } else {
+      globalContext.setLang("en");
     }
   }, [urlLang]);
-
 
   useEffect(() => {
     let params: Record<string, string | string[] | null> = {};
@@ -100,9 +103,6 @@ const DealerPage = () => {
     if (queryStringParams) {
       navigate(`?${queryStringParams}`, { replace: true });
     }
-
-
-
   }, [globalContext.advancedSearchFieldData, search, navigate]);
 
   useEffect(() => {
@@ -143,13 +143,14 @@ const DealerPage = () => {
       }));
     }
   }, [brandDataIsLoading]);
-  
-  if (loading) {
+
+  if (loading || byDealerDataIsLoading) {
     return <CLoader />;
   }
-  
-    if (!brandDataIsLoading && !byDealerData?.dealer)
-      return <p>Dealer not found</p>;
+
+  if (!brandDataIsLoading && !byDealerData?.dealer)
+    return <p>Dealer not found</p>;
+
   return (
     <div className={styles.dealer_page_container}>
       <DealerPageMobile
@@ -158,9 +159,9 @@ const DealerPage = () => {
         dealer={byDealerData?.dealer!}
         totalCars={byDealerData?.totalCars || 0}
         dealerNameAndTotal={
-          byDealerDataIsLoading && brandDataIsLoading
-            ? "Loading..."
-            : `Cars from ${byDealerData?.dealer?.dealerName}`
+          byDealerDataIsLoading
+            ? t("loading")
+            : `${t("carsFrom")} ${byDealerData?.dealer?.dealerName}`
         }
         carList={
           <CarCardContainer
@@ -172,11 +173,11 @@ const DealerPage = () => {
                 carId={car.carId}
                 key={car.carId}
                 carImage={car.carImages[0]}
-                carBrand={car.carBrand}
-                carModel={car.carModel}
-                carMileage={car.carMileage}
-                carFuel={car.carFuel}
-                carYear={car.carERD}
+                carBrand={car.lang[globalContext.lang].carBrand}
+                carModel={car.lang[globalContext.lang].carModel}
+                carMileage={car.carMileage.toString()}
+                carFuel={car.lang[globalContext.lang].carFuel}
+                carYear={car.carERD.toString()}
               />
             ))}
           </CarCardContainer>
@@ -189,8 +190,8 @@ const DealerPage = () => {
         dealer={byDealerData?.dealer!}
         dealerNameAndTotal={
           byDealerDataIsLoading
-            ? "Loading..."
-            : `Cars from ${byDealerData?.dealer?.dealerName}`
+            ? t("loading")
+            : `${t("carsFrom")} ${byDealerData?.dealer?.dealerName}`
         }
         carList={
           <CarCardContainer
@@ -202,11 +203,11 @@ const DealerPage = () => {
                 carId={car.carId}
                 key={car.carId}
                 carImage={car.carImages[0]}
-                carBrand={car.carBrand}
-                carModel={car.carModel}
-                carMileage={car.carMileage}
-                carFuel={car.carFuel}
-                carYear={car.carERD}
+                carBrand={car.lang[globalContext.lang].carBrand}
+                carModel={car.lang[globalContext.lang].carModel}
+                carMileage={car.carMileage.toString()}
+                carFuel={car.lang[globalContext.lang]?.carFuel}
+                carYear={car.carERD.toString()}
               />
             ))}
           </CarCardContainer>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import hamburger from "../../../assets/images/nav_images/hamburger.png";
 import close from "../../../assets/images/nav_images/close.png";
@@ -7,14 +7,13 @@ import search_icon from "../../../assets/images/nav_images/search_icon.png";
 import styles from "./mobile-nav.module.scss";
 import { NavProps } from "../../../types/otherTypes";
 import { GlobalContext } from "../../../context/GlobalContext";
+import { useTranslation } from "react-i18next";
 
 export const MobileNav = ({
   showLanguageSelector,
   setShowLanguageSelector,
   languageSelectorRef,
   suggestionsRef,
-  showCars,
-  setShowCars,
   filteredSuggestions,
   queryWord,
   handleInputChange,
@@ -24,17 +23,15 @@ export const MobileNav = ({
   selectedIndex,
   refTracker,
   setRefTracker,
-  someBrands,
-  handleBrandClick,
   changeLanguage,
   flags,
   selected_flag,
 }: NavProps) => {
   const [searchVisible, setSearchVisible] = useState(false);
-  // const [handleCloseLanguage, setHandleCloseLanguage] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const globalContext = useContext(GlobalContext);
+  const { t } = useTranslation("nav");
 
   const navigate = useNavigate();
 
@@ -137,7 +134,9 @@ export const MobileNav = ({
                       </div>
                     ))
                   ) : (
-                    <div className={styles.suggestion_item}>Not found</div>
+                    <div className={styles.suggestion_item}>
+                      {t("notFound")}
+                    </div>
                   )}
                 </div>
               )}
@@ -158,10 +157,7 @@ export const MobileNav = ({
                   alt="search icon"
                 />
               </div>
-              <div
-                // ref={languageSelectorRef}
-                className={styles.language_selector}
-              >
+              <div className={styles.language_selector}>
                 <div
                   ref={languageSelectorRef}
                   className={styles.image_and_icon_wrapper}
@@ -226,7 +222,6 @@ export const MobileNav = ({
                 className={styles.menu_icon}
                 onClick={() => {
                   setShowLanguageSelector(false);
-                  setShowCars(false);
                   setShowMenu(!showMenu);
                 }}
                 ref={hamburgerRef}
@@ -249,42 +244,7 @@ export const MobileNav = ({
       >
         <div className={styles.nav_open}>
           <ul className={styles.menu_list_container}>
-            <li className={styles.menu_list_car}>
-              <div
-                className={styles.all_cars_container}
-                onClick={() => setShowCars(!showCars)}
-              >
-                <div className={styles.all_cars_txt}>All Cars</div>
-                <img
-                  className={`${styles.all_cars_arrow} ${
-                    showCars ? styles.rotated : ""
-                  }`}
-                  src={arrow}
-                  alt="arrow down"
-                />
-              </div>
-
-              <div
-                className={`${styles.car_list} ${
-                  showCars ? styles.show_cars_open : ""
-                }`}
-              >
-                <ul>
-                  {someBrands.map((brand, index) => (
-                    <li
-                      key={index}
-                      className={styles.car_list_item}
-                      onClick={() => {
-                        setShowMenu(false);
-                        handleBrandClick(brand);
-                      }}
-                    >
-                      {brand}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </li>
+            <li className={styles.menu_list_item}>{t("all")}</li>
             <li
               onClick={() => {
                 setShowMenu(false);
@@ -292,7 +252,7 @@ export const MobileNav = ({
               }}
               className={styles.menu_list_item}
             >
-              About Us
+              {t("about")}
             </li>
             <li
               onClick={() => {
@@ -301,7 +261,7 @@ export const MobileNav = ({
               }}
               className={styles.menu_list_item}
             >
-              Contact Us
+              {t("contact")}
             </li>
             <li
               onClick={() => {
@@ -310,7 +270,7 @@ export const MobileNav = ({
               }}
               className={styles.menu_list_item}
             >
-              FAQs
+              {t("faq")}
             </li>
           </ul>
         </div>

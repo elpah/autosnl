@@ -50,71 +50,38 @@ const LanguageWrapper = ({ children }: { children: React.ReactNode }) => {
     if (lang && isValidLang(lang)) {
       setLang(lang);
       i18n.changeLanguage(lang);
-    } else if (globalLang) {
-      i18n.changeLanguage(globalLang);
     } else {
       const pathSegments = location.pathname.split("/").filter(Boolean);
       if (
         pathSegments.length > 0 &&
         !["en", "nl", "ru", "ua"].includes(pathSegments[0])
       ) {
-        const newPath = `/en${location.pathname}${location.search}`;
+        const newPath = `/${globalLang || "en"}${location.pathname}${
+          location.search
+        }`;
         navigate(newPath, { replace: true });
       }
+      i18n.changeLanguage(globalLang);
     }
   }, [lang, globalLang, setLang, i18n, navigate, location]);
 
   return <>{children}</>;
 };
 
+const RootRedirect = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { pathname } = location;
+  const { lang: globalLang } = useContext(GlobalContext);
 
+  useEffect(() => {
+    if (pathname === "/") {
+      navigate(`/${globalLang || "en"}`, { replace: true });
+    }
+  }, [pathname, navigate]);
 
-
-// const LanguageWrapper = ({ children }: { children: React.ReactNode }) => {
-//   const { lang: urlLang } = useParams();
-//   const { i18n } = useTranslation<"en" | "nl" | "ru" | "ua">();
-//   const { lang: globalLang, setLang } = useContext(GlobalContext);
-//   const navigate = useNavigate();
-//   const location = useLocation();
-
-//   console.log("First Check Lang:", urlLang);
-//   useEffect(() => {
-//     const pathSegments = location.pathname.split("/").filter(Boolean);
-//     if (
-//       pathSegments.length > 0 &&
-//       !["en", "nl", "ru", "ua"].includes(pathSegments[0])
-//     ) {
-//       const newPath = `/en${location.pathname}${location.search}`;
-//       navigate(newPath, { replace: true });
-//     }
-//     if (urlLang && isValidLang(urlLang)) {
-//       setLang(urlLang);
-//       console.log(globalLang);
-
-//       i18n.changeLanguage(urlLang);
-//     } else if (!urlLang && globalLang) {
-//       setLang(globalLang);
-//       i18n.changeLanguage(globalLang);
-//     }
-//     console.log(globalLang);
-//   }, [urlLang, globalLang, setLang, i18n, navigate, location]);
-
-//   return <>{children}</>;
-// };
-
-// const RootRedirect = () => {
-//   const navigate = useNavigate();
-//   const location = useLocation();
-//   const { pathname, search } = location;
-
-//   useEffect(() => {
-//     if (pathname === "/") {
-//       navigate("/en", { replace: true });
-//     }
-//   }, [pathname, navigate]);
-
-//   return null;
-// };
+  return null;
+};
 
 function App() {
   const [carData, setCarData] = useState<ICarData>({
@@ -179,10 +146,10 @@ function App() {
       >
         <Suspense fallback={<CLoader />}>
           <LanguageWrapper>
-            {/* <Navbar /> */}
+            <Navbar />
             <div className="App">
               <Routes>
-                {/* <Route path="/" element={<RootRedirect />} /> */}
+                <Route path="/" element={<RootRedirect />} />
                 <Route path="/:lang" element={<Home />} />
                 <Route path="/:lang/about" element={<About />} />
                 <Route path="/:lang/faq" element={<Faq />} />
@@ -197,7 +164,7 @@ function App() {
                   path="/:lang/advanced-search"
                   element={<AdvancedSearch />}
                 />
-                {/* <Route path="*" element={<NotFound />} /> */}
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </div>
             <Footer />

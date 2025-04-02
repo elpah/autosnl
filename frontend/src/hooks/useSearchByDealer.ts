@@ -8,7 +8,7 @@ const useSearchByDealer = (advancedCarData: IAdvancedSeachFieldData) => {
   const [debounceDealerSearch] = useDebounce(advancedCarData, 500);
   const searchByDealer = () =>
     axios
-      .get<ICarResponse>("http://localhost:8080/api/carByDealerId", {
+      .get<ICarResponse>(`${process.env.REACT_APP_BASE_URL}carByDealerId`, {
         params: debounceDealerSearch,
       })
       .then((res) => res.data);
