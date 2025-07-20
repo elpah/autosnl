@@ -1,0 +1,23 @@
+{
+  "home": "Головна",
+  "inc": "вкл.",
+  "exc": "без",
+  "vat": "ПДВ",
+  "bpm": "ТЗ",
+  "mileage": "Пробіг",
+  "transmission": "Трансмісія",
+  "fuelType": "Тип палива",
+  "erd": "ERD",
+  "power": "Потужність",
+  "engineCapacity": "Об'єм двигуна",
+  "weight": "Вага",
+  "color": "Колір",
+  "bodyType": "Тип кузова",
+  "numberOfDoors": "Кількість дверей",
+  "vanish": "Зникати",
+  "damagesDetails": "Деталі пошкоджень",
+   "noDamages": "Пошкоджень не повідомлено",
+  "dealerDetails": "Деталі дилера",
+  "visit": "Відвідати профіль компанії",
+  "options": "Опції"
+}

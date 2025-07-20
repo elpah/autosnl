@@ -1,0 +1,26 @@
+@use "../../global.scss" as *;
+
+.car_card_container {
+  display: grid;
+  gap: 35px;
+  margin-bottom: 30px;
+}
+@media (min-width: 600px) {
+  .car_card_container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 850px) {
+  .car_card_container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .car_card_container {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+  }
+}

@@ -1,0 +1,33 @@
+.card_container {
+  display: flex;
+  padding: 8px;
+  margin-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+  border: 0.5px solid #6a6a6a;
+  box-sizing: border-box;
+
+  &.selected {
+    border: 1.5px solid rgb(49, 49, 49);
+  }
+
+  .card_name {
+    color: #000;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.select_item_container_wrapper {
+  width: 90%;
+  margin: auto;
+  margin-bottom: 30px;
+}
+
+@media (min-width: 500px) {
+  .card_container {
+    padding: 8px 6px;
+  }
+}

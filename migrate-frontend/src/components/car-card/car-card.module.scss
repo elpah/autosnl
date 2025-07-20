@@ -1,0 +1,206 @@
+@use "../../global.scss" as *;
+
+.car_card_container {
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
+  min-width: 240px;
+  padding-bottom: 20px;
+  height: auto;
+  .car_image_container {
+    min-width: 189px;
+    height: auto;
+    .car_img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+  .car_body_container {
+    width: 90%;
+    margin: auto;
+
+    .card_header {
+      color: #4c4c4c;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      margin-top: 13px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-weight: 800;
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: $primary-color;
+    }
+    .car_details_container {
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      .car_details {
+        display: flex;
+        .icon_container {
+          display: flex;
+          align-items: center;
+        }
+        .text {
+          display: flex;
+          align-items: center;
+          color: #4c4c4c;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+      }
+    }
+    .button {
+      all: unset;
+      display: flex;
+      width: 100%;
+      height: 35px;
+      font-weight: 600;
+      justify-content: center;
+      align-items: center;
+      background: $primary-color;
+      color: #fff;
+      font-size: 13px;
+    }
+  }
+}
+@media (min-width: 400px) {
+  .car_card_container {
+    .car_image_container {
+      height: auto;
+      .car_img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .car_body_container {
+      .card_header {
+        font-size: 16px;
+        margin-bottom: 15px;
+      }
+      .car_details_container {
+        margin-bottom: 15px;
+
+        .car_details {
+          .icon_container {
+            .icon {
+              width: 25px;
+              height: 25px;
+            }
+          }
+          .text {
+            font-size: 16px;
+          }
+        }
+      }
+      .button {
+        height: 40px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+@media (min-width: 768px) {
+  .car_card_container {
+    max-width: none;
+
+    height: fit-content;
+    .car_image_container {
+      width: 100%;
+      height: auto;
+      .car_img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+    .car_body_container {
+      width: 90%;
+      margin: auto;
+
+      .card_header {
+        font-size: 16px;
+        margin-top: 16px;
+        margin-bottom: 12px;
+      }
+      .car_details_container {
+        margin-bottom: 18px;
+        display: flex;
+        justify-content: space-between;
+        .car_details {
+          display: flex;
+          gap: 0;
+          .icon_container {
+            display: flex;
+            align-items: center;
+            .icon {
+              height: 20px;
+            }
+          }
+          .text {
+            font-size: 13px;
+          }
+        }
+      }
+      .button {
+        height: 40px;
+        font-size: 14px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .car_card_container {
+    .car_body_container {
+      .card_header {
+      }
+      .car_details_container {
+        .car_details {
+          .icon_container {
+            .icon {
+            }
+          }
+          .text {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .car_card_container {
+    .car_body_container {
+      .card_header {
+        // font-size: 18px;
+        margin-bottom: 18px;
+      }
+      .car_details_container {
+        .car_details {
+          .icon_container {
+            .icon {
+              height: 25px;
+            }
+          }
+          .text {
+            font-size: 14px;
+          }
+        }
+      }
+      .button {
+        height: 50px;
+        font-size: 16px;
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "home": "Главная",
+  "inc": "вкл.",
+  "exc": "без",
+  "vat": "НДС",
+  "bpm": "ТН",
+  "mileage": "Пробег",
+  "transmission": "Трансмиссия",
+  "fuelType": "Тип топлива",
+  "erd": "ERD",
+  "power": "Мощность",
+  "engineCapacity": "Объем двигателя",
+  "weight": "Вес",
+  "color": "Цвет",
+  "bodyType": "Тип кузова",
+  "numberOfDoors": "Количество дверей",
+  "vanish": "Исчезать",
+  "damagesDetails": "Детали повреждений",
+  "dealerDetails": "Данные дилера",
+  "visit": "Посетить профиль компании",
+  "noDamages": "Повреждений не сообщено",
+  "options": "Опции"
+}

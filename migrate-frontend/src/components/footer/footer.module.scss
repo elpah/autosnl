@@ -1,0 +1,280 @@
+@use "../../global.scss" as *;
+
+.footer_container {
+  width: 90%;
+  max-width: 1700px;
+  margin: auto;
+  padding-top: 50px;
+
+  .footer_header_div {
+    margin-bottom: 1.25rem;
+    .logo_header {
+      margin-bottom: 15px;
+      font-size: 1.125rem;
+      font-weight: 700;
+      line-height: normal;
+      color: $primary-color;
+    }
+    .logo_paragraph {
+      max-width: 500px;
+
+      margin-top: -0.4rem;
+      font-size: 0.625rem;
+      color: #4c4c4c;
+      font-weight: 400;
+      line-height: 15px;
+    }
+  }
+  .section_container_div {
+    .footer_section_div {
+      margin-bottom: 20px;
+      .footer_headers {
+        margin-bottom: 10px;
+        font-size: 0.75rem;
+        color: $primary-color;
+        font-weight: 700;
+        line-height: normal;
+      }
+      .footer_listcontainer {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        li {
+          font-size: 0.625rem;
+          color: #4c4c4c;
+          font-style: normal;
+          font-weight: 400;
+          margin-bottom: 9px;
+          // &:hover{
+          //   color:$primary-color
+          // }
+        }
+      }
+      .contact_div_email,
+      .contact_div_phone {
+        margin-bottom: 0.4rem;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        .contact_img_container {
+          display: flex;
+          align-items: center;
+          .contact_image {
+            width: 16px;
+            height: 16px;
+          }
+        }
+        .contact_item {
+          color: #4c4c4c;
+          font-size: 0.625rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+      }
+      .contact_div_phone {
+        margin-top: -0.2rem;
+        margin-bottom: 0.6rem;
+      }
+      .socials {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        margin-top: 10px;
+        .socials_image {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+}
+.copyright {
+  padding-bottom: 20px;
+  width: 90%;
+  max-width: 1700px;
+  margin: auto;
+  font-size: 0.625rem;
+  color: #4c4c4c;
+}
+
+@media (min-width: 768px) {
+  .footer_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 36px;
+
+    .footer_header_div {
+      width: 32%;
+      .logo_header {
+        font-size: 1.2rem;
+      }
+      .logo_paragraph {
+        font-size: 0.69rem;
+        // font-weight: 500;
+        line-height: 20px;
+      }
+    }
+    .section_container_div {
+      width: 65%;
+      flex-direction: row;
+      display: flex;
+
+      justify-content: space-between;
+      .footer_section_div {
+        .footer_headers {
+          font-size: 1.125rem;
+          padding-top: 11px;
+          margin-bottom: 22px;
+        }
+        .footer_listcontainer {
+          li {
+            font-size: 0.69rem;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            &:hover {
+              color: $primary-color;
+            }
+          }
+        }
+        .contact_div_phone,
+        .contact_div_email {
+          gap: 10px;
+          .contact_img_container {
+            .contact_image {
+              width: 22px;
+              height: 22px;
+            }
+          }
+          .contact_item {
+            font-size: 0.75rem;
+            transition: all 0.2s ease;
+          &:hover{
+            color:$primary-color
+          }
+          }
+        }
+        .contact_div_phone {
+          margin-top: -0.4rem;
+        }
+        .socials {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          margin-top: 20px;
+          .socials_image {
+            width: 22px;
+            height: 22px;
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: 1024px) {
+  .footer_container {
+    gap: 36px;
+
+    .footer_header_div {
+      width: 40%;
+      .logo_header {
+        font-size: 1.5rem;
+      }
+      .logo_paragraph {
+        font-size: 0.75rem;
+      }
+    }
+    .section_container_div {
+      width: 60%;
+      justify-content: space-around;
+      .footer_section_div {
+        .footer_headers {
+          font-size: 1.2rem;
+          margin-bottom: 2rem;
+        }
+        .footer_listcontainer {
+          li {
+            font-size: 0.75rem;
+            margin-bottom: 10px;
+          }
+        }
+        .contact_div_phone,
+        .contact_div_email {
+          gap: 10px;
+          .contact_item {
+            font-size: 0.75rem;
+          }
+        }
+        .socials {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          gap: 1.0625rem;
+
+          .socials_image {
+            width: 24px;
+            height: 24px;
+          }
+        }
+      }
+    }
+  }
+  .copyright {
+    font-size: 0.875rem;
+  }
+}
+@media (min-width: 1200px) {
+  .footer_container {
+    // gap: 36px;
+
+    .footer_header_div {
+      // width: 40%;
+      .logo_header {
+        font-size: 1.8rem;
+      }
+      .logo_paragraph {
+        font-size: 0.85rem;
+        font-weight: 400;
+      }
+    }
+    .section_container_div {
+      width: 60%;
+      justify-content: space-around;
+      .footer_section_div {
+        .footer_headers {
+          font-size: 1.5rem;
+          margin-bottom: 2rem;
+        }
+        .footer_listcontainer {
+          li {
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+          }
+        }
+        .contact_div_phone,
+        .contact_div_email {
+          gap: 10px;
+          .contact_item {
+            font-size: 0.85rem;
+          }
+        }
+        .socials {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          gap: 1.0625rem;
+
+          .socials_image {
+            width: 24px;
+            height: 24px;
+          }
+        }
+      }
+    }
+  }
+  .copyright {
+    font-size: 0.875rem;
+  }
+}
