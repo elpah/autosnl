@@ -37,6 +37,8 @@ export const getHomeSections = async () => {
           "lang.ru.carBody": 1,
           carMileage: 1,
           carERD: 1,
+         price_incl_btw:1
+
         })
         .limit(30)
         .toArray();

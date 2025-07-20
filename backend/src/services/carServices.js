@@ -80,6 +80,7 @@ const getCarsWithFilters = async (filters = {}, page = 1, limit = 30) => {
     "lang.nl.carFuel": 1,
     "lang.ua.carFuel": 1,
     "lang.ru.carFuel": 1,
+    price_incl_btw: 1,
     carMileage: 1,
     carERD: 1,
   };
@@ -174,12 +175,14 @@ const getCarsWithMultiFilters = async (filters = {}, page = 1, limit = 30) => {
     "lang.nl.carFuel": 1,
     "lang.ua.carFuel": 1,
     "lang.ru.carFuel": 1,
+    price_incl_btw: 1,
     carMileage: 1,
     carERD: 1,
   };
 
   const cars = await col
     .find(query, { projection })
+    .sort(filters.sortOptions)
     .skip(skip)
     .limit(limit)
     .toArray();
@@ -272,6 +275,7 @@ const getCarByDealerId = async (filters = {}, page = 1, limit = 30) => {
     "lang.nl.carFuel": 1,
     "lang.ua.carFuel": 1,
     "lang.ru.carFuel": 1,
+    price_incl_btw: 1,
     carMileage: 1,
     carERD: 1,
   };

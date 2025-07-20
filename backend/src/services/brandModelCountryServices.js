@@ -135,7 +135,6 @@ const getBrandModelsCountries = async () => {
         let key = body.en.toLowerCase();
         formattedResult.body[key] = body;
       });
-    console.log(formattedResult);
     return formattedResult;
   } catch (error) {
     console.error("Error retrieving car metadata:", error);
