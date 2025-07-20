@@ -1,0 +1,31 @@
+@use "../../global.scss" as *;
+
+.car_page_container {
+  width: 100%;
+  min-height: 100vh;
+  margin: auto;
+  .car_map_container {
+    width: 90%;
+    max-width: 1700px;
+    margin: auto;
+    padding-top: 25px;
+    margin-bottom: 12px;
+    display: flex;
+    gap: 5px;
+    color: #4c4c4c;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+
+    .map_name {
+      cursor: pointer;
+      &:hover {
+        color: $primary-color;
+      }
+    }
+
+    .current_car {
+      color: $primary-color;
+    }
+  }
+}

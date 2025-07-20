@@ -1,0 +1,29 @@
+{
+  "home": "Home",
+  "inc": "incl.",
+  "exc":"excl.",
+  "vat": "VAT",
+  "bpm": "BPM",
+  "mileage": "Mileage",
+  "transmission": "Transmission",
+  "fuelType": "Fuel Type",
+  "erd": "ERD",
+  "power": "Power",
+  "engineCapacity": "Engine Capacity",
+  "weight": "Weight",
+  "color": "Color",
+  "bodyType": "Body Type",
+  "numberOfDoors": "Number of Doors",
+  "vanish": "Vanish",
+  "damagesDetails": "Damages Details",
+  "noDamages": "No damages reported",
+  "dealerDetails": "Dealer Details",
+  "options": "Options",
+  "visit":"  Visit Company Profile"
+}
+
+
+
+
+
+
