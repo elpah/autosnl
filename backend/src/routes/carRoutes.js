@@ -12,33 +12,7 @@ import {
 import { getHomeSections } from "../services/homeSectionService.js";
 
 import { getBrandModelsCountries } from "../services/brandModelCountryServices.js";
-import {
-  processArrays,
-  parseNums,
-} from "../utils/utils.js";
-
-carRouter.post("/create-new-car", async (req, res) => {
-  const carData = req.body;
-
-  try {
-    const newCar = await createNewCar(carData);
-    res.status(200).json({ message: "Car Created Successfully", newCar });
-  } catch (err) {
-    console.error("Error creating car:", err);
-    res.status(500).send(err.message);
-  }
-});
-
-// carRouter.get("/cars", async (req, res) => {
-//   const page = parseInt(req.query.page) || 1;
-//   const limit = parseInt(req.query.limit) || 20;
-//   try {
-//     const cars = await getAllCars(page, limit);
-//     res.status(200).json(cars);
-//   } catch (err) {
-//     res.status(500).send("Internal Server Error");
-//   }
-// });
+import { processArrays, parseNums } from "../utils/utils.js";
 
 carRouter.get("/carById", async (req, res) => {
   let { carId } = req.query;
@@ -105,7 +79,18 @@ carRouter.get("/advanced-search", async (req, res) => {
     erdMax,
     country,
     pageNumber,
+    sortBy,
   } = req.query;
+
+  let sortOptions = {};
+
+  if (sortBy === "price_asc") {
+    sortOptions = { price_incl_btw: 1 };
+  } else if (sortBy === "price_desc") {
+    sortOptions = { price_incl_btw: -1 };
+  } else if (sortBy === "recent") {
+    sortOptions = { createdAt: -1 };
+  }
 
   try {
     const filters = {
@@ -125,6 +110,7 @@ carRouter.get("/advanced-search", async (req, res) => {
       mileageMax: parseNums(mileageMax),
       erdMin: parseNums(erdMin),
       erdMax: parseNums(erdMax),
+      sortBy:sortOptions
     };
     const page = parseInt(pageNumber) || 1;
     const { totalCars, cars } = await getCarsWithMultiFilters(filters, page);
