@@ -5,6 +5,7 @@ type ValueObject = {
   title: string;
   text: string;
 };
+
 export const Value = ({ image, title, text }: ValueObject) => {
   return (
     <div className={styles.container}>
