@@ -4,11 +4,11 @@ import fuel from "./car_details/car_card/fuel.svg";
 import year from "./car_details/car_card/year.svg";
 
 //about images
-import customer_satisfaction from "./about_images/custumersatisfaction.png";
-import delivery from "./about_images/delivery_image.png";
-import innovation from "./about_images/innovation.png";
-import integrity from "./about_images/integrity.png";
-import quality from "./about_images/quality.png";
+import customer_satisfaction from "./about_images/custumersatisfaction.svg";
+import delivery from "./about_images/delivery_image.webp";
+import innovation from "./about_images/innovation.svg";
+import integrity from "./about_images/integrity.svg";
+import quality from "./about_images/quality.svg";
 
 //car page images
 import body from "./car_details/car_page/body.svg";
@@ -37,13 +37,13 @@ import location_icon from "./contact-images/location_icon.svg";
 import person_icon from "./contact-images/person_icon.svg";
 
 // cover images
-import about_cover from "./cover_images/about_cover.jpg";
-import contact_cover from "./cover_images/contact_cover.png";
-import faq_cover from "./cover_images/faq_cover.png";
-import home_cover from "./cover_images/home_cover.png";
+import about_cover from "./cover_images/about_cover.webp";
+import contact_cover from "./cover_images/contact_cover.webp";
+import faq_cover from "./cover_images/faq_cover.webp";
+import home_cover from "./cover_images/home_cover.webp";
 
 // faq icon
-import faq_icon from "./faq_images/faqicon.png";
+import faq_icon from "./faq_images/faqicon.webp";
 
 // footer icons
 import footer_call from "./footer_images/footer_call.svg";
@@ -56,12 +56,12 @@ import linkedin from "./socials/linkedin.png";
 import twitter from "./socials/twitter.png";
 
 // why card
-import best_rate from "./why_card_images/best_rate.png";
-import great_offers from "./why_card_images/great_offers.png";
-import match_requirement from "./why_card_images/match_requirement.png";
-import quality_assurance from "./why_card_images/quality_assurance.png";
-import useful_suggest from "./why_card_images/useful_suggest.png";
-import variety_options from "./why_card_images/variety_options.png";
+import best_rate from "./why_card_images/best_rate.svg";
+import great_offers from "./why_card_images/great_offers.svg";
+import match_requirement from "./why_card_images/match_requirement.svg";
+import quality_assurance from "./why_card_images/quality_assurance.svg";
+import useful_suggest from "./why_card_images/useful_suggest.svg";
+import variety_options from "./why_card_images/variety_options.svg";
 
 // language flags
 import en_flag from "./language-flags/en.webp";

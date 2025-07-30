@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import CarCard from "../car-card/CarCard";
 import { type CarTranslation } from "../../types/carCategoriesResponse";
 import { GlobalContext } from "../../context/GlobalContext";
 import { type Car } from "../../types/homeSectionResponseType";
 import styles from "./home-section.module.scss";
+import SectionSwiper from "../section-swiper/SectionSwiper";
 
 type SectionHomeProps = {
   title: string;
@@ -21,6 +21,7 @@ export const HomeSection = ({
   carsArray,
 }: SectionHomeProps) => {
   const globalContext = useContext(GlobalContext);
+
   return (
     <section className={styles.section_container}>
       <h2 className={styles.section_header}>{title}</h2>
@@ -42,26 +43,10 @@ export const HomeSection = ({
           ))}
         </div>
         <div className={styles.car_container}>
-          {carsArray
-            ?.filter(
-              (car) =>
-                selectedVehicleType === "" ||
-                car.lang.en.carBody.toLowerCase() ===
-                  selectedVehicleType.toLowerCase()
-            )
-            .map((car) => (
-              <CarCard
-                key={car.carId}
-                carBrand={car.lang[globalContext.lang].carBrand}
-                carModel={car.lang[globalContext.lang].carModel}
-                carFuel={car.lang[globalContext.lang].carFuel}
-                carImage={car.carImages[0]}
-                carYear={car.carERD.toString()}
-                carId={car.carId}
-                carMileage={car.carMileage.toString()}
-                carPrice={car.price_incl_btw ? `€ ${car.price_incl_btw}` : ""}
-              />
-            ))}
+          <SectionSwiper
+            selectedVehicleType={selectedVehicleType}
+            carsArray={carsArray}
+          />
         </div>
       </div>
     </section>
