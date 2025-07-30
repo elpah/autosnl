@@ -61,6 +61,7 @@ export const HomeSection = ({
                 carMileage={car.carMileage.toString()}
                 carPrice={car.price_incl_btw ? `€ ${car.price_incl_btw}` : ""}
               />
+              
             ))}
         </div>
       </div>

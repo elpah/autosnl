@@ -47,6 +47,17 @@ export const MobileNav = ({
   const hamburgerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (showMenu) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [showMenu]);
+
+  useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
         hamburgerRef.current &&
@@ -240,8 +251,27 @@ export const MobileNav = ({
         ref={menuRef}
       >
         <div className={styles.nav_open}>
+          <div className={styles.logo_close_container}>
+            <div className={styles.logo_container}>
+              <h2 className={styles.logo_header}>ZaurAutos</h2>
+            </div>
+            <button
+              className={styles.close_container}
+              onClick={() => setShowMenu(false)}
+            >
+              <img className={styles.close} src={close} alt="close button" />
+            </button>
+          </div>
           <ul className={styles.menu_list_container}>
-            <li className={styles.menu_list_item}>{t("all")}</li>
+            <li
+              onClick={() => {
+                setShowMenu(false);
+                navigate(`/${globalContext.lang}/search-result`);
+              }}
+              className={styles.menu_list_item}
+            >
+              {t("all")}
+            </li>
             <li
               onClick={() => {
                 setShowMenu(false);
