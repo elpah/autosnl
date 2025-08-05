@@ -57,7 +57,7 @@ const Contact = () => {
         <p className={styles.header_subtext}>{t("welcome")}</p>
       </div>
       <div className={styles.contact_body}>
-        <h2 className={styles.body_header}>Contact Details</h2>
+        <h2 className={styles.body_header}>{t("contactDetails")}</h2>
         <div className={styles.body_card_container}>
           {contactDetails.map((contact, index) => (
             <ContactCard

@@ -99,9 +99,11 @@ export const FilterItemsContainer = () => {
                 </>
               ) : null
             ) : foundCategory.title === t("searchByModel") ? (
-              globalContext.advancedSearchFieldData.brand?.includes(
-                "All Brands"
-              ) ? (
+              globalContext.advancedSearchFieldData.brand?.length === 0 ? (
+                <div>Select a brand first</div>
+              ) : globalContext.advancedSearchFieldData.brand?.includes(
+                  "All Brands"
+                ) ? (
                 Object.values(data?.brands || {}).flatMap((brand) =>
                   Object.entries(brand.models || {}).map(
                     ([modelKey, modelData]) => (

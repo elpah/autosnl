@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import styles from "./contact-form-map.module.scss";
+import { countryCode } from "../../tdata/countryCode";
 
 export const ContactFormMap = () => {
   const { t } = useTranslation<string>("contact");
@@ -54,21 +55,16 @@ export const ContactFormMap = () => {
               <option value="" disabled>
                 {t("countryCode")}
               </option>
-              <option className={styles.option_item} value="us">
-                US (+1)
-              </option>
-              <option className={styles.option_item} value="ca">
-                CA (+1)
-              </option>
-              <option className={styles.option_item} value="gb">
-                UK (+44)
-              </option>
-              <option className={styles.option_item} value="au">
-                AU (+61)
-              </option>
-              <option className={styles.option_item} value="in">
-                IN (+91)
-              </option>
+
+              {countryCode.map((country, index) => (
+                <option
+                  className={styles.option_item}
+                  value={country.code}
+                  key={index}
+                >
+                  {country.name} ({country.code})
+                </option>
+              ))}
             </select>
 
             <div className={styles.input_svg}>
@@ -84,7 +80,9 @@ export const ContactFormMap = () => {
                   fill="#4C4C4C"
                 />
               </svg>
-              <input type="tel" placeholder={t("phoneNumber")} />
+              <input type="tel" placeholder={t("phoneNumber")} 
+               pattern="[0-9]*" 
+               inputMode="numeric" />
             </div>
           </div>
           <div className={styles.input_container}>
