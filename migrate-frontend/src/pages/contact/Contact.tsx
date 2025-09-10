@@ -42,8 +42,8 @@ const Contact = () => {
     },
     {
       title: t("phone"),
-      details: "+31000000000",
-      link: "tel:+31000000000",
+      details: "+31 615 377 090",
+      link: "tel:+31615377090",
       image: `${phone_icon}`,
     },
   ];

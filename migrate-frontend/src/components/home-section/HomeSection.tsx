@@ -32,7 +32,6 @@ export const HomeSection = ({
               key={vehicleType}
               onClick={() => {
                 setSelectedVehicleType(vehicleType);
-                console.log(vehicleType);
               }}
               className={`${styles.section_item} ${
                 selectedVehicleType === vehicleType ? styles.selected : ""

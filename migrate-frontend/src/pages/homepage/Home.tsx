@@ -61,11 +61,6 @@ export const Home = () => {
     }
   }, []);
 
-  useEffect(()=>{
-    console.log(sectionData?.sections.recommended);
-  },[sectionData])
-
-
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
     if (name === "brand") {
