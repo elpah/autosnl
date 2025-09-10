@@ -83,7 +83,7 @@ export const Footer = () => {
               </div>
 
               <p className={styles.contact_item}>
-                <a href="tel:+310000000000">+31000000000</a>
+                <a href="tel:+31615377090">+31 615 377 090</a>
               </p>
             </div>
             <div className={styles.contact_div_email}>

@@ -7,6 +7,7 @@ import queryString from "query-string";
 import { GlobalContext } from "../../context/GlobalContext";
 import { en_flag, nl_flag, ru_flag, ua_flag } from "../../assets/images/images";
 import styles from "./navbar.module.scss";
+import LoadingNav from "./loading-nav/LoadingNav";
 
 const Navbar = () => {
   const [showLanguageSelector, setShowLanguageSelector] =
@@ -30,18 +31,25 @@ const Navbar = () => {
     }
   }, [selectedIndex, filteredSuggestions]);
 
-  if (isLoading) return <p></p>;
+  if (isLoading)
+    return (
+      <div>
+        <LoadingNav />
+      </div>
+    );
 
-  if (!carData || !carData?.brands) return <p>No data available</p>;
+  let suggestionsArray: string[];
 
-  const suggestionsArray = Object.values(carData.brands).flatMap(
-    ({ name, models }) => [
-      name[globalContext.lang],
-      ...Object.values(models).map(
-        (model) => `${name[globalContext.lang]} ${model[globalContext.lang]}`
-      ),
-    ]
-  );
+  if (carData && carData.brands) {
+    suggestionsArray = Object.values(carData.brands).flatMap(
+      ({ name, models }) => [
+        name[globalContext.lang],
+        ...Object.values(models).map(
+          (model) => `${name[globalContext.lang]} ${model[globalContext.lang]}`
+        ),
+      ]
+    );
+  }
 
   const changeLanguage = (newLang: "en" | "ru" | "nl" | "ua") => {
     globalContext.setLang(newLang);
@@ -122,20 +130,21 @@ const Navbar = () => {
   const checkBeforeHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    let query;
+    let brandEntry;
     const words = queryWord.split(" ");
-
     const possibleBrand = words[0];
 
-    let query;
-    const brandEntry = Object.entries(carData.brands).find(
-      ([, brandData]) =>
-        brandData.name[globalContext.lang].toLowerCase() ===
-        possibleBrand.toLowerCase()
-    );
+    if (carData && carData.brands) {
+      brandEntry = Object.entries(carData.brands).find(
+        ([, brandData]) =>
+          brandData.name[globalContext.lang].toLowerCase() ===
+          possibleBrand.toLowerCase()
+      );
+    }
 
     if (brandEntry) {
       const [_brandKey, brandData] = brandEntry;
-
       if (words.length === 1) {
         query = queryString.stringify(
           { brand: brandData.name.en.toLowerCase() || words[0] },
