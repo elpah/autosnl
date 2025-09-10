@@ -37,9 +37,6 @@ import location_icon from "./contact-images/location_icon.svg";
 import person_icon from "./contact-images/person_icon.svg";
 
 // cover images
-import about_cover from "./cover_images/about_cover.webp";
-import contact_cover from "./cover_images/contact_cover.webp";
-import faq_cover from "./cover_images/faq_cover.webp";
 import home_cover from "./cover_images/home_cover.webp";
 
 // faq icon
@@ -100,9 +97,6 @@ export {
   location_icon,
   person_icon,
   home_cover,
-  about_cover,
-  contact_cover,
-  faq_cover,
   faq_icon,
   footer_call,
   footer_email,

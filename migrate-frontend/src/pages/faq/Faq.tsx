@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import { faq_cover, faq_icon } from "../../assets/images/images";
+import { faq_icon } from "../../assets/images/images";
 import { Faqcard } from "../../components/faqcard/Faqcard";
 import { useFaqs } from "../../tdata/faqs";
 import { useParams } from "react-router-dom";
@@ -46,7 +46,9 @@ const Faq = () => {
     <div className={styles.faq_container}>
       <div
         className={styles.cover}
-        style={{ backgroundImage: `url(${faq_cover})` }}
+        style={{
+          backgroundImage: `url('https://res.cloudinary.com/dvwpuenzk/image/upload/c_scale,w_1200,q_auto,f_auto/v1757473021/faq_cover_f4bvhd.webp')`,
+        }}
       >
         <div className={styles.header_container}>
           <div className={styles.header_image_container}>

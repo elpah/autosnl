@@ -1,5 +1,4 @@
 import {
-  contact_cover,
   email_icon,
   phone_icon,
   location_icon,
@@ -51,7 +50,9 @@ const Contact = () => {
     <div className={styles.contact_container}>
       <div
         className={styles.contact_cover}
-        style={{ backgroundImage: `url(${contact_cover})` }}
+        style={{
+          backgroundImage: `url('https://res.cloudinary.com/dvwpuenzk/image/upload/c_scale,w_1200,q_auto,f_auto/v1757473020/contact_cover_v6nlx2.webp')`,
+        }}
       >
         <h1 className={styles.header}> {t("contactUs")}</h1>
         <p className={styles.header_subtext}>{t("welcome")}</p>

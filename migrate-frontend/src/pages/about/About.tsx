@@ -1,6 +1,5 @@
 import { useTranslation } from "react-i18next";
 import {
-  about_cover,
   customer_satisfaction,
   integrity,
   innovation,
@@ -55,7 +54,9 @@ const About: React.FC = () => {
     <div className={styles.about_container}>
       <div
         className={styles.cover}
-        style={{ backgroundImage: `url(${about_cover})` }}
+        style={{
+          backgroundImage: `url(https://res.cloudinary.com/dvwpuenzk/image/upload/c_scale,w_1200,q_auto,f_auto/v1757473021/about_cover_obtird.webp)`,
+        }}
       >
         <h1 className={styles.header}>{t("about")}</h1>
         <p className={styles.header_subtext}>{t("headerText")}</p>
