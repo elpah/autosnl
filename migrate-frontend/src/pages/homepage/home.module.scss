@@ -176,20 +176,33 @@ $image-width: 100%;
         .popular_images_container {
           margin: auto;
           overflow: hidden;
-          display: flex;
           white-space: nowrap;
-
+          display: flex;
+          align-items: center;
           &::-webkit-scrollbar {
             height: 0px;
           }
 
-          img {
-            animation: scrollSlider 5s linear infinite;
-            flex-shrink: 0;
-            width: auto;
-            height: 50px;
-            padding-top: 18px;
-            padding-bottom: 18px;
+          .slider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            animation: scrollSlider 30s linear infinite;
+
+            .image_container {
+              height: 100%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              img {
+                flex-shrink: 0;
+                width: auto;
+                height: 50px;
+                padding-top: 18px;
+                padding-bottom: 18px;
+              }
+            }
           }
         }
       }
@@ -339,10 +352,15 @@ $image-width: 100%;
 
         .popular_images_cover_container {
           .popular_images_container {
-            img {
-              height: 70px;
-              padding-top: 20px;
-              padding-bottom: 20px;
+            .slider {
+              height: 100%;
+              .image_container {
+                img {
+                
+                  padding-top: 20px;
+                  padding-bottom: 20px;
+                }
+              }
             }
           }
         }
@@ -476,13 +494,13 @@ $image-width: 100%;
 
         .popular_images_cover_container {
           .popular_images_container {
-            &::-webkit-scrollbar {
-              height: 0px;
-            }
-
-            img {
-              height: 90px;
-              padding: 25px auto;
+            .slider {
+              gap: 50px;
+              .image_container {
+                img {
+  height: 70px;                  
+                }
+              }
             }
           }
         }
@@ -623,9 +641,15 @@ $image-width: 100%;
           .popular_images_container {
             max-width: 1700px;
             margin: auto;
-
-            &::-webkit-scrollbar {
-              height: 0px;
+            height: 150px;
+            .slider {
+              .image_container {
+                height: 100%;
+                img {
+                  height: 80px;
+                  // padding: 25px auto;
+                }
+              }
             }
           }
         }

@@ -69,6 +69,19 @@ import nl_flag from "./language-flags/nl.webp";
 import ua_flag from "./language-flags/ua.webp";
 import ru_flag from "./language-flags/ru.webp";
 
+//popular brands
+import bmw from "./popular_brands/bmw.png";
+import toyota from "./popular_brands/toyota.png";
+import kia from "./popular_brands/kia.png";
+import mazda from "./popular_brands/mazda.png";
+import nissan from "./popular_brands/nissan.png";
+import vw from "./popular_brands/vw.png";
+import benz from "./popular_brands/benz.png";
+import honda from "./popular_brands/honda.png";
+import audi from "./popular_brands/audi.png";
+import ford from "./popular_brands/ford.png";
+import tesla from "./popular_brands/tesla.png";
+
 export {
   mile,
   fuel,
@@ -120,4 +133,15 @@ export {
   tes_2,
   tes_3,
   tes_4,
+  bmw,
+  toyota,
+  benz,
+  kia,
+  mazda,
+  nissan,
+  vw,
+  honda,
+  audi,
+  ford,
+  tesla,
 };

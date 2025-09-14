@@ -3,7 +3,7 @@ import { HomeSection } from "../../components/home-section/HomeSection";
 import { WhyCard } from "../../components/why-card/WhyCard";
 import advert from "../../assets/images/home_images/advert.png";
 import { useCategoryData } from "../../tdata/categoryData";
-import popularNissan from "../../assets/images/popular_brands/popular_nissan.png";
+// import popularNissan from "../../assets/images/popular_brands/popular_nissan.png";
 import { Delivery } from "../../components/delivery-section/Delivery";
 import { CLoader } from "../../components/clip-loader/CLoader";
 import { FaArrowRight } from "react-icons/fa";
@@ -20,7 +20,22 @@ import { goToAdvancedSearch, goToSearchResult } from "../../utils/goToResults";
 import { useTranslation } from "react-i18next";
 import { isValidLang } from "../../utils/utilsFunctions";
 import styles from "./home.module.scss";
-import { tes_1, tes_2, tes_3, tes_4 } from "../../assets/images/images";
+import {
+  bmw,
+  toyota,
+  benz,
+  kia,
+  mazda,
+  nissan,
+  vw,
+  audi,
+  ford,
+  tesla,
+  tes_1,
+  tes_2,
+  tes_3,
+  tes_4,
+} from "../../assets/images/images";
 
 export const Home = () => {
   const { t } = useTranslation("home");
@@ -30,8 +45,8 @@ export const Home = () => {
   const globalContext = useContext<IGlobalContext>(GlobalContext);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [recommendedVehicleType, setRecommendedVehicleType] = useState("");
-  const [trustedUsedCars, setTrustedUsedCars] = useState("");
-  const [damagedCars, setDamagedCars] = useState("");
+  // const [trustedUsedCars, setTrustedUsedCars] = useState("");
+  // const [damagedCars, setDamagedCars] = useState("");
   const {
     data: brandModelData,
     error: brandModelError,
@@ -97,17 +112,19 @@ export const Home = () => {
 
   const coverImages = [tes_3, tes_1, tes_2, tes_4];
   const popularBrandImages = [
-    popularNissan,
-    popularNissan,
-    popularNissan,
-    popularNissan,
-    popularNissan,
-    popularNissan,
-    popularNissan,
-    popularNissan,
-    popularNissan,
-    popularNissan,
-    popularNissan,
+    bmw,
+    toyota,
+    benz,
+    kia,
+    mazda,
+    // honda,
+    audi,
+    ford,
+    tesla,
+    nissan,
+    // volvo,
+    vw,
+    // renault,
   ];
 
   if (brandModelError) return <p>{brandModelError.message}</p>;
@@ -428,7 +445,7 @@ export const Home = () => {
               carsArray={sectionData.sections.recommended.cars}
             />
           )}
-        {sectionData &&
+        {/* {sectionData &&
           sectionData.sections.trusted.body &&
           sectionData.sections.trusted.cars.length > 0 && (
             <HomeSection
@@ -438,7 +455,7 @@ export const Home = () => {
               body={sectionData.sections.trusted.body}
               carsArray={sectionData.sections.trusted.cars}
             />
-          )}
+          )} */}
         <div className={styles.popular_container}>
           <div className={styles.popular_header_container}>
             <h3 className={styles.popular_header}>{t("popularBrands")}</h3>
@@ -447,13 +464,20 @@ export const Home = () => {
             <div className={styles.popular_images_container}>
               <div className={styles.slider}>
                 {popularBrandImages.map((image, index) => (
-                  <img key={index} src={image} alt="popular brands icons" />
+                  <div className={styles.image_container}>
+                    <img key={index} src={image} alt="popular brands icons" />
+                  </div>
+                ))}
+                {popularBrandImages.map((image, index) => (
+                  <div className={styles.image_container}>
+                    <img key={index} src={image} alt="popular brands icons" />
+                  </div>
                 ))}
               </div>
             </div>
           </div>
         </div>
-        {sectionData &&
+        {/* {sectionData &&
           sectionData.sections.damaged.body &&
           sectionData.sections.damaged.cars.length > 0 && (
             <HomeSection
@@ -463,7 +487,7 @@ export const Home = () => {
               body={sectionData?.sections?.damaged.body}
               carsArray={sectionData.sections.damaged.cars}
             />
-          )}
+          )} */}
       </div>
       <section className={styles.why_section}>
         <h3 className={styles.why_header}>{t("whyZaurAutos")}</h3>
