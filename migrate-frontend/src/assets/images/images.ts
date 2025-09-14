@@ -37,7 +37,10 @@ import location_icon from "./contact-images/location_icon.svg";
 import person_icon from "./contact-images/person_icon.svg";
 
 // cover images
-import home_cover from "./cover_images/home_cover.webp";
+import tes_4 from "./cover_images/home_cover.webp";
+import tes_1 from "./cover_images/tes_1.webp";
+import tes_2 from "./cover_images/tes_2.webp";
+import tes_3 from "./cover_images/tes_3.webp";
 
 // faq icon
 import faq_icon from "./faq_images/faqicon.webp";
@@ -96,7 +99,6 @@ export {
   phone_icon,
   location_icon,
   person_icon,
-  home_cover,
   faq_icon,
   footer_call,
   footer_email,
@@ -114,4 +116,8 @@ export {
   ru_flag,
   nl_flag,
   ua_flag,
+  tes_1,
+  tes_2,
+  tes_3,
+  tes_4,
 };

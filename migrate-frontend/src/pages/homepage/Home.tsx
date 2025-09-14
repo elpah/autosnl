@@ -1,9 +1,6 @@
 import { type ChangeEvent, useContext, useEffect, useState } from "react";
 import { HomeSection } from "../../components/home-section/HomeSection";
 import { WhyCard } from "../../components/why-card/WhyCard";
-import homeCover from "../../assets/images/cover_images/home_cover.webp";
-import iconNext from "../../assets/images/home_images/icon_next.png";
-import iconPrevious from "../../assets/images/home_images/icon_previous.png";
 import advert from "../../assets/images/home_images/advert.png";
 import { useCategoryData } from "../../tdata/categoryData";
 import popularNissan from "../../assets/images/popular_brands/popular_nissan.png";
@@ -23,6 +20,7 @@ import { goToAdvancedSearch, goToSearchResult } from "../../utils/goToResults";
 import { useTranslation } from "react-i18next";
 import { isValidLang } from "../../utils/utilsFunctions";
 import styles from "./home.module.scss";
+import { tes_1, tes_2, tes_3, tes_4 } from "../../assets/images/images";
 
 export const Home = () => {
   const { t } = useTranslation("home");
@@ -41,6 +39,28 @@ export const Home = () => {
   } = useBrandModel();
   const { data: sectionData, isLoading: sectionIsLoading } = useHomeSection();
   const { lang: urlLang } = useParams();
+
+  function moveSlide(direction: number) {
+    setCurrentIndex((prevIndex) => {
+      let newIndex = prevIndex + direction;
+
+      if (newIndex < 0) {
+        newIndex = coverImages.length - 1;
+      } else if (newIndex >= coverImages.length) {
+        newIndex = 0;
+      }
+
+      return newIndex;
+    });
+  }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      moveSlide(1);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     if (urlLang && isValidLang(urlLang)) {
@@ -75,18 +95,7 @@ export const Home = () => {
     }));
   };
 
-  const moveSlide = (direction: number) => {
-    let newIndex = currentIndex + direction;
-
-    if (newIndex < 0) {
-      newIndex = coverImages.length - 1;
-    } else if (newIndex >= coverImages.length) {
-      newIndex = 0;
-    }
-    setCurrentIndex(newIndex);
-  };
-
-  const coverImages = [homeCover, homeCover, homeCover, homeCover];
+  const coverImages = [tes_3, tes_1, tes_2, tes_4];
   const popularBrandImages = [
     popularNissan,
     popularNissan,
@@ -383,16 +392,6 @@ export const Home = () => {
               </div>
             </div>
             <div className={styles.select_image_container}>
-              <div
-                className={styles.icon_container}
-                onClick={() => moveSlide(-1)}
-              >
-                <img
-                  className={styles.icon}
-                  src={iconPrevious}
-                  alt="previous icon"
-                />
-              </div>
               {coverImages.map((image, index) => (
                 <img
                   key={index}
@@ -406,12 +405,6 @@ export const Home = () => {
                   alt={`Thumbnail ${index + 1}`}
                 />
               ))}
-              <div
-                className={styles.icon_container}
-                onClick={() => moveSlide(1)}
-              >
-                <img className={styles.icon} src={iconNext} alt="next icon" />
-              </div>
             </div>
             <div className={styles.advertisement_container}>
               <img
